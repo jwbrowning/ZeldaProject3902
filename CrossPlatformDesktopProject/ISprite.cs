@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint0
 {
-	interface ISprite
+	public interface ISprite
 	{
 		void Update();
 

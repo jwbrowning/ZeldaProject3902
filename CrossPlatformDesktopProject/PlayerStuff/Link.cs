@@ -41,6 +41,16 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             State.Attack();
         }
 
+        public void ShootArrow()
+        {
+            
+        }
+
+        public void ThrowBoomerang()
+        {
+
+        }
+
         public void UseItem()
         {
             State.UseItem();
