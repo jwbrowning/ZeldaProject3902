@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3363B47E-7523-41E5-B4C3-51E4A16DF98D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CrossPlatformDesktopProject</RootNamespace>
+    <AssemblyName>CrossPlatformDesktopProject</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MonoGamePlatform>DesktopGL</MonoGamePlatform>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;LINUX</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
+    <DefineConstants>TRACE;LINUX</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="CommandStuff\CommandDamage.cs" />
+    <Compile Include="CommandStuff\CommandMoveDown.cs" />
+    <Compile Include="CommandStuff\CommandMoveLeft.cs" />
+    <Compile Include="CommandStuff\CommandMoveRight.cs" />
+    <Compile Include="CommandStuff\CommandMoveUp.cs" />
+    <Compile Include="CommandStuff\CommandQuit.cs" />
+    <Compile Include="CommandStuff\CommandSwitchItem.cs" />
+    <Compile Include="CommandStuff\CommandSwitchNPC.cs" />
+    <Compile Include="CommandStuff\CommandSword.cs" />
+    <Compile Include="ControllerMouse.cs" />
+    <Compile Include="GeneralStuff\IController.cs" />
+    <Compile Include="IGameObject.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="Items\IItem.cs" />
+    <Compile Include="Items\ItemSprite.cs" />
+    <Compile Include="Items\ItemSpriteFactory.cs" />
+    <Compile Include="Items\ItemSprites\SpriteArrow.cs" />
+    <Compile Include="Items\ItemSprites\SpriteBomb.cs" />
+    <Compile Include="Items\ItemSprites\SpriteBoomerang.cs" />
+    <Compile Include="Items\ItemSprites\SpriteBow.cs" />
+    <Compile Include="Items\ItemSprites\SpriteClock.cs" />
+    <Compile Include="Items\ItemSprites\SpriteCompass.cs" />
+    <Compile Include="Items\ItemSprites\SpriteFairy.cs" />
+    <Compile Include="Items\ItemSprites\SpriteHeart.cs" />
+    <Compile Include="Items\ItemSprites\SpriteHeartContainer.cs" />
+    <Compile Include="Items\ItemSprites\SpriteKey.cs" />
+    <Compile Include="Items\ItemSprites\SpriteMap.cs" />
+    <Compile Include="Items\ItemSprites\SpriteRupee.cs" />
+    <Compile Include="Items\ItemSprites\SpriteTriforcePiece.cs" />
+    <Compile Include="PlayerStuff\IPlayer.cs" />
+    <Compile Include="PlayerStuff\Link.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\LinkSprite.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\LinkSpriteFactory.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\DownMovingLinkSprite.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\DownStillLinkSprite.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\DownSwordLinkSprite.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\DownUseItemLinkSprite.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\LeftMovingLinkSprite.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\LeftStillLinkSprite.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\LeftSwordLinkSprite.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\LeftUseItemLinkSprite.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\RightMovingLinkSprite.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\RightStillLinkSprite.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\RightSwordLinkSprite.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\RightUseItemLinkSprite.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\UpMovingLinkSprite.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\UpStillLinkSprite.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\UpSwordLinkSprite.cs" />
+    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\UpUseItem.cs" />
+    <Compile Include="PlayerStuff\StateStuff\IPlayerState.cs" />
+    <Compile Include="PlayerStuff\StateStuff\StateClasses\DownAttackPlayerState.cs" />
+    <Compile Include="PlayerStuff\StateStuff\StateClasses\DownMovingPlayerState.cs" />
+    <Compile Include="PlayerStuff\StateStuff\StateClasses\DownStillPlayerState.cs" />
+    <Compile Include="PlayerStuff\StateStuff\StateClasses\DownUseItemPlayerState.cs" />
+    <Compile Include="PlayerStuff\StateStuff\StateClasses\LeftAttackPlayerState.cs" />
+    <Compile Include="PlayerStuff\StateStuff\StateClasses\LeftMovingPlayerState.cs" />
+    <Compile Include="PlayerStuff\StateStuff\StateClasses\LeftStillPlayerState.cs" />
+    <Compile Include="PlayerStuff\StateStuff\StateClasses\LeftUseItemPlayerState.cs" />
+    <Compile Include="PlayerStuff\StateStuff\StateClasses\RightAttackPlayerState.cs" />
+    <Compile Include="PlayerStuff\StateStuff\StateClasses\RightMovingPlayerState.cs" />
+    <Compile Include="PlayerStuff\StateStuff\StateClasses\RightStillPlayerState.cs" />
+    <Compile Include="PlayerStuff\StateStuff\StateClasses\RightUseItemPlayerState.cs" />
+    <Compile Include="PlayerStuff\StateStuff\StateClasses\UpAttackPlayerState.cs" />
+    <Compile Include="PlayerStuff\StateStuff\StateClasses\UpMovingPlayerState.cs" />
+    <Compile Include="PlayerStuff\StateStuff\StateClasses\UpStillPlayerState.cs" />
+    <Compile Include="PlayerStuff\StateStuff\StateClasses\UpUseItemPlayerState.cs" />
+    <Compile Include="SpriteAnimatedMoving.cs" />
+    <Compile Include="SpriteAnimatedStill.cs" />
+    <Compile Include="ControllerKeyboard.cs" />
+    <Compile Include="Game1.cs" />
+    <Compile Include="IController.cs" />
+    <Compile Include="ISprite.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpriteUnanimatedMoving.cs" />
+    <Compile Include="SpriteUnanimatedStill.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon.ico" />
+    <EmbeddedResource Include="Icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="Content\Content.mgcb" />
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\SDL2.dll">
+      <Link>x86\SDL2.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\SDL2.dll">
+      <Link>x64\SDL2.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\soft_oal.dll">
+      <Link>x86\soft_oal.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\soft_oal.dll">
+      <Link>x64\soft_oal.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\libSDL2-2.0.so.0">
+      <Link>x86\libSDL2-2.0.so.0</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\libSDL2-2.0.so.0">
+      <Link>x64\libSDL2-2.0.so.0</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\libopenal.so.1">
+      <Link>x86\libopenal.so.1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\libopenal.so.1">
+      <Link>x64\libopenal.so.1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\libSDL2-2.0.0.dylib">
+      <Link>libSDL2-2.0.0.dylib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\libopenal.1.dylib">
+      <Link>libopenal.1.dylib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll.config">
+      <Link>MonoGame.Framework.dll.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\SpriteArrows.png" />
+    <Content Include="Content\SpriteBomb.png" />
+    <Content Include="Content\SpriteBoomerang.png" />
+    <Content Include="Content\SpriteBow.png" />
+    <Content Include="Content\SpriteClock.png" />
+    <Content Include="Content\SpriteCompass.png" />
+    <Content Include="Content\SpriteFairy.png" />
+    <Content Include="Content\SpriteHeartContainer.png" />
+    <Content Include="Content\SpriteHearts.png" />
+    <Content Include="Content\SpriteKey.png" />
+    <Content Include="Content\SpriteMap.png" />
+    <Content Include="Content\SpriteRupees.png" />
+    <Content Include="Content\SpriteTriforcePiece.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
