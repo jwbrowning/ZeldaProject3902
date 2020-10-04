@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using CrossPlatformDesktopProject.CommandStuff;
+using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -38,6 +39,7 @@ namespace Sprint0
             RegisterCommand(Keys.I, new CommandSwitchItem(game));
             RegisterCommand(Keys.O, new CommandSwitchNPC(game));
             RegisterCommand(Keys.P, new CommandSwitchNPC(game));
+            RegisterCommand(Keys.R, new CommandReset(game));
         }
 
 

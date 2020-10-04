@@ -17,6 +17,7 @@ public class ItemSpriteFactory
 		SpriteCompass, SpriteFairy, SpriteHeartContainer, SpriteHearts, SpriteKey, 
 		SpriteMap, SpriteRupees, SpriteTriforcePiece;
 	private static ItemSpriteFactory instance = new ItemSpriteFactory();
+	
 
 	public static ItemSpriteFactory Instance
 	{

@@ -1,4 +1,5 @@
 ﻿
+using CrossPlatformDesktopProject.Items;
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
 using Microsoft.Xna.Framework;
@@ -30,8 +31,12 @@ namespace Sprint0
             LoadContent();
             gameObjects = new List<IGameObject>();
             player = new Link(this);
+            player.Position = new Vector2(200, 360);
             LinkSpriteFactory.Instance.player = player;
             gameObjects.Add(player);
+
+            
+
 
             controllers = new List<IController>();
             controllers.Add(new ControllerKeyboard(this));
@@ -82,6 +87,8 @@ namespace Sprint0
             {
                 currentGameObject.Draw(spriteBatch);
             }
+            
+
             base.Draw(gameTime);
         }
     }
