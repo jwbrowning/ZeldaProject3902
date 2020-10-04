@@ -52,6 +52,7 @@
     <Compile Include="CommandStuff\CommandSwitchItem.cs" />
     <Compile Include="CommandStuff\CommandSwitchNPC.cs" />
     <Compile Include="CommandStuff\CommandSword.cs" />
+    <Compile Include="CommandStuff\CommandUseItem.cs" />
     <Compile Include="ControllerMouse.cs" />
     <Compile Include="GeneralStuff\IController.cs" />
     <Compile Include="IGameObject.cs" />
