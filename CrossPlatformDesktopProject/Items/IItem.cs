@@ -1,8 +1,7 @@
-﻿using System;
+﻿using CrossPlatformDesktopProject.PlayerStuff;
+using System;
 
-public class IItem : IGameObject
+interface IItem : IGameObject
 {
-	public IItem()
-	{
-	}
+
 }

@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
 using CrossPlatformDesktopProject.PlayerStuff.StateStuff.StateClasses;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff.StateStuff
         public LeftStillPlayerState(IPlayer player)
         {
             this.player = player;
-            this.player.MoveDirection = Vector2.zero;
+            this.player.MoveDirection = Vector2.Zero;
             this.player.Sprite = LinkSpriteFactory.Instance.CreateLeftStillLinkSprite();
         }
 

@@ -1,4 +1,5 @@
 ﻿using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff.StateStuff.StateClasses
         public RightAttackPlayerState(IPlayer player)
         {
             this.player = player;
-            this.player.MoveDirection = Vector2.zero;
+            this.player.MoveDirection = Vector2.Zero;
             this.player.Sprite = LinkSpriteFactory.Instance.CreateRightSwordLinkSprite();
         }
 

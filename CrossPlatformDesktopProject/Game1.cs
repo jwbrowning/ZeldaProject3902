@@ -27,12 +27,14 @@ namespace Sprint0
 
         protected override void Initialize()
         {
+            LoadContent();
             gameObjects = new List<IGameObject>();
             player = new Link(this);
+            LinkSpriteFactory.Instance.player = player;
             gameObjects.Add(player);
 
             controllers = new List<IController>();
-            controllers.Add(new ControllerKeyboard());
+            controllers.Add(new ControllerKeyboard(this));
             //this.IsMouseVisible = true;
             base.Initialize();
         }
@@ -74,7 +76,7 @@ namespace Sprint0
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Gray);
 
             foreach (IGameObject currentGameObject in gameObjects)
             {

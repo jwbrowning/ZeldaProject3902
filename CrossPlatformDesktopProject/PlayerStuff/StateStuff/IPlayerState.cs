@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.PlayerStuff
 {
-    interface IPlayerState
+    public interface IPlayerState
     {
         void MoveUp();
         void MoveDown();

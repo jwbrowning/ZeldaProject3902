@@ -48,6 +48,7 @@
     <Compile Include="CommandStuff\CommandMoveRight.cs" />
     <Compile Include="CommandStuff\CommandMoveUp.cs" />
     <Compile Include="CommandStuff\CommandQuit.cs" />
+    <Compile Include="CommandStuff\CommandSwitchBlock.cs" />
     <Compile Include="CommandStuff\CommandSwitchItem.cs" />
     <Compile Include="CommandStuff\CommandSwitchNPC.cs" />
     <Compile Include="CommandStuff\CommandSword.cs" />

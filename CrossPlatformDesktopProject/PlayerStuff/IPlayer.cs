@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.PlayerStuff
 {
-    interface IPlayer : IGameObject
+    public interface IPlayer : IGameObject
     {
         IPlayerState State { get; set; }
         ISprite Sprite { get; set; }
+        Vector2 MoveDirection { get; set; }
         void MoveUp();
         void MoveDown();
         void MoveLeft();

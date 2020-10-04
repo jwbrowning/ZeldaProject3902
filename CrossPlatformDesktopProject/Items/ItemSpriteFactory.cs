@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using CrossPlatformDesktopProject.Items;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 using System;
@@ -48,7 +49,8 @@ public class ItemSpriteFactory
 
 	public ISprite CreateSpriteArrow()
 	{
-		return new ItemSprite(SpriteArrows, 8, 1);
+		return new 
+			ItemSprite(SpriteArrows, 8, 1);
 	}
 	public ISprite CreateSpriteBomb()
 	{

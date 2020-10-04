@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    class CommandSword : ICommand
+    class CommandSwitchBlock : ICommand
     {
         private Game1 myGame;
 
-        public CommandSword (Game1 game)
+        public CommandSwitchBlock(Game1 game)
         {
             myGame = game;
         }
 
         public void Execute()
         {
-            myGame.player.Attack();
+            //to be implimented
         }
     }
 }

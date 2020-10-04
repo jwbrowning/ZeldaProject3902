@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.PlayerStuff.StateStuff;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 using System;
 using System.Collections.Generic;
@@ -22,7 +24,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             this.game = game;
             State = new DownStillPlayerState(this);
             Position = Vector2.Zero;
-            MoveDirection = Vector2.zero;
+            MoveDirection = Vector2.Zero;
         }
 
         public void Update()
@@ -33,7 +35,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Sprite.Draw(spriteBatch);
+            Sprite.Draw(spriteBatch,Position);
         }
 
         public void Attack()
@@ -47,6 +49,11 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         }
 
         public void ThrowBoomerang()
+        {
+
+        }
+
+        public void UseBomb()
         {
 
         }

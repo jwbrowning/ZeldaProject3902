@@ -21,9 +21,11 @@ namespace CrossPlatformDesktopProject.PlayerStuff.SpriteStuff
         private int frameInterval;
         private IPlayer player;
         private bool loop;
+        private int scale = 5;
 
-        public LinkSprite(Texture2D texture, int rows, int columns, int start, int total, IPlayer player, bool loop)
+        public LinkSprite(Texture2D texture, int rows, int columns, int start, int total, bool loop, IPlayer player = null)
         {
+            Texture = texture;
             Rows = rows;
             Columns = columns;
             startFrame = start;
@@ -58,7 +60,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff.SpriteStuff
 
         void Finish()
         {
-            player.FinishAction();
+            if(player!=null) player.FinishAction();
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -69,7 +71,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff.SpriteStuff
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X - width * scale / 2, (int)location.Y - height * scale / 2, scale * width, scale * height);
 
             spriteBatch.Begin();
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
