@@ -61,9 +61,12 @@
     <Compile Include="Environment\DoorClosed.cs" />
     <Compile Include="Environment\DoorLocked.cs" />
     <Compile Include="Environment\DoorOpen.cs" />
+    <Compile Include="Environment\EffectEnemyDeath.cs" />
+    <Compile Include="Environment\FloorTile.cs" />
     <Compile Include="Environment\GapTile.cs" />
     <Compile Include="Environment\IBlock.cs" />
     <Compile Include="Environment\Ladder.cs" />
+    <Compile Include="Environment\RoomBorder.cs" />
     <Compile Include="Environment\Stairs.cs" />
     <Compile Include="Environment\Statue.cs" />
     <Compile Include="Environment\Wall.cs" />
