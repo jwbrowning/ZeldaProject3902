@@ -4,6 +4,7 @@ using CrossPlatformDesktopProject.Environment;
 using CrossPlatformDesktopProject.Items;
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
+using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -109,6 +110,7 @@ namespace Sprint0
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             environment = Content.Load<Texture2D>("environment");
+            UsableItemSpriteFactory.Instance.LoadAllTextures(Content);
             NPCSpriteFactory.Instance.LoadAllTextures(Content);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemSpriteFactory.Instance.LoadAllTextures(Content);

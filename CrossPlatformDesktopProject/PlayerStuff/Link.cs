@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
 using CrossPlatformDesktopProject.PlayerStuff.StateStuff;
+using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
@@ -15,6 +16,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
     {
         public IPlayerState State { get; set; }
         public ISprite Sprite { get; set; }
+        public List<IUsableItem> ActiveItems { get; set; }
         public Vector2 Position { get; set; }
         public Vector2 MoveDirection { get; set; }
         private float speed = 5; // play around with this
@@ -26,12 +28,17 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             State = new DownStillPlayerState(this);
             Position = Vector2.Zero;
             MoveDirection = Vector2.Zero;
+            ActiveItems = new List<IUsableItem>();
         }
 
         public void Update()
         {
             Sprite.Update();
             Position += MoveDirection * speed;
+            for(int i=0;i<ActiveItems.Count;i++)
+            {
+                ActiveItems[i].Update();
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -40,6 +47,10 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             s.overlayColor = Color.White;
             Sprite = s;
             Sprite.Draw(spriteBatch,Position);
+            for (int i = 0; i < ActiveItems.Count; i++)
+            {
+                ActiveItems[i].Draw(spriteBatch);
+            }
         }
 
         public void TakeDamage()
@@ -54,22 +65,17 @@ namespace CrossPlatformDesktopProject.PlayerStuff
 
         public void ShootArrow()
         {
-            
+            State.ShootArrow();
         }
 
         public void ThrowBoomerang()
         {
-
+            State.ThrowBoomerang();
         }
 
         public void UseBomb()
         {
-
-        }
-
-        public void UseItem()
-        {
-            State.UseItem();
+            State.UseBomb();
         }
 
         public void MoveUp()

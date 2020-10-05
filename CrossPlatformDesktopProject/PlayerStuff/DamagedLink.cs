@@ -1,4 +1,5 @@
 ﻿using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
+using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
@@ -15,6 +16,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
     {
         public IPlayerState State { get => player.State; set => player.State = value; }
         public ISprite Sprite { get => player.Sprite; set => player.Sprite = value; }
+        public List<IUsableItem> ActiveItems { get => player.ActiveItems; set => player.ActiveItems = value; }
         public Vector2 MoveDirection { get => player.MoveDirection; set => player.MoveDirection = value; }
         public Vector2 Position { get => player.Position; set => player.Position = value; }
         private IPlayer player;
@@ -54,6 +56,10 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             float r = ((timer / 100)%2)*.5f+.5f;
             s.overlayColor = new Color(r, value, value);
             Sprite.Draw(spriteBatch, Position);
+            for (int i = 0; i < ActiveItems.Count; i++)
+            {
+                ActiveItems[i].Draw(spriteBatch);
+            }
         }
 
         public void TakeDamage()
@@ -104,11 +110,6 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         public void UseBomb()
         {
             player.UseBomb();
-        }
-
-        public void UseItem()
-        {
-            player.UseItem();
         }
     }
 }

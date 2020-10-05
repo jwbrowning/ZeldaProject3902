@@ -19,6 +19,21 @@ namespace CrossPlatformDesktopProject.PlayerStuff.StateStuff.StateClasses
             this.player.Sprite = LinkSpriteFactory.Instance.CreateUpSwordLinkSprite();
         }
 
+        public void ShootArrow()
+        {
+            // No implementation
+        }
+
+        public void UseBomb()
+        {
+            // No implementation
+        }
+
+        public void ThrowBoomerang()
+        {
+            // No implementation
+        }
+
         public void MoveDown()
         {
             // No implementation
@@ -45,11 +60,6 @@ namespace CrossPlatformDesktopProject.PlayerStuff.StateStuff.StateClasses
         }
 
         public void Attack()
-        {
-            // No implementation
-        }
-
-        public void UseItem()
         {
             // No implementation
         }

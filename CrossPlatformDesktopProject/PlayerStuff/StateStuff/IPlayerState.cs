@@ -14,7 +14,9 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         void MoveRight();
         void StopMoving();
         void Attack();
-        void UseItem();
+        void ShootArrow();
+        void UseBomb();
+        void ThrowBoomerang();
         void FinishAction();
     }
 }

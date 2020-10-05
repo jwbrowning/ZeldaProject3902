@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    class CommandUseItem : ICommand
+    class CommandUseItem3 : ICommand
     {
         private Game1 myGame;
 
-        public CommandUseItem(Game1 game)
+        public CommandUseItem3(Game1 game)
         {
             myGame = game;
         }
 
         public void Execute()
         {
-            myGame.player.ShootArrow();
+            myGame.player.ThrowBoomerang();
         }
     }
 }

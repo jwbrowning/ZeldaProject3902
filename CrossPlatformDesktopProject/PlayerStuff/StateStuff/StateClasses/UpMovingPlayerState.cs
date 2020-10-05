@@ -1,4 +1,5 @@
 ﻿using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
+using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,24 @@ namespace CrossPlatformDesktopProject.PlayerStuff.StateStuff.StateClasses
             this.player = player;
             this.player.MoveDirection = -Vector2.UnitY;
             this.player.Sprite = LinkSpriteFactory.Instance.CreateUpMovingLinkSprite();
+        }
+
+        public void ShootArrow()
+        {
+            player.ActiveItems.Add(new UsableArrow(player.Position, -Vector2.UnitY, player));
+            player.State = new UpUseItemPlayerState(player);
+        }
+
+        public void UseBomb()
+        {
+            player.ActiveItems.Add(new UsableBomb(player.Position, player));
+            player.State = new UpUseItemPlayerState(player);
+        }
+
+        public void ThrowBoomerang()
+        {
+            player.ActiveItems.Add(new UsableBoomerang(player.Position, -Vector2.UnitY, player));
+            player.State = new UpUseItemPlayerState(player);
         }
 
         public void MoveDown()
@@ -47,11 +66,6 @@ namespace CrossPlatformDesktopProject.PlayerStuff.StateStuff.StateClasses
         public void Attack()
         {
             player.State = new UpAttackPlayerState(player);
-        }
-
-        public void UseItem()
-        {
-            player.State = new UpUseItemPlayerState(player);
         }
 
         public void FinishAction()

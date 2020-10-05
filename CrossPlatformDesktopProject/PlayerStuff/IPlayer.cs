@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.UsableItems;
+using Microsoft.Xna.Framework;
 using Sprint0;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
     {
         IPlayerState State { get; set; }
         ISprite Sprite { get; set; }
+        List<IUsableItem> ActiveItems { get; set; }
         Vector2 MoveDirection { get; set; }
         void TakeDamage();
         void MoveUp();
@@ -20,7 +22,6 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         void MoveRight();
         void StopMoving();
         void Attack();
-        void UseItem();
         void ShootArrow();
         void ThrowBoomerang();
         void UseBomb();
