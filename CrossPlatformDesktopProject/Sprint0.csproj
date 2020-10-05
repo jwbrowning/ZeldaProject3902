@@ -111,22 +111,6 @@
     <Compile Include="PlayerStuff\Link.cs" />
     <Compile Include="PlayerStuff\SpriteStuff\LinkSprite.cs" />
     <Compile Include="PlayerStuff\SpriteStuff\LinkSpriteFactory.cs" />
-    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\DownMovingLinkSprite.cs" />
-    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\DownStillLinkSprite.cs" />
-    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\DownSwordLinkSprite.cs" />
-    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\DownUseItemLinkSprite.cs" />
-    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\LeftMovingLinkSprite.cs" />
-    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\LeftStillLinkSprite.cs" />
-    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\LeftSwordLinkSprite.cs" />
-    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\LeftUseItemLinkSprite.cs" />
-    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\RightMovingLinkSprite.cs" />
-    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\RightStillLinkSprite.cs" />
-    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\RightSwordLinkSprite.cs" />
-    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\RightUseItemLinkSprite.cs" />
-    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\UpMovingLinkSprite.cs" />
-    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\UpStillLinkSprite.cs" />
-    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\UpSwordLinkSprite.cs" />
-    <Compile Include="PlayerStuff\SpriteStuff\SpriteClasses\UpUseItem.cs" />
     <Compile Include="PlayerStuff\StateStuff\IPlayerState.cs" />
     <Compile Include="PlayerStuff\StateStuff\StateClasses\DownAttackPlayerState.cs" />
     <Compile Include="PlayerStuff\StateStuff\StateClasses\DownMovingPlayerState.cs" />
@@ -144,16 +128,12 @@
     <Compile Include="PlayerStuff\StateStuff\StateClasses\UpMovingPlayerState.cs" />
     <Compile Include="PlayerStuff\StateStuff\StateClasses\UpStillPlayerState.cs" />
     <Compile Include="PlayerStuff\StateStuff\StateClasses\UpUseItemPlayerState.cs" />
-    <Compile Include="SpriteAnimatedMoving.cs" />
-    <Compile Include="SpriteAnimatedStill.cs" />
     <Compile Include="ControllerKeyboard.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="ISprite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpriteUnanimatedMoving.cs" />
-    <Compile Include="SpriteUnanimatedStill.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

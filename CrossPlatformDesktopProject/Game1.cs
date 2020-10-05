@@ -31,6 +31,10 @@ namespace Sprint0
             Content.RootDirectory = "Content";
         }
 
+        public void Reinitialize()
+        {
+            Initialize();
+        }
         protected override void Initialize()
         {
             LoadContent();

@@ -46,9 +46,9 @@ namespace CrossPlatformDesktopProject.EnemySpriteClasses
 
 		public void LoadAllTextures(ContentManager content)
 		{
-			textureEnemies = content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Enemies");
-			textureNPCs = content.Load<Texture2D>("The Legend of Zelda - NPCs");
-			textureBosses = content.Load<Texture2D>("The Legend of Zelda - Bosses");
+			textureEnemies = content.Load<Texture2D>("NES_-_The_Legend_of_Zelda_-_Dungeon_Enemies");
+			textureNPCs = content.Load<Texture2D>("The_Legend_of_Zelda_-_NPCs");
+			textureBosses = content.Load<Texture2D>("The_Legend_of_Zelda_-_Bosses");
 			blueKeeseSprite = new BlueKeese(textureEnemies);
 			redKeeseSprite = new RedKeese(textureEnemies);
 			blackGelSprite = new BlackGel(textureEnemies);

@@ -212,7 +212,7 @@
 /processorParam:TextureFormat=Color
 /build:linkWalk.png
 
-#begin NES - The Legend of Zelda - Dungeon Enemies.png
+#begin NES_-_The_Legend_of_Zelda_-_Dungeon_Enemies.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -222,7 +222,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NES - The Legend of Zelda - Dungeon Enemies.png
+/build:NES_-_The_Legend_of_Zelda_-_Dungeon_Enemies.png
 
 #begin SpriteArrows.png
 /importer:TextureImporter
@@ -380,7 +380,7 @@
 /processorParam:TextureFormat=Color
 /build:SpriteTriforcePiece.png
 
-#begin The Legend of Zelda - Bosses.png
+#begin The_Legend_of_Zelda_-_Bosses.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -390,9 +390,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:The Legend of Zelda - Bosses.png
+/build:The_Legend_of_Zelda_-_Bosses.png
 
-#begin The Legend of Zelda - NPCs.png
+#begin The_Legend_of_Zelda_-_NPCs.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -402,5 +402,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:The Legend of Zelda - NPCs.png
+/build:The_Legend_of_Zelda_-_NPCs.png
 

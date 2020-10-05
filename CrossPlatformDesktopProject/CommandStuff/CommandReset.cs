@@ -17,13 +17,7 @@ namespace CrossPlatformDesktopProject.CommandStuff
         }
         public void Execute()
         {
-            myGame.player.Position = new Vector2(200,360);
-            //mygame.itemthing.Position = new Vector2(600, 120);
-            //mygame.itemthing.sprite set to first sprite
-            //mygame.blockthing.Position = new Vector2(200, 120);
-            //mygame.blockthing.sprite set to first sprite
-            //mygame.enemything.Position = new Vector2(600, 360);
-            //mygame.enemything.sprite set to first sprite
+            myGame.Reinitialize();
 
         }
     }
