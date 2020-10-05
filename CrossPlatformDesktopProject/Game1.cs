@@ -22,6 +22,7 @@ namespace Sprint0
         public List<IGameObject> gameObjects;
         public List<INPC> npcs;
         public List<IBlock> blocks;
+        public List<IItem> items;
         public IPlayer player;
         private List<IController> controllers;
         private SpriteFont font;
@@ -97,6 +98,18 @@ namespace Sprint0
             blocks.Add(stairs);
             IBlock statue = new Statue(environment);
             blocks.Add(statue);
+
+            items = new List<IItem>();
+            IItem spriteArrow = new SpriteBoomerang();
+            //The rest of the items to be added
+
+
+
+
+
+
+
+
 
             controllers = new List<IController>();
             controllers.Add(new ControllerKeyboard(this));
