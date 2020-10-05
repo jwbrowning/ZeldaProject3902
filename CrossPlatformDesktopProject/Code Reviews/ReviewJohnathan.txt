@@ -1,8 +1,18 @@
-﻿In the plaintext file for a code quality review, include the following information:
-Author of the code review
-Date of the code review
-Sprint number
-Name of the .cs file being reviewed
-Author of the .cs file being reviewed
-Specific comments on code quality
-A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change
+﻿Author of review: Matthew Landwehr
+Date: OCT 05 2020
+Sprint: 2
+File under review: LinkSprite.cs
+Author of file: Johnathan Browning
+
+Maintainability:
+	Comments on quality: Everything seems to be written well. The most notable thing I see is a triple-nested if, but it's not really a big deal at all.
+	Hypothetical change: As is, the current implementation has all animations using the same frame interval, which means that brief/quick animations 
+		like swinging the sword or taking damage appear as if in slow motion. We could fix this by making two separate frame intervals for walking and 
+		for attacking, or in a "dirtier" method we could reduce the frame interval and then edit the spritesheet so that Link "animates" through several 
+		identical frames before changing to a new one.
+
+Readability:
+	Time to complete the review: 15 minutes
+	Specific comments: The code is pretty readable for the most part, though a couple lines seem a little long or hard to parse (such as the rectangle 
+		creation on line 76). Other than that, maybe just a couple of minor things like changing a variable name or two (like changing "width" to "spriteWidth"
+		in the Draw method) or a comment to explain what some variables mean. All in all, pretty good!
