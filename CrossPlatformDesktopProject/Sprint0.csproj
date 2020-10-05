@@ -49,11 +49,12 @@
     <Compile Include="CommandStuff\CommandMoveUp.cs" />
     <Compile Include="CommandStuff\CommandQuit.cs" />
     <Compile Include="CommandStuff\CommandReset.cs" />
-    <Compile Include="CommandStuff\CommandSwitchBlock.cs" />
-    <Compile Include="CommandStuff\CommandSwitchBlock2.cs" />
-    <Compile Include="CommandStuff\CommandSwitchItem.cs" />
-    <Compile Include="CommandStuff\CommandSwitchNPC.cs" />
-    <Compile Include="CommandStuff\CommandSwitchNPC2.cs" />
+    <Compile Include="CommandStuff\CommandSwitchBlockForward.cs" />
+    <Compile Include="CommandStuff\CommandSwitchBlockBack.cs" />
+    <Compile Include="CommandStuff\CommandSwitchItemBack.cs" />
+    <Compile Include="CommandStuff\CommandSwitchItemForward.cs" />
+    <Compile Include="CommandStuff\CommandSwitchNPCForward.cs" />
+    <Compile Include="CommandStuff\CommandSwitchNPCBack.cs" />
     <Compile Include="CommandStuff\CommandSword.cs" />
     <Compile Include="CommandStuff\CommandUseItem.cs" />
     <Compile Include="CommandStuff\CommandUseItem2.cs" />
@@ -204,6 +205,11 @@
     <None Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Code Reviews\ReviewAidan.txt" />
+    <Content Include="Code Reviews\ReviewMatthew.txt" />
+    <Content Include="Code Reviews\ReviewHemil.txt" />
+    <Content Include="Code Reviews\ReviewJohnathan.txt" />
+    <Content Include="Code Reviews\ReviewAbhi.txt" />
     <Content Include="Content\SpriteArrows.png" />
     <Content Include="Content\SpriteBomb.png" />
     <Content Include="Content\SpriteBoomerang.png" />
