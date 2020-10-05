@@ -197,6 +197,11 @@
     <None Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Code Reviews\ReviewAidan.txt" />
+    <Content Include="Code Reviews\ReviewMatthew.txt" />
+    <Content Include="Code Reviews\ReviewHemil.txt" />
+    <Content Include="Code Reviews\ReviewJohnathan.txt" />
+    <Content Include="Code Reviews\ReviewAbhi.txt" />
     <Content Include="Content\SpriteArrows.png" />
     <Content Include="Content\SpriteBomb.png" />
     <Content Include="Content\SpriteBoomerang.png" />
