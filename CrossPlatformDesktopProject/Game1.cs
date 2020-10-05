@@ -40,8 +40,6 @@ namespace Sprint0
             LinkSpriteFactory.Instance.player = player;
 
             npcs = new List<INPC>();
-            INPC aquamentus = new Aquamentus(NPCSpriteFactory.Instance.textureEnemies);
-            npcs.Add(aquamentus);
             INPC blueKeeseSprite = new BlueKeese(NPCSpriteFactory.Instance.textureEnemies);
             npcs.Add(blueKeeseSprite);
             INPC redKeeseSprite = new RedKeese(NPCSpriteFactory.Instance.textureEnemies);

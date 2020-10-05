@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using CrossPlatformDesktopProject.EnemySpriteClasses;
 
 namespace Sprint0
 {
-    class Aquamentus
+    class Aquamentus : INPC
     {
         public Texture2D Texture { get; set; }
         private int animationFrame = 1;
@@ -25,6 +26,18 @@ namespace Sprint0
 
         private int fireballPosition3X = 600;
         private int fireballPosition3Y = 220;
+        public Vector2 Position
+        {
+            get
+            {
+                return new Vector2(spritePositionX, spritePositionY);
+            }
+            set
+            {
+                spritePositionX = (int)value.X;
+                spritePositionY = (int)value.Y;
+            }
+        }
 
 
         public Aquamentus(Texture2D texture)
@@ -105,7 +118,7 @@ namespace Sprint0
 
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch)
         {
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
