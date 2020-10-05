@@ -58,6 +58,13 @@ namespace Sprint0
                     game.player.StopMoving();
                 }
             }
+            if (prevPressedKeys.Contains(Keys.Up) || prevPressedKeys.Contains(Keys.Down) || prevPressedKeys.Contains(Keys.Left) || prevPressedKeys.Contains(Keys.Right))
+            {
+                if (!pressedKeys.Contains(Keys.Up) && !pressedKeys.Contains(Keys.Down) && !pressedKeys.Contains(Keys.Left) && !pressedKeys.Contains(Keys.Right))
+                {
+                    game.player.StopMoving();
+                }
+            }
 
             bool doneMovement = false;
 			foreach (Keys key in pressedKeys)
