@@ -17,7 +17,7 @@ namespace Sprint0
 
         public void Execute()
         {
-            //to be implimented
+            myGame.player.TakeDamage();
         }
     }
 }

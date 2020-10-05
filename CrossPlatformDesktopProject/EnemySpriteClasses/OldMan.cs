@@ -5,16 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using CrossPlatformDesktopProject.EnemySpriteClasses;
 
 namespace Sprint0
 {
-    class OldMan
+    class OldMan : INPC
     {
         public Texture2D Texture { get; set; }
         private int animationFrame = 1;
         private int movementFrame = 1;
         private int spritePositionX = 600;
         private int spritePositionY = 200;
+        public Vector2 Position
+        {
+            get
+            {
+                return new Vector2(spritePositionX, spritePositionY);
+            }
+            set
+            {
+                spritePositionX = (int)value.X;
+                spritePositionY = (int)value.Y;
+            }
+        }
 
 
         public OldMan(Texture2D texture)
@@ -36,7 +49,7 @@ namespace Sprint0
 
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch)
         {
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;

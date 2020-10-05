@@ -50,8 +50,10 @@
     <Compile Include="CommandStuff\CommandQuit.cs" />
     <Compile Include="CommandStuff\CommandReset.cs" />
     <Compile Include="CommandStuff\CommandSwitchBlock.cs" />
+    <Compile Include="CommandStuff\CommandSwitchBlock2.cs" />
     <Compile Include="CommandStuff\CommandSwitchItem.cs" />
     <Compile Include="CommandStuff\CommandSwitchNPC.cs" />
+    <Compile Include="CommandStuff\CommandSwitchNPC2.cs" />
     <Compile Include="CommandStuff\CommandSword.cs" />
     <Compile Include="CommandStuff\CommandUseItem.cs" />
     <Compile Include="ControllerMouse.cs" />
@@ -70,9 +72,6 @@
     <Compile Include="Environment\RoomBorder.cs" />
     <Compile Include="Environment\Stairs.cs" />
     <Compile Include="Environment\Statue.cs" />
-    <Compile Include="..\..\..\..\Downloads\Temp\Wall.cs">
-      <Link>Environment\Wall.cs</Link>
-    </Compile>
     <Compile Include="GeneralStuff\IController.cs" />
     <Compile Include="IGameObject.cs" />
     <Compile Include="ICommand.cs" />
@@ -107,6 +106,7 @@
     <Compile Include="Items\ItemSprites\SpriteMap.cs" />
     <Compile Include="Items\ItemSprites\SpriteRupee.cs" />
     <Compile Include="Items\ItemSprites\SpriteTriforcePiece.cs" />
+    <Compile Include="PlayerStuff\DamagedLink.cs" />
     <Compile Include="PlayerStuff\IPlayer.cs" />
     <Compile Include="PlayerStuff\Link.cs" />
     <Compile Include="PlayerStuff\SpriteStuff\LinkSprite.cs" />

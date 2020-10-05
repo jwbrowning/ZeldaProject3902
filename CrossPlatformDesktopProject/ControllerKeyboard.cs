@@ -34,11 +34,11 @@ namespace Sprint0
             RegisterCommand(Keys.N, new CommandSword(game));
             RegisterCommand(Keys.E, new CommandDamage(game));
             RegisterCommand(Keys.T, new CommandSwitchBlock(game));
-            RegisterCommand(Keys.Y, new CommandSwitchBlock(game));
+            RegisterCommand(Keys.Y, new CommandSwitchBlock2(game));
             RegisterCommand(Keys.U, new CommandSwitchItem(game));
             RegisterCommand(Keys.I, new CommandSwitchItem(game));
             RegisterCommand(Keys.O, new CommandSwitchNPC(game));
-            RegisterCommand(Keys.P, new CommandSwitchNPC(game));
+            RegisterCommand(Keys.P, new CommandSwitchNPC2(game));
             RegisterCommand(Keys.R, new CommandReset(game));
         }
 
@@ -58,12 +58,11 @@ namespace Sprint0
                     game.player.StopMoving();
                 }
             }
-            prevPressedKeys = pressedKeys;
 
             bool doneMovement = false;
 			foreach (Keys key in pressedKeys)
 			{
-				if (controllerMappings.ContainsKey(key))
+				if (controllerMappings.ContainsKey(key) && !prevPressedKeys.Contains(key))
                 {
                     controllerMappings[key].Execute();
                 }
@@ -72,7 +71,9 @@ namespace Sprint0
                     moveMappings[key].Execute();
                     doneMovement = true;
                 }
-			}
-		}
+            }
+
+            prevPressedKeys = pressedKeys;
+        }
 	}
 }

@@ -1,4 +1,5 @@
-﻿using CrossPlatformDesktopProject.PlayerStuff.StateStuff;
+﻿using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
+using CrossPlatformDesktopProject.PlayerStuff.StateStuff;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
@@ -35,7 +36,15 @@ namespace CrossPlatformDesktopProject.PlayerStuff
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            LinkSprite s = (LinkSprite)Sprite;
+            s.overlayColor = Color.White;
+            Sprite = s;
             Sprite.Draw(spriteBatch,Position);
+        }
+
+        public void TakeDamage()
+        {
+            game.player = new DamagedLink(this, game);
         }
 
         public void Attack()

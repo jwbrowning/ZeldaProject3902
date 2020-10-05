@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.PlayerStuff.SpriteStuff
 {
-    class LinkSprite : ISprite
+    public class LinkSprite : ISprite
     {
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
+        public Color overlayColor;
         private int startFrame;
         private int totalFrames;
         private int currentFrame;
@@ -21,7 +22,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff.SpriteStuff
         private int frameInterval;
         private IPlayer player;
         private bool loop;
-        private int scale = 5;
+        private int scale = 4;
 
         public LinkSprite(Texture2D texture, int rows, int columns, int start, int total, bool loop, IPlayer player = null)
         {
@@ -35,6 +36,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff.SpriteStuff
             frameInterval = 10;
             this.player = player;
             this.loop = loop;
+            overlayColor = Color.White;
         }
 
         public void Update()
@@ -74,7 +76,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff.SpriteStuff
             Rectangle destinationRectangle = new Rectangle((int)location.X - width * scale / 2, (int)location.Y - height * scale / 2, scale * width, scale * height);
 
             spriteBatch.Begin();
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, overlayColor);
             spriteBatch.End();
         }
     }

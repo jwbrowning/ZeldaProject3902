@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Environment
 {
-    interface IBlock
+    public interface IBlock
     {
         void Draw(SpriteBatch spriteBatch, Vector2 location);
     }

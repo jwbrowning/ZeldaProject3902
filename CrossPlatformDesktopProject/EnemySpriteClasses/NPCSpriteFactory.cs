@@ -28,6 +28,9 @@ namespace CrossPlatformDesktopProject.EnemySpriteClasses
 		private Flame flameSprite;
 		private Aquamentus aquamentusSprite;
 		private Dodongo dodongoSprite;
+		public Texture2D textureEnemies;
+		public Texture2D textureNPCs;
+		public Texture2D textureBosses;
 
 		private static NPCSpriteFactory instance = new NPCSpriteFactory();
 		public static NPCSpriteFactory Instance
@@ -43,9 +46,9 @@ namespace CrossPlatformDesktopProject.EnemySpriteClasses
 
 		public void LoadAllTextures(ContentManager content)
 		{
-			Texture2D textureEnemies = content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Enemies");
-			Texture2D textureNPCs = content.Load<Texture2D>("The Legend of Zelda - NPCs");
-			Texture2D textureBosses = content.Load<Texture2D>("The Legend of Zelda - Bosses");
+			textureEnemies = content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Enemies");
+			textureNPCs = content.Load<Texture2D>("The Legend of Zelda - NPCs");
+			textureBosses = content.Load<Texture2D>("The Legend of Zelda - Bosses");
 			blueKeeseSprite = new BlueKeese(textureEnemies);
 			redKeeseSprite = new RedKeese(textureEnemies);
 			blackGelSprite = new BlackGel(textureEnemies);

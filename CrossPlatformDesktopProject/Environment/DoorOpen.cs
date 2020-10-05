@@ -24,7 +24,7 @@ namespace CrossPlatformDesktopProject.Environment
             Rectangle destinationRectangle;
 
             sourceRectangle = new Rectangle(848, 11, 32, 32);
-            destinationRectangle = new Rectangle(200, 400, 80, 80);
+            destinationRectangle = new Rectangle(200, 200, 80, 80);
 
             spriteBatch.Begin();
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);

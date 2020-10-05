@@ -13,6 +13,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         IPlayerState State { get; set; }
         ISprite Sprite { get; set; }
         Vector2 MoveDirection { get; set; }
+        void TakeDamage();
         void MoveUp();
         void MoveDown();
         void MoveLeft();
