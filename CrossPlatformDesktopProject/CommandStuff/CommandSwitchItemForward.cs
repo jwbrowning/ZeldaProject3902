@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    class CommandSwitchItem : ICommand
+    class CommandSwitchItemForward : ICommand
     {
         private Game1 myGame;
 
-        public CommandSwitchItem(Game1 game)
+        public CommandSwitchItemForward(Game1 game)
         {
             myGame = game;
         }

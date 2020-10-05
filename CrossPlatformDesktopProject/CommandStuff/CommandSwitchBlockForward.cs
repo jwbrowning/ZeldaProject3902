@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    class CommandSwitchBlock2 : ICommand
+    class CommandSwitchBlockForward : ICommand
     {
         private Game1 myGame;
 
-        public CommandSwitchBlock2(Game1 game)
+        public CommandSwitchBlockForward(Game1 game)
         {
             myGame = game;
         }
 
         public void Execute()
         {
-            IBlock block = myGame.blocks[myGame.blocks.Count - 1];
-            myGame.blocks.RemoveAt(myGame.blocks.Count - 1);
-            myGame.blocks.Insert(0, block);
+            IBlock block = myGame.blocks[0];
+            myGame.blocks.RemoveAt(0);
+            myGame.blocks.Add(block);
         }
     }
 }
