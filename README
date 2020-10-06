@@ -16,4 +16,17 @@ Code Analysis
 
 Sprint Reflection
 The team performed well this sprint, however there is definite room for improvement. We did a good job of meeting and organizing our self at the start of the sprint by creating a discord server to communicate, a GitHub repository for our code, as well as a Trello board to manage tasks and decide who would be working on what. After that everyone mostly worked on their own to complete their tasks and add it to the GitHub. We could have done a better job of communicating when we each got our tasks done in order to start combining them sooner. We waited until the last weekend to start combining all of our code which was fine, but we definitely could have done so sooner which would have relieved a little bit of stress and would have been a better use of the 3 weeks allotted for sprint 2. We also noticed we are a lot more productive when all 5 members of the group can meet all at one time. So, for future sprints we are going to make a defined schedule for meeting and working instead of just seeing when everyone is free day of.
+We had these warnings when we tried doing analysis:
+
+Severity	Code	Description	Project	File	Line	Suppression State
+Warning		Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+
+Severity	Code	Description	Project	File	Line	Suppression State
+Warning	CA2213	'Game1' contains field 'graphics' that is of IDisposable type 'GraphicsDeviceManager', but it is never disposed. Change the Dispose method on 'Game1' to call Close or Dispose on this field.	
+
+Severity	Code	Description	Project	File	Line	Suppression State
+Warning	CA2213	'Game1' contains field 'spriteBatch' that is of IDisposable type 'SpriteBatch', but it is never disposed. Change the Dispose method on 'Game1' to call Close or Dispose on this field.	
+
+Severity	Code	Description	Project	File	Line	Suppression State
+Warning	CA2213	'Game1' contains field 'environment' that is of IDisposable type 'Texture2D', but it is never disposed. Change the Dispose method on 'Game1' to call Close or Dispose on this field.	
 
