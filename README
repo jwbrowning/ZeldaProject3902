@@ -9,6 +9,8 @@ The code for NPCs (while meeting the functionality requirements for sprint 2) is
 
 In the future, we may need to resize some sprites and edit the spritesheets to make the animations look cleaner.
 
+We're planning to address the way in which the game draws gameobjects in order to make sure they're drawn in the proper order, e.g. to ensure that tiles and blocks aren't drawn over top of items or enemies.
+
 
 Code Analysis
 
