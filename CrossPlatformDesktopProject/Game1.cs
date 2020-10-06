@@ -22,6 +22,7 @@ namespace Sprint0
         public List<IGameObject> gameObjects;
         public List<INPC> npcs;
         public List<IBlock> blocks;
+        public List<IItem> items;
         public IPlayer player;
         private List<IController> controllers;
         private SpriteFont font;
@@ -43,6 +44,34 @@ namespace Sprint0
             player = new Link(this);
             player.Position = new Vector2(200, 360);
             LinkSpriteFactory.Instance.player = player;
+
+            items = new List<IItem>();
+            IItem arrow = new SpriteArrow();
+            items.Add(arrow);
+            IItem bomb = new SpriteBomb();
+            items.Add(bomb);
+            IItem boomerang = new SpriteBoomerang();
+            items.Add(boomerang);
+            IItem bow = new SpriteBow();
+            items.Add(bow);
+            IItem clock = new SpriteClock();
+            items.Add(clock);
+            IItem compass = new SpriteCompass();
+            items.Add(compass);
+            IItem fairy = new SpriteFairy();
+            items.Add(fairy);
+            IItem heart = new SpriteHeart();
+            items.Add(heart);
+            IItem heartContainer = new SpriteHeartContainer();
+            items.Add(heartContainer);
+            IItem key = new SpriteKey();
+            items.Add(key);
+            IItem map = new SpriteMap();
+            items.Add(map);
+            IItem rupee = new SpriteRupee();
+            items.Add(rupee);
+            IItem triforcePiece = new SpriteTriforcePiece();
+            items.Add(triforcePiece);
 
             npcs = new List<INPC>();
             INPC blueKeeseSprite = new BlueKeese(NPCSpriteFactory.Instance.textureEnemies);
@@ -142,6 +171,7 @@ namespace Sprint0
             player.Update();
 
             if (npcs.Count > 0) npcs[0].Update();
+            if (items.Count > 0) items[0].Update();
 
             base.Update(gameTime);
         }
@@ -159,6 +189,7 @@ namespace Sprint0
 
             if (npcs.Count > 0) npcs[0].Draw(spriteBatch);
             if (blocks.Count > 0) blocks[0].Draw(spriteBatch,Vector2.Zero);
+            if (items.Count > 0) items[0].Draw(spriteBatch);
 
             base.Draw(gameTime);
         }

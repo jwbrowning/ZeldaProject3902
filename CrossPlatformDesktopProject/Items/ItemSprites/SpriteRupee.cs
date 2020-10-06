@@ -1,8 +1,31 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Sprint0;
+using System;
 
-public class SpriteRupee
+public class SpriteRupee : IItem
 {
-	public SpriteRupee()
-	{
-	}
+    public ISprite Sprite { get; set; }
+    public Vector2 Position { get; set; }
+
+    public SpriteRupee()
+    {
+        Position = new Vector2(400, 300);
+        Sprite = ItemSpriteFactory.Instance.CreateSpriteRupee();
+    }
+
+    public void Update()
+    {
+        Sprite.Update();
+    }
+
+    public void Draw(SpriteBatch spriteBatch)
+    {
+        Sprite.Draw(spriteBatch, Position);
+    }
+
+    public void PickUp()
+    {
+        // No Implementation yet
+    }
 }

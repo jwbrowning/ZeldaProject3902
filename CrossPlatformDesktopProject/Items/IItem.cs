@@ -10,5 +10,6 @@ using System.Threading.Tasks;
 
 public interface IItem : IGameObject
 {
+    ISprite Sprite { get; set; }
     void PickUp();
 }

@@ -1,8 +1,31 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Sprint0;
+using System;
 
-public class SpriteCompass
+public class SpriteCompass : IItem
 {
-	public SpriteCompass()
-	{
-	}
+    public ISprite Sprite { get; set; }
+    public Vector2 Position { get; set; }
+
+    public SpriteCompass()
+    {
+        Position = new Vector2(400, 300);
+        Sprite = ItemSpriteFactory.Instance.CreateSpriteCompass();
+    }
+
+    public void Update()
+    {
+        Sprite.Update();
+    }
+
+    public void Draw(SpriteBatch spriteBatch)
+    {
+        Sprite.Draw(spriteBatch, Position);
+    }
+
+    public void PickUp()
+    {
+        // No Implementation yet
+    }
 }

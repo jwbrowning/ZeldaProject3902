@@ -17,7 +17,9 @@ namespace Sprint0
 
         public void Execute()
         {
-            //to be implimented
+            IItem item = myGame.items[myGame.items.Count - 1];
+            myGame.items.RemoveAt(myGame.items.Count - 1);
+            myGame.items.Insert(0, item);
         }
     }
 }
