@@ -127,10 +127,6 @@ namespace Sprint0
             IBlock statue = new Statue(environment);
             blocks.Add(statue);
 
-            items = new List<IItem>();
-            IItem spriteArrow = new SpriteBoomerang();
-            //The rest of the items to be added
-
 
 
 
