@@ -127,6 +127,18 @@ namespace Sprint0
             IBlock statue = new Statue(environment);
             blocks.Add(statue);
 
+            items = new List<IItem>();
+            IItem spriteArrow = new SpriteBoomerang();
+            //The rest of the items to be added
+
+
+
+
+
+
+
+
+
             controllers = new List<IController>();
             controllers.Add(new ControllerKeyboard(this));
             //this.IsMouseVisible = true;

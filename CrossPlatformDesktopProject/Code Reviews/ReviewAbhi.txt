@@ -1,8 +1,17 @@
-﻿In the plaintext file for a code quality review, include the following information:
-Author of the code review
-Date of the code review
-Sprint number
-Name of the .cs file being reviewed
-Author of the .cs file being reviewed
-Specific comments on code quality
-A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change
+Code Maintainability Review
+by Johnathan Browning
+10/5/20
+Sprint 2
+Aquamentus.cs
+Abhi Malisetty
+10 minutes
+
+Readability
+-descriptive variable names
+-easy to understand formatting
+-good naming conventions
+
+Maintainability
+-using separate variables for x and y positions instead of vector2
+-large if statement structure in update function, could maybe benefit from using a state structure
+-handling of fireballs and sprites all handled within same class, could benefit from separating them into different classes like a Fireball.cs and an EnemySprite.cs and managing their creation in the main Aquamentus class
