@@ -1,4 +1,5 @@
-﻿using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
+﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
+using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
 using CrossPlatformDesktopProject.PlayerStuff.StateStuff;
 using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
@@ -17,6 +18,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         public IPlayerState State { get; set; }
         public ISprite Sprite { get; set; }
         public List<IUsableItem> ActiveItems { get; set; }
+        public ICollisionHandler CollisionHandler { get; set; }
         public Vector2 Position { get; set; }
         public Vector2 MoveDirection { get; set; }
         private float speed = 5; // play around with this
@@ -29,6 +31,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             Position = Vector2.Zero;
             MoveDirection = Vector2.Zero;
             ActiveItems = new List<IUsableItem>();
+            CollisionHandler = new LinkCollisionHandler(this, 64, 64, 0, 0);
         }
 
         public void Update()

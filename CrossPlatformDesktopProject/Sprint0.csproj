@@ -42,6 +42,17 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CollisionStuff\ColliderStuff\BoxCollider.cs" />
+    <Compile Include="CollisionStuff\ColliderStuff\ICollider.cs" />
+    <Compile Include="CollisionStuff\CollisionHandlerStuff\BlockColllisionHandler.cs" />
+    <Compile Include="CollisionStuff\CollisionHandlerStuff\EnemyCollisionHandler.cs" />
+    <Compile Include="CollisionStuff\CollisionHandlerStuff\ICollisionHandler.cs" />
+    <Compile Include="CollisionStuff\CollisionHandlerStuff\ItemCollisionHandler.cs" />
+    <Compile Include="CollisionStuff\CollisionHandlerStuff\LinkCollisionHandler.cs" />
+    <Compile Include="CollisionStuff\CollisionHandlerStuff\NPCCollisionHandler.cs" />
+    <Compile Include="CollisionStuff\CollisionHandlerStuff\UsableItemCollisionHandler.cs" />
+    <Compile Include="CollisionStuff\ICollision.cs" />
+    <Compile Include="CollisionStuff\ICollidable.cs" />
     <Compile Include="CommandStuff\CommandDamage.cs" />
     <Compile Include="CommandStuff\CommandMoveDown.cs" />
     <Compile Include="CommandStuff\CommandMoveLeft.cs" />
@@ -61,6 +72,7 @@
     <Compile Include="CommandStuff\CommandUseItem3.cs" />
     <Compile Include="ControllerMouse.cs" />
     <Compile Include="EnemySpriteClasses\INPC.cs" />
+    <Compile Include="EnemySpriteClasses\IEnemy.cs" />
     <Compile Include="EnemySpriteClasses\NPCSpriteFactory.cs" />
     <Compile Include="Environment\BlockStandard.cs" />
     <Compile Include="Environment\DoorBombed.cs" />
@@ -224,6 +236,7 @@
     <Content Include="Content\SpriteRupees.png" />
     <Content Include="Content\SpriteTriforcePiece.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

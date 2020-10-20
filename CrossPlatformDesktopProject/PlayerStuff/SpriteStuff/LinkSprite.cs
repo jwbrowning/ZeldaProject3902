@@ -24,7 +24,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff.SpriteStuff
         private bool loop;
         private int scale = 4;
 
-        public LinkSprite(Texture2D texture, int rows, int columns, int start, int total, bool loop, IPlayer player = null)
+        public LinkSprite(Texture2D texture, int rows, int columns, int start, int total, bool loop, float speed, IPlayer player = null)
         {
             Texture = texture;
             Rows = rows;
@@ -33,7 +33,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff.SpriteStuff
             totalFrames = total;
             currentFrame = startFrame;
             frameCounter = 0;
-            frameInterval = 10;
+            frameInterval = (int)(10 / speed);
             this.player = player;
             this.loop = loop;
             overlayColor = Color.White;

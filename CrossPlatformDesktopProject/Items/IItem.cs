@@ -1,4 +1,5 @@
-﻿using CrossPlatformDesktopProject.PlayerStuff;
+﻿using CrossPlatformDesktopProject.CollisionStuff;
+using CrossPlatformDesktopProject.PlayerStuff;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;

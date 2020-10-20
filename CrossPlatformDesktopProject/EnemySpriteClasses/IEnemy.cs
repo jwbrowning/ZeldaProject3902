@@ -1,5 +1,4 @@
-﻿using CrossPlatformDesktopProject.CollisionStuff;
-using CrossPlatformDesktopProject.PlayerStuff;
+﻿using CrossPlatformDesktopProject.PlayerStuff;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.EnemySpriteClasses
 {
-    public interface INPC : IGameObject
+    public interface IEnemy : IGameObject
     {
     }
 }

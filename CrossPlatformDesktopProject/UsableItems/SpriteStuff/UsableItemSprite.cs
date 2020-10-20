@@ -22,7 +22,7 @@ namespace CrossPlatformDesktopProject.UsableItems
         private int frameInterval;
         private int scale = 4;
 
-        public UsableItemSprite(Texture2D texture, int rows, int columns, int start, int total)
+        public UsableItemSprite(Texture2D texture, int rows, int columns, int start, int total, float speed)
         {
             Texture = texture;
             Rows = rows;
@@ -31,7 +31,7 @@ namespace CrossPlatformDesktopProject.UsableItems
             totalFrames = total;
             currentFrame = startFrame;
             frameCounter = 0;
-            frameInterval = 10;
+            frameInterval = (int)(10 / speed);
             overlayColor = Color.White;
         }
 

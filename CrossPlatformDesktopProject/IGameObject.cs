@@ -1,3 +1,4 @@
+using CrossPlatformDesktopProject.CollisionStuff;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.PlayerStuff
 {
-    public interface IGameObject
+    public interface IGameObject : ICollidable
     {
         Vector2 Position { get; set; }
         void Update();

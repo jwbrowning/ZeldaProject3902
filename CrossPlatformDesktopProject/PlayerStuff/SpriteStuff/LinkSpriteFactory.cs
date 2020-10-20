@@ -42,82 +42,82 @@ namespace CrossPlatformDesktopProject.PlayerStuff.SpriteStuff
 
         public ISprite CreateLeftMovingLinkSprite()
         {
-            return new LinkSprite(leftMovingSheet, 1, 2, 0, 2, true, player);
+            return new LinkSprite(leftMovingSheet, 1, 2, 0, 2, true, 1, player);
         }
 
         public ISprite CreateUpMovingLinkSprite()
         {
-            return new LinkSprite(upMovingSheet, 1, 2, 0, 2, true, player);
+            return new LinkSprite(upMovingSheet, 1, 2, 0, 2, true, 1, player);
         }
 
         public ISprite CreateRightMovingLinkSprite()
         {
-            return new LinkSprite(rightMovingSheet, 1, 2, 0, 2, true, player);
+            return new LinkSprite(rightMovingSheet, 1, 2, 0, 2, true, 1, player);
         }
 
         public ISprite CreateDownMovingLinkSprite()
         {
-            return new LinkSprite(downMovingSheet, 1, 2, 0, 2, true, player);
+            return new LinkSprite(downMovingSheet, 1, 2, 0, 2, true, 1, player);
         }
 
         public ISprite CreateLeftStillLinkSprite()
         {
-            return new LinkSprite(leftMovingSheet, 1, 2, 1, 1, true, player);
+            return new LinkSprite(leftMovingSheet, 1, 2, 1, 1, true, 1, player);
         }
 
         public ISprite CreateUpStillLinkSprite()
         {
-            return new LinkSprite(upMovingSheet, 1, 2, 0, 1, true, player);
+            return new LinkSprite(upMovingSheet, 1, 2, 1, 1, true, 1, player);
         }
 
         public ISprite CreateRightStillLinkSprite()
         {
-            return new LinkSprite(rightMovingSheet, 1, 2, 0, 1, true, player);
+            return new LinkSprite(rightMovingSheet, 1, 2, 1, 1, true, 1, player);
         }
 
         public ISprite CreateDownStillLinkSprite()
         {
-            return new LinkSprite(downMovingSheet, 1, 2, 0, 1, true, player);
+            return new LinkSprite(downMovingSheet, 1, 2, 1, 1, true, 1, player);
         }
 
         public ISprite CreateLeftSwordLinkSprite()
         {
-            return new LinkSprite(leftSwordSheet, 1, 4, 0, 4, false, player);
+            return new LinkSprite(leftSwordSheet, 4, 1, 0, 4, false, 2, player);
         }
 
         public ISprite CreateUpSwordLinkSprite()
         {
-            return new LinkSprite(upSwordSheet, 1, 4, 0, 4, false, player);
+            return new LinkSprite(upSwordSheet, 1, 4, 0, 4, false, 2, player);
         }
 
         public ISprite CreateRightSwordLinkSprite()
         {
-            return new LinkSprite(rightSwordSheet, 1, 4, 0, 4, false, player);
+            return new LinkSprite(rightSwordSheet, 4, 1, 0, 4, false, 2, player);
         }
 
         public ISprite CreateDownSwordLinkSprite()
         {
-            return new LinkSprite(downSwordSheet, 1, 4, 0, 4, false, player);
+            return new LinkSprite(downSwordSheet, 1, 4, 0, 4, false, 2, player);
         }
 
         public ISprite CreateLeftUseItemLinkSprite()
         {
-            return new LinkSprite(useItemSheet, 1, 4, 3, 1, false, player);
+            return new LinkSprite(useItemSheet, 1, 4, 3, 1, false, 1, player);
         }
 
         public ISprite CreateUpUseItemLinkSprite()
         {
-            return new LinkSprite(useItemSheet, 1, 4, 2, 1, false, player);
+            return new LinkSprite(useItemSheet, 1, 4, 2, 1, false, 1, player);
         }
 
         public ISprite CreateRightUseItemLinkSprite()
         {
-            return new LinkSprite(useItemSheet, 1, 4, 1, 1, false, player);
+            return new LinkSprite(useItemSheet, 1, 4, 1, 1, false, 1, player);
         }
 
         public ISprite CreateDownUseItemLinkSprite()
         {
-            return new LinkSprite(useItemSheet, 1, 4, 0, 1, false, player);
+            return new LinkSprite(useItemSheet, 1, 4, 0, 1, false, 1, player);
         }
 
     }

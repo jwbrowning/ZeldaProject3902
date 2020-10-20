@@ -1,4 +1,5 @@
-﻿using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
+﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
+using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
 using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -19,6 +20,8 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         public List<IUsableItem> ActiveItems { get => player.ActiveItems; set => player.ActiveItems = value; }
         public Vector2 MoveDirection { get => player.MoveDirection; set => player.MoveDirection = value; }
         public Vector2 Position { get => player.Position; set => player.Position = value; }
+        public ICollisionHandler CollisionHandler { get => player.CollisionHandler; set => player.CollisionHandler = value; }
+
         private IPlayer player;
         private Game1 game;
         private int timer = 1000;

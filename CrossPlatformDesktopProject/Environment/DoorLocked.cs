@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -13,15 +14,22 @@ namespace CrossPlatformDesktopProject.Environment
     {
 
         public Texture2D Texture { get; set; }
+        public Vector2 Position { get; set; }
+        public ICollisionHandler CollisionHandler { get; set; }
+        private Vector2 size = new Vector2(80, 80);
 
         public DoorLocked(Texture2D texture)
         {
             Texture = texture;
+            CollisionHandler = new BlockCollisionHandler(this, size.X, size.Y, 0, 0);
         }
 
+        public void Update() { }
+        public void Draw(SpriteBatch spriteBatch) { }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
+            Position = location;
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
 

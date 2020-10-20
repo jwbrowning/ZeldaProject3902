@@ -39,37 +39,37 @@ namespace CrossPlatformDesktopProject.UsableItems
 
         public ISprite CreateBombSprite()
         {
-            return new UsableItemSprite(bomb, 1, 1, 0, 1);
+            return new UsableItemSprite(bomb, 1, 1, 0, 1, 1);
         }
 
         public ISprite CreateExplosionSprite()
         {
-            return new UsableItemSprite(explosion, 1, 4, 0, 4);
+            return new UsableItemSprite(explosion, 1, 4, 0, 4, 1);
         }
 
         public ISprite CreateLeftArrowSprite()
         {
-            return new UsableItemSprite(leftArrow, 1, 1, 0, 1);
+            return new UsableItemSprite(leftArrow, 1, 1, 0, 1, 1);
         }
 
         public ISprite CreateUpArrowSprite()
         {
-            return new UsableItemSprite(upArrow, 1, 1, 0, 1);
+            return new UsableItemSprite(upArrow, 1, 1, 0, 1, 1);
         }
 
         public ISprite CreateRightArrowSprite()
         {
-            return new UsableItemSprite(rightArrow, 1, 1, 0, 1);
+            return new UsableItemSprite(rightArrow, 1, 1, 0, 1, 1);
         }
 
         public ISprite CreateDownArrowSprite()
         {
-            return new UsableItemSprite(downArrow, 1, 1, 0, 1);
+            return new UsableItemSprite(downArrow, 1, 1, 0, 1, 1);
         }
 
         public ISprite CreateBoomerangSprite()
         {
-            return new UsableItemSprite(boomerang, 1, 3, 0, 3);
+            return new UsableItemSprite(boomerang, 1, 8, 0, 8, 2);
         }
 
     }

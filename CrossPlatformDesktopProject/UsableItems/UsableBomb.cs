@@ -1,4 +1,5 @@
-﻿using CrossPlatformDesktopProject.PlayerStuff;
+﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
+using CrossPlatformDesktopProject.PlayerStuff;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
@@ -14,6 +15,7 @@ namespace CrossPlatformDesktopProject.UsableItems
     {
         public Vector2 Position { get; set; }
         public ISprite Sprite { get; set; }
+        public ICollisionHandler CollisionHandler { get; set; }
         private IPlayer player;
         private int timeTillExplosion = 50;
         private int timeTillDone = 25;
@@ -23,6 +25,7 @@ namespace CrossPlatformDesktopProject.UsableItems
             Position = position;
             this.player = player;
             Sprite = UsableItemSpriteFactory.Instance.CreateBombSprite();
+            CollisionHandler = new UsableItemCollisionHandler(player, this, 32, 32, 0, 0);
         }
 
         public void Update()

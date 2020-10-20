@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 using System;
@@ -7,11 +8,13 @@ public class SpriteRupee : IItem
 {
     public ISprite Sprite { get; set; }
     public Vector2 Position { get; set; }
+    public ICollisionHandler CollisionHandler { get; set; }
 
     public SpriteRupee()
     {
         Position = new Vector2(400, 300);
         Sprite = ItemSpriteFactory.Instance.CreateSpriteRupee();
+        CollisionHandler = new ItemCollisionHandler(this, 32, 32, 0, 0);
     }
 
     public void Update()

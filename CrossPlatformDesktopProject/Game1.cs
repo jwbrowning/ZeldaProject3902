@@ -1,4 +1,5 @@
 ﻿
+using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.Environment;
 using CrossPlatformDesktopProject.Items;
@@ -21,6 +22,7 @@ namespace Sprint0
         Texture2D environment;
         public List<IGameObject> gameObjects;
         public List<INPC> npcs;
+        public List<IEnemy> enemies;
         public List<IBlock> blocks;
         public List<IItem> items;
         public IPlayer player;
@@ -40,11 +42,22 @@ namespace Sprint0
         protected override void Initialize()
         {
             LoadContent();
-            gameObjects = new List<IGameObject>();
             player = new Link(this);
             player.Position = new Vector2(200, 360);
             LinkSpriteFactory.Instance.player = player;
+            
+            gameObjects = new List<IGameObject>();
+            npcs = new List<INPC>();
+            enemies = new List<IEnemy>();
+            blocks = new List<IBlock>();
+            items = new List<IItem>();
 
+            items.Add(new SpriteHeart());
+            npcs.Add(new OldMan(NPCSpriteFactory.Instance.textureNPCs));
+            enemies.Add(new BlueKeese(NPCSpriteFactory.Instance.textureEnemies));
+            blocks.Add(new BlockStandard(environment));
+
+            /* Sprint 2 Stuff - can prob delete now
             items = new List<IItem>();
             IItem arrow = new SpriteArrow();
             items.Add(arrow);
@@ -126,14 +139,7 @@ namespace Sprint0
             blocks.Add(stairs);
             IBlock statue = new Statue(environment);
             blocks.Add(statue);
-
-
-
-
-
-
-
-
+            */
 
             controllers = new List<IController>();
             controllers.Add(new ControllerKeyboard(this));
@@ -175,13 +181,127 @@ namespace Sprint0
             {
                 currentGameObject.Update();
             }
+            foreach (INPC npc in npcs)
+            {
+                npc.Update();
+            }
+            foreach (IEnemy enemy in enemies)
+            {
+                enemy.Update();
+            }
+            foreach (IItem item in items)
+            {
+                item.Update();
+            }
 
             player.Update();
 
-            if (npcs.Count > 0) npcs[0].Update();
-            if (items.Count > 0) items[0].Update();
+            //if (npcs.Count > 0) npcs[0].Update();
+            //if (items.Count > 0) items[0].Update();
+            DetectCollisions();
 
             base.Update(gameTime);
+        }
+
+        private void DetectCollisions()
+        {
+            Rectangle playerRect = new Rectangle((int)(player.Position.X + player.CollisionHandler.Collider.Offset.X), (int)(player.Position.Y + player.CollisionHandler.Collider.Offset.Y), (int)player.CollisionHandler.Collider.Size.X, (int)player.CollisionHandler.Collider.Size.Y);
+            foreach(INPC npc in npcs)
+            {
+                // PLAYER VS NPC
+                Rectangle rect = GetColliderRectangle(npc);
+                Rectangle intersect = Rectangle.Intersect(playerRect, rect);
+                if(!intersect.IsEmpty)
+                {
+                    player.CollisionHandler.HandleNPCCollision(npc.CollisionHandler.Collider);
+                    npc.CollisionHandler.HandlePlayerCollision(player.CollisionHandler.Collider);
+                }
+            }
+            foreach(IEnemy enemy in enemies)
+            {
+                // PLAYER VS ENEMY
+                Rectangle rect = GetColliderRectangle(enemy);
+                Rectangle intersect = Rectangle.Intersect(playerRect, rect);
+                if (!intersect.IsEmpty)
+                {
+                    player.CollisionHandler.HandleEnemyCollision(enemy.CollisionHandler.Collider);
+                    enemy.CollisionHandler.HandlePlayerCollision(player.CollisionHandler.Collider);
+                }
+
+                // ENEMY VS USABLEITEM
+                foreach (IUsableItem usableItem in player.ActiveItems)
+                {
+                    Rectangle rect2 = GetColliderRectangle(usableItem);
+                    Rectangle intersect2 = Rectangle.Intersect(playerRect, rect);
+                    if (!intersect2.IsEmpty)
+                    {
+                        enemy.CollisionHandler.HandleUsableItemCollision(usableItem.CollisionHandler.Collider);
+                        usableItem.CollisionHandler.HandleEnemyCollision(enemy.CollisionHandler.Collider);
+                    }
+                }
+
+                // ENEMY VS BLOCK
+                foreach (IBlock block in blocks)
+                {
+                    Rectangle rect2 = GetColliderRectangle(block);
+                    Rectangle intersect2 = Rectangle.Intersect(playerRect, rect);
+                    if (!intersect2.IsEmpty)
+                    {
+                        enemy.CollisionHandler.HandleBlockCollision(block.CollisionHandler.Collider);
+                        block.CollisionHandler.HandleEnemyCollision(enemy.CollisionHandler.Collider);
+                    }
+                }
+            }
+            foreach (IItem item in items)
+            {
+                // PLAYER VS ITEM
+                Rectangle rect = GetColliderRectangle(item);
+                Rectangle intersect = Rectangle.Intersect(playerRect, rect);
+                if (!intersect.IsEmpty)
+                {
+                    player.CollisionHandler.HandlePickupItemCollision(item.CollisionHandler.Collider);
+                    item.CollisionHandler.HandlePlayerCollision(player.CollisionHandler.Collider);
+                }
+            }
+            foreach (IUsableItem usableItem in player.ActiveItems)
+            {
+                // PLAYER VS USABLEITEM
+                Rectangle rect = GetColliderRectangle(usableItem);
+                Rectangle intersect = Rectangle.Intersect(playerRect, rect);
+                if (!intersect.IsEmpty)
+                {
+                    player.CollisionHandler.HandleUsableItemCollision(usableItem.CollisionHandler.Collider);
+                    usableItem.CollisionHandler.HandlePlayerCollision(player.CollisionHandler.Collider);
+                }
+
+                // USABLEITEM VS BLOCK
+                foreach (IBlock block in blocks)
+                {
+                    Rectangle rect2 = GetColliderRectangle(block);
+                    Rectangle intersect2 = Rectangle.Intersect(playerRect, rect);
+                    if (!intersect2.IsEmpty)
+                    {
+                        usableItem.CollisionHandler.HandleBlockCollision(block.CollisionHandler.Collider);
+                        block.CollisionHandler.HandleEnemyCollision(usableItem.CollisionHandler.Collider);
+                    }
+                }
+            }
+            foreach (IBlock block in blocks)
+            {
+                // PLAYER VS BLOCK
+                Rectangle rect = GetColliderRectangle(block);
+                Rectangle intersect = Rectangle.Intersect(playerRect, rect);
+                if (!intersect.IsEmpty)
+                {
+                    player.CollisionHandler.HandleBlockCollision(block.CollisionHandler.Collider);
+                    block.CollisionHandler.HandlePlayerCollision(player.CollisionHandler.Collider);
+                }
+            }
+        }
+
+        private Rectangle GetColliderRectangle(IGameObject gameObject)
+        {
+            return new Rectangle((int)(gameObject.Position.X + gameObject.CollisionHandler.Collider.Offset.X), (int)(gameObject.Position.Y + gameObject.CollisionHandler.Collider.Offset.Y), (int)gameObject.CollisionHandler.Collider.Size.X, (int)gameObject.CollisionHandler.Collider.Size.Y);
         }
 
         protected override void Draw(GameTime gameTime)
@@ -192,12 +312,39 @@ namespace Sprint0
             {
                 currentGameObject.Draw(spriteBatch);
             }
+            foreach (INPC npc in npcs)
+            {
+                npc.Draw(spriteBatch);
+            }
+            foreach (IEnemy enemy in enemies)
+            {
+                enemy.Draw(spriteBatch);
+            }
+            foreach (IItem item in items)
+            {
+                item.Draw(spriteBatch);
+            }
+            foreach (IBlock block in blocks)
+            {
+                block.Draw(spriteBatch, Vector2.Zero);
+            }
+
+            //Test Collider Stuff:
+            /*if (npcs.Count > 0)
+            {
+                Rectangle p = player.CollisionHandler.Collider.ColliderRectangle;
+                Rectangle n = npcs[0].CollisionHandler.Collider.ColliderRectangle;
+                spriteBatch.Begin();
+                spriteBatch.Draw(environment, p, Color.CadetBlue);
+                spriteBatch.Draw(environment, n, Color.IndianRed);
+                spriteBatch.End();
+            }*/
 
             player.Draw(spriteBatch);
 
-            if (npcs.Count > 0) npcs[0].Draw(spriteBatch);
-            if (blocks.Count > 0) blocks[0].Draw(spriteBatch,Vector2.Zero);
-            if (items.Count > 0) items[0].Draw(spriteBatch);
+            //if (npcs.Count > 0) npcs[0].Draw(spriteBatch);
+            //if (blocks.Count > 0) blocks[0].Draw(spriteBatch,Vector2.Zero);
+            //if (items.Count > 0) items[0].Draw(spriteBatch);
 
             base.Draw(gameTime);
         }
