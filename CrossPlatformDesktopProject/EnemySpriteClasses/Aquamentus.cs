@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
+using CrossPlatformDesktopProject.PlayerStuff;
 
 namespace Sprint0
 {
@@ -14,6 +15,7 @@ namespace Sprint0
     {
         public ICollisionHandler CollisionHandler { get; set; }
         public Texture2D Texture { get; set; }
+        private IPlayer player;
         private int animationFrame = 1;
         private int movementFrame = 1;
 
@@ -44,10 +46,11 @@ namespace Sprint0
         }
 
 
-        public Aquamentus(Texture2D texture)
+        public Aquamentus(Texture2D texture, IPlayer player)
         {
             Texture = texture;
             CollisionHandler = new EnemyCollisionHandler(this, size.X, size.Y, 0, 0);
+            this.player = player;
         }
 
         public void Update()

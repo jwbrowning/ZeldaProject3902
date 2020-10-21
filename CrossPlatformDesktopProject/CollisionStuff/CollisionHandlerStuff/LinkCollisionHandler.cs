@@ -52,7 +52,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
         public void HandleEnemyCollision(ICollider collider)
         {
             player.TakeDamage();
-            HandleGenericCollision(collider);
+            //HandleGenericCollision(collider);
         }
 
         public void HandlePlayerCollision(ICollider collider)

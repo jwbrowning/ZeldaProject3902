@@ -30,12 +30,12 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandleBlockCollision(ICollider collider)
         {
-            if (player.ActiveItems.Contains((IUsableItem)collider.GameObject)) player.ActiveItems.Remove((IUsableItem)collider.GameObject);
+            if (player.ActiveItems.Contains(item)) player.ActiveItems.Remove(item);
         }
 
         public void HandleEnemyCollision(ICollider collider)
         {
-            if (player.ActiveItems.Contains((IUsableItem)collider.GameObject)) player.ActiveItems.Remove((IUsableItem)collider.GameObject);
+            if (player.ActiveItems.Contains(item)) player.ActiveItems.Remove(item);
         }
 
         public void HandlePlayerCollision(ICollider collider)
@@ -50,12 +50,12 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandleUsableItemCollision(ICollider collider)
         {
-            if (player.ActiveItems.Contains((IUsableItem)collider.GameObject)) player.ActiveItems.Remove((IUsableItem)collider.GameObject);
+            if (player.ActiveItems.Contains(item)) player.ActiveItems.Remove(item);
         }
 
         public void HandleNPCCollision(ICollider collider)
         {
-            if (player.ActiveItems.Contains((IUsableItem)collider.GameObject)) player.ActiveItems.Remove((IUsableItem)collider.GameObject);
+            if (player.ActiveItems.Contains(item)) player.ActiveItems.Remove(item);
         }
     }
 }
