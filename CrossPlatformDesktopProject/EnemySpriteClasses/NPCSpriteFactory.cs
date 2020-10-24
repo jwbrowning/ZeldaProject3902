@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CrossPlatformDesktopProject.PlayerStuff;
 
 namespace CrossPlatformDesktopProject.EnemySpriteClasses
 {
@@ -14,6 +15,7 @@ namespace CrossPlatformDesktopProject.EnemySpriteClasses
     
     class NPCSpriteFactory
     {
+		private IPlayer player;
 		private BlueKeese blueKeeseSprite;
 		private RedKeese redKeeseSprite;
 		private BlackGel blackGelSprite;
@@ -49,20 +51,20 @@ namespace CrossPlatformDesktopProject.EnemySpriteClasses
 			textureEnemies = content.Load<Texture2D>("NES_-_The_Legend_of_Zelda_-_Dungeon_Enemies");
 			textureNPCs = content.Load<Texture2D>("The_Legend_of_Zelda_-_NPCs");
 			textureBosses = content.Load<Texture2D>("The_Legend_of_Zelda_-_Bosses");
-			blueKeeseSprite = new BlueKeese(textureEnemies);
-			redKeeseSprite = new RedKeese(textureEnemies);
-			blackGelSprite = new BlackGel(textureEnemies);
-			blackZolSprite = new BlackZol(textureEnemies);
-			stalfosSprite = new Stalfos(textureEnemies);
+			blueKeeseSprite = new BlueKeese(textureEnemies, player);
+			redKeeseSprite = new RedKeese(textureEnemies, player);
+			blackGelSprite = new BlackGel(textureEnemies, player);
+			blackZolSprite = new BlackZol(textureEnemies, player);
+			stalfosSprite = new Stalfos(textureEnemies, player);
 			blueGoriyaSprite = new BlueGoriya(textureEnemies);
 			bladeTrapSprite = new BladeTrap(textureEnemies);
-			ropeSprite = new Rope(textureEnemies);
-			wallMasterSprite = new WallMaster(textureEnemies);
+			ropeSprite = new Rope(textureEnemies, player);
+			wallMasterSprite = new WallMaster(textureEnemies, player);
 			oldManSprite = new OldMan(textureNPCs);
 			merchantSprite = new Merchant(textureNPCs);
 			flameSprite = new Flame(textureNPCs);
-			aquamentusSprite = new Aquamentus(textureBosses,null);
-			dodongoSprite = new Dodongo(textureBosses);
+			aquamentusSprite = new Aquamentus(textureBosses, player);
+			dodongoSprite = new Dodongo(textureBosses, player);
 
 		}
 
