@@ -12,20 +12,13 @@ using System.Diagnostics;
 
 namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 {
-    class BlockCollisionHandler : ICollisionHandler
+    class EmptyCollisionHandler : ICollisionHandler
     {
-        private IBlock block;
         public ICollider Collider { get; set; }
 
-        public BlockCollisionHandler(IBlock block, float colliderWidth, float colliderHeight, float offsetX, float offsetY)
+        public EmptyCollisionHandler(IGameObject gameObject)
         {
-            this.block = block;
-            Collider = new BoxCollider(block, colliderWidth, colliderHeight, offsetX, offsetY);
-        }
-
-        private void HandleGenericCollision(ICollider collider)
-        {
-
+            Collider = new BoxCollider(gameObject, 0, 0, 0, 0);
         }
 
         public void HandleBlockCollision(ICollider collider)

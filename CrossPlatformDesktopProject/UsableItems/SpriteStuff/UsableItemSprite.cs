@@ -31,7 +31,7 @@ namespace CrossPlatformDesktopProject.UsableItems
             totalFrames = total;
             currentFrame = startFrame;
             frameCounter = 0;
-            frameInterval = (int)(10 / speed);
+            frameInterval = (int)(10f / speed);
             overlayColor = Color.White;
         }
 

@@ -31,7 +31,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             Position = Vector2.Zero;
             MoveDirection = Vector2.Zero;
             ActiveItems = new List<IUsableItem>();
-            CollisionHandler = new LinkCollisionHandler(this, 64, 64, 0, 0);
+            CollisionHandler = new LinkCollisionHandler(this, 64, 32, 0, 16);
         }
 
         public void Update()

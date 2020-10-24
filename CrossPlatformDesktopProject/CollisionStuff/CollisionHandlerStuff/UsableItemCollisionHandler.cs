@@ -20,6 +20,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
         public UsableItemCollisionHandler(IPlayer player, IUsableItem item, float colliderWidth, float colliderHeight, float offsetX, float offsetY)
         {
             this.player = player;
+            this.item = item;
             Collider = new BoxCollider(item, colliderWidth, colliderHeight, offsetX, offsetY);
         }
 
@@ -30,7 +31,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandleBlockCollision(ICollider collider)
         {
-            if (player.ActiveItems.Contains(item)) player.ActiveItems.Remove(item);
+            //if (player.ActiveItems.Contains(item)) player.ActiveItems.Remove(item);
         }
 
         public void HandleEnemyCollision(ICollider collider)

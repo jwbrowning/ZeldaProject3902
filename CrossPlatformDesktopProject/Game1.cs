@@ -229,8 +229,9 @@ namespace Sprint0
                 }
 
                 // ENEMY VS USABLEITEM
-                foreach (IUsableItem usableItem in player.ActiveItems)
+                for(int i=0;i<player.ActiveItems.Count;i++)
                 {
+                    IUsableItem usableItem = player.ActiveItems[i];
                     Rectangle rect2 = GetColliderRectangle(usableItem);
                     Rectangle intersect2 = Rectangle.Intersect(playerRect, rect);
                     if (!intersect2.IsEmpty)
@@ -263,8 +264,9 @@ namespace Sprint0
                     item.CollisionHandler.HandlePlayerCollision(player.CollisionHandler.Collider);
                 }
             }
-            foreach (IUsableItem usableItem in player.ActiveItems)
+            for(int i=0;i<player.ActiveItems.Count;i++)
             {
+                IUsableItem usableItem = player.ActiveItems[i];
                 // PLAYER VS USABLEITEM
                 Rectangle rect = GetColliderRectangle(usableItem);
                 Rectangle intersect = Rectangle.Intersect(playerRect, rect);
@@ -282,7 +284,7 @@ namespace Sprint0
                     if (!intersect2.IsEmpty)
                     {
                         usableItem.CollisionHandler.HandleBlockCollision(block.CollisionHandler.Collider);
-                        block.CollisionHandler.HandleEnemyCollision(usableItem.CollisionHandler.Collider);
+                        block.CollisionHandler.HandleUsableItemCollision(usableItem.CollisionHandler.Collider);
                     }
                 }
             }

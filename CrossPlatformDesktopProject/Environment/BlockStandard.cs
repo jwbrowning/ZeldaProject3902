@@ -20,6 +20,7 @@ namespace CrossPlatformDesktopProject.Environment
         public BlockStandard(Texture2D texture)
         {
             Texture = texture;
+            Position = new Vector2(200, 200);
             CollisionHandler = new BlockCollisionHandler(this, size.X, size.Y, 0, 0);
         }
 

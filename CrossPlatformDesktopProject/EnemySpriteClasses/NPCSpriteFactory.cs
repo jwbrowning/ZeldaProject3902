@@ -61,7 +61,7 @@ namespace CrossPlatformDesktopProject.EnemySpriteClasses
 			oldManSprite = new OldMan(textureNPCs);
 			merchantSprite = new Merchant(textureNPCs);
 			flameSprite = new Flame(textureNPCs);
-			aquamentusSprite = new Aquamentus(textureBosses);
+			aquamentusSprite = new Aquamentus(textureBosses,null);
 			dodongoSprite = new Dodongo(textureBosses);
 
 		}

@@ -56,7 +56,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandlePlayerCollision(ICollider collider)
         {
-            HandleGenericCollision(collider);
+            //HandleGenericCollision(collider);
         }
 
         public void HandlePickupItemCollision(ICollider collider)

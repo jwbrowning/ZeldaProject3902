@@ -1,4 +1,5 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
+using CrossPlatformDesktopProject.Entities;
 using CrossPlatformDesktopProject.PlayerStuff;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -15,6 +16,7 @@ namespace CrossPlatformDesktopProject.UsableItems
     {
         public Vector2 Position { get; set; }
         public ISprite Sprite { get; set; }
+        private List<IEntity> explosionEffects;
         public ICollisionHandler CollisionHandler { get; set; }
         private IPlayer player;
         private int timeTillExplosion = 50;
@@ -26,6 +28,7 @@ namespace CrossPlatformDesktopProject.UsableItems
             this.player = player;
             Sprite = UsableItemSpriteFactory.Instance.CreateBombSprite();
             CollisionHandler = new UsableItemCollisionHandler(player, this, 32, 32, 0, 0);
+            explosionEffects = new List<IEntity>();
         }
 
         public void Update()
@@ -39,12 +42,16 @@ namespace CrossPlatformDesktopProject.UsableItems
             {
                 timeTillExplosion--;
                 Sprite.Update();
-                Sprite = UsableItemSpriteFactory.Instance.CreateExplosionSprite();
+                Explode();
             }
             else
             {
                 timeTillDone--;
                 Sprite.Update();
+                foreach (IEntity entity in explosionEffects)
+                {
+                    entity.Update();
+                }
                 if (timeTillDone<0)
                 {
                     if (player.ActiveItems.Contains(this)) player.ActiveItems.Remove(this);
@@ -52,9 +59,33 @@ namespace CrossPlatformDesktopProject.UsableItems
             }
         }
 
+        private void Explode()
+        {
+            explosionEffects.Add(new ExplosionEffect(Position));
+            for(int i=0;i<6;i++)
+            {
+                Vector2 adjust = Vector2.Transform(64 * Vector2.UnitX, Matrix.CreateRotationZ(i*(float)Math.PI / 3f));
+                explosionEffects.Add(new ExplosionEffect(Position + adjust));
+            }
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
-            Sprite.Draw(spriteBatch, Position);
+            if(timeTillExplosion >= 0)
+            {
+                Sprite.Draw(spriteBatch, Position);
+            }
+            if(explosionEffects.Count>0)
+            {
+                explosionEffects[0].Draw(spriteBatch);
+                for(int i=1;i<explosionEffects.Count;i++)
+                {
+                    if(timeTillDone%2==i%2)
+                    {
+                        explosionEffects[i].Draw(spriteBatch);
+                    }
+                }
+            }
         }
     }
 }

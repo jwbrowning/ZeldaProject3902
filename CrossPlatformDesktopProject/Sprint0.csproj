@@ -45,6 +45,7 @@
     <Compile Include="CollisionStuff\ColliderStuff\BoxCollider.cs" />
     <Compile Include="CollisionStuff\ColliderStuff\ICollider.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\BlockColllisionHandler.cs" />
+    <Compile Include="CollisionStuff\CollisionHandlerStuff\EmptyCollisionHandler.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\EnemyCollisionHandler.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\ICollisionHandler.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\ItemCollisionHandler.cs" />
@@ -74,6 +75,8 @@
     <Compile Include="EnemySpriteClasses\INPC.cs" />
     <Compile Include="EnemySpriteClasses\IEnemy.cs" />
     <Compile Include="EnemySpriteClasses\NPCSpriteFactory.cs" />
+    <Compile Include="Entities\ExplosionEffect.cs" />
+    <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Environment\BlockStandard.cs" />
     <Compile Include="Environment\DoorBombed.cs" />
     <Compile Include="Environment\DoorClosed.cs" />
