@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
+using CrossPlatformDesktopProject.PlayerStuff;
+using System.Runtime.CompilerServices;
 
 namespace Sprint0
 {
@@ -15,9 +17,9 @@ namespace Sprint0
         public ICollisionHandler CollisionHandler { get; set; }
         public Texture2D Texture { get; set; }
         private int animationFrame = 1;
-        private int movementFrame = 1;
         private int spritePositionX = 500;
         private int spritePositionY = 300;
+        private IPlayer player;
 
         private Vector2 size = new Vector2(60, 60);
         public Vector2 Position
@@ -34,38 +36,39 @@ namespace Sprint0
         }
 
 
-        public BlueKeese(Texture2D texture)
+        public BlueKeese(Texture2D texture, IPlayer player)
         {
             Texture = texture;
             CollisionHandler = new EnemyCollisionHandler(this, size.X, size.Y, 0, 0);
+            this.player = player;
         }
 
         public void Update()
         {
 
+            Vector2 position = player.Position;
+            float playerPositionX = position.X;
+            float playerPositionY = position.Y;
+
             animationFrame++;
-            movementFrame++;
-            if (animationFrame == 20)
+            
+            if (animationFrame == 10)
                 animationFrame = 1;
 
-            if (movementFrame == 400)
-                movementFrame = 1;
-
-
-            if (movementFrame <= 100)
-            {
-                spritePositionX = spritePositionX + 2;
-
-            }
-            else if (movementFrame > 100 && movementFrame <= 200)
-            {
-                spritePositionY = spritePositionY - 2;
-            }
-            else if (movementFrame > 200 && movementFrame <= 300)
+            if(playerPositionX < spritePositionX)
             {
                 spritePositionX = spritePositionX - 2;
             }
-            else if (movementFrame > 300)
+            else if (playerPositionX > spritePositionX)
+            {
+                spritePositionX = spritePositionX + 2;
+            }
+
+            if (playerPositionY < spritePositionY)
+            {
+                spritePositionY = spritePositionY - 2;
+            }
+            else if (playerPositionY > spritePositionY)
             {
                 spritePositionY = spritePositionY + 2;
             }
@@ -76,12 +79,12 @@ namespace Sprint0
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
 
-            if (animationFrame >= 1 && animationFrame < 10)
+            if (animationFrame >= 1 && animationFrame < 5)
             {
                 sourceRectangle = new Rectangle(183, 11, 16, 16);
                 destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 60, 60);
             }
-            else if (animationFrame >= 10)
+            else if (animationFrame >= 5)
             {
                 sourceRectangle = new Rectangle(200, 11, 15, 15);
                 destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 60, 60);

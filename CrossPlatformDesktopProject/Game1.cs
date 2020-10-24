@@ -61,7 +61,7 @@ namespace Sprint0
             items.Add(map);
 
             npcs.Add(new OldMan(NPCSpriteFactory.Instance.textureNPCs));
-            enemies.Add(new BlueKeese(NPCSpriteFactory.Instance.textureEnemies));
+            enemies.Add(new Stalfos(NPCSpriteFactory.Instance.textureEnemies, player));
             blocks.Add(new BlockStandard(environment));
 
             /* Sprint 2 Stuff - can prob delete now
