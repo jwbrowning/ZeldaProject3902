@@ -1,19 +1,19 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
-using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using System;
 
-public class SpriteBomb : IItem
+public class HeartContainer : IItem
 {
     public ISprite Sprite { get; set; }
     public Vector2 Position { get; set; }
     public ICollisionHandler CollisionHandler { get; set; }
 
-    public SpriteBomb()
+    public HeartContainer()
     {
         Position = new Vector2(400, 300);
-        Sprite = ItemSpriteFactory.Instance.CreateSpriteBomb();
+        Sprite = ItemSpriteFactory.Instance.CreateSpriteHeartContainer();
         CollisionHandler = new ItemCollisionHandler(this, 32, 32, 0, 0);
     }
 

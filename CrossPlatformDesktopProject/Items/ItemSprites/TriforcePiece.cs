@@ -4,13 +4,13 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 using System;
 
-public class SpriteTriforcePiece : IItem
+public class TriforcePiece : IItem
 {
     public ISprite Sprite { get; set; }
     public Vector2 Position { get; set; }
     public ICollisionHandler CollisionHandler { get; set; }
 
-    public SpriteTriforcePiece()
+    public TriforcePiece()
     {
         Position = new Vector2(400, 300);
         Sprite = ItemSpriteFactory.Instance.CreateSpriteTriforcePiece();

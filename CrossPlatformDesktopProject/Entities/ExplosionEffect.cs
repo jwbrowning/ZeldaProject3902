@@ -23,6 +23,7 @@ namespace CrossPlatformDesktopProject.Entities
             Position = position;
             random = new Random();
             explosionSprite = UsableItemSpriteFactory.Instance.CreateExplosionSprite();
+            CollisionHandler = new EmptyCollisionHandler(this);
         }
 
         public void Draw(SpriteBatch spriteBatch)

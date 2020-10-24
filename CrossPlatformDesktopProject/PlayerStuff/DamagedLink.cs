@@ -21,6 +21,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         public Vector2 MoveDirection { get => player.MoveDirection; set => player.MoveDirection = value; }
         public Vector2 Position { get => player.Position; set => player.Position = value; }
         public ICollisionHandler CollisionHandler { get => player.CollisionHandler; set => player.CollisionHandler = value; }
+        public Dictionary<ItemType, int> ItemCounts { get => player.ItemCounts; set => player.ItemCounts = value; }
 
         private IPlayer player;
         private Game1 game;
@@ -30,11 +31,6 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         {
             this.player = player;
             this.game = game;
-        }
-
-        public void Attack()
-        {
-            player.Attack();
         }
 
         public void Update()
@@ -63,6 +59,16 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             {
                 ActiveItems[i].Draw(spriteBatch);
             }
+        }
+
+        public void PickUp(ItemType itemType, int count)
+        {
+            player.PickUp(itemType, count);
+        }
+
+        public void Attack()
+        {
+            player.Attack();
         }
 
         public void TakeDamage()

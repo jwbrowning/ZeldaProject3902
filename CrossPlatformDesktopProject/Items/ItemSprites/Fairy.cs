@@ -4,16 +4,16 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 using System;
 
-public class SpriteCompass : IItem
+public class Fairy : IItem
 {
     public ISprite Sprite { get; set; }
     public Vector2 Position { get; set; }
     public ICollisionHandler CollisionHandler { get; set; }
 
-    public SpriteCompass()
+    public Fairy()
     {
         Position = new Vector2(400, 300);
-        Sprite = ItemSpriteFactory.Instance.CreateSpriteCompass();
+        Sprite = ItemSpriteFactory.Instance.CreateSpriteFairy();
         CollisionHandler = new ItemCollisionHandler(this, 32, 32, 0, 0);
     }
 

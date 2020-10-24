@@ -13,15 +13,32 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.PlayerStuff
 {
+    public enum ItemType
+    {
+        Rupee,
+        Map,
+        Key,
+        HeartContainer,
+        TriforcePiece,
+        Boomerang,
+        Bow,
+        Heart,
+        Arrow,
+        Bomb,
+        Fairy,
+        Clock,
+        Compass
+    }
     class Link : IPlayer
     {
         public IPlayerState State { get; set; }
         public ISprite Sprite { get; set; }
         public List<IUsableItem> ActiveItems { get; set; }
+        public Dictionary<ItemType, int> ItemCounts { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
         public Vector2 Position { get; set; }
         public Vector2 MoveDirection { get; set; }
-        private float speed = 5; // play around with this
+        private float speed = 5;
         private Game1 game;
 
         public Link(Game1 game)
@@ -30,8 +47,21 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             State = new DownStillPlayerState(this);
             Position = Vector2.Zero;
             MoveDirection = Vector2.Zero;
+            CollisionHandler = new LinkCollisionHandler(game, this, 64, 32, 0, 16);
             ActiveItems = new List<IUsableItem>();
-            CollisionHandler = new LinkCollisionHandler(this, 64, 32, 0, 16);
+            ItemCounts = new Dictionary<ItemType, int>();
+            ItemCounts.Add(ItemType.Rupee, 0);
+            ItemCounts.Add(ItemType.Map, 0);
+            ItemCounts.Add(ItemType.Key, 0);
+            ItemCounts.Add(ItemType.HeartContainer, 0);
+            ItemCounts.Add(ItemType.TriforcePiece, 0);
+            ItemCounts.Add(ItemType.Boomerang, 1);
+            ItemCounts.Add(ItemType.Bow, 1);
+            ItemCounts.Add(ItemType.Heart, 0);
+            ItemCounts.Add(ItemType.Arrow, 20);
+            ItemCounts.Add(ItemType.Bomb, 20);
+            ItemCounts.Add(ItemType.Fairy, 0);
+            ItemCounts.Add(ItemType.Clock, 0);
         }
 
         public void Update()
@@ -56,6 +86,11 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             }
         }
 
+        public void PickUp(ItemType itemType, int count)
+        {
+            ItemCounts[itemType] += count;
+        }
+
         public void TakeDamage()
         {
             game.player = new DamagedLink(this, game);
@@ -68,16 +103,20 @@ namespace CrossPlatformDesktopProject.PlayerStuff
 
         public void ShootArrow()
         {
+            if (ItemCounts[ItemType.Bow] == 0) return;
+            if (ItemCounts[ItemType.Arrow] - ActiveItems.FindAll((IUsableItem item) => item is UsableArrow).Count <= 0) return;
             State.ShootArrow();
         }
 
         public void ThrowBoomerang()
         {
+            if (ItemCounts[ItemType.Boomerang] - ActiveItems.FindAll((IUsableItem item) => item is UsableBoomerang).Count <= 0) return;
             State.ThrowBoomerang();
         }
 
         public void UseBomb()
         {
+            if (ItemCounts[ItemType.Boomerang] - ActiveItems.FindAll((IUsableItem item) => item is UsableBomb).Count <= 0) return;
             State.UseBomb();
         }
 

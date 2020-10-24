@@ -4,16 +4,16 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 using System;
 
-public class SpriteMap : IItem
+public class Clock : IItem
 {
     public ISprite Sprite { get; set; }
     public Vector2 Position { get; set; }
     public ICollisionHandler CollisionHandler { get; set; }
 
-    public SpriteMap()
+    public Clock()
     {
         Position = new Vector2(400, 300);
-        Sprite = ItemSpriteFactory.Instance.CreateSpriteMap();
+        Sprite = ItemSpriteFactory.Instance.CreateSpriteClock();
         CollisionHandler = new ItemCollisionHandler(this, 32, 32, 0, 0);
     }
 

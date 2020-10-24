@@ -2,6 +2,7 @@
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
+using Sprint0;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,18 +13,18 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 {
     class LinkCollisionHandler : ICollisionHandler
     {
-        private IPlayer player;
+        private Game1 game;
         public ICollider Collider { get; set; }
 
-        public LinkCollisionHandler(IPlayer player, float colliderWidth, float colliderHeight, float offsetX, float offsetY)
+        public LinkCollisionHandler(Game1 game, IPlayer player, float colliderWidth, float colliderHeight, float offsetX, float offsetY)
         {
-            this.player = player;
+            this.game = game;
             Collider = new BoxCollider(player, colliderWidth, colliderHeight, offsetX, offsetY);
         }
 
         private void HandleGenericCollision(ICollider collider)
         {
-            Rectangle myRectangle = new Rectangle((int)(player.Position.X+Collider.Offset.X), (int)(player.Position.Y+Collider.Offset.Y), (int)Collider.Size.X, (int)Collider.Size.Y);
+            Rectangle myRectangle = new Rectangle((int)(game.player.Position.X+Collider.Offset.X), (int)(game.player.Position.Y+Collider.Offset.Y), (int)Collider.Size.X, (int)Collider.Size.Y);
             Rectangle colRectangle = new Rectangle((int)(collider.GameObject.Position.X + collider.Offset.X), (int)(collider.GameObject.Position.Y + collider.Offset.Y), (int)collider.Size.X, (int)collider.Size.Y);
             Rectangle overlap = Rectangle.Intersect(myRectangle, colRectangle);
             Point d = (colRectangle.Location - myRectangle.Location);
@@ -33,14 +34,14 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
                 // Up-Down Collision
                 direction.X = 0;
                 direction.Normalize();
-                player.Position -= direction * overlap.Height; // might need /2 here, needs testing
+                game.player.Position -= direction * overlap.Height; // might need /2 here, needs testing
             }
             else
             {
                 // Left-Right Collision
                 direction.Y = 0;
                 direction.Normalize();
-                player.Position -= direction * overlap.Width;
+                game.player.Position -= direction * overlap.Width;
             }
         }
 
@@ -51,7 +52,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandleEnemyCollision(ICollider collider)
         {
-            player.TakeDamage();
+            game.player.TakeDamage();
             //HandleGenericCollision(collider);
         }
 
@@ -62,7 +63,59 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandlePickupItemCollision(ICollider collider)
         {
-            // do stuff for item pickup
+            if(collider.GameObject is Arrow)
+            {
+                game.player.PickUp(ItemType.Arrow, 1);
+            }
+            else if (collider.GameObject is Bomb)
+            {
+                game.player.ItemCounts[ItemType.Bomb]++;
+            }
+            else if(collider.GameObject is Boomerang)
+            {
+                game.player.ItemCounts[ItemType.Boomerang]++;
+            }
+            else if(collider.GameObject is Bow)
+            {
+                game.player.ItemCounts[ItemType.Bow]++;
+            }
+            else if(collider.GameObject is Clock)
+            {
+                game.player.ItemCounts[ItemType.Clock]++;
+            }
+            else if(collider.GameObject is Compass)
+            {
+                game.player.ItemCounts[ItemType.Compass]++;
+            }
+            else if(collider.GameObject is Fairy)
+            {
+                game.player.ItemCounts[ItemType.Fairy]++;
+            }
+            else if(collider.GameObject is Heart)
+            {
+                game.player.ItemCounts[ItemType.Heart]++;
+            }
+            else if(collider.GameObject is HeartContainer)
+            {
+                game.player.ItemCounts[ItemType.HeartContainer]++;
+            }
+            else if(collider.GameObject is Key)
+            {
+                game.player.ItemCounts[ItemType.Key]++;
+            }
+            else if(collider.GameObject is Map)
+            {
+                game.player.ItemCounts[ItemType.Map]++;
+            }
+            else if(collider.GameObject is Rupee)
+            {
+                game.player.ItemCounts[ItemType.Rupee]++;
+            }
+            else if(collider.GameObject is TriforcePiece)
+            {
+                game.player.ItemCounts[ItemType.TriforcePiece]++;
+            }
+            game.items.Remove((IItem)collider.GameObject);
         }
 
         public void HandleUsableItemCollision(ICollider collider)

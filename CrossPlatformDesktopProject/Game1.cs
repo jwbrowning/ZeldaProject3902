@@ -52,7 +52,14 @@ namespace Sprint0
             blocks = new List<IBlock>();
             items = new List<IItem>();
 
-            items.Add(new SpriteHeart());
+            items.Add(new Heart());
+            IItem rupee = new Rupee();
+            rupee.Position += 48 * Vector2.UnitX;
+            items.Add(rupee);
+            IItem map = new Map();
+            map.Position += 96 * Vector2.UnitX;
+            items.Add(map);
+
             npcs.Add(new OldMan(NPCSpriteFactory.Instance.textureNPCs));
             enemies.Add(new BlueKeese(NPCSpriteFactory.Instance.textureEnemies));
             blocks.Add(new BlockStandard(environment));
@@ -253,8 +260,9 @@ namespace Sprint0
                     }
                 }
             }
-            foreach (IItem item in items)
+            for(int i=0;i<items.Count;i++)
             {
+                IItem item = items[i];
                 // PLAYER VS ITEM
                 Rectangle rect = GetColliderRectangle(item);
                 Rectangle intersect = Rectangle.Intersect(playerRect, rect);

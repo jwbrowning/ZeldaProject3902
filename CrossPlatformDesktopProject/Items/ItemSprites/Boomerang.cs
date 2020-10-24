@@ -4,16 +4,16 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 using System;
 
-public class SpriteFairy : IItem
+public class Boomerang : IItem
 {
     public ISprite Sprite { get; set; }
     public Vector2 Position { get; set; }
     public ICollisionHandler CollisionHandler { get; set; }
 
-    public SpriteFairy()
+    public Boomerang()
     {
         Position = new Vector2(400, 300);
-        Sprite = ItemSpriteFactory.Instance.CreateSpriteFairy();
+        Sprite = ItemSpriteFactory.Instance.CreateSpriteBoomerang();
         CollisionHandler = new ItemCollisionHandler(this, 32, 32, 0, 0);
     }
 

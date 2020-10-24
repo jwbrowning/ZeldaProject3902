@@ -15,7 +15,9 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         IPlayerState State { get; set; }
         ISprite Sprite { get; set; }
         List<IUsableItem> ActiveItems { get; set; }
+        Dictionary<ItemType, int> ItemCounts { get; set; }
         Vector2 MoveDirection { get; set; }
+        void PickUp(ItemType itemType, int count);
         void TakeDamage();
         void MoveUp();
         void MoveDown();
