@@ -29,7 +29,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff.StateStuff
 
         public void UseBomb()
         {
-            player.ActiveItems.Add(new UsableBomb(player.Position, player));
+            player.ActiveItems.Add(new UsableBomb(player.Position + 64 * -Vector2.UnitY, player));
             player.State = new UpUseItemPlayerState(player);
         }
 

@@ -56,6 +56,11 @@ namespace CrossPlatformDesktopProject.UsableItems
             }
         }
 
+        public void ComeBack()
+        {
+            timer = 0;
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             Sprite.Draw(spriteBatch, Position);

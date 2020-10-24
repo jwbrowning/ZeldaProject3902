@@ -28,7 +28,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff.StateStuff.StateClasses
 
         public void UseBomb()
         {
-            player.ActiveItems.Add(new UsableBomb(player.Position, player));
+            player.ActiveItems.Add(new UsableBomb(player.Position + 64 * Vector2.UnitX, player));
             player.State = new RightUseItemPlayerState(player);
         }
 

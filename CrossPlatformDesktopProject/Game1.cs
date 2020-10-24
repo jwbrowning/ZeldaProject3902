@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sprint0
 {
@@ -212,7 +213,7 @@ namespace Sprint0
 
         private void DetectCollisions()
         {
-            Rectangle playerRect = new Rectangle((int)(player.Position.X + player.CollisionHandler.Collider.Offset.X), (int)(player.Position.Y + player.CollisionHandler.Collider.Offset.Y), (int)player.CollisionHandler.Collider.Size.X, (int)player.CollisionHandler.Collider.Size.Y);
+            Rectangle playerRect = GetColliderRectangle(player);
             foreach(INPC npc in npcs)
             {
                 // PLAYER VS NPC
@@ -240,7 +241,7 @@ namespace Sprint0
                 {
                     IUsableItem usableItem = player.ActiveItems[i];
                     Rectangle rect2 = GetColliderRectangle(usableItem);
-                    Rectangle intersect2 = Rectangle.Intersect(playerRect, rect);
+                    Rectangle intersect2 = Rectangle.Intersect(rect2, rect);
                     if (!intersect2.IsEmpty)
                     {
                         enemy.CollisionHandler.HandleUsableItemCollision(usableItem.CollisionHandler.Collider);
@@ -252,7 +253,7 @@ namespace Sprint0
                 foreach (IBlock block in blocks)
                 {
                     Rectangle rect2 = GetColliderRectangle(block);
-                    Rectangle intersect2 = Rectangle.Intersect(playerRect, rect);
+                    Rectangle intersect2 = Rectangle.Intersect(rect2, rect);
                     if (!intersect2.IsEmpty)
                     {
                         enemy.CollisionHandler.HandleBlockCollision(block.CollisionHandler.Collider);
@@ -288,7 +289,7 @@ namespace Sprint0
                 foreach (IBlock block in blocks)
                 {
                     Rectangle rect2 = GetColliderRectangle(block);
-                    Rectangle intersect2 = Rectangle.Intersect(playerRect, rect);
+                    Rectangle intersect2 = Rectangle.Intersect(rect2, rect);
                     if (!intersect2.IsEmpty)
                     {
                         usableItem.CollisionHandler.HandleBlockCollision(block.CollisionHandler.Collider);
@@ -339,16 +340,15 @@ namespace Sprint0
                 block.Draw(spriteBatch, Vector2.Zero);
             }
 
-            //Test Collider Stuff:
-            /*if (npcs.Count > 0)
+            // Uncomment to see colliders:
+            /*spriteBatch.Begin();
+            foreach (IGameObject g in blocks.Concat<IGameObject>(items).Concat(enemies).Concat(npcs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player }))
             {
-                Rectangle p = player.CollisionHandler.Collider.ColliderRectangle;
-                Rectangle n = npcs[0].CollisionHandler.Collider.ColliderRectangle;
-                spriteBatch.Begin();
-                spriteBatch.Draw(environment, p, Color.CadetBlue);
-                spriteBatch.Draw(environment, n, Color.IndianRed);
-                spriteBatch.End();
-            }*/
+                Rectangle rec = GetColliderRectangle(g);
+                spriteBatch.Draw(environment, rec, new Color(Color.LimeGreen,.01f));
+            }
+            spriteBatch.End();*/
+
 
             player.Draw(spriteBatch);
 

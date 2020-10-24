@@ -26,17 +26,24 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         private void HandleGenericCollision(ICollider collider)
         {
-
+            if (item is UsableBoomerang)
+            {
+                ((UsableBoomerang)item).ComeBack();
+            }
+            else if (item is UsableArrow && player.ActiveItems.Contains(item))
+            {
+                player.ActiveItems.Remove(item);
+            }
         }
 
         public void HandleBlockCollision(ICollider collider)
         {
-            //if (player.ActiveItems.Contains(item)) player.ActiveItems.Remove(item);
+            HandleGenericCollision(collider);
         }
 
         public void HandleEnemyCollision(ICollider collider)
         {
-            if (player.ActiveItems.Contains(item)) player.ActiveItems.Remove(item);
+            HandleGenericCollision(collider);
         }
 
         public void HandlePlayerCollision(ICollider collider)
@@ -51,12 +58,12 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandleUsableItemCollision(ICollider collider)
         {
-            if (player.ActiveItems.Contains(item)) player.ActiveItems.Remove(item);
+            HandleGenericCollision(collider);
         }
 
         public void HandleNPCCollision(ICollider collider)
         {
-            if (player.ActiveItems.Contains(item)) player.ActiveItems.Remove(item);
+            HandleGenericCollision(collider);
         }
     }
 }

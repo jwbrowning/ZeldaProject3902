@@ -47,7 +47,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             State = new DownStillPlayerState(this);
             Position = Vector2.Zero;
             MoveDirection = Vector2.Zero;
-            CollisionHandler = new LinkCollisionHandler(game, this, 64, 32, 0, 16);
+            CollisionHandler = new LinkCollisionHandler(game, this, 56, 38, 0, 18);
             ActiveItems = new List<IUsableItem>();
             ItemCounts = new Dictionary<ItemType, int>();
             ItemCounts.Add(ItemType.Rupee, 0);
@@ -104,7 +104,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         public void ShootArrow()
         {
             if (ItemCounts[ItemType.Bow] == 0) return;
-            if (ItemCounts[ItemType.Arrow] - ActiveItems.FindAll((IUsableItem item) => item is UsableArrow).Count <= 0) return;
+            if (ItemCounts[ItemType.Arrow] <= 0) return;
             State.ShootArrow();
         }
 
@@ -116,7 +116,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
 
         public void UseBomb()
         {
-            if (ItemCounts[ItemType.Boomerang] - ActiveItems.FindAll((IUsableItem item) => item is UsableBomb).Count <= 0) return;
+            if (ItemCounts[ItemType.Bomb] <= 0) return;
             State.UseBomb();
         }
 

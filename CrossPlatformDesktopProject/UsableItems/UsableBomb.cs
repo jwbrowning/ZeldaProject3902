@@ -29,6 +29,7 @@ namespace CrossPlatformDesktopProject.UsableItems
             Sprite = UsableItemSpriteFactory.Instance.CreateBombSprite();
             CollisionHandler = new UsableItemCollisionHandler(player, this, 32, 32, 0, 0);
             explosionEffects = new List<IEntity>();
+            this.player.ItemCounts[ItemType.Bomb]--;
         }
 
         public void Update()

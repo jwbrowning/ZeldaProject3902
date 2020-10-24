@@ -29,12 +29,11 @@ namespace CrossPlatformDesktopProject.Environment
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            Position = location;
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
 
             sourceRectangle = new Rectangle(1001, 11, 16, 16);
-            destinationRectangle = new Rectangle(200, 200, 50, 50);
+            destinationRectangle = new Rectangle((int)(Position.X-size.X/2f), (int)(Position.Y-size.Y/2f), 50, 50);
 
             spriteBatch.Begin();
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
