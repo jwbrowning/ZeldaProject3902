@@ -1,0 +1,28 @@
+<XnaContent>	
+<!-- Room: A3 -->
+<!-- Object coordinates are given in tiles -->
+	<Asset Type="Room">
+
+		<Door>
+			<DoorPosition>Right</DoorPosition>
+			<DoorType>Open</DoorType>
+			<DoorDestination>RoomB3</DoorDestination>
+		</Door>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>Flame</ObjectName>
+			<Location>3 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>Flame</ObjectName>
+			<Location>10 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>OldMan</ObjectName>
+			<!-- Dialogue: "EASTMOST PENNINSULA IS THE SECRET." -->
+			<Location>6 3</Location>
+		</Item>
+	</Asset>
+</XnaContent>

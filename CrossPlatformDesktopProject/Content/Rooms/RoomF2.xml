@@ -1,0 +1,157 @@
+<XnaContent>	
+<!-- Room: F2 -->
+<!-- Object coordinates are given in tiles -->
+	<Asset Type="Room">
+		<Door>
+			<DoorPosition>Left</DoorPosition>
+			<DoorType>Open</DoorType>
+			<DoorDestination>RoomE2</DoorDestination>
+		</Door>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>2 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>3 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>4 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>5 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>6 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>7 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>8 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>9 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>10 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>11 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>2 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>11 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>2 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>11 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>2 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>11 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>2 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>3 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>4 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>5 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>8 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>9 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>10 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>11 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>StatueFish</ObjectName>
+			<Location>5 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>StatueFish</ObjectName>
+			<Location>4 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>StatueDragon</ObjectName>
+			<Location>8 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>StatueDragon</ObjectName>
+			<Location>9 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>TriforcePiece</ObjectName>
+			<Location>6 4</Location>
+		</Item>
+
+	</Asset>
+</XnaContent>

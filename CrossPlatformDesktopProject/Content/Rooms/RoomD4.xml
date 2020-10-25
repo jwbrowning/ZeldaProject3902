@@ -1,0 +1,81 @@
+<XnaContent>	
+<!-- Room: D4 -->
+<!-- Object coordinates are given in tiles -->
+	<Asset Type="Room">
+		<Door>
+			<DoorPosition>Up</DoorPosition>
+			<DoorType>Bombable</DoorType>
+			<DoorDestination>RoomD3</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Left</DoorPosition>
+			<DoorType>Open</DoorType>
+			<DoorDestination>RoomC4</DoorDestination>
+		</Door>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>3 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>3 7</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>10 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>10 7</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>4 7</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>7 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>7 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>9 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>9 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>11 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>12 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>11 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Compass</ObjectName>
+			<Location>11 4</Location>
+		</Item>
+	</Asset>
+</XnaContent>
