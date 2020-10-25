@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="CollisionStuff\ColliderStuff\BoxCollider.cs" />
     <Compile Include="CollisionStuff\ColliderStuff\ICollider.cs" />
+    <Compile Include="CollisionStuff\CollisionDetection.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\BlockColllisionHandler.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\EmptyCollisionHandler.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\EnemyCollisionHandler.cs" />
@@ -52,7 +53,6 @@
     <Compile Include="CollisionStuff\CollisionHandlerStuff\LinkCollisionHandler.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\NPCCollisionHandler.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\UsableItemCollisionHandler.cs" />
-    <Compile Include="CollisionStuff\ICollision.cs" />
     <Compile Include="CollisionStuff\ICollidable.cs" />
     <Compile Include="CommandStuff\CommandDamage.cs" />
     <Compile Include="CommandStuff\CommandMoveDown.cs" />

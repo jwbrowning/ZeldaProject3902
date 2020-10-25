@@ -1,4 +1,5 @@
 ﻿
+using CrossPlatformDesktopProject.CollisionStuff;
 using CrossPlatformDesktopProject.CollisionStuff.ColliderStuff;
 using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.EnemySpriteClasses;
@@ -136,61 +137,11 @@ namespace Sprint0
 
             //if (npcs.Count > 0) npcs[0].Update();
             //if (items.Count > 0) items[0].Update();
-            DetectCollisions();
+
+            List<IGameObject> allGameObjects = blocks.Concat<IGameObject>(items).Concat(enemies).Concat(npcs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player }).ToList();
+            CollisionDetection.DetectCollisions(allGameObjects);
 
             base.Update(gameTime);
-        }
-
-        private void DetectCollisions()
-        {
-            List<IGameObject> allGameObjects = blocks.Concat<IGameObject>(items).Concat(enemies).Concat(npcs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player }).ToList();
-            for (int i = 0; i < allGameObjects.Count - 1; i++)
-            {
-                for (int j = i + 1; j < allGameObjects.Count; j++)
-                {
-                    Rectangle colliderRect1 = GetColliderRectangle(allGameObjects[i]);
-                    Rectangle colliderRect2 = GetColliderRectangle(allGameObjects[j]);
-                    Rectangle intersect = Rectangle.Intersect(colliderRect1, colliderRect2);
-                    if(!intersect.IsEmpty)
-                    {
-                        CallRightCollisionMethod(allGameObjects[i].CollisionHandler, allGameObjects[j].CollisionHandler.Collider);
-                        CallRightCollisionMethod(allGameObjects[j].CollisionHandler, allGameObjects[i].CollisionHandler.Collider);
-                    }
-                }
-            }
-        }
-
-        private void CallRightCollisionMethod(ICollisionHandler collisionHandler, ICollider collider)
-        {
-            if(collider.GameObject is IPlayer)
-            {
-                collisionHandler.HandlePlayerCollision(collider);
-            }
-            else if(collider.GameObject is IItem)
-            {
-                collisionHandler.HandlePickupItemCollision(collider);
-            }
-            else if (collider.GameObject is IUsableItem)
-            {
-                collisionHandler.HandleUsableItemCollision(collider);
-            }
-            else if (collider.GameObject is IBlock)
-            {
-                collisionHandler.HandleBlockCollision(collider);
-            }
-            else if (collider.GameObject is INPC)
-            {
-                collisionHandler.HandleNPCCollision(collider);
-            }
-            else if (collider.GameObject is IEnemy)
-            {
-                collisionHandler.HandleEnemyCollision(collider);
-            }
-        }
-
-        private Rectangle GetColliderRectangle(IGameObject gameObject)
-        {
-            return new Rectangle((int)(gameObject.Position.X + gameObject.CollisionHandler.Collider.Offset.X - gameObject.CollisionHandler.Collider.Size.X / 2), (int)(gameObject.Position.Y + gameObject.CollisionHandler.Collider.Offset.Y - gameObject.CollisionHandler.Collider.Size.Y / 2), (int)gameObject.CollisionHandler.Collider.Size.X, (int)gameObject.CollisionHandler.Collider.Size.Y);
         }
 
         protected override void Draw(GameTime gameTime)
@@ -226,7 +177,7 @@ namespace Sprint0
                 spriteBatch.Begin();
                 foreach (IGameObject g in blocks.Concat<IGameObject>(items).Concat(enemies).Concat(npcs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player }))
                 {
-                    Rectangle rec = GetColliderRectangle(g);
+                    Rectangle rec = CollisionDetection.GetColliderRectangle(g);
                     spriteBatch.Draw(squareOutline, rec, new Color(Color.LimeGreen, 1));
                 }
                 spriteBatch.End();

@@ -26,8 +26,8 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         private void HandleGenericCollision(ICollider collider)
         {
-            Rectangle myRectangle = GetColliderRectangle(item);
-            Rectangle colRectangle = GetColliderRectangle(collider.GameObject);
+            Rectangle myRectangle = CollisionDetection.GetColliderRectangle(item);
+            Rectangle colRectangle = CollisionDetection.GetColliderRectangle(collider.GameObject);
             Rectangle overlap = Rectangle.Intersect(myRectangle, colRectangle);
             Point d = (colRectangle.Location - myRectangle.Location);
             Vector2 direction = new Vector2(d.X, d.Y);
