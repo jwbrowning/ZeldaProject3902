@@ -23,8 +23,8 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         private void HandleGenericCollision(ICollider collider)
         {
-            Rectangle myRectangle = new Rectangle((int)(enemy.Position.X + Collider.Offset.X), (int)(enemy.Position.Y + Collider.Offset.Y), (int)Collider.Size.X, (int)Collider.Size.Y);
-            Rectangle colRectangle = new Rectangle((int)(collider.GameObject.Position.X + collider.Offset.X), (int)(collider.GameObject.Position.Y + collider.Offset.Y), (int)collider.Size.X, (int)collider.Size.Y);
+            Rectangle myRectangle = GetColliderRectangle(enemy);
+            Rectangle colRectangle = GetColliderRectangle(collider.GameObject);
             Rectangle overlap = Rectangle.Intersect(myRectangle, colRectangle);
             Point d = (colRectangle.Location - myRectangle.Location);
             Vector2 direction = new Vector2(d.X, d.Y);
@@ -42,6 +42,11 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
                 direction.Normalize();
                 enemy.Position -= direction * overlap.Width;
             }
+        }
+
+        private Rectangle GetColliderRectangle(IGameObject gameObject)
+        {
+            return new Rectangle((int)(gameObject.Position.X + gameObject.CollisionHandler.Collider.Offset.X - gameObject.CollisionHandler.Collider.Size.X / 2), (int)(gameObject.Position.Y + gameObject.CollisionHandler.Collider.Offset.Y - gameObject.CollisionHandler.Collider.Size.Y / 2), (int)gameObject.CollisionHandler.Collider.Size.X, (int)gameObject.CollisionHandler.Collider.Size.Y);
         }
 
         public void HandleBlockCollision(ICollider collider)

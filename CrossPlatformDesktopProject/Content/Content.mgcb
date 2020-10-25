@@ -380,6 +380,18 @@
 /processorParam:TextureFormat=Color
 /build:SpriteTriforcePiece.png
 
+#begin SquareOutline.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SquareOutline.png
+
 #begin The_Legend_of_Zelda_-_Bosses.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -499,4 +511,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UsableItems/SpriteHearts.png
+
+#begin WhitePixel.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:WhitePixel.png
 
