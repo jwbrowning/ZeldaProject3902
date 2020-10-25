@@ -10,9 +10,9 @@ public class Bow : IItem
     public Vector2 Position { get; set; }
     public ICollisionHandler CollisionHandler { get; set; }
 
-    public Bow()
+    public Bow(Vector2 position)
     {
-        Position = new Vector2(400, 300);
+        Position = position;
         Sprite = ItemSpriteFactory.Instance.CreateSpriteBow();
         CollisionHandler = new ItemCollisionHandler(this, 32, 32, 0, 0);
     }

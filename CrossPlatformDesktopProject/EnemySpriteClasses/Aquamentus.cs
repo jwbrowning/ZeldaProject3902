@@ -46,9 +46,10 @@ namespace Sprint0
         }
 
 
-        public Aquamentus(Texture2D texture, IPlayer player)
+        public Aquamentus(IPlayer player, Vector2 position)
         {
-            Texture = texture;
+            Texture = NPCSpriteFactory.Instance.textureBosses;
+            Position = position;
             CollisionHandler = new EnemyCollisionHandler(this, size.X, size.Y, 0, 0);
             this.player = player;
         }

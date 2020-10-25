@@ -38,9 +38,10 @@ namespace Sprint0
         }
 
 
-        public Rope(Texture2D texture, IPlayer player)
+        public Rope(IPlayer player, Vector2 position)
         {
-            Texture = texture;
+            Texture = NPCSpriteFactory.Instance.textureEnemies;
+            Position = position;
             CollisionHandler = new EnemyCollisionHandler(this, size.X, size.Y, 0, 0);
             this.player = player;
         }

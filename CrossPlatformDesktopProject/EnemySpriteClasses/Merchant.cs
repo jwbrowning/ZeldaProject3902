@@ -34,9 +34,10 @@ namespace Sprint0
         }
 
 
-        public Merchant(Texture2D texture)
+        public Merchant(Vector2 position)
         {
-            Texture = texture;
+            Texture = NPCSpriteFactory.Instance.textureEnemies;
+            Position = position;
             CollisionHandler = new NPCCollisionHandler(this, size.X, size.Y, 0, 0);
         }
 

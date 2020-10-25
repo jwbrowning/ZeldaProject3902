@@ -31,7 +31,7 @@ namespace Sprint0
         public IPlayer player;
         private List<IController> controllers;
         private SpriteFont font;
-        private bool showCollisions = false;
+        private bool showCollisions = true;
 
         public Game1()
         {
@@ -92,6 +92,7 @@ namespace Sprint0
 
             environment = Content.Load<Texture2D>("environment");
             squareOutline = Content.Load<Texture2D>("SquareOutline");
+            BlockSpriteFactory.Instance.LoadAllTextures(Content);
             UsableItemSpriteFactory.Instance.LoadAllTextures(Content);
             NPCSpriteFactory.Instance.LoadAllTextures(Content);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);

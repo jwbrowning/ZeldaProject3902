@@ -77,6 +77,7 @@
     <Compile Include="EnemySpriteClasses\NPCSpriteFactory.cs" />
     <Compile Include="Entities\ExplosionEffect.cs" />
     <Compile Include="Entities\IEntity.cs" />
+    <Compile Include="Environment\BlockSpriteFactory.cs" />
     <Compile Include="Environment\BlockStandard.cs" />
     <Compile Include="Environment\DoorBombed.cs" />
     <Compile Include="Environment\DoorClosed.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Environment\RoomBorder.cs" />
     <Compile Include="Environment\Stairs.cs" />
     <Compile Include="Environment\Statue.cs" />
+    <Compile Include="Environment\StatueDragon.cs" />
     <Compile Include="GeneralStuff\IController.cs" />
     <Compile Include="IGameObject.cs" />
     <Compile Include="ICommand.cs" />

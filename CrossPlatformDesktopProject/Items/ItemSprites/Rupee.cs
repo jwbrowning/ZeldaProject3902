@@ -10,9 +10,9 @@ public class Rupee : IItem
     public Vector2 Position { get; set; }
     public ICollisionHandler CollisionHandler { get; set; }
 
-    public Rupee()
+    public Rupee(Vector2 position)
     {
-        Position = new Vector2(400, 300);
+        Position = position;
         Sprite = ItemSpriteFactory.Instance.CreateSpriteRupee();
         CollisionHandler = new ItemCollisionHandler(this, 32, 32, 0, 0);
     }

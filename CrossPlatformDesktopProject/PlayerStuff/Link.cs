@@ -47,7 +47,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             State = new DownStillPlayerState(this);
             Position = Vector2.Zero;
             MoveDirection = Vector2.Zero;
-            CollisionHandler = new LinkCollisionHandler(game, this, 56, 38, 0, 18);
+            CollisionHandler = new LinkCollisionHandler(game, this, 56, 50, 0, 10);
             ActiveItems = new List<IUsableItem>();
             ItemCounts = new Dictionary<ItemType, int>();
             ItemCounts.Add(ItemType.Rupee, 0);

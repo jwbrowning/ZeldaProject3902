@@ -11,33 +11,32 @@ namespace CrossPlatformDesktopProject.Environment
 {
     class FloorTile : IBlock
     {
- 
+
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
-        private Vector2 size = new Vector2(50, 50);
+        private Vector2 size = new Vector2(64, 64);
 
-        public FloorTile(Texture2D texture)
+        public FloorTile(Vector2 position)
         {
-            Texture = texture;
+            Texture = BlockSpriteFactory.Instance.environment;
+            Position = position;
             CollisionHandler = new BlockCollisionHandler(this, size.X, size.Y, 0, 0);
         }
 
         public void Update() { }
-        public void Draw(SpriteBatch spriteBatch) { }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            Position = location;
             Rectangle sourceRectangle;
-                Rectangle destinationRectangle;
+            Rectangle destinationRectangle;
 
-                sourceRectangle = new Rectangle(984, 11, 16, 16);
-                destinationRectangle = new Rectangle(200, 200, 50, 50);
+            sourceRectangle = new Rectangle(984, 11, 16, 16);
+            destinationRectangle = new Rectangle((int)(Position.X - size.X / 2f), (int)(Position.Y - size.Y / 2f), (int)size.X, (int)size.Y);
 
-                spriteBatch.Begin();
-                spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
-                spriteBatch.End();
-            }
+            spriteBatch.Begin();
+            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.End();
         }
+    }
 }

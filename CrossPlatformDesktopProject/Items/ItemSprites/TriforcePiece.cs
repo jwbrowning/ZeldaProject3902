@@ -10,9 +10,9 @@ public class TriforcePiece : IItem
     public Vector2 Position { get; set; }
     public ICollisionHandler CollisionHandler { get; set; }
 
-    public TriforcePiece()
+    public TriforcePiece(Vector2 position)
     {
-        Position = new Vector2(400, 300);
+        Position = position;
         Sprite = ItemSpriteFactory.Instance.CreateSpriteTriforcePiece();
         CollisionHandler = new ItemCollisionHandler(this, 32, 32, 0, 0);
     }

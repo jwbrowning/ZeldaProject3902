@@ -12,6 +12,5 @@ namespace CrossPlatformDesktopProject.Environment
 {
     public interface IBlock : IGameObject
     {
-        void Draw(SpriteBatch spriteBatch, Vector2 location);
     }
 }

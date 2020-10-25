@@ -1,24 +1,22 @@
-﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 
 namespace CrossPlatformDesktopProject.Environment
 {
-    class DoorLocked : IBlock
+    class StatueDragon : IBlock
     {
-
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
-        private Vector2 size = new Vector2(96, 96);
+        private Vector2 size = new Vector2(64, 64);
 
-        public DoorLocked(Vector2 position)
+        public StatueDragon(Vector2 position)
         {
             Texture = BlockSpriteFactory.Instance.environment;
             Position = position;
@@ -32,7 +30,7 @@ namespace CrossPlatformDesktopProject.Environment
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
 
-            sourceRectangle = new Rectangle(881, 11, 32, 32);
+            sourceRectangle = new Rectangle(1035, 11, 16, 16);
             destinationRectangle = new Rectangle((int)(Position.X - size.X / 2f), (int)(Position.Y - size.Y / 2f), (int)size.X, (int)size.Y);
 
             spriteBatch.Begin();

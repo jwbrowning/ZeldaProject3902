@@ -34,10 +34,10 @@ namespace Sprint0
         }
 
 
-        public OldMan(Texture2D texture)
+        public OldMan(Vector2 position)
         {
-            Texture = texture;
-            //temporary:
+            Texture = NPCSpriteFactory.Instance.textureNPCs;
+            Position = position;
             CollisionHandler = new NPCCollisionHandler(this, size.X, size.Y, 0, 0);
         }
 

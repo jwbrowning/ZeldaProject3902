@@ -10,9 +10,9 @@ public class Compass : IItem
     public Vector2 Position { get; set; }
     public ICollisionHandler CollisionHandler { get; set; }
 
-    public Compass()
+    public Compass(Vector2 position)
     {
-        Position = new Vector2(400, 300);
+        Position = position;
         Sprite = ItemSpriteFactory.Instance.CreateSpriteCompass();
         CollisionHandler = new ItemCollisionHandler(this, 32, 32, 0, 0);
     }

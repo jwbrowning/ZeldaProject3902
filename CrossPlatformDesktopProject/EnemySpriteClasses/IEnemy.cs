@@ -9,5 +9,7 @@ namespace CrossPlatformDesktopProject.EnemySpriteClasses
 {
     public interface IEnemy : IGameObject
     {
+        //void TakeDamage();
+        //void Die();
     }
 }
