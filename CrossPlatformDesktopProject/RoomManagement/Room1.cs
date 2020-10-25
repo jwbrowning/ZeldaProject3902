@@ -11,19 +11,20 @@ using System.Xml.Linq;
 using Sprint0;
 using Microsoft.Xna.Framework;
 using System.Drawing.Printing;
+using CrossPlatformDesktopProject.PlayerStuff;
 
 namespace CrossPlatformDesktopProject.RoomManagement
 {
     class Room1 : iRoom
     {
-        private Game mygame;
+        private IPlayer player;
         public List<IEnemy> Enemies { get; set; }
         public List<IBlock> Blocks { get; set; }
         public List<IItem> Items { get; set; }
 
-        public Room1(Game1 currentGame)
+        public Room1(IPlayer link)
         {
-            mygame = currentGame;
+            player = link;
             Enemies = new List<IEnemy>();
             Blocks = new List<IBlock>();
             Items = new List<IItem>();
@@ -72,11 +73,11 @@ namespace CrossPlatformDesktopProject.RoomManagement
 
             if ((string) environmentObject.Element("ObjectName") == "BlockStandard")
             {
-                Blocks.Add(new BlockStandard(Game1.environment, new Vector2(x * 16, y * 16)));
+                Blocks.Add(new BlockStandard(new Vector2(x * 16, y * 16)));
             }
             else if ((string)environmentObject.Element("ObjectName") == "StatueFish")
             {
-                Blocks.Add(new Statue(Game1.environment, new Vector2(x * 16, y * 16)));
+                Blocks.Add(new Statue(new Vector2(x * 16, y * 16)));
             }
             else if ((string)environmentObject.Element("ObjectName") == "StatueDragon")
             {
@@ -106,35 +107,35 @@ namespace CrossPlatformDesktopProject.RoomManagement
 
             if ((string)enemy.Element("ObjectName") == "BlueKeese")
             {
-                Enemies.Add(new BlueKeese(mygame.player, new Vector2(x * 16, y * 16)));
+                Enemies.Add(new BlueKeese(player, new Vector2(x * 16, y * 16)));
             }
             else if ((string)enemy.Element("ObjectName") == "RedGoriya")
             {
-                Enemies.Add(new RedGoriya(new Vector2(x * 16, y * 16)));
+                Enemies.Add(new BlueGoriya(player, new Vector2(x * 16, y * 16)));
             }
             else if ((string)enemy.Element("ObjectName") == "Stalfos")
             {
-                Enemies.Add(new Stalfos(new Vector2(x * 16, y * 16)));
+                Enemies.Add(new Stalfos(player, new Vector2(x * 16, y * 16)));
             }
             else if ((string)enemy.Element("ObjectName") == "BlackGel")
             {
-                Enemies.Add(new BlackGel(new Vector2(x * 16, y * 16)));
+                Enemies.Add(new BlackGel(player, new Vector2(x * 16, y * 16)));
             }
             else if ((string)enemy.Element("ObjectName") == "BladeTrap")
             {
-                Enemies.Add(new BladeTrap(new Vector2(x * 16, y * 16)));
+                Enemies.Add(new BladeTrap(player, new Vector2(x * 16, y * 16)));
             }
             else if ((string)enemy.Element("ObjectName") == "WallMaster")
             {
-                Enemies.Add(new WallMaster(new Vector2(x * 16, y * 16)));
+                Enemies.Add(new WallMaster(player, new Vector2(x * 16, y * 16)));
             }
             else if ((string)enemy.Element("ObjectName") == "Aquamentus")
             {
-                Enemies.Add(new Aquamentus(new Vector2(x * 16, y * 16)));
+                Enemies.Add(new Aquamentus(player, new Vector2(x * 16, y * 16)));
             }
             else if ((string)enemy.Element("ObjectName") == "OldMan")
             {
-                Enemies.Add(new OldMan(new Vector2(x * 16, y * 16)));
+                //Enemies.Add(new OldMan(new Vector2(x * 16, y * 16)));
             }
             else
             {

@@ -56,6 +56,7 @@ namespace Sprint0
             blocks = new List<IBlock>();
             items = new List<IItem>();
 
+            /*
             items.Add(new Heart());
             IItem rupee = new Rupee();
             rupee.Position += 64 * Vector2.UnitX;
@@ -74,8 +75,9 @@ namespace Sprint0
             fairy.Position += 96 * Vector2.UnitY;
             fairy.Position += 128 * Vector2.UnitX;
             items.Add(fairy);
+            */
 
-            npcs.Add(new OldMan(NPCSpriteFactory.Instance.textureNPCs));
+            npcs.Add(new OldMan(new Vector2(0,0)));
             //enemies.Add(new Stalfos(NPCSpriteFactory.Instance.textureEnemies, player));
             //blocks.Add(new BlockStandard(environment));
 
@@ -167,7 +169,7 @@ namespace Sprint0
             }
             foreach (IBlock block in blocks)
             {
-                block.Draw(spriteBatch, Vector2.Zero);
+                block.Draw(spriteBatch);
             }
 
             player.Draw(spriteBatch);
