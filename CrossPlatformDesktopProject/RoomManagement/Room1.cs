@@ -16,10 +16,18 @@ namespace CrossPlatformDesktopProject.RoomManagement
 {
     class Room1 : iRoom
     {
-        public List<IEnemy> Enemies { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public List<IBlock> Blocks { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public List<IItem> Items { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        private Game mygame;
+        public List<IEnemy> Enemies { get; set; }
+        public List<IBlock> Blocks { get; set; }
+        public List<IItem> Items { get; set; }
 
+        public Room1(Game1 currentGame)
+        {
+            mygame = currentGame;
+            Enemies = new List<IEnemy>();
+            Blocks = new List<IBlock>();
+            Items = new List<IItem>();
+        }
         public void changeRoom(iRoom nextroom)
         {
             throw new NotImplementedException();
@@ -33,21 +41,21 @@ namespace CrossPlatformDesktopProject.RoomManagement
                       where (string)item.Element("ObjectType") == "Environment"
                       select item;
             foreach (XElement environmentObject in loadedEnvironmentObjects) {
-                addEnvironmentObject(environmentObject, Blocks);
+                addEnvironmentObject(environmentObject);
             }
             IEnumerable<XElement> loadedEnemies = from item in roomFile.Descendants("Item")
                                                              where (string)item.Element("ObjectType") == "Enemy"
                                                              select item;
             foreach (XElement enemyObject in loadedEnemies)
             {
-                addEnemy(enemyObject, Enemies);
+                addEnemy(enemyObject);
             }
             IEnumerable<XElement> loadedItems = from item in roomFile.Descendants("Item")
                                                   where (string)item.Element("ObjectType") == "Item"
                                                   select item;
             foreach (XElement itemObject in loadedItems)
             {
-                addItem(itemObject, Items);
+                addItem(itemObject);
             }
         }
 
@@ -98,31 +106,35 @@ namespace CrossPlatformDesktopProject.RoomManagement
 
             if ((string)enemy.Element("ObjectName") == "BlueKeese")
             {
-                Enemies.Add(new BlueKeese(Game1.environment, new Vector2(x * 16, y * 16)));
+                Enemies.Add(new BlueKeese(mygame.player, new Vector2(x * 16, y * 16)));
             }
             else if ((string)enemy.Element("ObjectName") == "RedGoriya")
             {
-                Enemies.Add(new RedGoriya(Game1.environment, new Vector2(x * 16, y * 16)));
+                Enemies.Add(new RedGoriya(new Vector2(x * 16, y * 16)));
             }
             else if ((string)enemy.Element("ObjectName") == "Stalfos")
             {
-                Enemies.Add(new Stalfos(Game1.environment, new Vector2(x * 16, y * 16)));
+                Enemies.Add(new Stalfos(new Vector2(x * 16, y * 16)));
             }
             else if ((string)enemy.Element("ObjectName") == "BlackGel")
             {
-                Enemies.Add(new BlackGel(Game1.environment, new Vector2(x * 16, y * 16)));
+                Enemies.Add(new BlackGel(new Vector2(x * 16, y * 16)));
             }
             else if ((string)enemy.Element("ObjectName") == "BladeTrap")
             {
-                Enemies.Add(new BladeTrap(Game1.environment, new Vector2(x * 16, y * 16)));
+                Enemies.Add(new BladeTrap(new Vector2(x * 16, y * 16)));
             }
             else if ((string)enemy.Element("ObjectName") == "WallMaster")
             {
-                Enemies.Add(new WallMaster(Game1.environment, new Vector2(x * 16, y * 16)));
+                Enemies.Add(new WallMaster(new Vector2(x * 16, y * 16)));
             }
             else if ((string)enemy.Element("ObjectName") == "Aquamentus")
             {
-                Enemies.Add(new Aquamentus(Game1.environment, new Vector2(x * 16, y * 16)));
+                Enemies.Add(new Aquamentus(new Vector2(x * 16, y * 16)));
+            }
+            else if ((string)enemy.Element("ObjectName") == "OldMan")
+            {
+                Enemies.Add(new OldMan(new Vector2(x * 16, y * 16)));
             }
             else
             {
