@@ -1,0 +1,76 @@
+<XnaContent>	
+<!-- Room: C4 -->
+<!-- Object coordinates are given in tiles -->
+	<Asset Type="Room">
+		<Door>
+			<DoorPosition>Up</DoorPosition>
+			<DoorType>Bombable</DoorType>
+			<DoorDestination>RoomC3</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Right</DoorPosition>
+			<DoorType>Open</DoorType>
+			<DoorDestination>RoomD5</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Down</DoorPosition>
+			<DoorType>Open</DoorType>
+			<DoorDestination>RoomC5</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Left</DoorPosition>
+			<DoorType>Open</DoorType>
+			<DoorDestination>RoomB5</DoorDestination>
+		</Door>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>3 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>3 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>10 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>10 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>Stalfos</ObjectName>
+			<Location>4 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>Stalfos</ObjectName>
+			<Location>2 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>Stalfos</ObjectName>
+			<Location>5 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>Stalfos</ObjectName>
+			<Location>4 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>Stalfos</ObjectName>
+			<Location>11 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>HiddenItem</ObjectType>
+			<ObjectName>Key</ObjectName>
+			<Location>7 2</Location>
+		</Item>
+	</Asset>
+</XnaContent>

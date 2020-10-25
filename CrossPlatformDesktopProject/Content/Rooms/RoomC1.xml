@@ -1,0 +1,157 @@
+<XnaContent>	
+<!-- Room: C1 -->
+<!-- Object coordinates are given in tiles -->
+	<Asset Type="Room">
+		<Door>
+			<DoorPosition>Right</DoorPosition>
+			<DoorType>Locked</DoorType>
+			<DoorDestination>RoomB1</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Down</DoorPosition>
+			<DoorType>Open</DoorType>
+			<DoorDestination>RoomC2</DoorDestination>
+		</Door>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>2 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>3 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>4 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>9 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>10 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>11 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>2 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>11 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>2 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>4 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>5 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>6 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>7 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>8 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>9 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>11 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>2 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>11 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>2 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>3 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>4 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>9 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>10 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>11 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>RedGoriya</ObjectName>
+			<Location>4 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>RedGoriya</ObjectName>
+			<Location>5 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>RedGoriya</ObjectName>
+			<Location>4 5</Location>
+		</Item>	
+		<!-- Key spawns when all enemies are dead -->
+		<Item>
+			<ObjectType>HiddenItem</ObjectType>
+			<ObjectName>Key</ObjectName>
+			<Location>7 2</Location>
+		</Item>
+	</Asset>
+</XnaContent>

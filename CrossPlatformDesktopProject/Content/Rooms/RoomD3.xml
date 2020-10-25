@@ -1,0 +1,63 @@
+<XnaContent>	
+<!-- Room: D3 -->
+<!-- Object coordinates are given in tiles -->
+	<Asset Type="Room">
+
+		<Door>
+			<DoorPosition>Left</DoorPosition>
+			<DoorType>Locked</DoorType>
+			<DoorDestination>RoomC3</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Down</DoorPosition>
+			<DoorType>Bombable</DoorType>
+			<DoorDestination>RoomD4</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Right</DoorPosition>
+			<DoorType>Open</DoorType>
+			<DoorDestination>RoomE4</DoorDestination>
+		</Door>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>3 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>3 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>10 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>10 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>RedGoriya</ObjectName>
+			<Location>7 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>RedGoriya</ObjectName>
+			<Location>8 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>RedGoriya</ObjectName>
+			<Location>9 1</Location>
+		</Item>		
+		<!-- Boomerang spawns when all enemies are dead -->
+		<Item>
+			<ObjectType>HiddenItem</ObjectType>
+			<ObjectName>Boomerang</ObjectName>
+			<Location>7 2</Location>
+		</Item>
+	</Asset>
+</XnaContent>

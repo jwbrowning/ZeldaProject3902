@@ -1,0 +1,78 @@
+<XnaContent>	
+<!-- Room: B4 -->
+<!-- Object coordinates are given in tiles -->
+	<Asset Type="Room">
+		<Door>
+			<DoorPosition>Up</DoorPosition>
+			<DoorType>Locked</DoorType>
+			<DoorDestination>RoomB3</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Right</DoorPosition>
+			<DoorType>Closed</DoorType>
+			<!-- Door opens when all enemies are dead -->
+			<DoorDestination>RoomC4</DoorDestination>
+		</Door>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>6 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>7 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>6 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>7 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>6 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>7 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>2 2</Location>
+		</Item>
+		
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>4 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>1 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>4 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>2 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>9 7</Location>
+		</Item>
+	</Asset>
+</XnaContent>

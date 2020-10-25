@@ -21,7 +21,7 @@ namespace Sprint0
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        Texture2D environment,squareOutline;
+        static public Texture2D environment,squareOutline;
         public List<IGameObject> gameObjects;
         public List<INPC> npcs;
         public List<IEnemy> enemies;
@@ -76,7 +76,7 @@ namespace Sprint0
 
             npcs.Add(new OldMan(NPCSpriteFactory.Instance.textureNPCs));
             //enemies.Add(new Stalfos(NPCSpriteFactory.Instance.textureEnemies, player));
-            blocks.Add(new BlockStandard(environment));
+            //blocks.Add(new BlockStandard(environment));
 
             controllers = new List<IController>();
             controllers.Add(new ControllerKeyboard(this));

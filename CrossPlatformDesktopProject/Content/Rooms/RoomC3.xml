@@ -1,0 +1,106 @@
+<XnaContent>	
+<!-- Room: C3 -->
+<!-- Object coordinates are given in tiles -->
+	<Asset Type="Room">
+		<Door>
+			<DoorPosition>Up</DoorPosition>
+			<DoorType>Open</DoorType>
+			<DoorDestination>RoomC2</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Left</DoorPosition>
+			<DoorType>Open</DoorType>
+			<DoorDestination>RoomB3</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Down</DoorPosition>
+			<DoorType>Bombed</DoorType>
+			<DoorDestination>RoomC4</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Right</DoorPosition>
+			<DoorType>Locked</DoorType>
+			<DoorDestination>RoomD3</DoorDestination>
+		</Door>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>2 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>3 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>2 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>3 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>10 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>11 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>10 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>11 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>6 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>7 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlackGel</ObjectName>
+			<Location>4 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlackGel</ObjectName>
+			<Location>4 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlackGel</ObjectName>
+			<Location>5 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlackGel</ObjectName>
+			<Location>9 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlackGel</ObjectName>
+			<Location>8 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Map</ObjectName>
+			<Location>11 4</Location>
+		</Item>
+	</Asset>
+</XnaContent>
