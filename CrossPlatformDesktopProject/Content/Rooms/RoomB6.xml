@@ -1,0 +1,32 @@
+<XnaContent>	
+<!-- Room: B6 -->
+<!-- Object coordinates are given in tiles -->
+	<Asset Type="Room">
+		<Door>
+			<DoorPosition>Right</DoorPosition>
+			<DoorType>Open</DoorType>
+			<DoorDestination>RoomC6</DoorDestination>
+		</Door>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>4 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>6 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>4 5</Location>
+		</Item>
+		<!-- When all three Enemies are dead, spawn a key at 9,7 -->
+		<Item>
+			<ObjectType>HiddenItem</ObjectType>
+			<ObjectName>Key</ObjectName>
+			<Location>9 7</Location>
+		</Item>
+	</Asset>
+</XnaContent>

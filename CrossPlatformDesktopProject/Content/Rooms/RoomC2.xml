@@ -1,0 +1,264 @@
+<XnaContent>	
+<!-- Room: C2 -->
+<!-- Object coordinates are given in tiles -->
+	<Asset Type="Room">
+
+		<Door>
+			<DoorPosition>Up</DoorPosition>
+			<DoorType>Locked</DoorType>
+			<DoorDestination>RoomC1</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Down</DoorPosition>
+			<DoorType>Open</DoorType>
+			<DoorDestination>RoomC3</DoorDestination>
+		</Door>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>1 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>2 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>3 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>4 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>5 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>8 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>9 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>10 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>11 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>12 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>1 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>5 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>10 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>12 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>1 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>3 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>5 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>7 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>8 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>10 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>12 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>3 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>5 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>8 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>10 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>1 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>3 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>5 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>6 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>8 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>10 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>12 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>1 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>3 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>8 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>12 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>1 7</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>2 7</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>3 7</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>4 7</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>5 7</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>8 7</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>9 7</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>10 7</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>11 7</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>Water</ObjectName>
+			<Location>12 7</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>Stalfos</ObjectName>
+			<Location>7 4</Location>
+			<!-- This Stalfos drops a key on death -->
+			<DropsItem>Key</DropsItem>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>Stalfos</ObjectName>
+			<Location>9 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>Stalfos</ObjectName>
+			<Location>11 2</Location>
+		</Item>
+	</Asset>
+</XnaContent>

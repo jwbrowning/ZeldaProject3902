@@ -1,0 +1,43 @@
+<XnaContent>	
+<!-- Room: B3 -->
+<!-- Object coordinates are given in tiles -->
+	<Asset Type="Room">
+
+		<Door>
+			<DoorPosition>Left</DoorPosition>
+			<DoorType>Closed</DoorType>
+			<!-- Door opens when block is moved any direction -->
+			<DoorDestination>RoomA3</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Down</DoorPosition>
+			<DoorType>Locked</DoorType>
+			<DoorDestination>RoomB4</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Right</DoorPosition>
+			<DoorType>Locked</DoorType>
+			<DoorDestination>RoomC3</DoorDestination>
+		</Door>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>BlockMovable</ObjectName>
+			<Location>6 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlackGel</ObjectName>
+			<Location>4 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlackGel</ObjectName>
+			<Location>6 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlackGel</ObjectName>
+			<Location>6 5</Location>
+		</Item>
+	</Asset>
+</XnaContent>

@@ -154,6 +154,8 @@
     <Compile Include="ISprite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomManagement\iRoom.cs" />
+    <Compile Include="RoomManagement\Room1.cs" />
     <Compile Include="UsableItems\IUsableItem.cs" />
     <Compile Include="UsableItems\SpriteStuff\UsableItemSprite.cs" />
     <Compile Include="UsableItems\SpriteStuff\UsableItemSpriteFactory.cs" />
@@ -168,6 +170,7 @@
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -227,6 +230,23 @@
     <Content Include="Code Reviews\ReviewHemil.txt" />
     <Content Include="Code Reviews\ReviewJohnathan.txt" />
     <Content Include="Code Reviews\ReviewAbhi.txt" />
+    <Content Include="Content\Rooms\RoomA3.xml" />
+    <Content Include="Content\Rooms\RoomB1.xml" />
+    <Content Include="Content\Rooms\RoomB3.xml" />
+    <Content Include="Content\Rooms\RoomB4.xml" />
+    <Content Include="Content\Rooms\RoomB6.xml" />
+    <Content Include="Content\Rooms\RoomC1.xml" />
+    <Content Include="Content\Rooms\RoomC2.xml" />
+    <Content Include="Content\Rooms\RoomC3.xml" />
+    <Content Include="Content\Rooms\RoomC4.xml" />
+    <Content Include="Content\Rooms\RoomC5.xml" />
+    <Content Include="Content\Rooms\RoomC6.xml" />
+    <Content Include="Content\Rooms\RoomD3.xml" />
+    <Content Include="Content\Rooms\RoomD4.xml" />
+    <Content Include="Content\Rooms\RoomD6.xml" />
+    <Content Include="Content\Rooms\RoomE2.xml" />
+    <Content Include="Content\Rooms\RoomE3.xml" />
+    <Content Include="Content\Rooms\RoomF2.xml" />
     <Content Include="Content\SpriteArrows.png" />
     <Content Include="Content\SpriteBomb.png" />
     <Content Include="Content\SpriteBoomerang.png" />

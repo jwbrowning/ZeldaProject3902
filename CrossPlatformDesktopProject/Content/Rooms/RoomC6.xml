@@ -1,0 +1,88 @@
+<XnaContent>	
+<!-- Room: C6 -->
+<!-- Object coordinates are given in tiles -->
+	<Asset Type="Room">
+		<Door>
+			<DoorPosition>Right</DoorPosition>
+			<DoorType>Open</DoorType>
+			<DoorDestination>RoomD6</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Up</DoorPosition>
+			<DoorType>Locked</DoorType>
+			<DoorDestination>RoomC5</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Left</DoorPosition>
+			<DoorType>Open</DoorType>
+			<DoorDestination>RoomB6</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Down</DoorPosition>
+			<DoorType>Open</DoorType>
+			<DoorDestination>RoomC6</DoorDestination>
+			<!-- Just reenters room, overworld not implemented -->
+		</Door>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>StatueFish</ObjectName>
+			<Location>2 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>StatueFish</ObjectName>
+			<Location>5 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>StatueFish</ObjectName>
+			<Location>2 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>StatueFish</ObjectName>
+			<Location>5 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>StatueFish</ObjectName>
+			<Location>2 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>StatueFish</ObjectName>
+			<Location>5 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>StatueDragon</ObjectName>
+			<Location>8 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>StatueDragon</ObjectName>
+			<Location>11 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>StatueDragon</ObjectName>
+			<Location>8 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>StatueDragon</ObjectName>
+			<Location>11 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>StatueDragon</ObjectName>
+			<Location>8 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>StatueDragon</ObjectName>
+			<Location>11 6</Location>
+		</Item>
+
+	</Asset>
+</XnaContent>
