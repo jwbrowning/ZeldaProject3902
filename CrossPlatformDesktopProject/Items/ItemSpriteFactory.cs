@@ -44,7 +44,7 @@ public class ItemSpriteFactory
 		SpriteKey = content.Load<Texture2D>("SpriteKey");
 		SpriteMap = content.Load<Texture2D>("SpriteMap");
 		SpriteRupees = content.Load<Texture2D>("SpriteRupees");
-		SpriteTriforcePiece = content.Load<Texture2D>("SpriteTriforcePiece");
+		SpriteTriforcePiece = content.Load<Texture2D>("TriforcePiece");
 
 	}
 
@@ -98,6 +98,6 @@ public class ItemSpriteFactory
 	}
 	public ISprite CreateSpriteTriforcePiece()
 	{
-		return new ItemSprite(SpriteTriforcePiece, 1, 1, 0, 1);
+		return new ItemSprite(SpriteTriforcePiece, 1, 2, 0, 2);
 	}
 }

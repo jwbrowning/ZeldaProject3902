@@ -37,30 +37,6 @@
 /processorParam:TextureFormat=Color
 /build:environment.png
 
-#begin floortilebase.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:floortilebase.png
-
-#begin floortilewithwall.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:floortilewithwall.png
-
 #begin font.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -439,6 +415,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:The_Legend_of_Zelda_-_NPCs.png
+
+#begin TriforcePiece.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:TriforcePiece.png
 
 #begin UsableItems/arrowdown.png
 /importer:TextureImporter
