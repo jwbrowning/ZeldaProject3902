@@ -30,10 +30,11 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		const int XSCALE = 64;
 		const int YSCALE = 64;
 		/*Offsets are used to shift the tile grid down and to the right
-		to account for the border walls and HUD. Set to  -32 to account for
+		to account for the border walls and HUD. Even though the border wall
+		is only 64 pixels wide, 32 pixels are added to account for the sprite's
 		Draw methods using the center of the sprite, not the top left corner*/
-		const int XOFFSET = -32;
-		const int YOFFSET = -32;
+		const int XOFFSET = 98;
+		const int YOFFSET = 98;
 		public Room1(Game1 game)
 		{
 			mygame = game;

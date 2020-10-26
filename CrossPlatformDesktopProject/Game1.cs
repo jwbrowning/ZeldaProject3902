@@ -34,8 +34,8 @@ namespace Sprint0
 		{
 			graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
-			graphics.PreferredBackBufferWidth = 768;  // set this value to the desired width of your window
-			graphics.PreferredBackBufferHeight = 448;   // set this value to the desired height of your window
+			graphics.PreferredBackBufferWidth = 1024;  // set this value to the desired width of your window
+			graphics.PreferredBackBufferHeight = 704;   // set this value to the desired height of your window
 			graphics.ApplyChanges();
 
 		}
@@ -72,7 +72,7 @@ namespace Sprint0
 
 			environment = Content.Load<Texture2D>("environment");
 			squareOutline = Content.Load<Texture2D>("SquareOutline");
-			floortilebase = Content.Load<Texture2D>("floortilebase");
+			floortilebase = Content.Load<Texture2D>("floortilewithwall");
 			BlockSpriteFactory.Instance.LoadAllTextures(Content);
 			UsableItemSpriteFactory.Instance.LoadAllTextures(Content);
 			NPCSpriteFactory.Instance.LoadAllTextures(Content);
@@ -132,7 +132,7 @@ namespace Sprint0
 
 			//draw the base floor tiles
 			spriteBatch.Begin();
-			spriteBatch.Draw(floortilebase, new Rectangle(0, 0, 768, 448), Color.White);
+			spriteBatch.Draw(floortilebase, new Rectangle(0, 0, 1024, 704), Color.White);
 			spriteBatch.End();
             foreach (INPC npc in currentRoom.NPCs)
             {
