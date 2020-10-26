@@ -23,18 +23,28 @@ namespace Sprint0
             bool leftPressed = ButtonState.Pressed == state.LeftButton ? true : false;
             bool rightPressed = ButtonState.Pressed == state.RightButton ? true : false;
             if(rightPressed) {
-                if(game.roomIndex+1<game.rooms.Length)
-                    game.currentRoom.loadRoom(game.rooms[game.roomIndex+1]);
-                else
-                    game.roomIndex=0;
+                if (game.roomIndex + 1 < game.rooms.Length)
+                {
+                    game.roomIndex++;
                     game.currentRoom.loadRoom(game.rooms[game.roomIndex]);
+                }
+                else
+                {
+                    game.roomIndex = 0;
+                    game.currentRoom.loadRoom(game.rooms[game.roomIndex]);
+                }
             }
             if(leftPressed) {
-                if(game.roomIndex-1>=0)
-                    game.currentRoom.loadRoom(game.rooms[game.roomIndex-1]);
-                else
-                    game.roomIndex=game.rooms.Length-1;
+                if (game.roomIndex - 1 >= 0)
+                {
+                    game.roomIndex--;
                     game.currentRoom.loadRoom(game.rooms[game.roomIndex]);
+                }
+                else
+                {
+                    game.roomIndex = game.rooms.Length - 1;
+                    game.currentRoom.loadRoom(game.rooms[game.roomIndex]);
+                }
             }
         }
 
