@@ -18,9 +18,9 @@ namespace Sprint0
 
         public void Execute()
         {
-            IBlock block = myGame.blocks[0];
-            myGame.blocks.RemoveAt(0);
-            myGame.blocks.Add(block);
+            IBlock block = myGame.currentRoom.Blocks[0];
+            myGame.currentRoom.Blocks.RemoveAt(0);
+            myGame.currentRoom.Blocks.Add(block);
         }
     }
 }

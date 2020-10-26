@@ -115,7 +115,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
             {
                 game.player.ItemCounts[ItemType.TriforcePiece]++;
             }
-            game.items.Remove((IItem)collider.GameObject);
+            game.currentRoom.Items.Remove((IItem)collider.GameObject);
         }
 
         public void HandleUsableItemCollision(ICollider collider)

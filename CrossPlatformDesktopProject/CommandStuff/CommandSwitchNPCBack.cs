@@ -18,9 +18,9 @@ namespace Sprint0
 
         public void Execute()
         {
-            INPC npc = myGame.npcs[myGame.npcs.Count-1];
-            myGame.npcs.RemoveAt(myGame.npcs.Count - 1);
-            myGame.npcs.Insert(0,npc);
+            INPC npc = myGame.currentRoom.NPCs[myGame.currentRoom.NPCs.Count-1];
+            myGame.currentRoom.NPCs.RemoveAt(myGame.currentRoom.NPCs.Count - 1);
+            myGame.currentRoom.NPCs.Insert(0,npc);
         }
     }
 }

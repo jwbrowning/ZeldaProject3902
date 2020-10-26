@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.RoomManagement
 {
-    interface iRoom
+    public interface iRoom
     {
         List<IEnemy> Enemies { get; set; }
         List<IBlock> Blocks { get; set; }
         List<IItem> Items { get; set; }
+        List<INPC> NPCs { get; set; }
 
         void changeRoom(iRoom nextroom);
 

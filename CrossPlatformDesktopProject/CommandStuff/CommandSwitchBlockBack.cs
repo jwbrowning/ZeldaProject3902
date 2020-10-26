@@ -18,9 +18,9 @@ namespace Sprint0
 
         public void Execute()
         {
-            IBlock block = myGame.blocks[myGame.blocks.Count - 1];
-            myGame.blocks.RemoveAt(myGame.blocks.Count - 1);
-            myGame.blocks.Insert(0, block);
+            IBlock block = myGame.currentRoom.Blocks[myGame.currentRoom.Blocks.Count - 1];
+            myGame.currentRoom.Blocks.RemoveAt(myGame.currentRoom.Blocks.Count - 1);
+            myGame.currentRoom.Blocks.Insert(0, block);
         }
     }
 }
