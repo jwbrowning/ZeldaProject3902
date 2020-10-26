@@ -257,6 +257,7 @@
     <Content Include="Content\Rooms\RoomE2.xml" />
     <Content Include="Content\Rooms\RoomE3.xml" />
     <Content Include="Content\Rooms\RoomF2.xml" />
+    <Content Include="Content\Rooms\RoomDEBUG.xml" />
     <Content Include="Content\SpriteArrows.png" />
     <Content Include="Content\SpriteBomb.png" />
     <Content Include="Content\SpriteBoomerang.png" />
