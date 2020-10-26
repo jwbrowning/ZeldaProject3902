@@ -59,7 +59,7 @@ namespace Sprint0
             }
             else
             {
-                game.enemies[game.enemies.IndexOf(this)] = new DamagedEnemy(this, game);
+                game.currentRoom.Enemies[game.currentRoom.Enemies.IndexOf(this)] = new DamagedEnemy(this, game);
             }
         }
 

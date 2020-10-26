@@ -39,7 +39,7 @@ namespace CrossPlatformDesktopProject.EnemySpriteClasses
         private void RemoveDecorator()
         {
             // call game1 method to replace this damagedenemy with enemy
-            game.enemies[game.enemies.IndexOf(this)] = enemy;
+            game.currentRoom.Enemies[game.currentRoom.Enemies.IndexOf(this)] = enemy;
         }
 
         public void Draw(SpriteBatch spriteBatch)
