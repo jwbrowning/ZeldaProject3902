@@ -18,7 +18,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 {
     class Room1 : iRoom
     {
-        private IPlayer player;
+        private Game1 mygame;
         public List<IEnemy> Enemies { get; set; }
         public List<IBlock> Blocks { get; set; }
         public List<IItem> Items { get; set; }
@@ -26,9 +26,9 @@ namespace CrossPlatformDesktopProject.RoomManagement
 
         static int XSCALE = 64;
         static int YSCALE = 64;
-        public Room1(IPlayer link)
+        public Room1(Game1 game)
         {
-            player = link;
+            mygame = game;
             Enemies = new List<IEnemy>();
             Blocks = new List<IBlock>();
             Items = new List<IItem>();
@@ -113,31 +113,31 @@ namespace CrossPlatformDesktopProject.RoomManagement
 
             if ((string)enemy.Element("ObjectName") == "BlueKeese")
             {
-                Enemies.Add(new BlueKeese(player, new Vector2(x * XSCALE, y * YSCALE)));
+                Enemies.Add(new BlueKeese(mygame, new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)enemy.Element("ObjectName") == "RedGoriya")
             {
-                Enemies.Add(new BlueGoriya(player, new Vector2(x * XSCALE, y * YSCALE)));
+                Enemies.Add(new BlueGoriya(mygame, new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)enemy.Element("ObjectName") == "Stalfos")
             {
-                Enemies.Add(new Stalfos(player, new Vector2(x * XSCALE, y * YSCALE)));
+                Enemies.Add(new Stalfos(mygame, new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)enemy.Element("ObjectName") == "BlackGel")
             {
-                Enemies.Add(new BlackGel(player, new Vector2(x * XSCALE, y * YSCALE)));
+                Enemies.Add(new BlackGel(mygame, new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)enemy.Element("ObjectName") == "BladeTrap")
             {
-                Enemies.Add(new BladeTrap(player, new Vector2(x * XSCALE, y * YSCALE)));
+                Enemies.Add(new BladeTrap(mygame, new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)enemy.Element("ObjectName") == "WallMaster")
             {
-                Enemies.Add(new WallMaster(player, new Vector2(x * XSCALE, y * YSCALE)));
+                Enemies.Add(new WallMaster(mygame, new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)enemy.Element("ObjectName") == "Aquamentus")
             {
-                Enemies.Add(new Aquamentus(player, new Vector2(x * XSCALE, y * YSCALE)));
+                Enemies.Add(new Aquamentus(mygame, new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)enemy.Element("ObjectName") == "OldMan")
             {
