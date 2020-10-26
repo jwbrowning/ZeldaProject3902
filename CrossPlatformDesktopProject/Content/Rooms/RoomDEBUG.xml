@@ -1,0 +1,71 @@
+﻿<XnaContent>
+	<!-- Room: E3 -->
+	<!-- Object coordinates are given in tiles -->
+	<Asset Type="Room">
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Arrows</ObjectName>
+			<Location>1 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Bomb</ObjectName>
+			<Location>2 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Boomerang</ObjectName>
+			<Location>3 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Bow</ObjectName>
+			<Location>4 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Clock</ObjectName>
+			<Location>5 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Compass</ObjectName>
+			<Location>6 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Fairy</ObjectName>
+			<Location>7 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>HeartContainer</ObjectName>
+			<Location>8 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Heart</ObjectName>
+			<Location>9 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Key</ObjectName>
+			<Location>10 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Map</ObjectName>
+			<Location>11 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Rupee</ObjectName>
+			<Location>12 1</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>TriforcePiece</ObjectName>
+			<Location>6 4</Location>
+		</Item>
+	</Asset>
+</XnaContent>
