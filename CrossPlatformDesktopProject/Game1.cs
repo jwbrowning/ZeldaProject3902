@@ -136,7 +136,11 @@ namespace Sprint0
 			spriteBatch.Begin();
 			spriteBatch.Draw(floortilebase, new Rectangle(0, 0, 1024, 704), Color.White);
 			spriteBatch.End();
-            foreach (INPC npc in currentRoom.NPCs)
+			foreach (IBlock block in currentRoom.Blocks)
+			{
+				block.Draw(spriteBatch);
+			}
+			foreach (INPC npc in currentRoom.NPCs)
             {
                 npc.Draw(spriteBatch);
             }
@@ -147,10 +151,6 @@ namespace Sprint0
             foreach (IItem item in currentRoom.Items)
             {
                 item.Draw(spriteBatch);
-            }
-            foreach (IBlock block in currentRoom.Blocks)
-            {
-                block.Draw(spriteBatch);
             }
 
 			player.Draw(spriteBatch);

@@ -23,6 +23,9 @@ namespace Sprint0
         private IPlayer player;
         private Game1 game;
         private int health = 1;
+        int patrolPhase = 1;
+        int patrolFrame = 1;
+        int directionCode = -1; //keeps track of which direction sprite should move
 
         private Vector2 size = new Vector2(60, 60);
         public Vector2 Position
@@ -70,31 +73,72 @@ namespace Sprint0
         public void Update()
         {
 
+            Vector2 position = player.Position;
+            float playerPositionX = position.X;
+            float playerPositionY = position.Y;
+
             animationFrame++;
-            movementFrame++;
+            patrolFrame++;
+
             if (animationFrame == 20)
                 animationFrame = 1;
 
-            if (movementFrame == 400)
-                movementFrame = 1;
+            if (patrolFrame == 200)
+                patrolFrame = 1;
 
 
-            if (movementFrame <= 100)
+            if (patrolPhase == 1)
             {
-                spritePositionX = spritePositionX + 2;
+                if (((spritePositionX - 10) <= playerPositionX && playerPositionX <= (spritePositionX + 10)) || ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 10)))
+                {
+                    patrolPhase = 0;
+                }
+            }
 
-            }
-            else if (movementFrame > 100 && movementFrame <= 200)
+            if (patrolPhase == 0)
             {
-                spritePositionY = spritePositionY - 2;
+                if ((spritePositionX - 10) <= playerPositionX && playerPositionX <= (spritePositionX + 10))
+                {
+                    if (playerPositionY < spritePositionY)
+                    {
+                        directionCode = 0;
+                    }
+                    else if (playerPositionY > spritePositionY)
+                    {
+                        directionCode = 1;
+                    }
+                }
+
+                if ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 10))
+                {
+                    if (playerPositionX < spritePositionX)
+                    {
+                        directionCode = 2;
+                    }
+                    else if (playerPositionX > spritePositionX)
+                    {
+                        directionCode = 3;
+                    }
+                }
+
+                patrolPhase = -1;
             }
-            else if (movementFrame > 200 && movementFrame <= 300)
+
+            if (directionCode == 0)
             {
-                spritePositionX = spritePositionX - 2;
+                spritePositionY = spritePositionY - 5;
             }
-            else if (movementFrame > 300)
+            else if (directionCode == 1)
             {
-                spritePositionY = spritePositionY + 2;
+                spritePositionY = spritePositionY + 5;
+            }
+            else if (directionCode == 2)
+            {
+                spritePositionX = spritePositionX - 5;
+            }
+            else if (directionCode == 3)
+            {
+                spritePositionX = spritePositionX + 5;
             }
         }
 

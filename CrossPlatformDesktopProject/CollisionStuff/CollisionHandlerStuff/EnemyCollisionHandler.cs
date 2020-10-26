@@ -26,24 +26,28 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         private void HandleGenericCollision(ICollider collider)
         {
-            Rectangle myRectangle = CollisionDetection.GetColliderRectangle(enemy);
-            Rectangle colRectangle = CollisionDetection.GetColliderRectangle(collider.GameObject);
-            Rectangle overlap = Rectangle.Intersect(myRectangle, colRectangle);
-            Point d = (colRectangle.Location - myRectangle.Location);
-            Vector2 direction = new Vector2(d.X, d.Y);
-            if (overlap.Width > overlap.Height)
-            {
-                // Up-Down Collision
-                direction.X = 0;
-                direction.Normalize();
-                enemy.Position -= direction * overlap.Height; // might need /2 here, needs testing
-            }
+            if (enemy is Fireball || enemy is Boomerang || enemy is EnemyBoomerang) { }
             else
             {
-                // Left-Right Collision
-                direction.Y = 0;
-                direction.Normalize();
-                enemy.Position -= direction * overlap.Width;
+                Rectangle myRectangle = CollisionDetection.GetColliderRectangle(enemy);
+                Rectangle colRectangle = CollisionDetection.GetColliderRectangle(collider.GameObject);
+                Rectangle overlap = Rectangle.Intersect(myRectangle, colRectangle);
+                Point d = (colRectangle.Location - myRectangle.Location);
+                Vector2 direction = new Vector2(d.X, d.Y);
+                if (overlap.Width > overlap.Height)
+                {
+                    // Up-Down Collision
+                    direction.X = 0;
+                    direction.Normalize();
+                    enemy.Position -= direction * overlap.Height; // might need /2 here, needs testing
+                }
+                else
+                {
+                    // Left-Right Collision
+                    direction.Y = 0;
+                    direction.Normalize();
+                    enemy.Position -= direction * overlap.Width;
+                }
             }
         }
 
