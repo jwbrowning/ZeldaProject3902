@@ -43,9 +43,10 @@ namespace Sprint0
 
         public Aquamentus(Game1 game, Vector2 position)
         {
+            OverlayColor = Color.White;
             Texture = NPCSpriteFactory.Instance.textureBosses;
             Position = position;
-            CollisionHandler = new EnemyCollisionHandler(this, size.X, size.Y, 0, 0);
+            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 0, 0);
             this.player = game.player;
             this.game = game;
         }
@@ -53,14 +54,7 @@ namespace Sprint0
         public void TakeDamage()
         {
             health--;
-            if (health <= 0)
-            {
-                Die();
-            }
-            else
-            {
-                game.currentRoom.Enemies[game.currentRoom.Enemies.IndexOf(this)] = new DamagedEnemy(this, game);
-            }
+            game.currentRoom.Enemies[game.currentRoom.Enemies.IndexOf(this)] = new DamagedEnemy(this, game);
         }
 
         public void Die()
@@ -130,7 +124,7 @@ namespace Sprint0
             }
 
             spriteBatch.Begin();
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, OverlayColor);
             spriteBatch.End();
         }
     }

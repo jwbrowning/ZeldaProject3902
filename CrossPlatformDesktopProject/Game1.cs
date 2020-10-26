@@ -69,6 +69,8 @@ namespace Sprint0
 
             currentRoom = new Room1(this);
             currentRoom.loadRoom("RoomC6");
+
+            currentRoom.Enemies.Add(new Aquamentus(this, new Vector2(400, 200)));
         }
 
         protected override void LoadContent()
@@ -103,21 +105,21 @@ namespace Sprint0
                 currentController.Update();
             }
 
-            foreach (INPC npc in currentRoom.NPCs)
+            for (int i = 0; i < currentRoom.NPCs.Count; i++)
             {
-                npc.Update();
+                currentRoom.NPCs[i].Update();
             }
-            foreach (IEnemy enemy in currentRoom.Enemies)
+            for (int i = 0; i < currentRoom.Enemies.Count; i++)
             {
-                enemy.Update();
+                currentRoom.Enemies[i].Update();
             }
-            foreach (IItem item in currentRoom.Items)
+            for (int i = 0; i < currentRoom.Items.Count; i++)
             {
-                item.Update();
+                currentRoom.Items[i].Update();
             }
-            foreach (IBlock block in currentRoom.Blocks)
+            for (int i = 0; i < currentRoom.Blocks.Count; i++)
             {
-                block.Update();
+                currentRoom.Blocks[i].Update();
             }
 
             player.Update();
@@ -125,7 +127,7 @@ namespace Sprint0
             //if (npcs.Count > 0) npcs[0].Update();
             //if (items.Count > 0) items[0].Update();
 
-            List<IGameObject> allGameObjects = currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player }).ToList();
+            List<IGameObject> allGameObjects = currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }).ToList();
             CollisionDetection.DetectCollisions(allGameObjects);
 
             base.Update(gameTime);
@@ -139,7 +141,7 @@ namespace Sprint0
             {
                 npc.Draw(spriteBatch);
             }
-            foreach (IEnemy enemy in currentRoom.NPCs)
+            foreach (IEnemy enemy in currentRoom.Enemies)
             {
                 enemy.Draw(spriteBatch);
             }
@@ -158,7 +160,7 @@ namespace Sprint0
             if (showCollisions)
             {
                 spriteBatch.Begin();
-                foreach (IGameObject g in currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player }))
+                foreach (IGameObject g in currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }))
                 {
                     Rectangle rec = CollisionDetection.GetColliderRectangle(g);
                     spriteBatch.Draw(squareOutline, rec, new Color(Color.LimeGreen, 1));

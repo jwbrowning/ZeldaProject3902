@@ -44,9 +44,10 @@ namespace Sprint0
 
         public BlueGoriya(Game1 game, Vector2 position)
         {
+            OverlayColor = Color.White;
             Texture = NPCSpriteFactory.Instance.textureEnemies;
             Position = position;
-            CollisionHandler = new EnemyCollisionHandler(this, size.X, size.Y, 0, 0);
+            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 0, 0);
             this.player = game.player;
             this.game = game;
         }

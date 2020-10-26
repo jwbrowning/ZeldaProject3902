@@ -39,6 +39,7 @@ namespace CrossPlatformDesktopProject.EnemySpriteClasses
         private void RemoveDecorator()
         {
             // call game1 method to replace this damagedenemy with enemy
+            OverlayColor = Color.White;
             game.currentRoom.Enemies[game.currentRoom.Enemies.IndexOf(this)] = enemy;
         }
 
