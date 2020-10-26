@@ -15,7 +15,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
         List<IItem> Items { get; set; }
         List<INPC> NPCs { get; set; }
 
-        void changeRoom(iRoom nextroom);
+        void changeRoom(string nextRoomName);
 
         void loadRoom(string roomName);
 

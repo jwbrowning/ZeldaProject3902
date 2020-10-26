@@ -73,7 +73,6 @@
     <Compile Include="CommandStuff\CommandUseItem2.cs" />
     <Compile Include="CommandStuff\CommandUseItem3.cs" />
     <Compile Include="ControllerMouse.cs" />
-   
     <Compile Include="EnemySpriteClasses\EnemyBoomerang.cs" />
     <Compile Include="EnemySpriteClasses\Fireball.cs" />
     <Compile Include="EnemySpriteClasses\DamagedEnemy.cs" />
@@ -168,6 +167,7 @@
     <Compile Include="UsableItems\IUsableItem.cs" />
     <Compile Include="UsableItems\SpriteStuff\UsableItemSprite.cs" />
     <Compile Include="UsableItems\SpriteStuff\UsableItemSpriteFactory.cs" />
+    <Compile Include="UsableItems\SwordBeam.cs" />
     <Compile Include="UsableItems\UsableArrow.cs" />
     <Compile Include="UsableItems\UsableBomb.cs" />
     <Compile Include="UsableItems\UsableBoomerang.cs" />

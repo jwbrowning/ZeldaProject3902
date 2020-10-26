@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
 using CrossPlatformDesktopProject.PlayerStuff.SwordStuff;
+using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,11 @@ namespace CrossPlatformDesktopProject.PlayerStuff.StateStuff.StateClasses
             this.player.MoveDirection = Vector2.Zero;
             this.player.Sprite = LinkSpriteFactory.Instance.CreateRightSwordLinkSprite();
             this.player.Sword = new WoodenSword(this.player, Vector2.UnitX);
+            if (this.player.Health == this.player.TotalHealth)
+            {
+                IUsableItem swordBeam = new SwordBeam(this.player.Position + 16 * Vector2.UnitX, Vector2.UnitX, this.player);
+                this.player.ActiveItems.Add(swordBeam);
+            }
         }
 
         public void ShootArrow()

@@ -20,6 +20,8 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         Dictionary<ItemType, int> ItemCounts { get; set; }
         Vector2 MoveDirection { get; set; }
         ISword Sword { get; set; }
+        int Health { get; set; }
+        int TotalHealth { get; set; }
         void PickUp(ItemType itemType, int count);
         void TakeDamage();
         void MoveUp();

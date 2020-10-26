@@ -21,7 +21,7 @@ namespace CrossPlatformDesktopProject.Environment
         {
             Texture = BlockSpriteFactory.Instance.environment;
             Position = position;
-            CollisionHandler = new BlockCollisionHandler(this, size.X, size.Y, 0, 0);
+            CollisionHandler = new EmptyCollisionHandler(this);
         }
 
         public void Update() { }

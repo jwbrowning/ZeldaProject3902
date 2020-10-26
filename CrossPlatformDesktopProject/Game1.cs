@@ -23,17 +23,23 @@ namespace Sprint0
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 
-		static public Texture2D environment,squareOutline;
+		static public Texture2D environment,squareOutline,floortilebase;
 		public IPlayer player;
 		private List<IController> controllers;
 		private SpriteFont font;
 		private bool showCollisions = true;
 		public iRoom currentRoom;
+		public int roomIndex = 10;
+		public string[] rooms = {"RoomA3", "RoomB1", "RoomB3", "RoomB4", "RoomB6", "RoomC1", "RoomC2", "RoomC3", "RoomC4", "RoomC5", "RoomC6", "RoomD3", "RoomD4", "RoomD6", "RoomE2", "RoomE3", "RoomF2"};
 
 		public Game1()
 		{
 			graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
+			graphics.PreferredBackBufferWidth = 1024;  // set this value to the desired width of your window
+			graphics.PreferredBackBufferHeight = 704;   // set this value to the desired height of your window
+			graphics.ApplyChanges();
+
 		}
 
 		public void Reinitialize()
@@ -68,6 +74,7 @@ namespace Sprint0
 
 			environment = Content.Load<Texture2D>("environment");
 			squareOutline = Content.Load<Texture2D>("SquareOutline");
+			floortilebase = Content.Load<Texture2D>("floortilewithwall");
 			BlockSpriteFactory.Instance.LoadAllTextures(Content);
 			UsableItemSpriteFactory.Instance.LoadAllTextures(Content);
 			NPCSpriteFactory.Instance.LoadAllTextures(Content);
@@ -125,6 +132,10 @@ namespace Sprint0
 		{
 			GraphicsDevice.Clear(Color.Gray);
 
+			//draw the base floor tiles
+			spriteBatch.Begin();
+			spriteBatch.Draw(floortilebase, new Rectangle(0, 0, 1024, 704), Color.White);
+			spriteBatch.End();
             foreach (INPC npc in currentRoom.NPCs)
             {
                 npc.Draw(spriteBatch);
