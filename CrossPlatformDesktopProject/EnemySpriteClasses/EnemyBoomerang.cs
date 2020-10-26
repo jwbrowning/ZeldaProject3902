@@ -19,11 +19,13 @@ namespace Sprint0
         private int animationFrame = 1;
         private int movementFrame = 1;
         private Boolean drawBoomerang = true;
+        private Game1 game;
 
         private int spritePositionX = 500;
         private int spritePositionY = 300;
         int directionCode = 0; //determines which direction sprite should move. Ranges from 0-3.
         private IPlayer player;
+        private BlueGoriya blueGoriya;
 
         private Vector2 size = new Vector2(30, 60);
         public Vector2 Position
@@ -40,13 +42,15 @@ namespace Sprint0
         }
 
 
-        public EnemyBoomerang(Game1 game, IPlayer player, Vector2 position, int directionCode)
+        public EnemyBoomerang(Game1 game, BlueGoriya blueGoriya, Vector2 position, int directionCode)
         {
             OverlayColor = Color.White;
             Texture = NPCSpriteFactory.Instance.textureEnemies;
             CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 0, 0);
             Position = position;
             this.directionCode = directionCode;
+            this.game = game;
+            this.blueGoriya = blueGoriya;
         }
 
         public void TakeDamage()
@@ -114,6 +118,12 @@ namespace Sprint0
                 {
                     spritePositionX = spritePositionX - 5;
                 }
+            }
+
+            if (drawBoomerang == false)
+            {
+                game.currentRoom.Enemies.Remove(this);
+                this.blueGoriya.boomerangThrown = false;
             }
         }
 
