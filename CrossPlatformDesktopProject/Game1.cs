@@ -78,7 +78,7 @@ namespace Sprint0
             */
 
             npcs.Add(new OldMan(new Vector2(0,0)));
-            //enemies.Add(new Stalfos(NPCSpriteFactory.Instance.textureEnemies, player));
+            //enemies.Add(new Fireball(player, new Vector2(600, 200), 1));
             //blocks.Add(new BlockStandard(environment));
 
             controllers = new List<IController>();
