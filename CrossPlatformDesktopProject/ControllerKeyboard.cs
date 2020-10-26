@@ -33,12 +33,14 @@ namespace Sprint0
             RegisterCommand(Keys.Z, new CommandSword(game));
             RegisterCommand(Keys.N, new CommandSword(game));
             RegisterCommand(Keys.E, new CommandDamage(game));
+            /*Leftover code from Sprint 2
             RegisterCommand(Keys.T, new CommandSwitchBlockForward(game));
             RegisterCommand(Keys.Y, new CommandSwitchBlockBack(game));
             RegisterCommand(Keys.U, new CommandSwitchItemForward(game));
             RegisterCommand(Keys.I, new CommandSwitchItemBack(game));
             RegisterCommand(Keys.O, new CommandSwitchNPCForward(game));
             RegisterCommand(Keys.P, new CommandSwitchNPCBack(game));
+            */
             RegisterCommand(Keys.R, new CommandReset(game));
 	        RegisterCommand(Keys.Q, new CommandQuit(game));
         }

@@ -41,7 +41,11 @@ namespace CrossPlatformDesktopProject.RoomManagement
 
         public void loadRoom(String roomName)
         {
-            //string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Content/Rooms/" + roomName + ".xml");
+            Enemies.Clear();
+            Blocks.Clear();
+            Items.Clear();
+            NPCs.Clear();
+
             XElement roomFile = XElement.Load("../../../../Content/Rooms/" + roomName + ".xml");
 
             IEnumerable <XElement> loadedEnvironmentObjects = from item in roomFile.Descendants("Item")
@@ -139,13 +143,21 @@ namespace CrossPlatformDesktopProject.RoomManagement
             {
                 Enemies.Add(new Aquamentus(mygame, new Vector2(x * XSCALE, y * YSCALE)));
             }
-            else if ((string)enemy.Element("ObjectName") == "OldMan")
-            {
-                //Enemies.Add(new OldMan(new Vector2(x * XSCALE, y * YSCALE)));
-            }
             else
             {
                 Console.WriteLine("ERROR: " + (string)enemy.Element("ObjectName") + "is not recognized.");
+            }
+        }
+
+        void addNPC(XElement NPC)
+        {
+            string[] location = ((string)NPC.Element("Location")).Split(' ');
+            int x = int.Parse(location[0]);
+            int y = int.Parse(location[1]);
+
+            if ((string)NPC.Element("ObjectName") == "oldMan")
+            {
+                NPCs.Add(new OldMan(new Vector2(x * XSCALE, y * YSCALE)));
             }
         }
 

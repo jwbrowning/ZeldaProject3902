@@ -19,7 +19,7 @@
 			<Location>10 3</Location>
 		</Item>
 		<Item>
-			<ObjectType>Enemy</ObjectType>
+			<ObjectType>NPC</ObjectType>
 			<ObjectName>OldMan</ObjectName>
 			<!-- Dialogue: "EASTMOST PENNINSULA IS THE SECRET." -->
 			<Location>6 3</Location>
