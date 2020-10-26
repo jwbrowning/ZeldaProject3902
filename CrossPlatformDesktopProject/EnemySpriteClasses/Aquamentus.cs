@@ -98,9 +98,9 @@ namespace Sprint0
 
             if (shootFireBall == 1)
             {
-                game.currentRoom.Enemies.Add(new Fireball(player, new Vector2(spritePositionX - 10, spritePositionY - 10), 0));
-                game.currentRoom.Enemies.Add(new Fireball(player, new Vector2(spritePositionX - 10, spritePositionY - 0), 1));
-                game.currentRoom.Enemies.Add(new Fireball(player, new Vector2(spritePositionX - 10, spritePositionY + 10), 2));
+                game.currentRoom.Enemies.Add(new Fireball(game, player, new Vector2(spritePositionX - 10, spritePositionY - 10), 0));
+                game.currentRoom.Enemies.Add(new Fireball(game, player, new Vector2(spritePositionX - 10, spritePositionY - 0), 1));
+                game.currentRoom.Enemies.Add(new Fireball(game, player, new Vector2(spritePositionX - 10, spritePositionY + 10), 2));
             }
         }
 
