@@ -25,14 +25,16 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		public List<INPC> NPCs { get; set; }
 
 		/*XSCALE and YSCALE convert the object coordinates from tiles to pixels. 
-		By default, each tile is 16 pixels wide, but upscaled by 4 for visibility
-		so each tile is actually 64 pixels*/
+		In the original game each tile is 16 pixels wide, but upscaled by 4 for 
+		visibility so each tile is actually 64 pixels*/
 		const int XSCALE = 64;
 		const int YSCALE = 64;
 		/*Offsets are used to shift the tile grid down and to the right
-		to account for the border walls and HUD.*/
-		const int XOFFSET = 0;
-		const int YOFFSET = 0;
+		to account for the border walls and HUD. Even though the border wall
+		is only 64 pixels wide, 32 pixels are added to account for the sprite's
+		Draw methods using the center of the sprite, not the top left corner*/
+		const int XOFFSET = 98;
+		const int YOFFSET = 98;
 		public Room1(Game1 game)
 		{
 			mygame = game;
@@ -41,7 +43,9 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			Items = new List<IItem>();
 			NPCs = new List<INPC>();
 		}
-		public void changeRoom(iRoom nextroom)
+		
+		//unused, to be used to manage transitions/animations when changing rooms
+		public void changeRoom(string nextRoomName)
 		{
 			throw new NotImplementedException();
 		}
@@ -74,6 +78,13 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			foreach (XElement itemObject in loadedItems)
 			{
 				addItem(itemObject);
+			}
+			IEnumerable<XElement> loadedNPCs = from item in roomFile.Descendants("Item")
+												where (string)item.Element("ObjectType") == "NPC"
+												select item;
+			foreach (XElement NPCObject in loadedNPCs)
+			{
+				addNPC(NPCObject);
 			}
 		}
 
@@ -112,7 +123,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			}
 			else
 			{
-				Console.WriteLine("ERROR: " + (string)environmentObject.Element("ObjectName") + "is not recognized.");
+				Console.WriteLine("ERROR: " + (string)environmentObject.Element("ObjectName") + "is not a recognized block.");
 			}
 		}
 
@@ -152,7 +163,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			}
 			else
 			{
-				Console.WriteLine("ERROR: " + (string)enemy.Element("ObjectName") + "is not recognized.");
+				Console.WriteLine("ERROR: " + (string)enemy.Element("ObjectName") + "is not a recognized enemy.");
 			}
 		}
 
@@ -165,6 +176,10 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			if ((string)NPC.Element("ObjectName") == "oldMan")
 			{
 				NPCs.Add(new OldMan(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+			}
+			else
+			{
+				Console.WriteLine("ERROR: " + (string)NPC.Element("ObjectName") + "is not a recognized NPC.");
 			}
 		}
 
@@ -200,7 +215,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			}
 			else
 			{
-				Console.WriteLine("ERROR: " + (string)itemObject.Element("ObjectName") + "is not recognized.");
+				Console.WriteLine("ERROR: " + (string)itemObject.Element("ObjectName") + "is not a recognized item.");
 			}
 		}
 		

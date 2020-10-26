@@ -1,6 +1,6 @@
-<XnaContent>	
-<!-- Room: B1 -->
-<!-- Object coordinates are given in tiles -->
+<XnaContent>
+	<!-- Room: B1 -->
+	<!-- Object coordinates are given in tiles -->
 	<Asset Type="Room">
 		<Item>
 			<ObjectType>Enemy</ObjectType>
@@ -11,38 +11,38 @@
 			<ObjectType>Enemy</ObjectType>
 			<ObjectName>BladeTrap</ObjectName>
 			<Location>12 1</Location>
-		</Item>	
+		</Item>
 		<Item>
 			<ObjectType>Block</ObjectType>
 			<ObjectName>BlockStandard</ObjectName>
 			<Location>7 2</Location>
-		</Item>	
+		</Item>
 		<Item>
 			<ObjectType>Block</ObjectType>
 			<ObjectName>BlockStandard</ObjectName>
 			<Location>6 3</Location>
-		</Item>	
+		</Item>
 		<Item>
 			<ObjectType>Block</ObjectType>
 			<ObjectName>BlockStandard</ObjectName>
 			<Location>8 3</Location>
-		</Item>	
+		</Item>
 		<Item>
 			<ObjectType>Block</ObjectType>
 			<ObjectName>BlockMovable</ObjectName>
 			<Location>5 4</Location>
-		</Item>	
+		</Item>
 		<Item>
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>Stairs</ObjectName>
 			<Location>7 4</Location>
 			<!-- Leads to UndergroundBow -->
-		</Item>	
+		</Item>
 		<Item>
 			<ObjectType>Block</ObjectType>
 			<ObjectName>BlockStandard</ObjectName>
 			<Location>9 4</Location>
-		</Item>	
+		</Item>
 		<Item>
 			<ObjectType>Block</ObjectType>
 			<ObjectName>BlockStandard</ObjectName>
@@ -52,19 +52,21 @@
 			<ObjectType>Block</ObjectType>
 			<ObjectName>BlockStandard</ObjectName>
 			<Location>8 5</Location>
-		</Item>		
+		</Item>
 		<Item>
 			<ObjectType>Block</ObjectType>
 			<ObjectName>BlockStandard</ObjectName>
 			<Location>7 6</Location>
-		</Item>	
+		</Item>
 		<Item>
 			<ObjectType>Enemy</ObjectType>
 			<ObjectName>BladeTrap</ObjectName>
 			<Location>1 7</Location>
-		</Item>	
+		</Item>
 		<Item>
 			<ObjectType>Enemy</ObjectType>
 			<ObjectName>BladeTrap</ObjectName>
 			<Location>12 7</Location>
-		</Item>	
+		</Item>
+	</Asset>
+</XnaContent>
