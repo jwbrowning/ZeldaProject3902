@@ -28,7 +28,7 @@ namespace CrossPlatformDesktopProject.Environment
 
 		public void LoadAllTextures(ContentManager content)
 		{
-			environment = content.Load<Texture2D>("SpriteArrows");
+			environment = content.Load<Texture2D>("environment");
 		}
 	}
 }
