@@ -67,7 +67,7 @@ namespace Sprint0
             this.IsMouseVisible = true;
             base.Initialize();
 
-            currentRoom = new Room1(player);
+            currentRoom = new Room1(this);
             currentRoom.loadRoom("RoomC6");
         }
 
