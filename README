@@ -7,6 +7,7 @@ Our code currently hits all Sprint 3 specifications building off of our sprint 2
 Known Issues and Roadmap
 
 Enemy pathing works but needs improvement. Currently enemies will try to track link however especially with the bats they will overlap and then basically be one bat following around link.
+Particles like the enemy spawn effect, death effect, and sword beam particles need to be added.
 
 Code Analysis
 
