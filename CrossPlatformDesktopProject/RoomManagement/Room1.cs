@@ -231,6 +231,30 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			{
 				Items.Add(new TriforcePiece(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
+			else if ((string)itemObject.Element("ObjectName") == "Arrows")
+			{
+				Items.Add(new Arrow(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+			}
+			else if ((string)itemObject.Element("ObjectName") == "Bomb")
+			{
+				Items.Add(new Bomb(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+			}
+			else if ((string)itemObject.Element("ObjectName") == "Clock")
+			{
+				Items.Add(new Clock(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+			}
+			else if ((string)itemObject.Element("ObjectName") == "Fairy")
+			{
+				Items.Add(new Fairy(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+			}
+			else if ((string)itemObject.Element("ObjectName") == "Heart")
+			{
+				Items.Add(new Heart(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+			}
+			else if ((string)itemObject.Element("ObjectName") == "Rupee")
+			{
+				Items.Add(new Rupee(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+			}
 			else
 			{
 				Console.WriteLine("ERROR: " + (string)itemObject.Element("ObjectName") + " is not a recognized item.");
