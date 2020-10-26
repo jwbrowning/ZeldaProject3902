@@ -18,93 +18,78 @@ using System.Linq;
 namespace Sprint0
 {
 
-    public class Game1 : Game
-    {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+	public class Game1 : Game
+	{
+		GraphicsDeviceManager graphics;
+		SpriteBatch spriteBatch;
 
-        static public Texture2D environment,squareOutline;
-        //public List<IGameObject> gameObjects;
-        //public List<INPC> npcs;
-        //public List<IEnemy> enemies;
-        //public List<IBlock> blocks;
-        //public List<IItem> items;
-        public IPlayer player;
-        private List<IController> controllers;
-        private SpriteFont font;
-        private bool showCollisions = true;
-        public iRoom currentRoom;
+		static public Texture2D environment,squareOutline;
+		public IPlayer player;
+		private List<IController> controllers;
+		private SpriteFont font;
+		private bool showCollisions = true;
+		public iRoom currentRoom;
 
-        public Game1()
-        {
-            graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
-        }
+		public Game1()
+		{
+			graphics = new GraphicsDeviceManager(this);
+			Content.RootDirectory = "Content";
+		}
 
-        public void Reinitialize()
-        {
-            Initialize();
-        }
-        protected override void Initialize()
-        {
-            LoadContent();
-            player = new Link(this);
-            player.Position = new Vector2(200, 360);
-            LinkSpriteFactory.Instance.player = player;
-            
-            /*
-            gameObjects = new List<IGameObject>();
-            npcs = new List<INPC>();
-            enemies = new List<IEnemy>();
-            blocks = new List<IBlock>();
-            items = new List<IItem>();
-            */
+		public void Reinitialize()
+		{
+			Initialize();
+		}
+		protected override void Initialize()
+		{
+			LoadContent();
+			player = new Link(this);
+			player.Position = new Vector2(200, 360);
+			LinkSpriteFactory.Instance.player = player;
 
+			controllers = new List<IController>();
+			controllers.Add(new ControllerKeyboard(this));
+			controllers.Add(new ControllerMouse(this));
+			this.IsMouseVisible = true;
+			base.Initialize();
 
-            controllers = new List<IController>();
-            controllers.Add(new ControllerKeyboard(this));
-            controllers.Add(new ControllerMouse(this));
-            this.IsMouseVisible = true;
-
-            currentRoom = new Room1(this);
+			currentRoom = new Room1(this);
             currentRoom.loadRoom("RoomC6");
 
             currentRoom.Enemies.Add(new Aquamentus(this, new Vector2(400, 200)));
-
-            base.Initialize();
         }
 
-        protected override void LoadContent()
-        {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+		protected override void LoadContent()
+		{
+			// Create a new SpriteBatch, which can be used to draw textures.
+			spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            environment = Content.Load<Texture2D>("environment");
-            squareOutline = Content.Load<Texture2D>("SquareOutline");
-            BlockSpriteFactory.Instance.LoadAllTextures(Content);
-            UsableItemSpriteFactory.Instance.LoadAllTextures(Content);
-            NPCSpriteFactory.Instance.LoadAllTextures(Content);
-            LinkSpriteFactory.Instance.LoadAllTextures(Content);
-            ItemSpriteFactory.Instance.LoadAllTextures(Content);
+			environment = Content.Load<Texture2D>("environment");
+			squareOutline = Content.Load<Texture2D>("SquareOutline");
+			BlockSpriteFactory.Instance.LoadAllTextures(Content);
+			UsableItemSpriteFactory.Instance.LoadAllTextures(Content);
+			NPCSpriteFactory.Instance.LoadAllTextures(Content);
+			LinkSpriteFactory.Instance.LoadAllTextures(Content);
+			ItemSpriteFactory.Instance.LoadAllTextures(Content);
 
-            font = Content.Load<SpriteFont>("arial");
+			font = Content.Load<SpriteFont>("arial");
 
-        }
+		}
 
-        //unused, kept just in case
-        protected override void UnloadContent()
-        {
-            //unused
-        }
+		//unused, kept just in case
+		protected override void UnloadContent()
+		{
+			//unused
+		}
 
 
 
-        protected override void Update(GameTime gameTime)
-        {
-            foreach (IController currentController in controllers)
-            {
-                currentController.Update();
-            }
+		protected override void Update(GameTime gameTime)
+		{
+			foreach (IController currentController in controllers)
+			{
+				currentController.Update();
+			}
 
             for (int i = 0; i < currentRoom.NPCs.Count; i++)
             {
@@ -123,7 +108,7 @@ namespace Sprint0
                 currentRoom.Blocks[i].Update();
             }
 
-            player.Update();
+			player.Update();
 
             //if (npcs.Count > 0) npcs[0].Update();
             //if (items.Count > 0) items[0].Update();
@@ -131,12 +116,12 @@ namespace Sprint0
             List<IGameObject> allGameObjects = currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }).ToList();
             CollisionDetection.DetectCollisions(allGameObjects);
 
-            base.Update(gameTime);
-        }
+			base.Update(gameTime);
+		}
 
-        protected override void Draw(GameTime gameTime)
-        {
-            GraphicsDevice.Clear(Color.Gray);
+		protected override void Draw(GameTime gameTime)
+		{
+			GraphicsDevice.Clear(Color.Gray);
 
             foreach (INPC npc in currentRoom.NPCs)
             {
@@ -155,7 +140,7 @@ namespace Sprint0
                 block.Draw(spriteBatch);
             }
 
-            player.Draw(spriteBatch);
+			player.Draw(spriteBatch);
 
             // For testing, set showCollisions to true to show an outline around all colliders:
             if (showCollisions)
@@ -169,11 +154,7 @@ namespace Sprint0
                 spriteBatch.End();
             }
 
-            //if (npcs.Count > 0) npcs[0].Draw(spriteBatch);
-            //if (blocks.Count > 0) blocks[0].Draw(spriteBatch,Vector2.Zero);
-            //if (items.Count > 0) items[0].Draw(spriteBatch);
-
-            base.Draw(gameTime);
-        }
-    }
+			base.Draw(gameTime);
+		}
+	}
 }
