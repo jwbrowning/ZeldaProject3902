@@ -1,4 +1,5 @@
 ﻿using CrossPlatformDesktopProject.PlayerStuff;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,8 @@ namespace CrossPlatformDesktopProject.EnemySpriteClasses
 {
     public interface IEnemy : IGameObject
     {
-        //void TakeDamage();
-        //void Die();
+        Color OverlayColor { get; set; }
+        void TakeDamage();
+        void Die();
     }
 }

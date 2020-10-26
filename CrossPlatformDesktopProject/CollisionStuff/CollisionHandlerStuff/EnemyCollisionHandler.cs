@@ -78,5 +78,10 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
         {
             HandleGenericCollision(collider);
         }
+
+        public void HandleSwordCollision(ICollider collider)
+        {
+            // should take damage from sword here
+        }
     }
 }

@@ -8,42 +8,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
+using CrossPlatformDesktopProject.PlayerStuff.SwordStuff;
 
 namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 {
-    class UsableItemCollisionHandler : ICollisionHandler
+    class SwordCollisionHandler : ICollisionHandler
     {
-        private IUsableItem item;
-        private IPlayer player;
+        private ISword sword;
         public ICollider Collider { get; set; }
 
-        public UsableItemCollisionHandler(IPlayer player, IUsableItem item, float colliderWidth, float colliderHeight, float offsetX, float offsetY)
+        public SwordCollisionHandler(ISword sword, float colliderWidth, float colliderHeight, float offsetX, float offsetY)
         {
-            this.player = player;
-            this.item = item;
-            Collider = new BoxCollider(item, colliderWidth, colliderHeight, offsetX, offsetY);
-        }
-
-        private void HandleGenericCollision(ICollider collider)
-        {
-            if (item is UsableBoomerang)
-            {
-                ((UsableBoomerang)item).ComeBack();
-            }
-            else if (item is UsableArrow && player.ActiveItems.Contains(item))
-            {
-                player.ActiveItems.Remove(item);
-            }
+            this.sword = sword;
+            Collider = new BoxCollider(sword, colliderWidth, colliderHeight, offsetX, offsetY);
         }
 
         public void HandleBlockCollision(ICollider collider)
         {
-            HandleGenericCollision(collider);
+
         }
 
         public void HandleEnemyCollision(ICollider collider)
         {
-            HandleGenericCollision(collider);
+
         }
 
         public void HandlePlayerCollision(ICollider collider)
@@ -58,12 +46,12 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandleUsableItemCollision(ICollider collider)
         {
-            HandleGenericCollision(collider);
+
         }
 
         public void HandleNPCCollision(ICollider collider)
         {
-            HandleGenericCollision(collider);
+
         }
 
         public void HandleSwordCollision(ICollider collider)

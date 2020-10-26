@@ -1,4 +1,5 @@
 ﻿using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
+using CrossPlatformDesktopProject.PlayerStuff.SwordStuff;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff.StateStuff.StateClasses
             this.player = player;
             this.player.MoveDirection = Vector2.Zero;
             this.player.Sprite = LinkSpriteFactory.Instance.CreateLeftUseItemLinkSprite();
+            this.player.Sword = new EmptySword(this.player);
         }
 
         public void ShootArrow()
