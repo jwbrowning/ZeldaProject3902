@@ -254,6 +254,7 @@
     <Content Include="Content\Rooms\RoomD3.xml" />
     <Content Include="Content\Rooms\RoomD4.xml" />
     <Content Include="Content\Rooms\RoomD6.xml" />
+    <Content Include="Content\Rooms\RoomDEBUG.xml" />
     <Content Include="Content\Rooms\RoomE2.xml" />
     <Content Include="Content\Rooms\RoomE3.xml" />
     <Content Include="Content\Rooms\RoomF2.xml" />

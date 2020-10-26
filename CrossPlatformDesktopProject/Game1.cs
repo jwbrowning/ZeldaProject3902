@@ -60,11 +60,7 @@ namespace Sprint0
 			base.Initialize();
 
 			currentRoom = new Room1(this);
-            currentRoom.loadRoom("RoomC6");
-
-            currentRoom.Enemies.Add(new Aquamentus(this, new Vector2(400, 200)));
-			currentRoom.Blocks.Add(new BlockStandard(new Vector2(200, 200)));
-			currentRoom.Items.Add(new Map(new Vector2(300, 200)));
+            currentRoom.loadRoom("RoomDEBUG");
 		}
 
 		protected override void LoadContent()
