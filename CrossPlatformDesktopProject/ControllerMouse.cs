@@ -10,9 +10,8 @@ namespace Sprint0
     {
         private Game1 game;
         MouseState state;
-        //TODO fix these magic numbers, how do i get the screen size?
-        int windowWidth = 800;
-        int windowHeight = 480;
+        bool leftPressedLast = false;
+        bool rightPressedLast = false;
         public ControllerMouse(Game1 game) {
             this.game = game;           
         }
@@ -22,7 +21,9 @@ namespace Sprint0
             state = Mouse.GetState();
             bool leftPressed = ButtonState.Pressed == state.LeftButton ? true : false;
             bool rightPressed = ButtonState.Pressed == state.RightButton ? true : false;
-            if(rightPressed) {
+           
+            if (rightPressed && !rightPressedLast)
+            {
                 if (game.roomIndex + 1 < game.rooms.Length)
                 {
                     game.roomIndex++;
@@ -34,7 +35,8 @@ namespace Sprint0
                     game.currentRoom.loadRoom(game.rooms[game.roomIndex]);
                 }
             }
-            if(leftPressed) {
+            if (leftPressed && !leftPressedLast)
+            {
                 if (game.roomIndex - 1 >= 0)
                 {
                     game.roomIndex--;
@@ -46,6 +48,8 @@ namespace Sprint0
                     game.currentRoom.loadRoom(game.rooms[game.roomIndex]);
                 }
             }
+            leftPressedLast = leftPressed;
+            rightPressedLast = rightPressed;
         }
 
         void IController.RegisterCommand(Keys key, ICommand command)
