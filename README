@@ -1,32 +1,21 @@
-# CSE3209Project Sprint 2
+# CSE3209Project Sprint 3
 Authors Aidan Haskett, Hemil Amin, Abhi Malisetty, Matthew Landwehr, and Johnathan Browning
 
 README Code Description
-Our code currently hits all Sprint 2 specifications. The arrow and and "WASD" keys control Link and change his direction while the "Z" and "N" keys cause him to swing his sword. Each number key in the top row will cause Link to use a specific item (1 for arrows, 2 for bombs, 3 for the boomerang), and the "E" key will damage Link. Blocks and obstacles appear fixed on screen and can be switched with the "T" and "Y" keys. An item pickup is shown on screen, and the displayed item can be changed by pressing the "U" and "I" keys. Items are also animated. Enemies also appear on screen and are animated. Enemies can be swapped using the "O" and "P" keys. Finally, "Q" is used to quit, and "R" will reset the screen to the initial loaded version of the game. Our code is organized with interfaces and then underlying classes which implement said interfaces. We have created interfaces for commands, controllers, game objects, and sprites. Beneath those we have separate classes for individual link, items, obstacles, enemies, and keyboard controls. The Link.cs class is under the PlayerStuff folder and controls all of Link's movements and animation. All enemy classes are in the EnemySpriteClasses folder and handle each individual’s animation and location data. The same is true for obstacles and items which fall under the Environment and Items folders respectively. All keyboard controls are housed under the CommandStuff folder and call methods to execute each needed function. These folder names are mostly temporary and may be subject to change.
+Our code currently hits all Sprint 3 specifications building off of our sprint 2 foundation. We have implemented collision handling code for link, enemies, environment, and items. Where link and enemies are unable to walk through walls or environmental obstacles. Items such as the boomerang can not go through walls but are able to fly over some environmental obstacles. Additionally, we have all of our room data stored in xml files and are able to cycle through rooms by clicking the left and right mouse buttons. Each room is modeled after the first dungeon and is equipped with enemies and obstacles. 
 
 Known Issues and Roadmap
-The code for NPCs (while meeting the functionality requirements for sprint 2) is not currently implemented in an ideal way in terms of organization and future maintainability. The current behavior of the sprites and their respective projectiles have been hardcoded into each sprite class itself. Moving forward the plan is to redesign the way that this is implemented by making better use of interfaces. The goal is to reduce coupling and increase modularity. 
 
-In the future, we may need to resize some sprites and edit the spritesheets to make the animations look cleaner.
-
-We're planning to address the way in which the game draws gameobjects in order to make sure they're drawn in the proper order, e.g. to ensure that tiles and blocks aren't drawn over top of items or enemies.
-
+Enemy pathing works but needs improvement. Currently enemies will try to track link however especially with the bats they will overlap and then basically be one bat following around link.
 
 Code Analysis
 
 Sprint Reflection
-The team performed well this sprint, however there is definite room for improvement. We did a good job of meeting and organizing our self at the start of the sprint by creating a discord server to communicate, a GitHub repository for our code, as well as a Trello board to manage tasks and decide who would be working on what. After that everyone mostly worked on their own to complete their tasks and add it to the GitHub. We could have done a better job of communicating when we each got our tasks done in order to start combining them sooner. We waited until the last weekend to start combining all of our code which was fine, but we definitely could have done so sooner which would have relieved a little bit of stress and would have been a better use of the 3 weeks allotted for sprint 2. We also noticed we are a lot more productive when all 5 members of the group can meet all at one time. So, for future sprints we are going to make a defined schedule for meeting and working instead of just seeing when everyone is free day of.
+As a team we did a better job being more on top of the work this sprint. However, we are still waiting until the last few days to get a lot of the work done, but it is understandable with everyone having busy schedules. On the contrary we did a better job of communicating during the sprint and giving updates on what work we had done in comparison to sprint 2. At the beginning of the sprint we thought doing collision code would take us about 10 hours in total to get working and smoothed out which was close to what actually ended up happening. In total the collision code took about 10-15 hours. On the other hand, we thought creating rooms would only take about 5-7 hours, but we ran into some issues and it ended up taking much longer, closer to 10-15 in order to get transitions and loading all pieces in smoothly. In conclusion I feel like we did a better job overall organizing and getting work done this sprint even though we have definite room to continue to get better in the next few coming sprints.
+
+
 We had these warnings when we tried doing analysis:
 
-Severity	Code	Description	Project	File	Line	Suppression State
-Warning		Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
 
-Severity	Code	Description	Project	File	Line	Suppression State
-Warning	CA2213	'Game1' contains field 'graphics' that is of IDisposable type 'GraphicsDeviceManager', but it is never disposed. Change the Dispose method on 'Game1' to call Close or Dispose on this field.	
 
-Severity	Code	Description	Project	File	Line	Suppression State
-Warning	CA2213	'Game1' contains field 'spriteBatch' that is of IDisposable type 'SpriteBatch', but it is never disposed. Change the Dispose method on 'Game1' to call Close or Dispose on this field.	
-
-Severity	Code	Description	Project	File	Line	Suppression State
-Warning	CA2213	'Game1' contains field 'environment' that is of IDisposable type 'Texture2D', but it is never disposed. Change the Dispose method on 'Game1' to call Close or Dispose on this field.	
 
