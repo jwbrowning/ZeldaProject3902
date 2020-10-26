@@ -1,3 +1,4 @@
+using CrossPlatformDesktopProject.RoomManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -20,14 +21,20 @@ namespace Sprint0
         {
             state = Mouse.GetState();
             bool leftPressed = ButtonState.Pressed == state.LeftButton ? true : false;
+            bool rightPressed = ButtonState.Pressed == state.RightButton ? true : false;
+            if(rightPressed) {
+                if(game.roomIndex+1<game.rooms.Length)
+                    game.currentRoom.loadRoom(game.rooms[game.roomIndex+1]);
+                else
+                    game.roomIndex=0;
+                    game.currentRoom.loadRoom(game.rooms[game.roomIndex]);
+            }
             if(leftPressed) {
-                if(state.X>400) {
-                    //load next stage
-                    CommandSword swing = new CommandSword(game);
-                    swing.Execute();
-                } else {
-                    //load prev stage
-                }
+                if(game.roomIndex-1>=0)
+                    game.currentRoom.loadRoom(game.rooms[game.roomIndex-1]);
+                else
+                    game.roomIndex=game.rooms.Length-1;
+                    game.currentRoom.loadRoom(game.rooms[game.roomIndex]);
             }
         }
 
