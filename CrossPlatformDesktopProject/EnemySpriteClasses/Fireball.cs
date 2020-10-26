@@ -21,7 +21,6 @@ namespace Sprint0
         public int spritePositionX;
         public int spritePositionY;
         int fireballCode = 1;
-        private Game1 game;
 
         private Vector2 size = new Vector2(20, 30);
         public Vector2 Position
@@ -44,7 +43,6 @@ namespace Sprint0
             Position = position;
             CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 0, 5);
             this.fireballCode = fireballCode;
-            this.game = game;
         }
 
         public void TakeDamage()
@@ -75,11 +73,6 @@ namespace Sprint0
             {
                 spritePositionX = spritePositionX - 2;
                 spritePositionY = spritePositionY + 2;
-            }
-
-            if (spritePositionX < 0)
-            {
-                game.currentRoom.Enemies.Remove(this);
             }
 
         }
