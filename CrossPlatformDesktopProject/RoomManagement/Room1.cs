@@ -12,6 +12,7 @@ using Sprint0;
 using Microsoft.Xna.Framework;
 using System.Drawing.Printing;
 using CrossPlatformDesktopProject.PlayerStuff;
+using System.Reflection;
 
 namespace CrossPlatformDesktopProject.RoomManagement
 {
@@ -23,6 +24,8 @@ namespace CrossPlatformDesktopProject.RoomManagement
         public List<IItem> Items { get; set; }
         public List<INPC> NPCs { get; set; }
 
+        static int XSCALE = 64;
+        static int YSCALE = 64;
         public Room1(IPlayer link)
         {
             player = link;
@@ -38,7 +41,8 @@ namespace CrossPlatformDesktopProject.RoomManagement
 
         public void loadRoom(String roomName)
         {
-            XElement roomFile = XElement.Load("Content/Rooms/" + roomName + ".xml");
+            //string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Content/Rooms/" + roomName + ".xml");
+            XElement roomFile = XElement.Load("../../../../Content/Rooms/" + roomName + ".xml");
 
             IEnumerable <XElement> loadedEnvironmentObjects = from item in roomFile.Descendants("Item")
                       where (string)item.Element("ObjectType") == "Environment"
@@ -75,25 +79,25 @@ namespace CrossPlatformDesktopProject.RoomManagement
 
             if ((string) environmentObject.Element("ObjectName") == "BlockStandard")
             {
-                Blocks.Add(new BlockStandard(new Vector2(x * 16, y * 16)));
+                Blocks.Add(new BlockStandard(new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)environmentObject.Element("ObjectName") == "StatueFish")
             {
-                Blocks.Add(new Statue(new Vector2(x * 16, y * 16)));
+                Blocks.Add(new Statue(new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)environmentObject.Element("ObjectName") == "StatueDragon")
             {
-                //Blocks.Add(new Statue2(Game1.environment, new Vector2(x * 16, y * 16)));
+                Blocks.Add(new StatueDragon(new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)environmentObject.Element("ObjectName") == "BlockMovable")
             {
                 //TODO: Implement BlockMovable
-                //Blocks.Add(new BlockMovable(Game1.environment, new Vector2(x * 16, y * 16)));
+                //Blocks.Add(new BlockMovable(Game1.environment, new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)environmentObject.Element("ObjectName") == "Water")
             {
                 //TODO Implement BlockWater
-                Blocks.Add(new BlockStandard(new Vector2(x * 16, y * 16)));
+                Blocks.Add(new BlockStandard(new Vector2(x * XSCALE, y * YSCALE)));
             }
             else
             {
@@ -109,35 +113,35 @@ namespace CrossPlatformDesktopProject.RoomManagement
 
             if ((string)enemy.Element("ObjectName") == "BlueKeese")
             {
-                Enemies.Add(new BlueKeese(player, new Vector2(x * 16, y * 16)));
+                Enemies.Add(new BlueKeese(player, new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)enemy.Element("ObjectName") == "RedGoriya")
             {
-                Enemies.Add(new BlueGoriya(player, new Vector2(x * 16, y * 16)));
+                Enemies.Add(new BlueGoriya(player, new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)enemy.Element("ObjectName") == "Stalfos")
             {
-                Enemies.Add(new Stalfos(player, new Vector2(x * 16, y * 16)));
+                Enemies.Add(new Stalfos(player, new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)enemy.Element("ObjectName") == "BlackGel")
             {
-                Enemies.Add(new BlackGel(player, new Vector2(x * 16, y * 16)));
+                Enemies.Add(new BlackGel(player, new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)enemy.Element("ObjectName") == "BladeTrap")
             {
-                Enemies.Add(new BladeTrap(player, new Vector2(x * 16, y * 16)));
+                Enemies.Add(new BladeTrap(player, new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)enemy.Element("ObjectName") == "WallMaster")
             {
-                Enemies.Add(new WallMaster(player, new Vector2(x * 16, y * 16)));
+                Enemies.Add(new WallMaster(player, new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)enemy.Element("ObjectName") == "Aquamentus")
             {
-                Enemies.Add(new Aquamentus(player, new Vector2(x * 16, y * 16)));
+                Enemies.Add(new Aquamentus(player, new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)enemy.Element("ObjectName") == "OldMan")
             {
-                //Enemies.Add(new OldMan(new Vector2(x * 16, y * 16)));
+                //Enemies.Add(new OldMan(new Vector2(x * XSCALE, y * YSCALE)));
             }
             else
             {
@@ -153,27 +157,27 @@ namespace CrossPlatformDesktopProject.RoomManagement
 
             if ((string)itemObject.Element("ObjectName") == "Boomerang")
             {
-                Items.Add(new Boomerang(new Vector2(x * 16, y * 16)));
+                Items.Add(new Boomerang(new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)itemObject.Element("ObjectName") == "Bow")
             {
-                Items.Add(new Bow(new Vector2(x * 16, y * 16)));
+                Items.Add(new Bow(new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)itemObject.Element("ObjectName") == "Map")
             {
-                Items.Add(new Map(new Vector2(x * 16, y * 16)));
+                Items.Add(new Map(new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)itemObject.Element("ObjectName") == "Compass")
             {
-                Items.Add(new Compass(new Vector2(x * 16, y * 16)));
+                Items.Add(new Compass(new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)itemObject.Element("ObjectName") == "HeartContainer")
             {
-                Items.Add(new HeartContainer(new Vector2(x * 16, y * 16)));
+                Items.Add(new HeartContainer(new Vector2(x * XSCALE, y * YSCALE)));
             }
             else if ((string)itemObject.Element("ObjectName") == "TriforcePiece")
             {
-                Items.Add(new TriforcePiece(new Vector2(x * 16, y * 16)));
+                Items.Add(new TriforcePiece(new Vector2(x * XSCALE, y * YSCALE)));
             }
             else
             {
