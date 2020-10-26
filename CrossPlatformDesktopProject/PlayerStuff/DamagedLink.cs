@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
+using CrossPlatformDesktopProject.PlayerStuff.SwordStuff;
 using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -22,6 +23,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         public Vector2 Position { get => player.Position; set => player.Position = value; }
         public ICollisionHandler CollisionHandler { get => player.CollisionHandler; set => player.CollisionHandler = value; }
         public Dictionary<ItemType, int> ItemCounts { get => player.ItemCounts; set => player.ItemCounts = value; }
+        public ISword Sword { get => player.Sword; set => player.Sword = value; }
 
         private IPlayer player;
         private Game1 game;

@@ -1,4 +1,6 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff;
+using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
+using CrossPlatformDesktopProject.PlayerStuff.SwordStuff;
 using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using Sprint0;
@@ -17,6 +19,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         List<IUsableItem> ActiveItems { get; set; }
         Dictionary<ItemType, int> ItemCounts { get; set; }
         Vector2 MoveDirection { get; set; }
+        ISword Sword { get; set; }
         void PickUp(ItemType itemType, int count);
         void TakeDamage();
         void MoveUp();

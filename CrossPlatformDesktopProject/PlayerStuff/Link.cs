@@ -1,6 +1,7 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
 using CrossPlatformDesktopProject.PlayerStuff.StateStuff;
+using CrossPlatformDesktopProject.PlayerStuff.SwordStuff;
 using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -36,6 +37,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         public List<IUsableItem> ActiveItems { get; set; }
         public Dictionary<ItemType, int> ItemCounts { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
+        public ISword Sword { get; set; }
         public Vector2 Position { get; set; }
         public Vector2 MoveDirection { get; set; }
         private float speed = 5;
@@ -48,6 +50,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             Position = Vector2.Zero;
             MoveDirection = Vector2.Zero;
             CollisionHandler = new LinkCollisionHandler(game, this, 56, 50, 0, 10);
+            Sword = new EmptySword(this);
             ActiveItems = new List<IUsableItem>();
             ItemCounts = new Dictionary<ItemType, int>();
             ItemCounts.Add(ItemType.Rupee, 0);

@@ -52,6 +52,7 @@
     <Compile Include="CollisionStuff\CollisionHandlerStuff\ItemCollisionHandler.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\LinkCollisionHandler.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\NPCCollisionHandler.cs" />
+    <Compile Include="CollisionStuff\CollisionHandlerStuff\SwordCollisionHandler.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\UsableItemCollisionHandler.cs" />
     <Compile Include="CollisionStuff\ICollidable.cs" />
     <Compile Include="CommandStuff\CommandDamage.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="CommandStuff\CommandUseItem2.cs" />
     <Compile Include="CommandStuff\CommandUseItem3.cs" />
     <Compile Include="ControllerMouse.cs" />
+    <Compile Include="EnemySpriteClasses\DamagedEnemy.cs" />
     <Compile Include="EnemySpriteClasses\INPC.cs" />
     <Compile Include="EnemySpriteClasses\IEnemy.cs" />
     <Compile Include="EnemySpriteClasses\NPCSpriteFactory.cs" />
@@ -152,6 +154,9 @@
     <Compile Include="Game1.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="ISprite.cs" />
+    <Compile Include="PlayerStuff\SwordStuff\EmptySword.cs" />
+    <Compile Include="PlayerStuff\SwordStuff\ISword.cs" />
+    <Compile Include="PlayerStuff\SwordStuff\WoodenSword.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomManagement\iRoom.cs" />

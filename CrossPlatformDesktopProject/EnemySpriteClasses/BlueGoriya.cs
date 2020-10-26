@@ -13,6 +13,7 @@ namespace Sprint0
 {
     class BlueGoriya : IEnemy
     {
+        public Color OverlayColor { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
         public Texture2D Texture { get; set; }
         private int animationFrame = 1;
@@ -20,6 +21,8 @@ namespace Sprint0
         private int spritePositionX = 500;
         private int spritePositionY = 300;
         private IPlayer player;
+        private Game1 game;
+        private int health = 2;
 
         private Vector2 size = new Vector2(60, 60);
         public Vector2 Position
@@ -36,12 +39,31 @@ namespace Sprint0
         }
 
 
-        public BlueGoriya(IPlayer player, Vector2 position)
+        public BlueGoriya(Game1 game, Vector2 position)
         {
             Texture = NPCSpriteFactory.Instance.textureEnemies;
             Position = position;
             CollisionHandler = new EnemyCollisionHandler(this, size.X, size.Y, 0, 0);
-            this.player = player;
+            this.player = game.player;
+            this.game = game;
+        }
+
+        public void TakeDamage()
+        {
+            health--;
+            if (health <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                game.enemies[game.enemies.IndexOf(this)] = new DamagedEnemy(this, game);
+            }
+        }
+
+        public void Die()
+        {
+
         }
 
         public void Update()
@@ -159,7 +181,7 @@ namespace Sprint0
             }
 
             spriteBatch.Begin();
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, OverlayColor);
             spriteBatch.End();
         }
     }

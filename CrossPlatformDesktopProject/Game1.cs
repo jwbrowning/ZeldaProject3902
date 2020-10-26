@@ -141,7 +141,7 @@ namespace Sprint0
             //if (npcs.Count > 0) npcs[0].Update();
             //if (items.Count > 0) items[0].Update();
 
-            List<IGameObject> allGameObjects = blocks.Concat<IGameObject>(items).Concat(enemies).Concat(npcs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player }).ToList();
+            List<IGameObject> allGameObjects = blocks.Concat<IGameObject>(items).Concat(enemies).Concat(npcs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }).ToList();
             CollisionDetection.DetectCollisions(allGameObjects);
 
             base.Update(gameTime);
@@ -178,7 +178,7 @@ namespace Sprint0
             if (showCollisions)
             {
                 spriteBatch.Begin();
-                foreach (IGameObject g in blocks.Concat<IGameObject>(items).Concat(enemies).Concat(npcs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player }))
+                foreach (IGameObject g in blocks.Concat<IGameObject>(items).Concat(enemies).Concat(npcs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }))
                 {
                     Rectangle rec = CollisionDetection.GetColliderRectangle(g);
                     spriteBatch.Draw(squareOutline, rec, new Color(Color.LimeGreen, 1));
