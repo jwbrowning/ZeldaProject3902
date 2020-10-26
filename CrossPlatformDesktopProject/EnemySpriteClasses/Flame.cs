@@ -42,7 +42,7 @@ namespace Sprint0
         public Flame(Game1 game, Vector2 position)
         {
             OverlayColor = Color.White;
-            Texture = NPCSpriteFactory.Instance.textureEnemies;
+            Texture = NPCSpriteFactory.Instance.textureNPCs;
             Position = position;
             CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 0, 0);
             this.player = game.player;
