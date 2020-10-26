@@ -13,6 +13,7 @@ namespace Sprint0
 {
     class EnemyBoomerang : IEnemy
     {
+        public Color OverlayColor { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
         public Texture2D Texture { get; set; }
         private int animationFrame = 1;
@@ -45,6 +46,16 @@ namespace Sprint0
             CollisionHandler = new EnemyCollisionHandler(this, size.X, size.Y, 0, 0);
             Position = position;
             this.directionCode = directionCode;
+        }
+
+        public void TakeDamage()
+        {
+
+        }
+
+        public void Die()
+        {
+
         }
 
         public void Update()

@@ -13,9 +13,12 @@ namespace Sprint0
 {
     class Aquamentus : IEnemy
     {
+        public Color OverlayColor { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
         public Texture2D Texture { get; set; }
         private IPlayer player;
+        private Game1 game;
+        private int health = 6;
         private int animationFrame = 1;
         private int movementFrame = 1;
 
@@ -38,12 +41,31 @@ namespace Sprint0
         }
 
 
-        public Aquamentus(IPlayer player, Vector2 position)
+        public Aquamentus(Game1 game, Vector2 position)
         {
             Texture = NPCSpriteFactory.Instance.textureBosses;
             Position = position;
             CollisionHandler = new EnemyCollisionHandler(this, size.X, size.Y, 0, 0);
             this.player = player;
+            this.game = game;
+        }
+
+        public void TakeDamage()
+        {
+            health--;
+            if (health <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                game.currentRoom.Enemies[game.currentRoom.Enemies.IndexOf(this)] = new DamagedEnemy(this, game);
+            }
+        }
+
+        public void Die()
+        {
+
         }
 
         public void Update()

@@ -14,6 +14,7 @@ namespace Sprint0
 {
     class Fireball : IEnemy
     {
+        public Color OverlayColor { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
         public Texture2D Texture { get; set; }
 
@@ -41,6 +42,16 @@ namespace Sprint0
             Position = position;
             CollisionHandler = new EnemyCollisionHandler(this, size.X, size.Y, 0, 5);
             this.fireballCode = fireballCode;
+        }
+
+        public void TakeDamage()
+        {
+
+        }
+
+        public void Die()
+        {
+
         }
 
         public void Update()
