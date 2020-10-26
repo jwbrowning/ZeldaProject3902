@@ -83,7 +83,8 @@ namespace Sprint0
 
             controllers = new List<IController>();
             controllers.Add(new ControllerKeyboard(this));
-            //this.IsMouseVisible = true;
+            controllers.Add(new ControllerMouse(this));
+            this.IsMouseVisible = true;
             base.Initialize();
         }
 
