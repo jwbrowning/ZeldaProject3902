@@ -125,8 +125,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			}
 			else if ((string)environmentObject.Element("ObjectName") == "Water")
 			{
-				//TODO Implement BlockWater
-				Blocks.Add(new BlockStandard(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				Blocks.Add(new BlockWater(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else
 			{

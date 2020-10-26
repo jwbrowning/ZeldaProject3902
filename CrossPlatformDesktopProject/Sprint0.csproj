@@ -82,6 +82,7 @@
     <Compile Include="Entities\ExplosionEffect.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Environment\BlockSpriteFactory.cs" />
+    <Compile Include="Environment\BlockWater.cs" />
     <Compile Include="Environment\BlockStandard.cs" />
     <Compile Include="Environment\Statue2.cs" />
     <Compile Include="Environment\DoorBombed.cs" />

@@ -69,6 +69,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             ItemCounts.Add(ItemType.Bomb, 20);
             ItemCounts.Add(ItemType.Fairy, 0);
             ItemCounts.Add(ItemType.Clock, 0);
+            ItemCounts.Add(ItemType.Compass, 0);
         }
 
         public void Update()
