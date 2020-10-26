@@ -9,6 +9,10 @@ Known Issues and Roadmap
 Enemy pathing works but needs improvement. Currently enemies will try to track link however especially with the bats they will overlap and then basically be one bat following around link.
 Particles like the enemy spawn effect, death effect, and sword beam particles need to be added.
 
+Additional Features
+
+In addition to the required features for the sprint, we also added a new feature of our own. We made the boomerang able to carry items along with it as it is thrown. So if you throw your boomerang at an item on the ground, such as a map, it will carry the map back to you.
+
 Code Analysis
 
 Sprint Reflection
