@@ -5,6 +5,7 @@ using CrossPlatformDesktopProject.Environment;
 using CrossPlatformDesktopProject.Items;
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
+using CrossPlatformDesktopProject.PlayerStuff.SwordStuff;
 using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -59,6 +60,10 @@ namespace CrossPlatformDesktopProject.CollisionStuff
             else if (collider.GameObject is IEnemy)
             {
                 collisionHandler.HandleEnemyCollision(collider);
+            }
+            else if (collider.GameObject is ISword)
+            {
+                collisionHandler.HandleSwordCollision(collider);
             }
         }
 

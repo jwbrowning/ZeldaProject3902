@@ -65,12 +65,13 @@ namespace Sprint0
             controllers.Add(new ControllerKeyboard(this));
             controllers.Add(new ControllerMouse(this));
             this.IsMouseVisible = true;
-            base.Initialize();
 
             currentRoom = new Room1(this);
             currentRoom.loadRoom("RoomC6");
 
             currentRoom.Enemies.Add(new Aquamentus(this, new Vector2(400, 200)));
+
+            base.Initialize();
         }
 
         protected override void LoadContent()
