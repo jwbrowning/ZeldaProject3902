@@ -55,6 +55,8 @@ namespace Sprint0
 
 			currentRoom = new Room1(this);
             currentRoom.loadRoom("RoomC6");
+
+            currentRoom.Enemies.Add(new Aquamentus(this, new Vector2(400, 200)));
         }
 
 		protected override void LoadContent()
@@ -89,27 +91,30 @@ namespace Sprint0
 				currentController.Update();
 			}
 
-			foreach (INPC npc in currentRoom.NPCs)
-			{
-				npc.Update();
-			}
-			foreach (IEnemy enemy in currentRoom.Enemies)
-			{
-				enemy.Update();
-			}
-			foreach (IItem item in currentRoom.Items)
-			{
-				item.Update();
-			}
-			foreach (IBlock block in currentRoom.Blocks)
-			{
-				block.Update();
-			}
+            for (int i = 0; i < currentRoom.NPCs.Count; i++)
+            {
+                currentRoom.NPCs[i].Update();
+            }
+            for (int i = 0; i < currentRoom.Enemies.Count; i++)
+            {
+                currentRoom.Enemies[i].Update();
+            }
+            for (int i = 0; i < currentRoom.Items.Count; i++)
+            {
+                currentRoom.Items[i].Update();
+            }
+            for (int i = 0; i < currentRoom.Blocks.Count; i++)
+            {
+                currentRoom.Blocks[i].Update();
+            }
 
 			player.Update();
 
-			List<IGameObject> allGameObjects = currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player }).ToList();
-			CollisionDetection.DetectCollisions(allGameObjects);
+            //if (npcs.Count > 0) npcs[0].Update();
+            //if (items.Count > 0) items[0].Update();
+
+            List<IGameObject> allGameObjects = currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }).ToList();
+            CollisionDetection.DetectCollisions(allGameObjects);
 
 			base.Update(gameTime);
 		}
@@ -118,36 +123,36 @@ namespace Sprint0
 		{
 			GraphicsDevice.Clear(Color.Gray);
 
-			foreach (INPC npc in currentRoom.NPCs)
-			{
-				npc.Draw(spriteBatch);
-			}
-			foreach (IEnemy enemy in currentRoom.NPCs)
-			{
-				enemy.Draw(spriteBatch);
-			}
-			foreach (IItem item in currentRoom.Items)
-			{
-				item.Draw(spriteBatch);
-			}
-			foreach (IBlock block in currentRoom.Blocks)
-			{
-				block.Draw(spriteBatch);
-			}
+            foreach (INPC npc in currentRoom.NPCs)
+            {
+                npc.Draw(spriteBatch);
+            }
+            foreach (IEnemy enemy in currentRoom.Enemies)
+            {
+                enemy.Draw(spriteBatch);
+            }
+            foreach (IItem item in currentRoom.Items)
+            {
+                item.Draw(spriteBatch);
+            }
+            foreach (IBlock block in currentRoom.Blocks)
+            {
+                block.Draw(spriteBatch);
+            }
 
 			player.Draw(spriteBatch);
 
-			// For testing, set showCollisions to true to show an outline around all colliders:
-			if (showCollisions)
-			{
-				spriteBatch.Begin();
-				foreach (IGameObject g in currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player }))
-				{
-					Rectangle rec = CollisionDetection.GetColliderRectangle(g);
-					spriteBatch.Draw(squareOutline, rec, new Color(Color.LimeGreen, 1));
-				}
-				spriteBatch.End();
-			}
+            // For testing, set showCollisions to true to show an outline around all colliders:
+            if (showCollisions)
+            {
+                spriteBatch.Begin();
+                foreach (IGameObject g in currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }))
+                {
+                    Rectangle rec = CollisionDetection.GetColliderRectangle(g);
+                    spriteBatch.Draw(squareOutline, rec, new Color(Color.LimeGreen, 1));
+                }
+                spriteBatch.End();
+            }
 
 			base.Draw(gameTime);
 		}

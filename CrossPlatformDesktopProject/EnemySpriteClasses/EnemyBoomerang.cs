@@ -40,10 +40,11 @@ namespace Sprint0
         }
 
 
-        public EnemyBoomerang(IPlayer player, Vector2 position, int directionCode)
+        public EnemyBoomerang(Game1 game, IPlayer player, Vector2 position, int directionCode)
         {
+            OverlayColor = Color.White;
             Texture = NPCSpriteFactory.Instance.textureEnemies;
-            CollisionHandler = new EnemyCollisionHandler(this, size.X, size.Y, 0, 0);
+            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 0, 0);
             Position = position;
             this.directionCode = directionCode;
         }

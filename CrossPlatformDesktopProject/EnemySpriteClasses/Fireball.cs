@@ -36,11 +36,12 @@ namespace Sprint0
             }
         }
 
-        public Fireball(IPlayer player, Vector2 position, int fireballCode) //fireballCode is a number between 0-2 that determines which of the 3 fireballs will be drawn.
+        public Fireball(Game1 game, IPlayer player, Vector2 position, int fireballCode) //fireballCode is a number between 0-2 that determines which of the 3 fireballs will be drawn.
         {
+            OverlayColor = Color.White;
             Texture = NPCSpriteFactory.Instance.textureBosses;
             Position = position;
-            CollisionHandler = new EnemyCollisionHandler(this, size.X, size.Y, 0, 5);
+            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 0, 5);
             this.fireballCode = fireballCode;
         }
 

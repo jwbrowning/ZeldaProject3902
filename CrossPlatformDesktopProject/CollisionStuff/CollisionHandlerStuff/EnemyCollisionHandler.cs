@@ -2,6 +2,7 @@
 using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.PlayerStuff;
 using Microsoft.Xna.Framework;
+using Sprint0;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,12 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
     class EnemyCollisionHandler : ICollisionHandler
     {
         private IEnemy enemy;
+        private Game1 game;
         public ICollider Collider { get; set; }
 
-        public EnemyCollisionHandler(IEnemy enemy, float colliderWidth, float colliderHeight, float offsetX, float offsetY)
+        public EnemyCollisionHandler(Game1 game, IEnemy enemy, float colliderWidth, float colliderHeight, float offsetX, float offsetY)
         {
+            this.game = game;
             this.enemy = enemy;
             Collider = new BoxCollider(enemy, colliderWidth, colliderHeight, offsetX, offsetY);
         }
@@ -71,7 +74,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandleUsableItemCollision(ICollider collider)
         {
-            // should take damage from usable item here
+            if(game.currentRoom.Enemies.Contains(enemy)) enemy.TakeDamage();
         }
 
         public void HandleNPCCollision(ICollider collider)
@@ -81,7 +84,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandleSwordCollision(ICollider collider)
         {
-            // should take damage from sword here
+            if (game.currentRoom.Enemies.Contains(enemy)) enemy.TakeDamage();
         }
     }
 }
