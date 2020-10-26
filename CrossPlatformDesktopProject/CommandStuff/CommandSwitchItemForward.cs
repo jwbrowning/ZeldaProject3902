@@ -17,9 +17,9 @@ namespace Sprint0
 
         public void Execute()
         {
-            IItem item = myGame.items[0];
-            myGame.items.RemoveAt(0);
-            myGame.items.Add(item);
+            IItem item = myGame.currentRoom.Items[0];
+            myGame.currentRoom.Items.RemoveAt(0);
+            myGame.currentRoom.Items.Add(item);
         }
     }
 }

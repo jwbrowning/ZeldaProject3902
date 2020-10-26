@@ -21,6 +21,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
         public List<IEnemy> Enemies { get; set; }
         public List<IBlock> Blocks { get; set; }
         public List<IItem> Items { get; set; }
+        public List<INPC> NPCs { get; set; }
 
         public Room1(IPlayer link)
         {
@@ -28,6 +29,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
             Enemies = new List<IEnemy>();
             Blocks = new List<IBlock>();
             Items = new List<IItem>();
+            NPCs = new List<INPC>();
         }
         public void changeRoom(iRoom nextroom)
         {
@@ -91,7 +93,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
             else if ((string)environmentObject.Element("ObjectName") == "Water")
             {
                 //TODO Implement BlockWater
-                //Blocks.Add(new BlockWater(Game1.environment, new Vector2(x * 16, y * 16)));
+                Blocks.Add(new BlockStandard(new Vector2(x * 16, y * 16)));
             }
             else
             {

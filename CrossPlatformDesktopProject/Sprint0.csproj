@@ -73,6 +73,8 @@
     <Compile Include="CommandStuff\CommandUseItem2.cs" />
     <Compile Include="CommandStuff\CommandUseItem3.cs" />
     <Compile Include="ControllerMouse.cs" />
+    <Compile Include="EnemySpriteClasses\EnemyBoomerang.cs" />
+    <Compile Include="EnemySpriteClasses\Fireball.cs" />
     <Compile Include="EnemySpriteClasses\DamagedEnemy.cs" />
     <Compile Include="EnemySpriteClasses\INPC.cs" />
     <Compile Include="EnemySpriteClasses\IEnemy.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Environment\BlockSpriteFactory.cs" />
     <Compile Include="Environment\BlockStandard.cs" />
+    <Compile Include="Environment\Statue2.cs" />
     <Compile Include="Environment\DoorBombed.cs" />
     <Compile Include="Environment\DoorClosed.cs" />
     <Compile Include="Environment\DoorLocked.cs" />

@@ -8,6 +8,7 @@ using CrossPlatformDesktopProject.Items;
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
 using CrossPlatformDesktopProject.UsableItems;
+using CrossPlatformDesktopProject.RoomManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -23,15 +24,16 @@ namespace Sprint0
         SpriteBatch spriteBatch;
 
         static public Texture2D environment,squareOutline;
-        public List<IGameObject> gameObjects;
-        public List<INPC> npcs;
-        public List<IEnemy> enemies;
-        public List<IBlock> blocks;
-        public List<IItem> items;
+        //public List<IGameObject> gameObjects;
+        //public List<INPC> npcs;
+        //public List<IEnemy> enemies;
+        //public List<IBlock> blocks;
+        //public List<IItem> items;
         public IPlayer player;
         private List<IController> controllers;
         private SpriteFont font;
         private bool showCollisions = true;
+        public iRoom currentRoom;
 
         public Game1()
         {
@@ -50,41 +52,23 @@ namespace Sprint0
             player.Position = new Vector2(200, 360);
             LinkSpriteFactory.Instance.player = player;
             
+            /*
             gameObjects = new List<IGameObject>();
             npcs = new List<INPC>();
             enemies = new List<IEnemy>();
             blocks = new List<IBlock>();
             items = new List<IItem>();
-
-            /*
-            items.Add(new Heart());
-            IItem rupee = new Rupee();
-            rupee.Position += 64 * Vector2.UnitX;
-            items.Add(rupee);
-            IItem map = new Map();
-            map.Position += 128 * Vector2.UnitX;
-            items.Add(map);
-            IItem boomerang = new Boomerang();
-            boomerang.Position += 96 * Vector2.UnitY;
-            items.Add(boomerang);
-            IItem clock = new Clock();
-            clock.Position += 96 * Vector2.UnitY;
-            clock.Position += 64 * Vector2.UnitX;
-            items.Add(clock);
-            IItem fairy = new Fairy();
-            fairy.Position += 96 * Vector2.UnitY;
-            fairy.Position += 128 * Vector2.UnitX;
-            items.Add(fairy);
             */
 
-            npcs.Add(new OldMan(new Vector2(0,0)));
-            //enemies.Add(new Stalfos(NPCSpriteFactory.Instance.textureEnemies, player));
-            //blocks.Add(new BlockStandard(environment));
 
             controllers = new List<IController>();
             controllers.Add(new ControllerKeyboard(this));
-            //this.IsMouseVisible = true;
+            controllers.Add(new ControllerMouse(this));
+            this.IsMouseVisible = true;
             base.Initialize();
+
+            currentRoom = new Room1(player);
+            currentRoom.loadRoom("RoomC6");
         }
 
         protected override void LoadContent()
@@ -119,21 +103,21 @@ namespace Sprint0
                 currentController.Update();
             }
 
-            foreach (IGameObject currentGameObject in gameObjects)
-            {
-                currentGameObject.Update();
-            }
-            foreach (INPC npc in npcs)
+            foreach (INPC npc in currentRoom.NPCs)
             {
                 npc.Update();
             }
-            foreach (IEnemy enemy in enemies)
+            foreach (IEnemy enemy in currentRoom.Enemies)
             {
                 enemy.Update();
             }
-            foreach (IItem item in items)
+            foreach (IItem item in currentRoom.Items)
             {
                 item.Update();
+            }
+            foreach (IItem block in currentRoom.Blocks)
+            {
+                block.Update();
             }
 
             player.Update();
@@ -141,7 +125,7 @@ namespace Sprint0
             //if (npcs.Count > 0) npcs[0].Update();
             //if (items.Count > 0) items[0].Update();
 
-            List<IGameObject> allGameObjects = blocks.Concat<IGameObject>(items).Concat(enemies).Concat(npcs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }).ToList();
+            List<IGameObject> allGameObjects = currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player }).ToList();
             CollisionDetection.DetectCollisions(allGameObjects);
 
             base.Update(gameTime);
@@ -151,23 +135,19 @@ namespace Sprint0
         {
             GraphicsDevice.Clear(Color.Gray);
 
-            foreach (IGameObject currentGameObject in gameObjects)
-            {
-                currentGameObject.Draw(spriteBatch);
-            }
-            foreach (INPC npc in npcs)
+            foreach (INPC npc in currentRoom.NPCs)
             {
                 npc.Draw(spriteBatch);
             }
-            foreach (IEnemy enemy in enemies)
+            foreach (IEnemy enemy in currentRoom.NPCs)
             {
                 enemy.Draw(spriteBatch);
             }
-            foreach (IItem item in items)
+            foreach (IItem item in currentRoom.Items)
             {
                 item.Draw(spriteBatch);
             }
-            foreach (IBlock block in blocks)
+            foreach (IBlock block in currentRoom.Blocks)
             {
                 block.Draw(spriteBatch);
             }
@@ -178,7 +158,7 @@ namespace Sprint0
             if (showCollisions)
             {
                 spriteBatch.Begin();
-                foreach (IGameObject g in blocks.Concat<IGameObject>(items).Concat(enemies).Concat(npcs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }))
+                foreach (IGameObject g in currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player }))
                 {
                     Rectangle rec = CollisionDetection.GetColliderRectangle(g);
                     spriteBatch.Draw(squareOutline, rec, new Color(Color.LimeGreen, 1));
