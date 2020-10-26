@@ -14,6 +14,7 @@ namespace CrossPlatformDesktopProject.UsableItems
         private Texture2D bomb, explosion;
         private Texture2D leftArrow, upArrow, rightArrow, downArrow;
         private Texture2D boomerang;
+        private Texture2D leftBeam, upBeam, rightBeam, downBeam;
         private static UsableItemSpriteFactory instance = new UsableItemSpriteFactory();
 
         public static UsableItemSpriteFactory Instance
@@ -35,6 +36,10 @@ namespace CrossPlatformDesktopProject.UsableItems
             rightArrow = content.Load<Texture2D>("UsableItems/arrowright");
             downArrow = content.Load<Texture2D>("UsableItems/arrowdown");
             boomerang = content.Load<Texture2D>("UsableItems/boomerang");
+            leftBeam = content.Load<Texture2D>("UsableItems/SwordBeamLeft");
+            upBeam = content.Load<Texture2D>("UsableItems/SwordBeamUp");
+            rightBeam = content.Load<Texture2D>("UsableItems/SwordBeamRight");
+            downBeam = content.Load<Texture2D>("UsableItems/SwordBeamDown");
         }
 
         public ISprite CreateBombSprite()
@@ -70,6 +75,26 @@ namespace CrossPlatformDesktopProject.UsableItems
         public ISprite CreateBoomerangSprite()
         {
             return new UsableItemSprite(boomerang, 1, 8, 0, 8, 2);
+        }
+
+        public ISprite CreateLeftSwordBeamSprite()
+        {
+            return new UsableItemSprite(leftBeam, 4, 1, 0, 4, 2);
+        }
+
+        public ISprite CreateUpSwordBeamSprite()
+        {
+            return new UsableItemSprite(upBeam, 1, 4, 0, 4, 2);
+        }
+
+        public ISprite CreateRightSwordBeamSprite()
+        {
+            return new UsableItemSprite(rightBeam, 4, 1, 0, 4, 2);
+        }
+
+        public ISprite CreateDownSwordBeamSprite()
+        {
+            return new UsableItemSprite(downBeam, 1, 4, 0, 4, 2);
         }
 
     }

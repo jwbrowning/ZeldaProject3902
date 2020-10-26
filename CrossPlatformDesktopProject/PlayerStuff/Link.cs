@@ -38,6 +38,8 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         public Dictionary<ItemType, int> ItemCounts { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
         public ISword Sword { get; set; }
+        public int Health { get; set; }
+        public int TotalHealth { get; set; }
         public Vector2 Position { get; set; }
         public Vector2 MoveDirection { get; set; }
         private float speed = 5;
@@ -45,6 +47,8 @@ namespace CrossPlatformDesktopProject.PlayerStuff
 
         public Link(Game1 game)
         {
+            Health = 3;
+            TotalHealth = 3;
             this.game = game;
             State = new DownStillPlayerState(this);
             Position = Vector2.Zero;
@@ -97,6 +101,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         public void TakeDamage()
         {
             game.player = new DamagedLink(this, game);
+            Health--;
         }
 
         public void Attack()

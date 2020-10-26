@@ -24,6 +24,8 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         public ICollisionHandler CollisionHandler { get => player.CollisionHandler; set => player.CollisionHandler = value; }
         public Dictionary<ItemType, int> ItemCounts { get => player.ItemCounts; set => player.ItemCounts = value; }
         public ISword Sword { get => player.Sword; set => player.Sword = value; }
+        public int Health { get => player.Health; set => player.Health = value; }
+        public int TotalHealth { get => player.TotalHealth; set => player.TotalHealth = value; }
 
         private IPlayer player;
         private Game1 game;
