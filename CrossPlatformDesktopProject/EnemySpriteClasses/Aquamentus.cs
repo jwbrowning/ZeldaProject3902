@@ -21,12 +21,14 @@ namespace Sprint0
         private int health = 6;
         private int animationFrame = 1;
         private int movementFrame = 1;
+        Random rnd = new Random();
+        int shootFireBall = 0;
 
         private int spritePositionX = 600;
         private int spritePositionY = 200;
 
 
-        private Vector2 size = new Vector2(75, 100);
+        private Vector2 size = new Vector2(45, 40);
         public Vector2 Position
         {
             get
@@ -72,6 +74,9 @@ namespace Sprint0
         {
             animationFrame++;
             movementFrame++;
+
+            shootFireBall = rnd.Next(0, 40);
+
             if (animationFrame == 40)
                 animationFrame = 1;
 
@@ -95,6 +100,13 @@ namespace Sprint0
             else if (movementFrame > 300)
             {
                 spritePositionY = spritePositionY + 1;
+            }
+
+            if (shootFireBall == 1)
+            {
+                game.currentRoom.Enemies.Add(new Fireball(player, new Vector2(spritePositionX - 10, spritePositionY - 10), 0));
+                game.currentRoom.Enemies.Add(new Fireball(player, new Vector2(spritePositionX - 10, spritePositionY - 0), 1));
+                game.currentRoom.Enemies.Add(new Fireball(player, new Vector2(spritePositionX - 10, spritePositionY + 10), 2));
             }
         }
 
