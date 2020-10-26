@@ -115,7 +115,7 @@ namespace Sprint0
             {
                 item.Update();
             }
-            foreach (IItem block in currentRoom.Blocks)
+            foreach (IBlock block in currentRoom.Blocks)
             {
                 block.Update();
             }
