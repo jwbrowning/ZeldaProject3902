@@ -33,6 +33,8 @@ namespace Sprint0
             RegisterCommand(Keys.Z, new CommandSword(game));
             RegisterCommand(Keys.N, new CommandSword(game));
             RegisterCommand(Keys.E, new CommandDamage(game));
+            RegisterCommand(Keys.C, new CommandShowColliders(game));
+            RegisterCommand(Keys.V, new CommandRemoveColliders(game));
             /*Leftover code from Sprint 2
             RegisterCommand(Keys.T, new CommandSwitchBlockForward(game));
             RegisterCommand(Keys.Y, new CommandSwitchBlockBack(game));

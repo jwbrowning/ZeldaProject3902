@@ -61,7 +61,9 @@
     <Compile Include="CommandStuff\CommandMoveRight.cs" />
     <Compile Include="CommandStuff\CommandMoveUp.cs" />
     <Compile Include="CommandStuff\CommandQuit.cs" />
+    <Compile Include="CommandStuff\CommandRemoveColliders.cs" />
     <Compile Include="CommandStuff\CommandReset.cs" />
+    <Compile Include="CommandStuff\CommandShowColliders.cs" />
     <Compile Include="CommandStuff\CommandSwitchBlockForward.cs" />
     <Compile Include="CommandStuff\CommandSwitchBlockBack.cs" />
     <Compile Include="CommandStuff\CommandSwitchItemBack.cs" />
