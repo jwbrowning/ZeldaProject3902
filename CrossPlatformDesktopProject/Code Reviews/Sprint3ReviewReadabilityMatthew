@@ -1,1 +1,10 @@
+Review Author: Abhi Malisetty
+Date: 10/26/2020
+Sprint 3
+File Under Review: Room1.cs
+Author of File: Matthew Landwehr
+Time taken for review: 10 minutes
 
+Comments: 
+
+No glaring issues in the code. Good commenting explaining what the constants are for and what they do. Large portion of the code lacks comments but is largely self explantory so it's not a big deal. I think the loadRoom method could use a comment or two explaining where the information about room layouts is coming from and how it's being loaded exactly. 
