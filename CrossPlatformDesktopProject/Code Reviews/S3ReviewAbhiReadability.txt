@@ -1,0 +1,13 @@
+﻿Review Author: Matthew Landwehr
+Date: 26/10/2020
+Sprint: 3
+File under review: EnemyBoomerang.cs
+Author of file: Abhi Malisetty
+Time to complete review: 10 minutes
+Comments: I didn't notice any major readability errors. A minor change
+	I would make is to label which directionCode corresponds to each 
+	direction (e.g. a comment labeling that directionCode 1 means the 
+	boomerang was thrown to the right). The variable name "drawBoomerang"
+	seems a little unclear. It might be better if it was called something
+	like "boomerangExpired" and had the trues/falses reversed. That may
+	just be personal preference, though.

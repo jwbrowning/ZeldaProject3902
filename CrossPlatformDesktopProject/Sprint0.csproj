@@ -233,6 +233,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="app.manifest" />
+    <Content Include="Code Reviews\S3ReviewAbhiQuality.txt" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Code Reviews\ReviewAidan.txt" />
@@ -240,6 +241,7 @@
     <Content Include="Code Reviews\ReviewHemil.txt" />
     <Content Include="Code Reviews\ReviewJohnathan.txt" />
     <Content Include="Code Reviews\ReviewAbhi.txt" />
+    <Content Include="Code Reviews\S3ReviewAbhiReadability.txt" />
     <Content Include="Content\Rooms\RoomA3.xml" />
     <Content Include="Content\Rooms\RoomB1.xml" />
     <Content Include="Content\Rooms\RoomB3.xml" />
