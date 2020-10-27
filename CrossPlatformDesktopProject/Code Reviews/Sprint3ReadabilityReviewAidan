@@ -1,0 +1,11 @@
+Code Readability Review
+10/26/20
+Johnathan Browning
+Sprint 3
+ControllerMouse.cs
+Aidan Haskett
+10
+Overall pretty easy to read and understand. 
+There are a couple lines with an unneccessary use of the ternary operator, and the if/else structure is rather large, but overall it is not difficult to read. 
+Variable names make sense and are understandable.
+The class implements the IController interface, which contains the RegisterCommand method, but the code does not actually make use of the method.
