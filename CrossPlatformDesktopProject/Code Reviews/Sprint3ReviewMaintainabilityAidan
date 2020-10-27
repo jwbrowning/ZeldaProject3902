@@ -1,0 +1,9 @@
+Code Maintainability Review
+10/26/20
+Johnathan Browning
+Sprint 3
+ControllerMouse.cs
+Aidan Haskett
+10
+Code quality is pretty good overall. The code works very well and allows you to switch rooms only on the frame when the mouse button is pressed down, by keeping track of the mousebutton's state on the previous frame.
+One change I would consider making is to make use of commands. Instead of directly changing things about game1 directly from the mouse controller class, I would register commands through the IController interface, and then let the commands have the ability to access and modify which room is showing through game1.
