@@ -1,0 +1,13 @@
+﻿Author of the code review: Hemil Amin
+Date of the code review: Monday October 26, 2020
+Sprint number: Sprint 3
+Name of the .cs file being reviewed: LinkCollisionHandler.cs
+Author of the .cs file being reviewed: Johnathan Browning
+
+Specific comments on code quality
+	- Strong/high cohesion, loose coupling
+
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change
+	⁃	I don’t see any change currently that couldn’t be implemented with the given code.
+		- could you potentially make the HandlePickupItemCollision() smaller not necessarily needed but could help
+	⁃	Over all the code is of good quality, it does what it needs to do and 

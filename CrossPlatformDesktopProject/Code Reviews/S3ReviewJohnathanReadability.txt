@@ -1,0 +1,15 @@
+﻿Author of the code review: Hemil Amin
+Date of the code review: Monday October 26, 2020
+Sprint number: Sprint 3
+Name of the .cs file being reviewed: LinkCollisionHandler.cs
+Author of the .cs file being reviewed: Johnathan Browning
+Number of minutes taken to complete the review: 10
+
+
+Specific comments on what is readable and what is not
+
+Code is mostly readable due to strong/high cohesion 
+Almost all the variables are named in a proper format.
+	-Point d could be changed to a better name
+Naming conventions on the images are proper as well.
+Overall code readability is of good quality. 
