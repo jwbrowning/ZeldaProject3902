@@ -27,7 +27,7 @@ namespace Sprint0
 		public IPlayer player;
 		private List<IController> controllers;
 		private SpriteFont font;
-		private bool showCollisions = true;
+		public bool showCollisions = false;
 		public iRoom currentRoom;
 		public int roomIndex = 0;
 		public string[] rooms = {"RoomDEBUG", "RoomA3", "RoomB1", "RoomB3", "RoomB4", "RoomB6", "RoomC1", "RoomC2", "RoomC3", "RoomC4", "RoomC5", "RoomC6", "RoomD3", "RoomD4", "RoomD6", "RoomE2", "RoomE3", "RoomF2"};
