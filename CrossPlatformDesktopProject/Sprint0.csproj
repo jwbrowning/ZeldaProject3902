@@ -236,11 +236,6 @@
     <Content Include="Code Reviews\S3ReviewAbhiQuality.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Code Reviews\ReviewAidan.txt" />
-    <Content Include="Code Reviews\ReviewMatthew.txt" />
-    <Content Include="Code Reviews\ReviewHemil.txt" />
-    <Content Include="Code Reviews\ReviewJohnathan.txt" />
-    <Content Include="Code Reviews\ReviewAbhi.txt" />
     <Content Include="Code Reviews\S3ReviewAbhiReadability.txt" />
     <Content Include="Code Reviews\S3ReviewJohnathanQuality.txt" />
     <Content Include="Code Reviews\S3ReviewJohnathanReadability.txt" />
