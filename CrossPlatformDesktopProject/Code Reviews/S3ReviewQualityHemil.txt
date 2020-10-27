@@ -1,0 +1,11 @@
+Author of the code review: Aidan Haskett
+Date of the code review: 10/26/2020
+Sprint number: 3
+Name of the .cs file being reviewed: EnemyCollisionHandler.cs
+Author of the .cs file being reviewed: Hemil Amin
+Specific comments on code quality:
+I think the quality of this code is good collisions in itself are complicated but the code is not too complicated where it cant be easily followed.
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change:
+I would add more comments to explain a few lines more indepth I would also clean up a few variable names to make it more clear aka "Point d" may not even be
+used anywhere in the code but is initalized without any context to what it is doing. Making these changes would should not have any changes to the current 
+logic behind the implimentation and should be easily supported.
