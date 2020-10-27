@@ -20,7 +20,7 @@ namespace Sprint0
         private int movementFrame = 1;
         private int spritePositionX = 500;
         private int spritePositionY = 300;
-        int directionCode = 0; //keeps track of which direction sprite should move
+        int directionCode = 0; //keeps track of which direction sprite should move. 0 is up, 1 is down, 2 is left, 3 is right.
         int patrolPhase = 1;
         int patrolFrame = 1;
         private IPlayer player;
@@ -88,7 +88,7 @@ namespace Sprint0
                 patrolFrame = 1;
 
 
-            if (patrolPhase == 1)
+            if (patrolPhase == 1) //default phase of enemies, is changed after the enemy "sees" link 
             {
                 if (patrolFrame <= 100)
                 {
@@ -116,7 +116,7 @@ namespace Sprint0
 
                         if (spritePositionY - playerPositionY <= 300 && boomerangThrown == false)
                         {
-                            game.currentRoom.Enemies.Add(new EnemyBoomerang(game, this, new Vector2(spritePositionX, spritePositionY), directionCode));
+                            game.currentRoom.Enemies.Add(new EnemyBoomerang(game, this, new Vector2(spritePositionX, spritePositionY), directionCode)); //is created when the goriya gets close enough to player
                             boomerangThrown = true;
                             directionCode = -1;
                         }

@@ -48,7 +48,7 @@ namespace CrossPlatformDesktopProject.EnemySpriteClasses
 
 		public void LoadAllTextures(ContentManager content)
 		{
-			textureEnemies = content.Load<Texture2D>("NES_-_The_Legend_of_Zelda_-_Dungeon_Enemies");
+			textureEnemies = content.Load<Texture2D>("NES_-_The_Legend_of_Zelda_-_Dungeon_Enemies"); //the three textures used for all enemies, bosses, NPCS, and their projectiles.
 			textureNPCs = content.Load<Texture2D>("The_Legend_of_Zelda_-_NPCs");
 			textureBosses = content.Load<Texture2D>("The_Legend_of_Zelda_-_Bosses");
 			

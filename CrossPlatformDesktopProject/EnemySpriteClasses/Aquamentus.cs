@@ -99,7 +99,7 @@ namespace Sprint0
                 spritePositionY = spritePositionY + 1;
             }
 
-            if (fireballFrame == 25)
+            if (fireballFrame == 25)//will periodically produce 3 fireballs at set intervals.
             {
                 game.currentRoom.Enemies.Add(new Fireball(game, player, new Vector2(spritePositionX - 10, spritePositionY - 10), 0));
                 game.currentRoom.Enemies.Add(new Fireball(game, player, new Vector2(spritePositionX - 10, spritePositionY - 0), 1));

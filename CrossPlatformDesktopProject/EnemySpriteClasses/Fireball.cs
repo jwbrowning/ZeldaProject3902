@@ -37,7 +37,7 @@ namespace Sprint0
             }
         }
 
-        public Fireball(Game1 game, IPlayer player, Vector2 position, int fireballCode) //fireballCode is a number between 0-2 that determines which of the 3 fireballs will be drawn.
+        public Fireball(Game1 game, IPlayer player, Vector2 position, int fireballCode) //fireballCode is a number between 0-2 that determines which of the 3 fireballs will be drawn. 0 is top, 1 is middle, 2 is bottom.
         {
             OverlayColor = Color.White;
             Texture = NPCSpriteFactory.Instance.textureBosses;
@@ -77,7 +77,7 @@ namespace Sprint0
                 spritePositionY = spritePositionY + 2;
             }
 
-            if (spritePositionX < 0)
+            if (spritePositionX < 0)//when a fireball moves off screen to the left it will be deleted to save space.
             {
                 game.currentRoom.Enemies.Remove(this);
             }

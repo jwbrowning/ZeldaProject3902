@@ -23,7 +23,7 @@ namespace Sprint0
 
         private int spritePositionX = 500;
         private int spritePositionY = 300;
-        int directionCode = 0; //determines which direction sprite should move. Ranges from 0-3.
+        int directionCode = 0; //determines which direction sprite should move. Ranges from 0-3. 0 = up, 1 = down, 2 = left, 3 = right.
         private IPlayer player;
         private BlueGoriya blueGoriya;
 

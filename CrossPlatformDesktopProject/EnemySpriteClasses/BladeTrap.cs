@@ -25,7 +25,7 @@ namespace Sprint0
         private int health = 1;
         int patrolPhase = 1;
         int patrolFrame = 1;
-        int directionCode = -1; //keeps track of which direction sprite should move
+        int directionCode = -1; //keeps track of which direction sprite should move. 0 is up, 1 is down, 2 is left, 3 is right.
 
         private Vector2 size = new Vector2(60, 60);
         public Vector2 Position
@@ -87,7 +87,7 @@ namespace Sprint0
                 patrolFrame = 1;
 
 
-            if (patrolPhase == 1)
+            if (patrolPhase == 1) //default phase of enemies, is changed after the enemy "sees" link. Bladetrap stays still
             {
                 if (((spritePositionX - 10) <= playerPositionX && playerPositionX <= (spritePositionX + 10)) || ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 10)))
                 {
