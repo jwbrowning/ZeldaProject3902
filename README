@@ -12,6 +12,7 @@ Particles like the enemy spawn effect, death effect, and sword beam particles ne
 Additional Features
 
 In addition to the required features for the sprint, we also added a new feature of our own. We made the boomerang able to carry items along with it as it is thrown. So if you throw your boomerang at an item on the ground, such as a map, it will carry the map back to you.
+For testing purposes, we also added controls to enable/disable showing of colliders by pressing c and v.
 
 Code Analysis
 
