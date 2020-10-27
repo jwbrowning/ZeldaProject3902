@@ -106,7 +106,7 @@ namespace Sprint0
 
             }
 
-            if (patrolPhase == 0)
+            if (patrolPhase == 0 && boomerangThrown == false)
             {
                 if ((spritePositionX - 10) <= playerPositionX && playerPositionX <= (spritePositionX + 10))
                 {
@@ -116,8 +116,9 @@ namespace Sprint0
 
                         if (spritePositionY - playerPositionY <= 300 && boomerangThrown == false)
                         {
-                            game.currentRoom.Enemies.Add(new EnemyBoomerang(game, this, new Vector2(spritePositionX + 10, spritePositionY), directionCode));
+                            game.currentRoom.Enemies.Add(new EnemyBoomerang(game, this, new Vector2(spritePositionX, spritePositionY), directionCode));
                             boomerangThrown = true;
+                            directionCode = -1;
                         }
                     }
                     else if (playerPositionY > spritePositionY)
@@ -126,8 +127,9 @@ namespace Sprint0
 
                         if (playerPositionY - spritePositionY <= 300 && boomerangThrown == false)
                         {
-                            game.currentRoom.Enemies.Add(new EnemyBoomerang(game, this, new Vector2(spritePositionX + 10, spritePositionY - 20), directionCode));
+                            game.currentRoom.Enemies.Add(new EnemyBoomerang(game, this, new Vector2(spritePositionX, spritePositionY), directionCode));
                             boomerangThrown = true;
+                            directionCode = -1;
                         }
                     }
                 }
@@ -140,8 +142,9 @@ namespace Sprint0
 
                         if (spritePositionX - playerPositionX <= 300 && boomerangThrown == false)
                         {
-                            game.currentRoom.Enemies.Add(new EnemyBoomerang(game, this, new Vector2(spritePositionX, spritePositionY - 20), directionCode));
+                            game.currentRoom.Enemies.Add(new EnemyBoomerang(game, this, new Vector2(spritePositionX, spritePositionY), directionCode));
                             boomerangThrown = true;
+                            directionCode = -1;
                         }
                     }
                     else if (playerPositionX > spritePositionX)
@@ -150,8 +153,9 @@ namespace Sprint0
 
                         if (playerPositionX - spritePositionX <= 300 && boomerangThrown == false)
                         {
-                            game.currentRoom.Enemies.Add(new EnemyBoomerang(game, this, new Vector2(spritePositionX + 20, spritePositionY - 20), directionCode));
+                            game.currentRoom.Enemies.Add(new EnemyBoomerang(game, this, new Vector2(spritePositionX, spritePositionY), directionCode));
                             boomerangThrown = true;
+                            directionCode = -1;
                         }
                     }
                 }
@@ -254,8 +258,21 @@ namespace Sprint0
             }
             else
             {
-                sourceRectangle = new Rectangle(422, 54, 16, 16);
-                destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 60, 60);
+                if (animationFrame >= 1 && animationFrame < 10)
+                {
+                    sourceRectangle = new Rectangle(223, 28, 16, 16);
+                    destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 60, 60);
+                }
+                else if (animationFrame >= 10)
+                {
+                    sourceRectangle = new Rectangle(440, 124, 16, 16);
+                    destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 60, 60);
+                }
+                else
+                {
+                    sourceRectangle = new Rectangle(440, 124, 16, 16);
+                    destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 60, 60);
+                }
             }
 
             spriteBatch.Begin();
