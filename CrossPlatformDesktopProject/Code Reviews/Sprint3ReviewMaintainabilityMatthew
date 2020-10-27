@@ -1,1 +1,14 @@
+Review Author: Abhi Malisetty
+Date: 10/26/2020
+Sprint 3
+File Under Review: Room1.cs
+Author of File: Matthew Landwehr
+Time taken for review: 20 minutes
 
+Comments: 
+
+No glaring issues in the code. There are some useful constants near the beginning of the file that can be easily adjusted and changed as needed (We used this during development). Separation of different types of game objects to be added into different methods is good. 1 Small note, it seems that Wallmaster is being added twice, once as "WallMaster"and once as "Wallmaster" though this doesn't break anything it is probably unnecessary code. 
+
+Hypothetical Change: 
+
+Adding a new kind of an existing object type would be quite simple as it would just require another else if branch and a line to add the new object into the list. Adding a new object type entirely like doors that lead to a different room would require new code and a new method. This method would not be problematic to integrate with the rest of the class however so no issues there.
