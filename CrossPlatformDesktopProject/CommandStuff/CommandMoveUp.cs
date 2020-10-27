@@ -1,9 +1,6 @@
-﻿using System;
-using System.Windows.Input;
-
-namespace Sprint0
+﻿namespace Sprint0
 {
-	class CommandMoveUp : ICommand
+    class CommandMoveUp : ICommand
 	{
 		private Game1 myGame;
 		public CommandMoveUp(Game1 game)

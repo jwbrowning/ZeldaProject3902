@@ -1,8 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
-using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
-using System;
 
 public class Bomb : IItem
 {

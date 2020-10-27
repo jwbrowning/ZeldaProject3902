@@ -64,12 +64,6 @@
     <Compile Include="CommandStuff\CommandRemoveColliders.cs" />
     <Compile Include="CommandStuff\CommandReset.cs" />
     <Compile Include="CommandStuff\CommandShowColliders.cs" />
-    <Compile Include="CommandStuff\CommandSwitchBlockForward.cs" />
-    <Compile Include="CommandStuff\CommandSwitchBlockBack.cs" />
-    <Compile Include="CommandStuff\CommandSwitchItemBack.cs" />
-    <Compile Include="CommandStuff\CommandSwitchItemForward.cs" />
-    <Compile Include="CommandStuff\CommandSwitchNPCForward.cs" />
-    <Compile Include="CommandStuff\CommandSwitchNPCBack.cs" />
     <Compile Include="CommandStuff\CommandSword.cs" />
     <Compile Include="CommandStuff\CommandUseItem.cs" />
     <Compile Include="CommandStuff\CommandUseItem2.cs" />
@@ -100,7 +94,6 @@
     <Compile Include="Environment\Stairs.cs" />
     <Compile Include="Environment\Statue.cs" />
     <Compile Include="Environment\StatueDragon.cs" />
-    <Compile Include="GeneralStuff\IController.cs" />
     <Compile Include="IGameObject.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="EnemySpriteClasses\Aquamentus.cs" />

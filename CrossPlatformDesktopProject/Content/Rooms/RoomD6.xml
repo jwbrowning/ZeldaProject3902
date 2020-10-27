@@ -65,7 +65,7 @@
 		<Item>
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>BlockStandard</ObjectName>
-			<Location>10 6</Location>
+			<Location>10 5</Location>
 		</Item>
 		<Item>
 			<ObjectType>Enemy</ObjectType>

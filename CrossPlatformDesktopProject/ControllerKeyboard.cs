@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Sprint0
 {
-	class ControllerKeyboard : IController
+    class ControllerKeyboard : IController
 	{
         private Game1 game;
         private Keys[] prevPressedKeys = new Keys[0];

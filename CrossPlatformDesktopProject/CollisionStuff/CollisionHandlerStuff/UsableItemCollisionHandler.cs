@@ -1,13 +1,6 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.ColliderStuff;
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.UsableItems;
-using CrossPlatformDesktopProject.Environment;
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 {

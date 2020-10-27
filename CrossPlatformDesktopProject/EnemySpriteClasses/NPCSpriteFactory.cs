@@ -1,18 +1,12 @@
-﻿using CrossPlatformDesktopProject.Items;
+﻿using CrossPlatformDesktopProject.PlayerStuff;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CrossPlatformDesktopProject.PlayerStuff;
 
 namespace CrossPlatformDesktopProject.EnemySpriteClasses
 {
 
-    
+
     class NPCSpriteFactory
     {
 		private IPlayer player;

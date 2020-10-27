@@ -1,22 +1,15 @@
 ﻿using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.Environment;
+using Microsoft.Xna.Framework;
+using Sprint0;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using System.IO;
 using System.Xml.Linq;
-using Sprint0;
-using Microsoft.Xna.Framework;
-using System.Drawing.Printing;
-using CrossPlatformDesktopProject.PlayerStuff;
-using System.Reflection;
 
 namespace CrossPlatformDesktopProject.RoomManagement
 {
-	class Room1 : iRoom
+    class Room1 : iRoom
 	{
 		private Game1 mygame;
 		public List<IEnemy> Enemies { get; set; }

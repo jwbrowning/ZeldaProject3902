@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.EnemySpriteClasses;
-using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.PlayerStuff;
-using System.Dynamic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint0
 {

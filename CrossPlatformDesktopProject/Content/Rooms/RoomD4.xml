@@ -20,7 +20,7 @@
 		<Item>
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>BlockStandard</ObjectName>
-			<Location>3 7</Location>
+			<Location>3 6</Location>
 		</Item>
 		<Item>
 			<ObjectType>Environment</ObjectType>
@@ -30,7 +30,7 @@
 		<Item>
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>BlockStandard</ObjectName>
-			<Location>10 7</Location>
+			<Location>10 6</Location>
 		</Item>
 		<Item>
 			<ObjectType>Enemy</ObjectType>

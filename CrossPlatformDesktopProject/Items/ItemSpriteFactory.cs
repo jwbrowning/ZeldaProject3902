@@ -2,11 +2,6 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 //sprites taken from https://www.spriters-resource.com/nes/legendofzelda/sheet/54720/, edited by M. Landwehr

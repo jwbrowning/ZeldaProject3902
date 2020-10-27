@@ -1,11 +1,4 @@
-﻿using CrossPlatformDesktopProject.CollisionStuff.ColliderStuff;
-using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
-using CrossPlatformDesktopProject.PlayerStuff;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 
 namespace CrossPlatformDesktopProject.CollisionStuff
 {
