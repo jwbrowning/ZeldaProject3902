@@ -1,6 +1,7 @@
 ﻿using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.Environment;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,9 @@ namespace CrossPlatformDesktopProject.RoomManagement
         public List<IBlock> Blocks { get; set; }
 		public List<IItem> Items { get; set; }
 		public List<INPC> NPCs { get; set; }
+		public Vector2 Position { get; set; }
+		private Texture2D floorBaseWithWalls;
+		private Vector2 size = new Vector2(1024,704);
 
 		/*XSCALE and YSCALE convert the object coordinates from tiles to pixels. 
 		In the original game each tile is 16 pixels wide, but upscaled by 4 for 
@@ -26,15 +30,19 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		to account for the border walls and HUD. Even though the border wall
 		is only 64 pixels wide, 32 pixels are added to account for the sprite's
 		Draw methods using the center of the sprite, not the top left corner*/
-		const int XOFFSET = 98;
-		const int YOFFSET = 98;
-		public Room1(Game1 game)
+		int XOFFSET = 98;
+		int YOFFSET = 98;
+		public Room1(Game1 game, Vector2 position, Texture2D floorBaseWithWalls)
 		{
 			mygame = game;
 			Enemies = new List<IEnemy>();
 			Blocks = new List<IBlock>();
 			Items = new List<IItem>();
 			NPCs = new List<INPC>();
+			Position = position;
+			this.floorBaseWithWalls = floorBaseWithWalls;
+			XOFFSET = 98 + (int)(Position.X - size.X / 2f);
+			YOFFSET = 98 + (int)(Position.Y - size.Y / 2f);
 		}
 		
 		//unused, to be used to manage transitions/animations when changing rooms
@@ -129,8 +137,8 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		void addEnemy(XElement enemy)
 		{
 			string[] location = ((string)enemy.Element("Location")).Split(' ');
-			int x = int.Parse(location[0]);
-			int y = int.Parse(location[1]);
+			int x = (int)Position.X - int.Parse(location[0]);
+			int y = (int)Position.Y - int.Parse(location[1]);
 
 			if ((string)enemy.Element("ObjectName") == "BlueKeese")
 			{
@@ -177,8 +185,8 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		void addNPC(XElement NPC)
 		{
 			string[] location = ((string)NPC.Element("Location")).Split(' ');
-			int x = int.Parse(location[0]);
-			int y = int.Parse(location[1]);
+			int x = (int)Position.X - int.Parse(location[0]);
+			int y = (int)Position.Y - int.Parse(location[1]);
 
 			if ((string)NPC.Element("ObjectName") == "OldMan")
 			{
@@ -262,5 +270,49 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			}
 
 		}
+
+		public void Update()
+		{
+			for (int i = 0; i < NPCs.Count; i++)
+			{
+				NPCs[i].Update();
+			}
+			for (int i = 0; i < Enemies.Count; i++)
+			{
+				Enemies[i].Update();
+			}
+			for (int i = 0; i < Items.Count; i++)
+			{
+				Items[i].Update();
+			}
+			for (int i = 0; i < Blocks.Count; i++)
+			{
+				Blocks[i].Update();
+			}
+		}
+
+		public void Draw(SpriteBatch spriteBatch)
+		{
+			spriteBatch.Begin();
+			spriteBatch.Draw(floorBaseWithWalls, new Rectangle((int)(Position.X-size.X/2f), (int)(Position.Y - size.Y / 2f), (int)size.X, (int)size.Y), Color.White);
+			spriteBatch.End();
+			foreach (IBlock block in Blocks)
+			{
+				block.Draw(spriteBatch);
+			}
+			foreach (INPC npc in NPCs)
+			{
+				npc.Draw(spriteBatch);
+			}
+			foreach (IEnemy enemy in Enemies)
+			{
+				enemy.Draw(spriteBatch);
+			}
+			foreach (IItem item in Items)
+			{
+				item.Draw(spriteBatch);
+			}
+		}
+
 	}
 }

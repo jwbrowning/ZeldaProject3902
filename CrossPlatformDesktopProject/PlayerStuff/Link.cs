@@ -44,7 +44,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         public Link(Game1 game)
         {
             Health = 3;
-            TotalHealth = 3;
+            TotalHealth = 7;
             this.game = game;
             State = new DownStillPlayerState(this);
             Position = Vector2.Zero;

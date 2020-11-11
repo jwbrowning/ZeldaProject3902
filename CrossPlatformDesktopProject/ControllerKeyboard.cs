@@ -43,6 +43,8 @@ namespace Sprint0
             RegisterCommand(Keys.O, new CommandSwitchNPCForward(game));
             RegisterCommand(Keys.P, new CommandSwitchNPCBack(game));
             */
+            RegisterCommand(Keys.O, new CommandUnpause(game));
+            RegisterCommand(Keys.P, new CommandPause(game));
             RegisterCommand(Keys.R, new CommandReset(game));
 	        RegisterCommand(Keys.Q, new CommandQuit(game));
         }

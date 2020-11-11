@@ -60,11 +60,13 @@
     <Compile Include="CommandStuff\CommandMoveLeft.cs" />
     <Compile Include="CommandStuff\CommandMoveRight.cs" />
     <Compile Include="CommandStuff\CommandMoveUp.cs" />
+    <Compile Include="CommandStuff\CommandPause.cs" />
     <Compile Include="CommandStuff\CommandQuit.cs" />
     <Compile Include="CommandStuff\CommandRemoveColliders.cs" />
     <Compile Include="CommandStuff\CommandReset.cs" />
     <Compile Include="CommandStuff\CommandShowColliders.cs" />
     <Compile Include="CommandStuff\CommandSword.cs" />
+    <Compile Include="CommandStuff\CommandUnpause.cs" />
     <Compile Include="CommandStuff\CommandUseItem.cs" />
     <Compile Include="CommandStuff\CommandUseItem2.cs" />
     <Compile Include="CommandStuff\CommandUseItem3.cs" />
@@ -94,6 +96,11 @@
     <Compile Include="Environment\Stairs.cs" />
     <Compile Include="Environment\Statue.cs" />
     <Compile Include="Environment\StatueDragon.cs" />
+    <Compile Include="HeadsUpDisplayStuff\HeaderInfo.cs" />
+    <Compile Include="HeadsUpDisplayStuff\HeadsUpDisplay.cs" />
+    <Compile Include="HeadsUpDisplayStuff\HUDSprite.cs" />
+    <Compile Include="HeadsUpDisplayStuff\HUDSpriteFactory.cs" />
+    <Compile Include="HeadsUpDisplayStuff\InventoryInfo.cs" />
     <Compile Include="IGameObject.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="EnemySpriteClasses\Aquamentus.cs" />
