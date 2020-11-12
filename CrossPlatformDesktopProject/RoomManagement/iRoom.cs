@@ -14,15 +14,22 @@ namespace CrossPlatformDesktopProject.RoomManagement
         List<INPC> NPCs { get; set; }
         Vector2 Position { get; set; }
 
-        void changeRoom(string nextRoomName);
+        void ChangeRoom(string nextRoomName);
 
-        void loadRoom(string roomName);
+        void LoadRoom(string roomName);
 
-        void respawnEnemies();
+        void RespawnEnemies();
 
-        void Update();
+        void UpdateBlocks();
+        void UpdateNPCS();
+        void UpdateEnemies();
+        void UpdateItems();
 
-        void Draw(SpriteBatch spriteBatch);
+        void DrawBackground(SpriteBatch spriteBatch);
+        void DrawBlocks(SpriteBatch spriteBatch);
+        void DrawNPCS(SpriteBatch spriteBatch);
+        void DrawEnemies(SpriteBatch spriteBatch);
+        void DrawItems(SpriteBatch spriteBatch);
 
     }
 }

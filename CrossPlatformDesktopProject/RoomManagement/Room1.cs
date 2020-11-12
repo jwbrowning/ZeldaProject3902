@@ -46,12 +46,12 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		}
 		
 		//unused, to be used to manage transitions/animations when changing rooms
-		public void changeRoom(string nextRoomName)
+		public void ChangeRoom(string nextRoomName)
 		{
 			throw new NotImplementedException();
 		}
 
-		public void loadRoom(String roomName)
+		public void LoadRoom(String roomName)
 		{
 			Enemies.Clear();
 			Blocks.Clear();
@@ -67,37 +67,37 @@ namespace CrossPlatformDesktopProject.RoomManagement
 					  where (string)item.Element("ObjectType") == "Environment"
 					  select item;
 			foreach (XElement environmentObject in loadedEnvironmentObjects) {
-				addEnvironmentObject(environmentObject);
+				AddEnvironmentObject(environmentObject);
 			}
 			IEnumerable<XElement> loadedEnemies = from item in roomFile.Descendants("Item")
 															 where (string)item.Element("ObjectType") == "Enemy"
 															 select item;
 			foreach (XElement enemyObject in loadedEnemies)
 			{
-				addEnemy(enemyObject);
+				AddEnemy(enemyObject);
 			}
 			IEnumerable<XElement> loadedItems = from item in roomFile.Descendants("Item")
 												  where (string)item.Element("ObjectType") == "Item"
 												  select item;
 			foreach (XElement itemObject in loadedItems)
 			{
-				addItem(itemObject);
+				AddItem(itemObject);
 			}
 			IEnumerable<XElement> loadedNPCs = from item in roomFile.Descendants("Item")
 												where (string)item.Element("ObjectType") == "NPC"
 												select item;
 			foreach (XElement NPCObject in loadedNPCs)
 			{
-				addNPC(NPCObject);
+				AddNPC(NPCObject);
 			}
 		}
 
-		public void respawnEnemies()
+		public void RespawnEnemies()
 		{
 			throw new NotImplementedException();
 		}
 
-		void addEnvironmentObject(XElement environmentObject)
+		void AddEnvironmentObject(XElement environmentObject)
 		{
 			string[] location = ((string)environmentObject.Element("Location")).Split(' ');
 			int x = int.Parse(location[0]);
@@ -134,7 +134,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			}
 		}
 
-		void addEnemy(XElement enemy)
+		void AddEnemy(XElement enemy)
 		{
 			string[] location = ((string)enemy.Element("Location")).Split(' ');
 			int x = (int)Position.X - int.Parse(location[0]);
@@ -182,7 +182,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			}
 		}
 
-		void addNPC(XElement NPC)
+		void AddNPC(XElement NPC)
 		{
 			string[] location = ((string)NPC.Element("Location")).Split(' ');
 			int x = (int)Position.X - int.Parse(location[0]);
@@ -198,7 +198,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			}
 		}
 
-		void addItem(XElement itemObject)
+		void AddItem(XElement itemObject)
 		{
 			string[] location = ((string)itemObject.Element("Location")).Split(' ');
 			int x = int.Parse(location[0]);
@@ -262,7 +262,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			}
 		}
 		
-		void addDoor(XElement doorObject)
+		void AddDoor(XElement doorObject)
 		{
 			if ((string)doorObject.Element("DoorPosition") == "Up")
 			{
@@ -271,43 +271,71 @@ namespace CrossPlatformDesktopProject.RoomManagement
 
 		}
 
-		public void Update()
+		public void UpdateNPCS()
 		{
 			for (int i = 0; i < NPCs.Count; i++)
 			{
 				NPCs[i].Update();
 			}
+		}
+
+		public void UpdateEnemies()
+		{
 			for (int i = 0; i < Enemies.Count; i++)
 			{
 				Enemies[i].Update();
 			}
+		}
+
+		public void UpdateItems()
+		{
 			for (int i = 0; i < Items.Count; i++)
 			{
 				Items[i].Update();
 			}
+		}
+
+		public void UpdateBlocks()
+		{
 			for (int i = 0; i < Blocks.Count; i++)
 			{
 				Blocks[i].Update();
 			}
 		}
 
-		public void Draw(SpriteBatch spriteBatch)
+		public void DrawBackground(SpriteBatch spriteBatch)
 		{
 			spriteBatch.Begin();
-			spriteBatch.Draw(floorBaseWithWalls, new Rectangle((int)(Position.X-size.X/2f), (int)(Position.Y - size.Y / 2f), (int)size.X, (int)size.Y), Color.White);
+			spriteBatch.Draw(floorBaseWithWalls, new Rectangle((int)(Position.X - size.X / 2f), (int)(Position.Y - size.Y / 2f), (int)size.X, (int)size.Y), Color.White);
 			spriteBatch.End();
+		}
+
+		public void DrawBlocks(SpriteBatch spriteBatch)
+		{
 			foreach (IBlock block in Blocks)
 			{
 				block.Draw(spriteBatch);
 			}
+		}
+
+		public void DrawNPCS(SpriteBatch spriteBatch)
+		{
 			foreach (INPC npc in NPCs)
 			{
 				npc.Draw(spriteBatch);
 			}
+		}
+
+		public void DrawEnemies(SpriteBatch spriteBatch)
+		{
 			foreach (IEnemy enemy in Enemies)
 			{
 				enemy.Draw(spriteBatch);
 			}
+		}
+
+		public void DrawItems(SpriteBatch spriteBatch)
+		{
 			foreach (IItem item in Items)
 			{
 				item.Draw(spriteBatch);

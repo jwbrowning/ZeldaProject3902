@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject
 {
-    class HeadsUpDisplay
+    public class HeadsUpDisplay
     {
         private Game1 game;
         private HeaderInfo headerInfo;
@@ -20,7 +20,7 @@ namespace CrossPlatformDesktopProject
         public Point Size { get; set; }
         private Vector2 normalPos;
         private Vector2 pausedPos;
-        private bool paused = false;
+        private bool inventoryOpen = false;
         private float lerpSpeed = .05f;
         private Vector2 titlePos = new Vector2(-100, -400);
 
@@ -37,7 +37,7 @@ namespace CrossPlatformDesktopProject
 
         public void Update()
         {
-            if(paused)
+            if(inventoryOpen)
             {
                 Position = Vector2.Lerp(Position, pausedPos, lerpSpeed);
             }
@@ -51,20 +51,19 @@ namespace CrossPlatformDesktopProject
         {
             spriteBatch.Begin();
             spriteBatch.Draw(game.rect, new Rectangle(new Point((int)(Position.X - Size.X/2f),(int)(Position.Y-Size.Y/2f)), Size), Color.Black);
-            spriteBatch.DrawString(game.font, "PAUSED", Position + titlePos, Color.White);
             spriteBatch.End();
             headerInfo.Draw(spriteBatch);
             inventoryInfo.Draw(spriteBatch);
         }
 
-        public void Pause()
+        public void OpenInventory()
         {
-            paused = true;
+            inventoryOpen = true;
         }
 
-        public void Unpause()
+        public void CloseInventory()
         {
-            paused = false;
+            inventoryOpen = false;
         }
 
     }

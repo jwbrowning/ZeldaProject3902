@@ -24,12 +24,12 @@ namespace Sprint0
                 if (game.roomIndex + 1 < game.rooms.Length)
                 {
                     game.roomIndex++;
-                    game.currentRoom.loadRoom(game.rooms[game.roomIndex]);
+                    game.currentRoom.LoadRoom(game.rooms[game.roomIndex]);
                 }
                 else
                 {
                     game.roomIndex = 0;
-                    game.currentRoom.loadRoom(game.rooms[game.roomIndex]);
+                    game.currentRoom.LoadRoom(game.rooms[game.roomIndex]);
                 }
             }
             if (leftPressed && !leftPressedLast)
@@ -37,12 +37,12 @@ namespace Sprint0
                 if (game.roomIndex - 1 >= 0)
                 {
                     game.roomIndex--;
-                    game.currentRoom.loadRoom(game.rooms[game.roomIndex]);
+                    game.currentRoom.LoadRoom(game.rooms[game.roomIndex]);
                 }
                 else
                 {
                     game.roomIndex = game.rooms.Length - 1;
-                    game.currentRoom.loadRoom(game.rooms[game.roomIndex]);
+                    game.currentRoom.LoadRoom(game.rooms[game.roomIndex]);
                 }
             }
             leftPressedLast = leftPressed;

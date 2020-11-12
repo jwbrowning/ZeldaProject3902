@@ -99,6 +99,10 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         {
             game.player = new DamagedLink(this, game);
             Health--;
+            if(Health <= 0)
+            {
+                game.GameOver();
+            }
         }
 
         public void Attack()

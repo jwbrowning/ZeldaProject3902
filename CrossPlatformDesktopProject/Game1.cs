@@ -3,10 +3,13 @@ using CrossPlatformDesktopProject;
 using CrossPlatformDesktopProject.CollisionStuff;
 using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.Environment;
+using CrossPlatformDesktopProject.GameStateStuff;
+using CrossPlatformDesktopProject.GameStateStuff.GameStateClasses;
 using CrossPlatformDesktopProject.HeadsUpDisplayStuff;
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
 using CrossPlatformDesktopProject.RoomManagement;
+using CrossPlatformDesktopProject.ScreenStuff;
 using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -21,13 +24,18 @@ namespace Sprint0
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 
+		public SpriteFont font;
+
+		public bool showCollisions = false;
+
 		static public Texture2D environment,squareOutline,floortilebase;
 		public Texture2D rect;
+
 		public IPlayer player;
-		private HeadsUpDisplay hud;
-		private List<IController> controllers;
-		public SpriteFont font;
-		public bool showCollisions = false;
+		public HeadsUpDisplay hud;
+		public IScreen screen;
+		private IGameState gameState;
+
 		public iRoom currentRoom;
 		public int roomIndex = 0;
 		public string[] rooms = {"RoomDEBUG", "RoomA3", "RoomB1", "RoomB3", "RoomB4", "RoomB6", "RoomC1", "RoomC2", "RoomC3", "RoomC4", "RoomC5", "RoomC6", "RoomD3", "RoomD4", "RoomD6", "RoomE2", "RoomE3", "RoomF2"};
@@ -53,15 +61,14 @@ namespace Sprint0
 			LinkSpriteFactory.Instance.player = player;
 
 			hud = new HeadsUpDisplay(this, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+			screen = new NormalScreen(this, GraphicsDevice, graphics);
+			gameState = new NormalGameState(this);
 
-			controllers = new List<IController>();
-			controllers.Add(new ControllerKeyboard(this));
-			controllers.Add(new ControllerMouse(this));
 			this.IsMouseVisible = true;
 			base.Initialize();
 
 			currentRoom = new Room1(this, new Vector2(graphics.PreferredBackBufferWidth/2, graphics.PreferredBackBufferHeight/2+84), floortilebase);
-            currentRoom.loadRoom("RoomDEBUG");
+            currentRoom.LoadRoom("RoomDEBUG");
 		}
 
 		protected override void LoadContent()
@@ -93,16 +100,7 @@ namespace Sprint0
 
 		protected override void Update(GameTime gameTime)
 		{
-			foreach (IController currentController in controllers)
-			{
-				currentController.Update();
-			}
-
-			hud.Update();
-
-			currentRoom.Update();
-
-			player.Update();
+			gameState.Update();
 
             List<IGameObject> allGameObjects = currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }).ToList();
             CollisionDetection.DetectCollisions(allGameObjects);
@@ -112,11 +110,8 @@ namespace Sprint0
 
 		protected override void Draw(GameTime gameTime)
 		{
-			GraphicsDevice.Clear(Color.Black);
-
-			currentRoom.Draw(spriteBatch);
-
-			player.Draw(spriteBatch);
+			screen.Draw(spriteBatch);
+			gameState.Draw(spriteBatch);
 
             // For testing, set showCollisions to true to show an outline around all colliders:
             if (showCollisions)
@@ -130,19 +125,49 @@ namespace Sprint0
                 spriteBatch.End();
 			}
 
-			hud.Draw(spriteBatch);
-
 			base.Draw(gameTime);
 		}
 
 		public void Pause()
         {
-			hud.Pause();
+			screen = new PauseScreen(this, GraphicsDevice, graphics);
+			gameState = new PausedGameState(this);
         }
 
 		public void Unpause()
         {
-			hud.Unpause();
+			screen = new NormalScreen(this, GraphicsDevice, graphics);
+			gameState = new NormalGameState(this);
+		}
+
+		public void OpenInventory()
+		{
+			hud.OpenInventory();
+			gameState = new InventoryGameState(this);
+		}
+
+		public void CloseInventory()
+		{
+			hud.CloseInventory();
+			gameState = new NormalGameState(this);
+		}
+
+		public void GameOver()
+        {
+			screen = new GameOverScreen(this, GraphicsDevice, graphics);
+			gameState = new GameOverGameState(this);
+        }
+
+		public void Win()
+		{
+			screen = new WinScreen(this, GraphicsDevice, graphics);
+			gameState = new WinningGameState(this);
+		}
+
+		public void ChangeRoom(string nextRoomName)
+        {
+			gameState = new RoomTransitionGameState(this);
+			currentRoom.ChangeRoom(nextRoomName);
         }
 	}
 }

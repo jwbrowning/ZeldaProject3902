@@ -84,14 +84,19 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
             else if(collider.GameObject is Fairy)
             {
                 game.player.ItemCounts[ItemType.Fairy]++;
+                game.player.Health = game.player.TotalHealth;
             }
             else if(collider.GameObject is Heart)
             {
                 game.player.ItemCounts[ItemType.Heart]++;
+                game.player.Health++;
+                if(game.player.Health > game.player.TotalHealth) game.player.Health = game.player.TotalHealth;
             }
             else if(collider.GameObject is HeartContainer)
             {
                 game.player.ItemCounts[ItemType.HeartContainer]++;
+                game.player.TotalHealth++;
+                game.player.Health++;
             }
             else if(collider.GameObject is Key)
             {
@@ -108,6 +113,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
             else if(collider.GameObject is TriforcePiece)
             {
                 game.player.ItemCounts[ItemType.TriforcePiece]++;
+                game.Win();
             }
             game.currentRoom.Items.Remove((IItem)collider.GameObject);
         }
