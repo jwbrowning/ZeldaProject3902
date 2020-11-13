@@ -137,8 +137,8 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		void AddEnemy(XElement enemy)
 		{
 			string[] location = ((string)enemy.Element("Location")).Split(' ');
-			int x = (int)Position.X - int.Parse(location[0]);
-			int y = (int)Position.Y - int.Parse(location[1]);
+			int x = int.Parse(location[0]);
+			int y = int.Parse(location[1]);
 
 			if ((string)enemy.Element("ObjectName") == "BlueKeese")
 			{
@@ -185,8 +185,8 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		void AddNPC(XElement NPC)
 		{
 			string[] location = ((string)NPC.Element("Location")).Split(' ');
-			int x = (int)Position.X - int.Parse(location[0]);
-			int y = (int)Position.Y - int.Parse(location[1]);
+			int x = int.Parse(location[0]);
+			int y = int.Parse(location[1]);
 
 			if ((string)NPC.Element("ObjectName") == "OldMan")
 			{
