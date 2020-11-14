@@ -10,6 +10,7 @@ using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
 using CrossPlatformDesktopProject.RoomManagement;
 using CrossPlatformDesktopProject.ScreenStuff;
+using CrossPlatformDesktopProject.SoundManagement;
 using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -87,6 +88,7 @@ namespace Sprint0
 			NPCSpriteFactory.Instance.LoadAllTextures(Content);
 			LinkSpriteFactory.Instance.LoadAllTextures(Content);
 			ItemSpriteFactory.Instance.LoadAllTextures(Content);
+			SoundFactory.Instance.LoadAllSounds(Content);
 
 			font = Content.Load<SpriteFont>("arial");
 

@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
 using CrossPlatformDesktopProject.PlayerStuff.SwordStuff;
+using CrossPlatformDesktopProject.SoundManagement;
 using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 
@@ -15,10 +16,12 @@ namespace CrossPlatformDesktopProject.PlayerStuff.StateStuff.StateClasses
             this.player.MoveDirection = Vector2.Zero;
             this.player.Sprite = LinkSpriteFactory.Instance.CreateUpSwordLinkSprite();
             this.player.Sword = new WoodenSword(this.player, -Vector2.UnitY);
+            SoundFactory.Instance.sfxSword.Play();
             if (this.player.Health == this.player.TotalHealth)
             {
                 IUsableItem swordBeam = new SwordBeam(this.player.Position + 16 * -Vector2.UnitY, -Vector2.UnitY, this.player);
                 this.player.ActiveItems.Add(swordBeam);
+                SoundFactory.Instance.sfxSwordBeam.Play();
             }
         }
 

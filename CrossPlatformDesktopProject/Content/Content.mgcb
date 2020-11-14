@@ -13,6 +13,168 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Audio/musicDungeon.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Audio/musicDungeon.mp3
+
+#begin Audio/musicGameOver.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Audio/musicGameOver.mp3
+
+#begin Audio/musicOverworld.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Audio/musicOverworld.mp3
+
+#begin Audio/musicTriforce.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Audio/musicTriforce.mp3
+
+#begin Audio/sfxBombExplode.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxBombExplode.wav
+
+#begin Audio/sfxBombPlace.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxBombPlace.wav
+
+#begin Audio/sfxBoomerang.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxBoomerang.wav
+
+#begin Audio/sfxBossScream.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxBossScream.wav
+
+#begin Audio/sfxCandle.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxCandle.wav
+
+#begin Audio/sfxDoorUnlock.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxDoorUnlock.wav
+
+#begin Audio/sfxEnemyDamage.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxEnemyDamage.wav
+
+#begin Audio/sfxEnemyDeath.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxEnemyDeath.wav
+
+#begin Audio/sfxHealthRestore.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxHealthRestore.wav
+
+#begin Audio/sfxHeartKeyPickup.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxHeartKeyPickup.wav
+
+#begin Audio/sfxHiddenKeyAppears.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxHiddenKeyAppears.wav
+
+#begin Audio/sfxItemPickup.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxItemPickup.wav
+
+#begin Audio/sfxLinkDamage.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxLinkDamage.wav
+
+#begin Audio/sfxLinkDeath.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxLinkDeath.wav
+
+#begin Audio/sfxLowHealthBeep.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxLowHealthBeep.wav
+
+#begin Audio/sfxNewItem.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxNewItem.wav
+
+#begin Audio/sfxRupeePickup.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxRupeePickup.wav
+
+#begin Audio/sfxSecret.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxSecret.wav
+
+#begin Audio/sfxShieldBlock.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxShieldBlock.wav
+
+#begin Audio/sfxStairs.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxStairs.wav
+
+#begin Audio/sfxSword.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxSword.wav
+
+#begin Audio/sfxSwordBeam.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxSwordBeam.wav
+
+#begin Audio/sfxTextAppears.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/sfxTextAppears.wav
+
 #begin blackPixel.png
 /importer:TextureImporter
 /processor:TextureProcessor

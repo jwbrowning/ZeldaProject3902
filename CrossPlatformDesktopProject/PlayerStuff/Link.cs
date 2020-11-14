@@ -2,6 +2,7 @@
 using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
 using CrossPlatformDesktopProject.PlayerStuff.StateStuff;
 using CrossPlatformDesktopProject.PlayerStuff.SwordStuff;
+using CrossPlatformDesktopProject.SoundManagement;
 using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -108,6 +109,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         public void Attack()
         {
             State.Attack();
+            //SoundFactory.Instance.sfxSword.Play();
         }
 
         public void ShootArrow()
