@@ -11,23 +11,23 @@ namespace CrossPlatformDesktopProject.SoundManagement
 {
     class SoundFactory
 	{
-		private SoundEffect sfxBombExplode;
-		private SoundEffect sfxBombPlace;
-		private SoundEffect sfxBoomerang;
-		private SoundEffect sfxBossScream;
-		private SoundEffect sfxCandle;
-		private SoundEffect sfxDoorUnlock;
-		private SoundEffect sfxEnemyDamage;
-		private SoundEffect sfxEnemyDeath;
+		public SoundEffect sfxBombExplode;
+		public SoundEffect sfxBombPlace;
+		public SoundEffect sfxBoomerang;
+		public SoundEffect sfxBossScream;
+		public SoundEffect sfxCandle; //unused?
+		private SoundEffect sfxDoorUnlock; //TODO - Doors not yet implemented
+		public SoundEffect sfxEnemyDamage;
+		public SoundEffect sfxEnemyDeath;
 		private SoundEffect sfxHealthRestore; //unused?
-		private SoundEffect sfxHeartKeyPickup;
-		private SoundEffect sfxHiddenKeyAppears;
-		private SoundEffect sfxItemPickup;
+		public SoundEffect sfxHeartKeyPickup;
+		private SoundEffect sfxHiddenKeyAppears; //TODO - enemy death not yet implemented
+		public SoundEffect sfxItemPickup;
 		private SoundEffect sfxLinkDamage;
 		private SoundEffect sfxLinkDeath;
 		private SoundEffect sfxLowHealthBeep;
-		private SoundEffect sfxNewItem;
-		private SoundEffect sfxRupeePickup;
+		public SoundEffect sfxNewItem;
+		public SoundEffect sfxRupeePickup;
 		private SoundEffect sfxSecret;
 		private SoundEffect sfxShieldBlock;
 		private SoundEffect sfxStairs;
@@ -58,9 +58,21 @@ namespace CrossPlatformDesktopProject.SoundManagement
 			sfxDoorUnlock = content.Load<SoundEffect>("Audio/sfxDoorUnlock");
 			sfxEnemyDamage = content.Load<SoundEffect>("Audio/sfxEnemyDamage");
 			sfxEnemyDeath = content.Load<SoundEffect>("Audio/sfxEnemyDeath");
-
+			sfxHealthRestore = content.Load<SoundEffect>("Audio/sfxHealthRestore");
+			sfxHeartKeyPickup = content.Load<SoundEffect>("Audio/sfxHeartKeyPickup");
+			sfxHiddenKeyAppears = content.Load<SoundEffect>("Audio/sfxHiddenKeyAppears");
+			sfxItemPickup = content.Load<SoundEffect>("Audio/sfxItemPickup");
+			sfxLinkDamage = content.Load<SoundEffect>("Audio/sfxLinkDamage");
+			sfxLinkDeath = content.Load<SoundEffect>("Audio/sfxLinkDeath");
+			sfxLowHealthBeep = content.Load<SoundEffect>("Audio/sfxLowHealthBeep");
+			sfxNewItem = content.Load<SoundEffect>("Audio/sfxNewItem");
+			sfxRupeePickup = content.Load<SoundEffect>("Audio/sfxRupeePickup");
+			sfxSecret = content.Load<SoundEffect>("Audio/sfxSecret");
+			sfxShieldBlock = content.Load<SoundEffect>("Audio/sfxShieldBlock");
+			sfxStairs = content.Load<SoundEffect>("Audio/sfxStairs");
 			sfxSword = content.Load<SoundEffect>("Audio/sfxSword");
 			sfxSwordBeam = content.Load<SoundEffect>("Audio/sfxSwordBeam");
+			sfxTextAppears = content.Load<SoundEffect>("Audio/sfxTextAppears");
 		}
 
 

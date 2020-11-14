@@ -1,6 +1,7 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.PlayerStuff;
+using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -51,12 +52,13 @@ namespace Sprint0
         public void TakeDamage()
         {
             health--;
+            SoundFactory.Instance.sfxBossScream.Play();
             game.currentRoom.Enemies[game.currentRoom.Enemies.IndexOf(this)] = new DamagedEnemy(this, game);
         }
 
         public void Die()
         {
-
+            SoundFactory.Instance.sfxEnemyDeath.Play();
         }
 
         public void Update()

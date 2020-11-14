@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.ColliderStuff;
 using CrossPlatformDesktopProject.PlayerStuff;
+using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Sprint0;
 
@@ -60,60 +61,73 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
             if(collider.GameObject is Arrow)
             {
                 game.player.PickUp(ItemType.Arrow, 1);
+                SoundFactory.Instance.sfxItemPickup.Play();
             }
             else if (collider.GameObject is Bomb)
             {
                 game.player.ItemCounts[ItemType.Bomb]++;
+                SoundFactory.Instance.sfxItemPickup.Play();
             }
             else if(collider.GameObject is Boomerang)
             {
                 game.player.ItemCounts[ItemType.Boomerang]++;
+                SoundFactory.Instance.sfxItemPickup.Play();
             }
             else if(collider.GameObject is Bow)
             {
                 game.player.ItemCounts[ItemType.Bow]++;
+                SoundFactory.Instance.sfxNewItem.Play();
             }
             else if(collider.GameObject is Clock)
             {
                 game.player.ItemCounts[ItemType.Clock]++;
+                SoundFactory.Instance.sfxItemPickup.Play();
             }
             else if(collider.GameObject is Compass)
             {
                 game.player.ItemCounts[ItemType.Compass]++;
+                SoundFactory.Instance.sfxItemPickup.Play();
             }
             else if(collider.GameObject is Fairy)
             {
                 game.player.ItemCounts[ItemType.Fairy]++;
                 game.player.Health = game.player.TotalHealth;
+                SoundFactory.Instance.sfxItemPickup.Play();
             }
             else if(collider.GameObject is Heart)
             {
                 game.player.ItemCounts[ItemType.Heart]++;
                 game.player.Health++;
-                if(game.player.Health > game.player.TotalHealth) game.player.Health = game.player.TotalHealth;
+                SoundFactory.Instance.sfxHeartKeyPickup.Play();
+                if (game.player.Health > game.player.TotalHealth) game.player.Health = game.player.TotalHealth;
             }
             else if(collider.GameObject is HeartContainer)
             {
                 game.player.ItemCounts[ItemType.HeartContainer]++;
                 game.player.TotalHealth++;
                 game.player.Health++;
+                SoundFactory.Instance.sfxItemPickup.Play();
             }
             else if(collider.GameObject is Key)
             {
                 game.player.ItemCounts[ItemType.Key]++;
+                SoundFactory.Instance.sfxHeartKeyPickup.Play();
             }
             else if(collider.GameObject is Map)
             {
                 game.player.ItemCounts[ItemType.Map]++;
+                SoundFactory.Instance.sfxItemPickup.Play();
             }
             else if(collider.GameObject is Rupee)
             {
                 game.player.ItemCounts[ItemType.Rupee]++;
+                SoundFactory.Instance.sfxRupeePickup.Play();
             }
             else if(collider.GameObject is TriforcePiece)
             {
                 game.player.ItemCounts[ItemType.TriforcePiece]++;
                 game.Win();
+                //triforce music
             }
             game.currentRoom.Items.Remove((IItem)collider.GameObject);
         }

@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.PlayerStuff;
+using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
@@ -23,6 +24,7 @@ namespace CrossPlatformDesktopProject.UsableItems
             this.direction = direction;
             this.player = player;
             Sprite = UsableItemSpriteFactory.Instance.CreateBoomerangSprite();
+            SoundFactory.Instance.sfxBoomerang.Play();
             CollisionHandler = new UsableItemCollisionHandler(player, this, 32, 32, 0, 0);
         }
 

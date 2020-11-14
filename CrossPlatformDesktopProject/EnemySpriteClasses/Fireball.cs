@@ -43,12 +43,12 @@ namespace Sprint0
 
         public void TakeDamage()
         {
-
+            //Fireballs are invincible
         }
 
         public void Die()
         {
-
+            //Fireballs are invincible
         }
 
         public void Update()

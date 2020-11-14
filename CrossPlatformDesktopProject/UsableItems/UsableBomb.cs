@@ -1,6 +1,7 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.Entities;
 using CrossPlatformDesktopProject.PlayerStuff;
+using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
@@ -24,6 +25,7 @@ namespace CrossPlatformDesktopProject.UsableItems
             Position = position;
             this.player = player;
             Sprite = UsableItemSpriteFactory.Instance.CreateBombSprite();
+            SoundFactory.Instance.sfxBombPlace.Play();
             CollisionHandler = new UsableItemCollisionHandler(player, this, 32, 32, 0, 0);
             explosionEffects = new List<IEntity>();
             this.player.ItemCounts[ItemType.Bomb]--;
@@ -60,6 +62,7 @@ namespace CrossPlatformDesktopProject.UsableItems
         private void Explode()
         {
             explosionEffects.Add(new ExplosionEffect(Position));
+            SoundFactory.Instance.sfxBombExplode.Play();
             for(int i=0;i<6;i++)
             {
                 Vector2 adjust = Vector2.Transform(64 * Vector2.UnitX, Matrix.CreateRotationZ(i*(float)Math.PI / 3f));
