@@ -65,6 +65,7 @@
     <Compile Include="CommandStuff\CommandMoveSelectorRight.cs" />
     <Compile Include="CommandStuff\CommandMoveSelectorUp.cs" />
     <Compile Include="CommandStuff\CommandMoveUp.cs" />
+    <Compile Include="CommandStuff\CommandMute.cs" />
     <Compile Include="CommandStuff\CommandOpenInventory.cs" />
     <Compile Include="CommandStuff\CommandPause.cs" />
     <Compile Include="CommandStuff\CommandQuit.cs" />
