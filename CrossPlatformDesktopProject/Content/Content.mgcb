@@ -13,29 +13,23 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Audio/musicDungeon.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
+#begin Audio/musicDungeon.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Audio/musicDungeon.mp3
+/build:Audio/musicDungeon.wav
 
-#begin Audio/musicGameOver.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
+#begin Audio/musicGameOver.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Audio/musicGameOver.mp3
+/build:Audio/musicGameOver.wav
 
-#begin Audio/musicOverworld.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
+#begin Audio/musicTriforce.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Audio/musicOverworld.mp3
-
-#begin Audio/musicTriforce.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Audio/musicTriforce.mp3
+/build:Audio/musicTriforce.wav
 
 #begin Audio/sfxBombExplode.wav
 /importer:WavImporter

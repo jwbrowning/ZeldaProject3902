@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Media;
 using Sprint0;
 
 namespace CrossPlatformDesktopProject.SoundManagement
@@ -23,17 +24,21 @@ namespace CrossPlatformDesktopProject.SoundManagement
 		public SoundEffect sfxHeartKeyPickup;
 		private SoundEffect sfxHiddenKeyAppears; //TODO - enemy death not yet implemented
 		public SoundEffect sfxItemPickup;
-		private SoundEffect sfxLinkDamage;
-		private SoundEffect sfxLinkDeath;
+		public SoundEffect sfxLinkDamage;
+		private SoundEffect sfxLinkDeath; //unused, made redundant by musicGameOver
 		private SoundEffect sfxLowHealthBeep;
 		public SoundEffect sfxNewItem;
 		public SoundEffect sfxRupeePickup;
-		private SoundEffect sfxSecret;
-		private SoundEffect sfxShieldBlock;
-		private SoundEffect sfxStairs;
+		private SoundEffect sfxSecret; //TODO - puzzled not yet implemented
+		private SoundEffect sfxShieldBlock; //TODO - shield not yet implemented
+		private SoundEffect sfxStairs; //TODO - stairs not yet implemented
 		public SoundEffect sfxSword;
 		public SoundEffect sfxSwordBeam;
-		private SoundEffect sfxTextAppears;
+		private SoundEffect sfxTextAppears; //TODO - text not yet implemented
+		public SoundEffect musicGameOver;
+		public SoundEffect musicTriforce;
+		public SoundEffect musicDungeon;
+		public SoundEffectInstance musicDungeonLoop;
 
 
 		private static SoundFactory instance = new SoundFactory();
@@ -73,6 +78,11 @@ namespace CrossPlatformDesktopProject.SoundManagement
 			sfxSword = content.Load<SoundEffect>("Audio/sfxSword");
 			sfxSwordBeam = content.Load<SoundEffect>("Audio/sfxSwordBeam");
 			sfxTextAppears = content.Load<SoundEffect>("Audio/sfxTextAppears");
+			musicGameOver = content.Load<SoundEffect>("Audio/musicGameOver");
+			musicTriforce = content.Load<SoundEffect>("Audio/musicTriforce");
+			musicDungeon = content.Load<SoundEffect>("Audio/musicDungeon");
+			musicDungeonLoop = musicDungeon.CreateInstance();
+			musicDungeonLoop.IsLooped = true;
 		}
 
 

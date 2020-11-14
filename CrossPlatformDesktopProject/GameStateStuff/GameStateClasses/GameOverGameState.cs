@@ -1,4 +1,5 @@
 ﻿using CrossPlatformDesktopProject.HeadsUpDisplayStuff;
+using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 using System;
@@ -16,11 +17,13 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
 
         public GameOverGameState(Game1 game)
         {
+            SoundFactory.Instance.musicDungeonLoop.Stop();
             this.game = game;
             controllers = new List<IController>
             {
                 new GameOverKeyboardController(game)
             };
+            SoundFactory.Instance.musicGameOver.Play();
         }
 
         public void Update()

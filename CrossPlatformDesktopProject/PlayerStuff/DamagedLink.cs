@@ -1,6 +1,7 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
 using CrossPlatformDesktopProject.PlayerStuff.SwordStuff;
+using CrossPlatformDesktopProject.SoundManagement;
 using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -30,6 +31,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         {
             this.player = player;
             this.game = game;
+            SoundFactory.Instance.sfxLinkDamage.Play();
         }
 
         public void Update()
