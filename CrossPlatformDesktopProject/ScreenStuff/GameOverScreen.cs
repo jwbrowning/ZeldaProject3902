@@ -2,11 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.HeadsUpDisplayStuff
 {
@@ -27,7 +22,7 @@ namespace CrossPlatformDesktopProject.HeadsUpDisplayStuff
         {
             graphicsDevice.Clear(Color.DarkBlue);
             spriteBatch.Begin();
-            spriteBatch.DrawString(game.font, "GAME OVER", new Vector2(graphics.PreferredBackBufferWidth/3f,graphics.PreferredBackBufferHeight/3f), Color.White);
+            spriteBatch.DrawString(game.font, "GAME OVER", new Vector2(graphics.PreferredBackBufferWidth / 3f, graphics.PreferredBackBufferHeight / 3f), Color.White);
             spriteBatch.End();
         }
     }

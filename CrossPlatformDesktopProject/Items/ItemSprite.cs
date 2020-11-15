@@ -16,7 +16,7 @@ namespace CrossPlatformDesktopProject.Items
         private int frameInterval;
         private int scale = 4;
 
-        public ItemSprite(Texture2D texture,int rows, int columns, int start, int frames)
+        public ItemSprite(Texture2D texture, int rows, int columns, int start, int frames)
         {
             Texture = texture;
             Rows = 1;

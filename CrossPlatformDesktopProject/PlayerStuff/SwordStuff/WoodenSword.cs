@@ -7,8 +7,8 @@ namespace CrossPlatformDesktopProject.PlayerStuff.SwordStuff
     public class WoodenSword : ISword
     {
         private IPlayer player;
-        public Vector2 Position 
-        { 
+        public Vector2 Position
+        {
             get
             {
                 return player.Position;
@@ -27,7 +27,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff.SwordStuff
             int swordWidth = 32;
             if (direction == Vector2.UnitX)
             {
-                CollisionHandler = new SwordCollisionHandler(this, swordLength, swordWidth, 32+swordLength/2, 6);
+                CollisionHandler = new SwordCollisionHandler(this, swordLength, swordWidth, 32 + swordLength / 2, 6);
             }
             else if (direction == -Vector2.UnitX)
             {

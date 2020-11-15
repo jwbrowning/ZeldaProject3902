@@ -21,7 +21,7 @@ namespace CrossPlatformDesktopProject.UsableItems
             Position = position;
             this.player = player;
             this.direction = direction;
-            if(direction == Vector2.UnitX)
+            if (direction == Vector2.UnitX)
             {
                 Sprite = UsableItemSpriteFactory.Instance.CreateRightArrowSprite();
                 CollisionHandler = new UsableItemCollisionHandler(player, this, 32, 8, 0, 0);
@@ -46,7 +46,7 @@ namespace CrossPlatformDesktopProject.UsableItems
 
         public void Update()
         {
-            if(timer > 0)
+            if (timer > 0)
             {
                 timer--;
                 Position += direction * speed;
@@ -54,7 +54,7 @@ namespace CrossPlatformDesktopProject.UsableItems
             }
             else
             {
-                if(player.ActiveItems.Contains(this)) player.ActiveItems.Remove(this);
+                if (player.ActiveItems.Contains(this)) player.ActiveItems.Remove(this);
             }
         }
 

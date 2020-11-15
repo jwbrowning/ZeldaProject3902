@@ -33,12 +33,12 @@ namespace CrossPlatformDesktopProject.UsableItems
 
         public void Update()
         {
-            if(timeTillExplosion > 0)
+            if (timeTillExplosion > 0)
             {
                 timeTillExplosion--;
                 Sprite.Update();
             }
-            else if(timeTillExplosion == 0)
+            else if (timeTillExplosion == 0)
             {
                 timeTillExplosion--;
                 Sprite.Update();
@@ -52,7 +52,7 @@ namespace CrossPlatformDesktopProject.UsableItems
                 {
                     entity.Update();
                 }
-                if (timeTillDone<0)
+                if (timeTillDone < 0)
                 {
                     if (player.ActiveItems.Contains(this)) player.ActiveItems.Remove(this);
                 }
@@ -63,25 +63,25 @@ namespace CrossPlatformDesktopProject.UsableItems
         {
             explosionEffects.Add(new ExplosionEffect(Position));
             SoundFactory.Instance.sfxBombExplode.Play();
-            for(int i=0;i<6;i++)
+            for (int i = 0; i < 6; i++)
             {
-                Vector2 adjust = Vector2.Transform(64 * Vector2.UnitX, Matrix.CreateRotationZ(i*(float)Math.PI / 3f));
+                Vector2 adjust = Vector2.Transform(64 * Vector2.UnitX, Matrix.CreateRotationZ(i * (float)Math.PI / 3f));
                 explosionEffects.Add(new ExplosionEffect(Position + adjust));
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if(timeTillExplosion >= 0)
+            if (timeTillExplosion >= 0)
             {
                 Sprite.Draw(spriteBatch, Position);
             }
-            if(explosionEffects.Count>0)
+            if (explosionEffects.Count > 0)
             {
                 explosionEffects[0].Draw(spriteBatch);
-                for(int i=1;i<explosionEffects.Count;i++)
+                for (int i = 1; i < explosionEffects.Count; i++)
                 {
-                    if(timeTillDone%2==i%2)
+                    if (timeTillDone % 2 == i % 2)
                     {
                         explosionEffects[i].Draw(spriteBatch);
                     }

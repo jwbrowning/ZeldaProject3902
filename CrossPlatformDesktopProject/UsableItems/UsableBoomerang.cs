@@ -30,7 +30,7 @@ namespace CrossPlatformDesktopProject.UsableItems
 
         public void Update()
         {
-            if(timer > 0)
+            if (timer > 0)
             {
                 Position += direction * speed;
                 timer--;
@@ -38,10 +38,10 @@ namespace CrossPlatformDesktopProject.UsableItems
             }
             else
             {
-                if(Vector2.Distance(player.Position,Position) < dist)
+                if (Vector2.Distance(player.Position, Position) < dist)
                 {
                     if (player.ActiveItems.Contains(this)) player.ActiveItems.Remove(this);
-                } 
+                }
                 else
                 {
                     Vector2 tempDirection = player.Position - Position;

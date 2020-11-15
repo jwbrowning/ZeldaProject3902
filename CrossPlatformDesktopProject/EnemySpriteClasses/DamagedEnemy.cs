@@ -23,7 +23,7 @@ namespace CrossPlatformDesktopProject.EnemySpriteClasses
 
         public void Update()
         {
-            timer-=9;
+            timer -= 9;
             if (timer <= 0)
             {
                 RemoveDecorator();

@@ -3,10 +3,10 @@
 
 namespace Sprint0
 {
-	interface IController
-	{
-		void Update();
-		void RegisterCommand(Keys key, ICommand command);
+    interface IController
+    {
+        void Update();
+        void RegisterCommand(Keys key, ICommand command);
 
-	}
+    }
 }

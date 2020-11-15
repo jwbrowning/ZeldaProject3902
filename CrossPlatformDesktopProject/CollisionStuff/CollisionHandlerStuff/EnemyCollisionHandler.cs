@@ -73,7 +73,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandleUsableItemCollision(ICollider collider)
         {
-            if(game.currentRoom.Enemies.Contains(enemy)) enemy.TakeDamage();
+            if (game.currentRoom.Enemies.Contains(enemy)) enemy.TakeDamage();
         }
 
         public void HandleNPCCollision(ICollider collider)
