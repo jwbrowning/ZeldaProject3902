@@ -146,7 +146,7 @@ namespace Sprint0
         {
 			screen = new NormalScreen(this, GraphicsDevice, graphics);
 			gameState = new NormalGameState(this);
-			ChangeRoom("RoomDEBUG","East");
+			ChangeRoom("RoomDEBUG","Right");
 		}
 
 		public void OpenInventory()

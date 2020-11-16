@@ -55,25 +55,25 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		{
 			Vector2 position = Vector2.Zero;
 			//Vector2 destination = Vector2.Zero;
-			if (direction == "North")
+			if (direction == "Down")
 			{
 				Destination = Position + new Vector2(0, size.Y);
 				position = Position + new Vector2(0, -size.Y);
 				mygame.player.Position += new Vector2(0, size.Y * .9f);
 			}
-			else if(direction == "South")
+			else if(direction == "Up")
 			{
 				Destination = Position + new Vector2(0, -size.Y);
 				position = Position + new Vector2(0, size.Y);
 				mygame.player.Position += new Vector2(0,-size.Y * .9f);
 			}
-			else if (direction == "East")
+			else if (direction == "Left")
 			{
 				Destination = Position + new Vector2(-size.X, 0);
 				position = Position + new Vector2(size.X, 0);
 				mygame.player.Position += new Vector2(-size.X*.9f, 0); 
 			}
-			else if (direction == "West")
+			else if (direction == "Right")
 			{
 				Destination = Position + new Vector2(size.X, 0);
 				position = Position + new Vector2(-size.X, 0);
