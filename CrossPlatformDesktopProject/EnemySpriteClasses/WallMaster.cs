@@ -4,6 +4,7 @@ using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Sprint0
 {
@@ -18,9 +19,11 @@ namespace Sprint0
         int directionCode = 0; //keeps track of which direction sprite should move. 0 is up, 1 is down, 2 is left, 3 is right.
         int patrolPhase = 1;
         int patrolFrame = 1;
+        int tileFrame = 1; //used to regulate movement to tile by tile movement.
         private IPlayer player;
         private Game1 game;
         private int health = 2;
+        Random rand = new Random();
 
         private Vector2 size = new Vector2(60, 60);
         public Vector2 Position
@@ -42,7 +45,7 @@ namespace Sprint0
             OverlayColor = Color.White;
             Texture = NPCSpriteFactory.Instance.textureEnemies;
             Position = position;
-            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 0, 0);
+            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 2, 2);
             this.player = game.player;
             this.game = game;
         }
@@ -73,8 +76,14 @@ namespace Sprint0
             float playerPositionX = position.X;
             float playerPositionY = position.Y;
 
+            if (tileFrame == 1)
+            {
+                directionCode = rand.Next(4);
+            }
+
             animationFrame++;
             patrolFrame++;
+            tileFrame++;
 
             if (animationFrame == 20)
                 animationFrame = 1;
@@ -82,7 +91,11 @@ namespace Sprint0
             if (patrolFrame == 200)
                 patrolFrame = 1;
 
+            if (tileFrame == 32)
+                tileFrame = 1;
 
+
+            /*
             if (patrolPhase == 1) //default phase of enemies, is changed after the enemy "sees" link 
             {
                 if (patrolFrame <= 100)
@@ -126,7 +139,12 @@ namespace Sprint0
                         directionCode = 3;
                     }
                 }
-            }
+            }*/
+
+
+
+
+
 
             if (directionCode == 0)
             {

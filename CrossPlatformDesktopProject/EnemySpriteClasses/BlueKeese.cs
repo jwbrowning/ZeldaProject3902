@@ -4,6 +4,7 @@ using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Sprint0
 {
@@ -18,6 +19,9 @@ namespace Sprint0
         private IPlayer player;
         private Game1 game;
         private int health = 1;
+        int tileFrame = 1;
+        Random rand = new Random();
+        int directionCode = 0; //keeps track of which direction sprite should move. 0 is up, 1 is down, 2 is left, 3 is right.
 
         private Vector2 size = new Vector2(60, 60);
         public Vector2 Position
@@ -39,7 +43,7 @@ namespace Sprint0
             OverlayColor = Color.White;
             Texture = NPCSpriteFactory.Instance.textureEnemies;
             Position = position;
-            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 0, 0);
+            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 2, 2);
             this.player = game.player;
             this.game = game;
         }
@@ -70,33 +74,60 @@ namespace Sprint0
             float playerPositionX = position.X;
             float playerPositionY = position.Y;
 
+
+            if (tileFrame == 1)
+            {
+                directionCode = rand.Next(4);
+            }
+
             animationFrame++;
+            tileFrame++;
 
             if (animationFrame == 10)
                 animationFrame = 1;
 
-            //keese simply chases after the player's current position
+            if (tileFrame == 32)
+                tileFrame = 1;
 
-            if (playerPositionX < spritePositionX)
+            /*simply chases after the player's current position
+
+            if(playerPositionX < spritePositionX)
             {
-                spritePositionX = spritePositionX - 2;
+                spritePositionX = spritePositionX - 1;
             }
             else if (playerPositionX > spritePositionX)
             {
-                spritePositionX = spritePositionX + 2;
+                spritePositionX = spritePositionX + 1;
             }
 
             if (playerPositionY < spritePositionY)
             {
-                spritePositionY = spritePositionY - 2;
+                spritePositionY = spritePositionY - 1;
             }
             else if (playerPositionY > spritePositionY)
             {
+                spritePositionY = spritePositionY + 1;
+            }*/
+
+            if (directionCode == 0)
+            {
+                spritePositionY = spritePositionY - 2;
+            }
+            else if (directionCode == 1)
+            {
                 spritePositionY = spritePositionY + 2;
+            }
+            else if (directionCode == 2)
+            {
+                spritePositionX = spritePositionX - 2;
+            }
+            else if (directionCode == 3)
+            {
+                spritePositionX = spritePositionX + 2;
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
+        public void Draw(SpriteBatch spriteBatch)
         {
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
@@ -118,7 +149,7 @@ namespace Sprint0
             }
 
             spriteBatch.Begin();
-            spriteBatch.Draw(Texture, new Rectangle(destinationRectangle.Location + new Point((int)parentPos.X, (int)parentPos.Y), destinationRectangle.Size), sourceRectangle, OverlayColor);
+            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, OverlayColor);
             spriteBatch.End();
         }
     }

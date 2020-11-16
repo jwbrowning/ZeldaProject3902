@@ -4,6 +4,7 @@ using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Sprint0
 {
@@ -15,13 +16,17 @@ namespace Sprint0
         private int animationFrame = 1;
         private int spritePositionX = 500;
         private int spritePositionY = 300;
-        int directionCode = 0; //keeps track of which direction sprite should move. 0 is up, 1 is down, 2 is left, 3 is right.
+        public int directionCode = 0; //keeps track of which direction sprite should move. 0 is up, 1 is down, 2 is left, 3 is right.
+        int bufferedDirectionCode = 0;
         int patrolPhase = 1;
         int patrolFrame = 1;
+        int tileFrame = 1;
         private IPlayer player;
         private Game1 game;
         private int health = 2;
+        Random rand = new Random();
 
+       
         private Vector2 size = new Vector2(60, 60);
         public Vector2 Position
         {
@@ -42,7 +47,7 @@ namespace Sprint0
             OverlayColor = Color.White;
             Texture = NPCSpriteFactory.Instance.textureEnemies;
             Position = position;
-            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 0, 0);
+            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 2, 2);
             this.player = game.player;
             this.game = game;
         }
@@ -72,8 +77,15 @@ namespace Sprint0
             float playerPositionX = position.X;
             float playerPositionY = position.Y;
 
+
+            if (tileFrame == 1)
+            {
+                directionCode = rand.Next(4);
+            }
+
             animationFrame++;
             patrolFrame++;
+            tileFrame++;
 
             if (animationFrame == 20)
                 animationFrame = 1;
@@ -81,14 +93,18 @@ namespace Sprint0
             if (patrolFrame == 200)
                 patrolFrame = 1;
 
+            if (tileFrame == 64)
+                tileFrame = 1;
 
-            if (patrolPhase == 1) //default phase of enemies, is changed after the enemy "sees" link 
+            
+            /*
+            if(patrolPhase == 1) //default phase of enemies, is changed after the enemy "sees" link 
             {
-                if (patrolFrame <= 100)
+                if(patrolFrame <= 100)
                 {
                     directionCode = 0;
                 }
-                else if (patrolFrame > 100)
+                else if(patrolFrame > 100)
                 {
                     directionCode = 1;
                 }
@@ -98,56 +114,56 @@ namespace Sprint0
                     patrolPhase = 0;
                 }
 
-            }
+            } 
 
 
-            if (patrolPhase == 0)
-            {
-                if ((spritePositionX - 10) <= playerPositionX && playerPositionX <= (spritePositionX + 10))
+          if(patrolPhase == 0)
                 {
-                    if (playerPositionY < spritePositionY)
+                    if ((spritePositionX - 10) <= playerPositionX && playerPositionX <= (spritePositionX + 10))
                     {
-                        directionCode = 0;
+                        if (playerPositionY < spritePositionY)
+                        {
+                            bufferedDirectionCode = 0;
+                        }
+                        else if (playerPositionY > spritePositionY)
+                        {
+                            bufferedDirectionCode = 1;
+                        }
                     }
-                    else if (playerPositionY > spritePositionY)
-                    {
-                        directionCode = 1;
-                    }
-                }
 
-                if ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 10))
-                {
-                    if (playerPositionX < spritePositionX)
+                    if ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 10))
                     {
-                        directionCode = 2;
+                        if (playerPositionX < spritePositionX)
+                        {
+                            bufferedDirectionCode = 2;
+                        }
+                        else if (playerPositionX > spritePositionX)
+                        {
+                            bufferedDirectionCode = 3;
+                        }
                     }
-                    else if (playerPositionX > spritePositionX)
-                    {
-                        directionCode = 3;
-                    }
-                }
-            }
+                }*/
 
 
             if (directionCode == 0)
             {
-                spritePositionY = spritePositionY - 2;
+                spritePositionY = spritePositionY - 1;
             }
-            else if (directionCode == 1)
+            else if(directionCode == 1)
             {
-                spritePositionY = spritePositionY + 2;
+                spritePositionY = spritePositionY + 1;
             }
             else if (directionCode == 2)
             {
-                spritePositionX = spritePositionX - 2;
+                spritePositionX = spritePositionX - 1;
             }
             else if (directionCode == 3)
             {
-                spritePositionX = spritePositionX + 2;
+                spritePositionX = spritePositionX + 1;
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
+        public void Draw(SpriteBatch spriteBatch)
         {
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
@@ -169,7 +185,7 @@ namespace Sprint0
             }
 
             spriteBatch.Begin();
-            spriteBatch.Draw(Texture, new Rectangle(destinationRectangle.Location + new Point((int)parentPos.X, (int)parentPos.Y), destinationRectangle.Size), sourceRectangle, OverlayColor);
+            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, OverlayColor);
             spriteBatch.End();
         }
     }

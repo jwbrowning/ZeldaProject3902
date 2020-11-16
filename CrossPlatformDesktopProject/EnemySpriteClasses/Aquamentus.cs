@@ -24,7 +24,7 @@ namespace Sprint0
         private int spritePositionY = 200;
 
 
-        private Vector2 size = new Vector2(45, 40);
+        private Vector2 size = new Vector2(75, 100);
         public Vector2 Position
         {
             get
@@ -71,29 +71,29 @@ namespace Sprint0
             if (animationFrame == 40)
                 animationFrame = 1;
 
-            if (fireballFrame == 60)
+            if (fireballFrame == 70)
                 fireballFrame = 1;
 
-            if (movementFrame == 400)
+            if (movementFrame == 360)
             {
                 movementFrame = 1;
             }
 
-            if (movementFrame <= 100)
-            {
-                spritePositionX = spritePositionX + 1;
-            }
-            else if (movementFrame > 100 && movementFrame <= 200)
-            {
-                spritePositionY = spritePositionY - 1;
-            }
-            else if (movementFrame > 200 && movementFrame <= 300)
+            if (movementFrame <= 90)
             {
                 spritePositionX = spritePositionX - 1;
             }
-            else if (movementFrame > 300)
+            else if (movementFrame > 90 && movementFrame <= 180)
             {
                 spritePositionY = spritePositionY + 1;
+            }
+            else if (movementFrame > 180 && movementFrame <= 270)
+            {
+                spritePositionX = spritePositionX + 1;
+            }
+            else if (movementFrame > 270)
+            {
+                spritePositionY = spritePositionY - 1;
             }
 
             if (fireballFrame == 25)//will periodically produce 3 fireballs at set intervals.
