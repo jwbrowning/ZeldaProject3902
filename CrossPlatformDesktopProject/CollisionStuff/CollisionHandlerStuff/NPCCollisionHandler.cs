@@ -16,7 +16,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         private void HandleGenericCollision(ICollider collider)
         {
-            
+
         }
 
         public void HandleBlockCollision(ICollider collider)
@@ -50,6 +50,11 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
         }
 
         public void HandleSwordCollision(ICollider collider)
+        {
+
+        }
+
+        public void HandleDoorCollision(ICollider collider)
         {
 
         }
