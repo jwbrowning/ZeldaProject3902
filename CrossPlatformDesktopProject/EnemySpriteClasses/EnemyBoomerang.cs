@@ -68,7 +68,7 @@ namespace Sprint0
             if (animationFrame == 20)
                 animationFrame = 1;
 
-            if (movementFrame > 100)
+            if (movementFrame > 95)
                 drawBoomerang = false;
 
             if (directionCode == 0)
@@ -77,7 +77,7 @@ namespace Sprint0
                 {
                     spritePositionY = spritePositionY - 5;
                 }
-                else if (movementFrame >= 50 && movementFrame <= 100)
+                else if(movementFrame >= 50 && movementFrame <= 95)
                 {
                     spritePositionY = spritePositionY + 5;
                 }
@@ -88,7 +88,7 @@ namespace Sprint0
                 {
                     spritePositionY = spritePositionY + 5;
                 }
-                else if (movementFrame >= 50 && movementFrame <= 100)
+                else if (movementFrame >= 50 && movementFrame <= 95)
                 {
                     spritePositionY = spritePositionY - 5;
                 }
@@ -99,7 +99,7 @@ namespace Sprint0
                 {
                     spritePositionX = spritePositionX - 5;
                 }
-                else if (movementFrame >= 50 && movementFrame <= 100)
+                else if (movementFrame >= 50 && movementFrame <= 95)
                 {
                     spritePositionX = spritePositionX + 5;
                 }
@@ -110,7 +110,7 @@ namespace Sprint0
                 {
                     spritePositionX = spritePositionX + 5;
                 }
-                else if (movementFrame >= 50 && movementFrame <= 100)
+                else if (movementFrame >= 50 && movementFrame <= 95)
                 {
                     spritePositionX = spritePositionX - 5;
                 }
@@ -128,7 +128,7 @@ namespace Sprint0
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
 
-            if (drawBoomerang == true)
+            if(drawBoomerang == true)
             {
                 if (animationFrame >= 1 && animationFrame < 7)
                 {
@@ -152,7 +152,7 @@ namespace Sprint0
                 }
 
                 spriteBatch.Begin();
-                spriteBatch.Draw(Texture, new Rectangle(destinationRectangle.Location + new Point((int)parentPos.X, (int)parentPos.Y), destinationRectangle.Size), sourceRectangle, Color.White);
+                spriteBatch.Draw(Texture, new Rectangle(destinationRectangle.Location + new Point((int)parentPos.X, (int)parentPos.Y), destinationRectangle.Size), sourceRectangle, OverlayColor);
                 spriteBatch.End();
             }
         }

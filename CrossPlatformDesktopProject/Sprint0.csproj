@@ -75,6 +75,7 @@
     <Compile Include="CommandStuff\CommandReset.cs" />
     <Compile Include="CommandStuff\CommandSelect.cs" />
     <Compile Include="CommandStuff\CommandShowColliders.cs" />
+    <Compile Include="CommandStuff\CommandSpawnItem.cs" />
     <Compile Include="CommandStuff\CommandSword.cs" />
     <Compile Include="CommandStuff\CommandUnpause.cs" />
     <Compile Include="CommandStuff\CommandUseItem.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="EnemySpriteClasses\INPC.cs" />
     <Compile Include="EnemySpriteClasses\IEnemy.cs" />
     <Compile Include="EnemySpriteClasses\NPCSpriteFactory.cs" />
+    <Compile Include="Entities\DeathEffect.cs" />
     <Compile Include="Entities\ExplosionEffect.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\SplittingEffect.cs" />

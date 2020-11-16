@@ -1,27 +1,36 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.EnemySpriteClasses;
+using CrossPlatformDesktopProject.Entities;
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Sprint0
 {
     class Stalfos : IEnemy
     {
+        private IEntity spawnEffect, deathEffect;
+        private int spawnTime = 25, deathTime = 25;
+        private bool spawning = true, dying = false;
         public Color OverlayColor { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
         public Texture2D Texture { get; set; }
         private int animationFrame = 1;
         private int spritePositionX = 500;
         private int spritePositionY = 300;
-        int directionCode = 0; //keeps track of which direction sprite should move. 0 is up, 1 is down, 2 is left, 3 is right.
+        public int directionCode = 0; //keeps track of which direction sprite should move. 0 is up, 1 is down, 2 is left, 3 is right.
+        int bufferedDirectionCode = 0;
         int patrolPhase = 1;
         int patrolFrame = 1;
+        int tileFrame = 1;
         private IPlayer player;
         private Game1 game;
         private int health = 2;
+        Random rand = new Random();
 
+       
         private Vector2 size = new Vector2(60, 60);
         public Vector2 Position
         {
@@ -39,10 +48,12 @@ namespace Sprint0
 
         public Stalfos(Game1 game, Vector2 position)
         {
+            spawnEffect = new ExplosionEffect(position);
+            deathEffect = new DeathEffect(position);
             OverlayColor = Color.White;
             Texture = NPCSpriteFactory.Instance.textureEnemies;
             Position = position;
-            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 0, 0);
+            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 2, 2);
             this.player = game.player;
             this.game = game;
         }
@@ -63,17 +74,50 @@ namespace Sprint0
 
         public void Die()
         {
-            SoundFactory.Instance.sfxEnemyDeath.Play();
+            if (!dying)
+            {
+                deathEffect = new DeathEffect(Position);
+                dying = true;
+                CollisionHandler = new EmptyCollisionHandler(this);
+                SoundFactory.Instance.sfxEnemyDeath.Play();
+            }
         }
 
         public void Update()
         {
+            if (spawning)
+            {
+                spawnTime--;
+                spawnEffect.Update();
+                if (spawnTime <= 0)
+                {
+                    spawning = false;
+                }
+                return;
+            }
+            if (dying)
+            {
+                deathTime--;
+                deathEffect.Update();
+                if (deathTime <= 0)
+                {
+                    if (game.currentRoom.Enemies.Contains(this)) game.currentRoom.Enemies.Remove(this);
+                }
+                return;
+            }
             Vector2 position = player.Position;
             float playerPositionX = position.X;
             float playerPositionY = position.Y;
 
+
+            if (tileFrame == 1)
+            {
+                directionCode = rand.Next(4);
+            }
+
             animationFrame++;
             patrolFrame++;
+            tileFrame++;
 
             if (animationFrame == 20)
                 animationFrame = 1;
@@ -81,14 +125,18 @@ namespace Sprint0
             if (patrolFrame == 200)
                 patrolFrame = 1;
 
+            if (tileFrame == 64)
+                tileFrame = 1;
 
-            if (patrolPhase == 1) //default phase of enemies, is changed after the enemy "sees" link 
+            
+            /*
+            if(patrolPhase == 1) //default phase of enemies, is changed after the enemy "sees" link 
             {
-                if (patrolFrame <= 100)
+                if(patrolFrame <= 100)
                 {
                     directionCode = 0;
                 }
-                else if (patrolFrame > 100)
+                else if(patrolFrame > 100)
                 {
                     directionCode = 1;
                 }
@@ -98,57 +146,67 @@ namespace Sprint0
                     patrolPhase = 0;
                 }
 
-            }
+            } 
 
 
-            if (patrolPhase == 0)
-            {
-                if ((spritePositionX - 10) <= playerPositionX && playerPositionX <= (spritePositionX + 10))
+          if(patrolPhase == 0)
                 {
-                    if (playerPositionY < spritePositionY)
+                    if ((spritePositionX - 10) <= playerPositionX && playerPositionX <= (spritePositionX + 10))
                     {
-                        directionCode = 0;
+                        if (playerPositionY < spritePositionY)
+                        {
+                            bufferedDirectionCode = 0;
+                        }
+                        else if (playerPositionY > spritePositionY)
+                        {
+                            bufferedDirectionCode = 1;
+                        }
                     }
-                    else if (playerPositionY > spritePositionY)
-                    {
-                        directionCode = 1;
-                    }
-                }
 
-                if ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 10))
-                {
-                    if (playerPositionX < spritePositionX)
+                    if ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 10))
                     {
-                        directionCode = 2;
+                        if (playerPositionX < spritePositionX)
+                        {
+                            bufferedDirectionCode = 2;
+                        }
+                        else if (playerPositionX > spritePositionX)
+                        {
+                            bufferedDirectionCode = 3;
+                        }
                     }
-                    else if (playerPositionX > spritePositionX)
-                    {
-                        directionCode = 3;
-                    }
-                }
-            }
+                }*/
 
 
             if (directionCode == 0)
             {
-                spritePositionY = spritePositionY - 2;
+                spritePositionY = spritePositionY - 1;
             }
-            else if (directionCode == 1)
+            else if(directionCode == 1)
             {
-                spritePositionY = spritePositionY + 2;
+                spritePositionY = spritePositionY + 1;
             }
             else if (directionCode == 2)
             {
-                spritePositionX = spritePositionX - 2;
+                spritePositionX = spritePositionX - 1;
             }
             else if (directionCode == 3)
             {
-                spritePositionX = spritePositionX + 2;
+                spritePositionX = spritePositionX + 1;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
+            if (spawning)
+            {
+                spawnEffect.Draw(spriteBatch, parentPos);
+                return;
+            }
+            if (dying)
+            {
+                deathEffect.Draw(spriteBatch, parentPos);
+                return;
+            }
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
 

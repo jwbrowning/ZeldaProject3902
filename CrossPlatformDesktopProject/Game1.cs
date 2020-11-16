@@ -136,7 +136,7 @@ namespace Sprint0
                 spriteBatch.Begin();
                 foreach (IGameObject g in currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Doors).Concat(currentRoom.Walls).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }))
                 {
-                    Rectangle rec = CollisionDetection.GetColliderRectangle(g);
+                    Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);
                     spriteBatch.Draw(squareOutline, rec, new Color(Color.LimeGreen, 1));
                 }
                 spriteBatch.End();
@@ -191,6 +191,7 @@ namespace Sprint0
 			currentRoom.ChangeRoom(nextRoomName, direction);
 			roomIndex = Array.FindIndex(rooms, x => x == nextRoomName);
 			player.ActiveItems.Clear();
+			player.ItemCounts[ItemType.Clock] = 0;
         }
 	}
 }

@@ -1,14 +1,19 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.EnemySpriteClasses;
+using CrossPlatformDesktopProject.Entities;
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Sprint0
 {
     class BlueKeese : IEnemy
     {
+        private IEntity spawnEffect, deathEffect;
+        private int spawnTime = 25, deathTime = 25;
+        private bool spawning = true, dying = false;
         public Color OverlayColor { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
         public Texture2D Texture { get; set; }
@@ -18,6 +23,9 @@ namespace Sprint0
         private IPlayer player;
         private Game1 game;
         private int health = 1;
+        int tileFrame = 1;
+        Random rand = new Random();
+        int directionCode = 0; //keeps track of which direction sprite should move. 0 is up, 1 is down, 2 is left, 3 is right.
 
         private Vector2 size = new Vector2(60, 60);
         public Vector2 Position
@@ -36,10 +44,12 @@ namespace Sprint0
 
         public BlueKeese(Game1 game, Vector2 position)
         {
+            spawnEffect = new ExplosionEffect(position);
+            deathEffect = new DeathEffect(position);
             OverlayColor = Color.White;
             Texture = NPCSpriteFactory.Instance.textureEnemies;
             Position = position;
-            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 0, 0);
+            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 2, 2);
             this.player = game.player;
             this.game = game;
         }
@@ -60,44 +70,107 @@ namespace Sprint0
 
         public void Die()
         {
-            SoundFactory.Instance.sfxEnemyDeath.Play();
+            if (!dying)
+            {
+                deathEffect = new DeathEffect(Position);
+                dying = true;
+                CollisionHandler = new EmptyCollisionHandler(this);
+                SoundFactory.Instance.sfxEnemyDeath.Play();
+            }
         }
 
         public void Update()
         {
+            if (spawning)
+            {
+                spawnTime--;
+                spawnEffect.Update();
+                if (spawnTime <= 0)
+                {
+                    spawning = false;
+                }
+                return;
+            }
+            if (dying)
+            {
+                deathTime--;
+                deathEffect.Update();
+                if (deathTime <= 0)
+                {
+                    if (game.currentRoom.Enemies.Contains(this)) game.currentRoom.Enemies.Remove(this);
+                }
+                return;
+            }
 
             Vector2 position = player.Position;
             float playerPositionX = position.X;
             float playerPositionY = position.Y;
 
+
+            if (tileFrame == 1)
+            {
+                directionCode = rand.Next(4);
+            }
+
             animationFrame++;
+            tileFrame++;
 
             if (animationFrame == 10)
                 animationFrame = 1;
 
-            //keese simply chases after the player's current position
+            if (tileFrame == 32)
+                tileFrame = 1;
 
-            if (playerPositionX < spritePositionX)
+            /*simply chases after the player's current position
+
+            if(playerPositionX < spritePositionX)
             {
-                spritePositionX = spritePositionX - 2;
+                spritePositionX = spritePositionX - 1;
             }
             else if (playerPositionX > spritePositionX)
             {
-                spritePositionX = spritePositionX + 2;
+                spritePositionX = spritePositionX + 1;
             }
 
             if (playerPositionY < spritePositionY)
             {
-                spritePositionY = spritePositionY - 2;
+                spritePositionY = spritePositionY - 1;
             }
             else if (playerPositionY > spritePositionY)
             {
+                spritePositionY = spritePositionY + 1;
+            }*/
+
+            if (directionCode == 0)
+            {
+                spritePositionY = spritePositionY - 2;
+            }
+            else if (directionCode == 1)
+            {
                 spritePositionY = spritePositionY + 2;
+            }
+            else if (directionCode == 2)
+            {
+                spritePositionX = spritePositionX - 2;
+            }
+            else if (directionCode == 3)
+            {
+                spritePositionX = spritePositionX + 2;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
+            if (spawning)
+            {
+                spawnEffect.Draw(spriteBatch, parentPos);
+                return;
+            }
+            if (dying)
+            {
+                deathEffect.Draw(spriteBatch, parentPos);
+                return;
+            }
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
 

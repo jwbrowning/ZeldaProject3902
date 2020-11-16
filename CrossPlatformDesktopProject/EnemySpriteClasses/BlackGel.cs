@@ -1,14 +1,19 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.EnemySpriteClasses;
+using CrossPlatformDesktopProject.Entities;
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Sprint0
 {
     class BlackGel : IEnemy
     {
+        private IEntity spawnEffect, deathEffect;
+        private int spawnTime = 25, deathTime = 25;
+        private bool spawning = true, dying = false;
         public Color OverlayColor { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
         public Texture2D Texture { get; set; }
@@ -21,6 +26,8 @@ namespace Sprint0
         private IPlayer player;
         private Game1 game;
         private int health = 1;
+        int tileFrame = 1;
+        Random rand = new Random();
 
         private Vector2 size = new Vector2(45, 45);
         public Vector2 Position
@@ -39,10 +46,12 @@ namespace Sprint0
 
         public BlackGel(Game1 game, Vector2 position)
         {
+            spawnEffect = new ExplosionEffect(position);
+            deathEffect = new DeathEffect(position);
             OverlayColor = Color.White;
             Texture = NPCSpriteFactory.Instance.textureEnemies;
             Position = position;
-            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 0, 0);
+            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 9, 9);
             this.player = game.player;
             this.game = game;
         }
@@ -63,18 +72,51 @@ namespace Sprint0
 
         public void Die()
         {
-            SoundFactory.Instance.sfxEnemyDeath.Play();
+            if (!dying)
+            {
+                deathEffect = new DeathEffect(Position);
+                dying = true;
+                CollisionHandler = new EmptyCollisionHandler(this);
+                SoundFactory.Instance.sfxEnemyDeath.Play();
+            }
         }
 
         public void Update()
         {
+            if (spawning)
+            {
+                spawnTime--;
+                spawnEffect.Update();
+                if (spawnTime <= 0)
+                {
+                    spawning = false;
+                }
+                return;
+            }
+            if (dying)
+            {
+                deathTime--;
+                deathEffect.Update();
+                if (deathTime <= 0)
+                {
+                    if (game.currentRoom.Enemies.Contains(this)) game.currentRoom.Enemies.Remove(this);
+                }
+                return;
+            }
 
             Vector2 position = player.Position;
             float playerPositionX = position.X;
             float playerPositionY = position.Y;
 
+            if (tileFrame == 1)
+            {
+                directionCode = rand.Next(4);
+            }
+
             animationFrame++;
             patrolFrame++;
+            tileFrame++;
+            
 
             if (animationFrame == 10)
                 animationFrame = 1;
@@ -82,7 +124,10 @@ namespace Sprint0
             if (patrolFrame == 200)
                 patrolFrame = 1;
 
+            if (tileFrame == 32)
+                tileFrame = 1;
 
+            /*
             if (patrolPhase == 1) //default phase of enemies, is changed after the enemy "sees" link 
             {
                 if (patrolFrame <= 100)
@@ -127,7 +172,7 @@ namespace Sprint0
                         directionCode = 3;
                     }
                 }
-            }
+            }*/
 
 
             if (directionCode == 0)
@@ -150,6 +195,16 @@ namespace Sprint0
 
         public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
+            if (spawning)
+            {
+                spawnEffect.Draw(spriteBatch, parentPos);
+                return;
+            }
+            if (dying)
+            {
+                deathEffect.Draw(spriteBatch, parentPos);
+                return;
+            }
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
 

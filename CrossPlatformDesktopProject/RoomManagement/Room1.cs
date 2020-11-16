@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using System.Threading;
 
 namespace CrossPlatformDesktopProject.RoomManagement
 {
@@ -141,6 +142,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			foreach (XElement enemyObject in loadedEnemies)
 			{
 				AddEnemy(enemyObject);
+				Thread.Sleep(20); //used so the random number generator for enemies don't have the same seed. It's time based and without this they have the same seed. 
 			}
 			IEnumerable<XElement> loadedItems = from item in roomFile.Descendants("Item")
 												  where (string)item.Element("ObjectType") == "Item"
