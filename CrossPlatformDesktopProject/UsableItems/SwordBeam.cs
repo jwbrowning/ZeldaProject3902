@@ -1,4 +1,5 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
+using CrossPlatformDesktopProject.Entities;
 using CrossPlatformDesktopProject.PlayerStuff;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,9 +13,12 @@ namespace CrossPlatformDesktopProject.UsableItems
         public ISprite Sprite { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
         private Vector2 direction;
-        private float speed = 6f;
+        private float speed = 7.5f;
         private IPlayer player;
         private int timer = 310;
+        private bool destroying;
+        float destroyTime = 25;
+        private IEntity effect;
 
         public SwordBeam(Vector2 position, Vector2 direction, IPlayer player)
         {
@@ -47,6 +51,16 @@ namespace CrossPlatformDesktopProject.UsableItems
 
         public void Update()
         {
+            if(destroying)
+            {
+                destroyTime--;
+                effect.Update();
+                if(destroyTime<=0)
+                {
+                    if (player.ActiveItems.Contains(this)) player.ActiveItems.Remove(this);
+                }
+                return;
+            }
             if (timer > 300)
             {
                 timer--;
@@ -59,13 +73,24 @@ namespace CrossPlatformDesktopProject.UsableItems
             }
             else
             {
-                if (player.ActiveItems.Contains(this)) player.ActiveItems.Remove(this);
+                Destroy();
             }
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
-            if (timer <= 300) Sprite.Draw(spriteBatch, parentPos + Position);
+            if (destroying) effect.Draw(spriteBatch, parentPos);
+            else if (timer <= 300) Sprite.Draw(spriteBatch, parentPos + Position);
+        }
+
+        public void Destroy()
+        {
+            if(!destroying)
+            {
+                CollisionHandler = new EmptyCollisionHandler(this);
+                effect = new SplittingEffect(Position);
+                destroying = true;
+            }
         }
     }
 }

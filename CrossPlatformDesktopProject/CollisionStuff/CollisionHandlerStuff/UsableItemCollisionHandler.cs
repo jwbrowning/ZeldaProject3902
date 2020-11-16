@@ -23,6 +23,10 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
             {
                 ((UsableBoomerang)item).ComeBack();
             }
+            else if(item is SwordBeam)
+            {
+                ((SwordBeam)item).Destroy();
+            }
             else if (item is UsableArrow && player.ActiveItems.Contains(item))
             {
                 player.ActiveItems.Remove(item);
@@ -32,6 +36,10 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
         public void HandleBlockCollision(ICollider collider)
         {
             //HandleGenericCollision(collider);
+            if (item is SwordBeam)
+            {
+                ((SwordBeam)item).Destroy();
+            }
         }
 
         public void HandleEnemyCollision(ICollider collider)
@@ -66,7 +74,10 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandleDoorCollision(ICollider collider)
         {
-
+            if (item is SwordBeam)
+            {
+                ((SwordBeam)item).Destroy();
+            }
         }
     }
 }

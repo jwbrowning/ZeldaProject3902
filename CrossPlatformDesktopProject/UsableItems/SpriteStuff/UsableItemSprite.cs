@@ -30,6 +30,19 @@ namespace CrossPlatformDesktopProject.UsableItems
             overlayColor = Color.White;
         }
 
+        public UsableItemSprite(Texture2D texture, int rows, int columns, int start, int total, float speed, Color overlay)
+        {
+            Texture = texture;
+            Rows = rows;
+            Columns = columns;
+            startFrame = start;
+            totalFrames = total;
+            currentFrame = startFrame;
+            frameCounter = 0;
+            frameInterval = (int)(10f / speed);
+            overlayColor = overlay;
+        }
+
         public void Update()
         {
             frameCounter++;

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 
@@ -10,6 +11,7 @@ namespace CrossPlatformDesktopProject.UsableItems
         private Texture2D leftArrow, upArrow, rightArrow, downArrow;
         private Texture2D boomerang;
         private Texture2D leftBeam, upBeam, rightBeam, downBeam;
+        private Texture2D topLeft, topRight, bottomLeft, bottomRight;
         private static UsableItemSpriteFactory instance = new UsableItemSpriteFactory();
 
         public static UsableItemSpriteFactory Instance
@@ -35,6 +37,30 @@ namespace CrossPlatformDesktopProject.UsableItems
             upBeam = content.Load<Texture2D>("UsableItems/SwordBeamUp");
             rightBeam = content.Load<Texture2D>("UsableItems/SwordBeamRight");
             downBeam = content.Load<Texture2D>("UsableItems/SwordBeamDown");
+            topLeft = content.Load<Texture2D>("UsableItems/TopLeftEffect");
+            topRight = content.Load<Texture2D>("UsableItems/TopRightEffect");
+            bottomLeft = content.Load<Texture2D>("UsableItems/BottomLeftEffect");
+            bottomRight = content.Load<Texture2D>("UsableItems/BottomRightEffect");
+        }
+
+        public ISprite CreateTopLeftEffectSprite(Color overlay)
+        {
+            return new UsableItemSprite(topLeft, 1, 1, 0, 1, 2, overlay);
+        }
+
+        public ISprite CreateTopRightEffectSprite(Color overlay)
+        {
+            return new UsableItemSprite(topRight, 1, 1, 0, 1, 2, overlay);
+        }
+
+        public ISprite CreateBottomLeftEffectSprite(Color overlay)
+        {
+            return new UsableItemSprite(bottomLeft, 1, 1, 0, 1, 2, overlay);
+        }
+
+        public ISprite CreateBottomRightEffectSprite(Color overlay)
+        {
+            return new UsableItemSprite(bottomRight, 1, 1, 0, 1, 2, overlay);
         }
 
         public ISprite CreateSwordSprite()
