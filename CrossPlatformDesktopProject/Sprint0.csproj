@@ -74,6 +74,7 @@
     <Compile Include="CommandStuff\CommandReset.cs" />
     <Compile Include="CommandStuff\CommandSelect.cs" />
     <Compile Include="CommandStuff\CommandShowColliders.cs" />
+    <Compile Include="CommandStuff\CommandSpawnItem.cs" />
     <Compile Include="CommandStuff\CommandSword.cs" />
     <Compile Include="CommandStuff\CommandUnpause.cs" />
     <Compile Include="CommandStuff\CommandUseItem.cs" />

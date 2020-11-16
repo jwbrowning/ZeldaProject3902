@@ -190,6 +190,7 @@ namespace Sprint0
 			currentRoom.ChangeRoom(nextRoomName, direction);
 			roomIndex = Array.FindIndex(rooms, x => x == nextRoomName);
 			player.ActiveItems.Clear();
+			player.ItemCounts[ItemType.Clock] = 0;
         }
 	}
 }

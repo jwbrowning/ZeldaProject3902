@@ -28,7 +28,7 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
             game.player.Update();
             game.currentRoom.UpdateBlocks();
             game.currentRoom.UpdateNPCS();
-            game.currentRoom.UpdateEnemies();
+            if(game.player.ItemCounts[PlayerStuff.ItemType.Clock] == 0) game.currentRoom.UpdateEnemies();
             game.currentRoom.UpdateItems();
             game.currentRoom.UpdateDoors();
             game.hud.Update();
