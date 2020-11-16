@@ -171,5 +171,9 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
                 game.ChangeRoom(((DoorLocked)collider.GameObject).next, ((DoorLocked)collider.GameObject).type);
             }
         }
+        public void HandleWallCollision(ICollider collider)
+        {
+            HandleGenericCollision(collider);
+        }
     }
 }

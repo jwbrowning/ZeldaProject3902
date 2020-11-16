@@ -20,6 +20,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		public List<INPC> NPCs { get; set; }
 		public List<IDoor> Doors {get; set; }
 		public List<IItem> HiddenItems { get; set; }
+		public List<IWall> Walls { get; set; }
 		public Vector2 Position { get; set; }
 		private Texture2D floorBaseWithWalls;
 		private Vector2 size = new Vector2(1024,704);
@@ -47,6 +48,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			Items = new List<IItem>();
 			NPCs = new List<INPC>();
 			Doors = new List<IDoor>();
+			Walls = new List<IWall>(); 
 			Position = position;
 			this.floorBaseWithWalls = floorBaseWithWalls;
 			XOFFSET = 96 + (int)( - size.X / 2f);
@@ -89,7 +91,27 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			nextRoom.Destination = Position;
 			nextRoom.LoadRoom(nextRoomName);
 		}
+		public void addWalls()
+        {
+			int length = 10;
+			int width = 12;
+			Vector2 doorOffset = new Vector2(32, 32);
+			Vector2 upLocation = new Vector2(6, 0);
+			Vector2 downLocation = new Vector2(6, 9);
+			Vector2 leftLocation = new Vector2(-1, 4.5f);
+			Vector2 rightLocation = new Vector2(13, 4.5f);
+			for (int k=0;k<width;k++)
+            {
+				if(k<length)
+                {
+					Walls.Add(new Wall(new Vector2(leftLocation.X * XSCALE + doorOffset.X + XOFFSET, k * YSCALE - doorOffset.Y + YOFFSET)));
+					Walls.Add(new Wall(new Vector2(rightLocation.X * XSCALE + doorOffset.X + XOFFSET, k * YSCALE - doorOffset.Y + YOFFSET)));
+				}
+				Walls.Add(new Wall(new Vector2((k * XSCALE) + doorOffset.X + XOFFSET, upLocation.Y * YSCALE - doorOffset.Y + YOFFSET)));
+				Walls.Add(new Wall(new Vector2((k * XSCALE) + doorOffset.X + XOFFSET, downLocation.Y * YSCALE - doorOffset.Y + YOFFSET)));
 
+			}
+        }
 
 		public void LoadRoom(String roomName)
 		{
@@ -98,10 +120,14 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			Items.Clear();
 			NPCs.Clear();
 			Doors.Clear();
+			Walls.Clear();
+
 			CurrentRoom = roomName;
 
 			//moves Link to the bottom of the map to avoid issues where blocks would spawn on top of him
 			//mygame.player.Position = new Vector2(6 * XSCALE + XOFFSET, 7 * YSCALE + YOFFSET);
+
+			addWalls();
 
 			XElement roomFile = XElement.Load("../../../../Content/Rooms/" + roomName + ".xml");
 
@@ -352,7 +378,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				{
 					Doors.Add(new DoorLocked(doorLocation, "Up", next));
 				}
-				if ((string)doorObject.Element("DoorType") == "Bombed")
+				if ((string)doorObject.Element("DoorType") == "Bombable")
 				{
 					Doors.Add(new DoorBombed(doorLocation, "Up", next));
 				}
@@ -371,7 +397,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				{
 					Doors.Add(new DoorLocked(doorLocation, "Down",next));
 				}
-				if ((string)doorObject.Element("DoorType") == "Bombed")
+				if ((string)doorObject.Element("DoorType") == "Bombable")
 				{
 					Doors.Add(new DoorBombed(doorLocation, "Down",next));
 				}
@@ -390,7 +416,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				{
 					Doors.Add(new DoorLocked(doorLocation, "Left", next));
 				}
-				if ((string)doorObject.Element("DoorType") == "Bombed")
+				if ((string)doorObject.Element("DoorType") == "Bombable")
 				{
 					Doors.Add(new DoorBombed(doorLocation, "Left", next));
 				}
@@ -409,7 +435,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				{
 					Doors.Add(new DoorLocked(doorLocation, "Right", next));
 				}
-				if ((string)doorObject.Element("DoorType") == "Bombed")
+				if ((string)doorObject.Element("DoorType") == "Bombable")
 				{
 					Doors.Add(new DoorBombed(doorLocation, "Right", next));
 				}
@@ -468,6 +494,14 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			}
 		}
 
+		public void UpdateWalls()
+		{
+			for (int i = 0; i < Walls.Count; i++)
+			{
+				Walls[i].Update();
+			}
+		}
+
 		public void DrawBackground(SpriteBatch spriteBatch)
 		{
 			spriteBatch.Begin();
@@ -512,6 +546,14 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			foreach (IDoor door in Doors)
 			{
 				door.Draw(spriteBatch, Position);
+			}
+		}
+
+		public void DrawWalls(SpriteBatch spriteBatch)
+		{
+			foreach (IWall wall in Walls)
+			{
+				wall.Draw(spriteBatch, Position);
 			}
 		}
 

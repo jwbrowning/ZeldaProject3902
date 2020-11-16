@@ -55,6 +55,7 @@
     <Compile Include="CollisionStuff\CollisionHandlerStuff\DoorCollisionHandler.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\SwordCollisionHandler.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\UsableItemCollisionHandler.cs" />
+    <Compile Include="CollisionStuff\CollisionHandlerStuff\WallCollisionHandler.cs" />
     <Compile Include="CollisionStuff\ICollidable.cs" />
     <Compile Include="CommandStuff\CommandCloseInventory.cs" />
     <Compile Include="CommandStuff\CommandDamage.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="CommandStuff\CommandReset.cs" />
     <Compile Include="CommandStuff\CommandSelect.cs" />
     <Compile Include="CommandStuff\CommandShowColliders.cs" />
+    <Compile Include="CommandStuff\CommandSpawnItem.cs" />
     <Compile Include="CommandStuff\CommandSword.cs" />
     <Compile Include="CommandStuff\CommandUnpause.cs" />
     <Compile Include="CommandStuff\CommandUseItem.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="EnemySpriteClasses\INPC.cs" />
     <Compile Include="EnemySpriteClasses\IEnemy.cs" />
     <Compile Include="EnemySpriteClasses\NPCSpriteFactory.cs" />
+    <Compile Include="Entities\DeathEffect.cs" />
     <Compile Include="Entities\ExplosionEffect.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\SplittingEffect.cs" />
@@ -107,11 +110,14 @@
     <Compile Include="Environment\IBlock.cs" />
     <Compile Include="Environment\IDoor.cs" />
     <Compile Include="Environment\DoorSpriteFactory.cs" />
+    <Compile Include="Environment\IWall.cs" />
     <Compile Include="Environment\Ladder.cs" />
     <Compile Include="Environment\RoomBorder.cs" />
     <Compile Include="Environment\Stairs.cs" />
     <Compile Include="Environment\Statue.cs" />
     <Compile Include="Environment\StatueDragon.cs" />
+    <Compile Include="Environment\Wall.cs" />
+    <Compile Include="Environment\WallSpriteFactory.cs" />
     <Compile Include="GameStateStuff\GameStateClasses\GameOverGameState.cs" />
     <Compile Include="GameStateStuff\GameStateClasses\InventoryGameState.cs" />
     <Compile Include="GameStateStuff\GameStateClasses\NormalGameState.cs" />

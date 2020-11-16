@@ -73,7 +73,7 @@ namespace Sprint0
                 spritePositionY = spritePositionY + 2;
             }
 
-            if (spritePositionX < 0)//when a fireball moves off screen to the left it will be deleted to save space.
+            if (spritePositionX < -600)//when a fireball moves off screen to the left it will be deleted to save space.
             {
                 game.currentRoom.Enemies.Remove(this);
             }
