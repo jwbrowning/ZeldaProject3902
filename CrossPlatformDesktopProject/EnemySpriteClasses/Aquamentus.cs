@@ -59,7 +59,14 @@ namespace Sprint0
         {
             health--;
             SoundFactory.Instance.sfxBossScream.Play();
-            game.currentRoom.Enemies[game.currentRoom.Enemies.IndexOf(this)] = new DamagedEnemy(this, game);
+            if (health <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                game.currentRoom.Enemies[game.currentRoom.Enemies.IndexOf(this)] = new DamagedEnemy(this, game);
+            }
         }
 
         public void Die()
