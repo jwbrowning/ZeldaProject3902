@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.EnemySpriteClasses;
+using CrossPlatformDesktopProject.Entities;
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
@@ -9,6 +10,9 @@ namespace Sprint0
 {
     class Aquamentus : IEnemy
     {
+        private IEntity spawnEffect, deathEffect;
+        private int spawnTime = 25, deathTime = 25;
+        private bool spawning = true, dying = false;
         public Color OverlayColor { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
         public Texture2D Texture { get; set; }
@@ -41,6 +45,8 @@ namespace Sprint0
 
         public Aquamentus(Game1 game, Vector2 position)
         {
+            spawnEffect = new ExplosionEffect(position);
+            deathEffect = new DeathEffect(position);
             OverlayColor = Color.White;
             Texture = NPCSpriteFactory.Instance.textureBosses;
             Position = position;
@@ -58,11 +64,38 @@ namespace Sprint0
 
         public void Die()
         {
-            SoundFactory.Instance.sfxEnemyDeath.Play();
+            if(!dying)
+            {
+                deathEffect = new DeathEffect(Position);
+                dying = true;
+                CollisionHandler = new EmptyCollisionHandler(this);
+                SoundFactory.Instance.sfxEnemyDeath.Play();
+            }
         }
 
         public void Update()
         {
+            if(spawning)
+            {
+                spawnTime--;
+                spawnEffect.Update();
+                if (spawnTime<=0)
+                {
+                    spawning = false;
+                }
+                return;
+            }
+            if(dying)
+            {
+                deathTime--;
+                deathEffect.Update();
+                if (deathTime <= 0)
+                {
+                    if(game.currentRoom.Enemies.Contains(this)) game.currentRoom.Enemies.Remove(this);
+                }
+                return;
+            }
+
             animationFrame++;
             movementFrame++;
             fireballFrame++;
@@ -106,6 +139,17 @@ namespace Sprint0
 
         public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
+            if (spawning)
+            {
+                spawnEffect.Draw(spriteBatch, parentPos);
+                return;
+            }
+            if (dying)
+            {
+                deathEffect.Draw(spriteBatch, parentPos);
+                return;
+            }
+
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
 
