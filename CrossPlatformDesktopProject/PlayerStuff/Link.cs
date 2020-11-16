@@ -78,15 +78,15 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
             LinkSprite s = (LinkSprite)Sprite;
             s.overlayColor = Color.White;
             Sprite = s;
-            Sprite.Draw(spriteBatch, Position);
+            Sprite.Draw(spriteBatch, parentPos + Position);
             for (int i = 0; i < ActiveItems.Count; i++)
             {
-                ActiveItems[i].Draw(spriteBatch);
+                ActiveItems[i].Draw(spriteBatch, parentPos);
             }
         }
 

@@ -8,6 +8,6 @@ namespace CrossPlatformDesktopProject.PlayerStuff
     {
         Vector2 Position { get; set; }
         void Update();
-        void Draw(SpriteBatch spriteBatch);
+        void Draw(SpriteBatch spriteBatch, Vector2 parentPos);
     }
 }

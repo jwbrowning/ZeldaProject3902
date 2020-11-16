@@ -70,20 +70,20 @@ namespace CrossPlatformDesktopProject.UsableItems
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
             if (timeTillExplosion >= 0)
             {
-                Sprite.Draw(spriteBatch, Position);
+                Sprite.Draw(spriteBatch, parentPos + Position);
             }
             if (explosionEffects.Count > 0)
             {
-                explosionEffects[0].Draw(spriteBatch);
+                explosionEffects[0].Draw(spriteBatch, parentPos);
                 for (int i = 1; i < explosionEffects.Count; i++)
                 {
                     if (timeTillDone % 2 == i % 2)
                     {
-                        explosionEffects[i].Draw(spriteBatch);
+                        explosionEffects[i].Draw(spriteBatch, parentPos);
                     }
                 }
             }

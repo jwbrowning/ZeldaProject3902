@@ -63,9 +63,9 @@ namespace CrossPlatformDesktopProject.UsableItems
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
-            if (timer <= 300) Sprite.Draw(spriteBatch, Position);
+            if (timer <= 300) Sprite.Draw(spriteBatch, parentPos + Position);
         }
     }
 }

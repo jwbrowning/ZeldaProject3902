@@ -78,7 +78,7 @@ namespace Sprint0
 
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
 
             Rectangle sourceRectangle;
@@ -88,7 +88,7 @@ namespace Sprint0
             destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 20, 40);
 
             spriteBatch.Begin();
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(Texture, new Rectangle(destinationRectangle.Location + new Point((int)parentPos.X, (int)parentPos.Y), destinationRectangle.Size), sourceRectangle, Color.White);
             spriteBatch.End();
         }
     }

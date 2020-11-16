@@ -38,12 +38,12 @@ namespace CrossPlatformDesktopProject.EnemySpriteClasses
             game.currentRoom.Enemies[game.currentRoom.Enemies.IndexOf(this)] = enemy;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
             float value = 1.2f - timer / 1100f;
             float r = ((timer / 100) % 2) * .5f + .5f;
             enemy.OverlayColor = new Color(r, value, r);
-            enemy.Draw(spriteBatch);
+            enemy.Draw(spriteBatch, parentPos);
         }
 
         public void TakeDamage()

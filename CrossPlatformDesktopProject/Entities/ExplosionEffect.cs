@@ -22,9 +22,9 @@ namespace CrossPlatformDesktopProject.Entities
             CollisionHandler = new EmptyCollisionHandler(this);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
-            explosionSprite.Draw(spriteBatch, Position);
+            explosionSprite.Draw(spriteBatch, parentPos + Position);
         }
 
         public void Update()

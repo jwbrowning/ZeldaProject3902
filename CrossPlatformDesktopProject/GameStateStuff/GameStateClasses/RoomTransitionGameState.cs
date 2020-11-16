@@ -28,9 +28,17 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
         public void Draw(SpriteBatch spriteBatch)
         {
             game.currentRoom.DrawBackground(spriteBatch);
-            //game.currentRoom.DrawBlocks(spriteBatch);
             game.currentRoom.nextRoom.DrawBackground(spriteBatch);
-
+            game.currentRoom.DrawBlocks(spriteBatch);
+            game.currentRoom.nextRoom.DrawBlocks(spriteBatch);
+            game.currentRoom.DrawNPCS(spriteBatch);
+            game.currentRoom.nextRoom.DrawNPCS(spriteBatch);
+            game.currentRoom.DrawEnemies(spriteBatch);
+            game.currentRoom.nextRoom.DrawEnemies(spriteBatch);
+            game.currentRoom.DrawItems(spriteBatch);
+            game.currentRoom.nextRoom.DrawItems(spriteBatch);
+            game.player.Draw(spriteBatch, game.currentRoom.Position);
+            game.hud.Draw(spriteBatch);
         }
     }
 }

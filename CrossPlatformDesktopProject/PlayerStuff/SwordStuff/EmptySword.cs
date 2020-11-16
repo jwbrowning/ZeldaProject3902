@@ -31,7 +31,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff.SwordStuff
 
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
 
         }

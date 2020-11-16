@@ -49,16 +49,16 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             game.player = player;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
             LinkSprite s = (LinkSprite)Sprite;
             float value = 1.2f - timer / 1100f;
             float r = ((timer / 100) % 2) * .5f + .5f;
             s.overlayColor = new Color(r, value, value);
-            Sprite.Draw(spriteBatch, Position);
+            Sprite.Draw(spriteBatch, parentPos + Position);
             for (int i = 0; i < ActiveItems.Count; i++)
             {
-                ActiveItems[i].Draw(spriteBatch);
+                ActiveItems[i].Draw(spriteBatch, parentPos);
             }
         }
 

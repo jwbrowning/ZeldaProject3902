@@ -23,7 +23,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		public Vector2 Destination { get; set; }
 		private string CurrentRoom;
 		public iRoom nextRoom { get; set; }
-		private float lerpSpeed = .05f;
+		private float lerpSpeed = .035f;
 
 		/*XSCALE and YSCALE convert the object coordinates from tiles to pixels. 
 		In the original game each tile is 16 pixels wide, but upscaled by 4 for 
@@ -45,8 +45,8 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			NPCs = new List<INPC>();
 			Position = position;
 			this.floorBaseWithWalls = floorBaseWithWalls;
-			XOFFSET = 98 + (int)(Position.X - size.X / 2f);
-			YOFFSET = 98 + (int)(Position.Y - size.Y / 2f);
+			XOFFSET = 98 + (int)( - size.X / 2f);
+			YOFFSET = 98 + (int)( - size.Y / 2f);
 			Destination = position;
 		}
 		
@@ -351,7 +351,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		{
 			foreach (IBlock block in Blocks)
 			{
-				block.Draw(spriteBatch);
+				block.Draw(spriteBatch, Position);
 			}
 		}
 
@@ -359,7 +359,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		{
 			foreach (INPC npc in NPCs)
 			{
-				npc.Draw(spriteBatch);
+				npc.Draw(spriteBatch, Position);
 			}
 		}
 
@@ -367,7 +367,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		{
 			foreach (IEnemy enemy in Enemies)
 			{
-				enemy.Draw(spriteBatch);
+				enemy.Draw(spriteBatch, Position);
 			}
 		}
 
@@ -375,7 +375,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		{
 			foreach (IItem item in Items)
 			{
-				item.Draw(spriteBatch);
+				item.Draw(spriteBatch, Position);
 			}
 		}
 

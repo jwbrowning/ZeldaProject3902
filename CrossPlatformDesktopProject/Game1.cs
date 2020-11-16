@@ -71,7 +71,7 @@ namespace Sprint0
 			currentRoom = new Room1(this, new Vector2(graphics.PreferredBackBufferWidth/2, graphics.PreferredBackBufferHeight/2+84), floortilebase);
             currentRoom.LoadRoom("RoomDEBUG");
 
-			SoundFactory.Instance.musicDungeonLoop.Play();
+			//SoundFactory.Instance.musicDungeonLoop.Play();
 		}
 
 		protected override void LoadContent()
