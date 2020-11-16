@@ -21,7 +21,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff
                     Rectangle colliderRect1 = GetColliderRectangle(allGameObjects[i]);
                     Rectangle colliderRect2 = GetColliderRectangle(allGameObjects[j]);
                     Rectangle intersect = Rectangle.Intersect(colliderRect1, colliderRect2);
-                    if (!intersect.IsEmpty && intersect.Size!=Point.Zero)
+                    if (!intersect.IsEmpty && intersect.Size != Point.Zero)
                     {
                         CallRightCollisionMethod(allGameObjects[i].CollisionHandler, allGameObjects[j].CollisionHandler.Collider);
                         CallRightCollisionMethod(allGameObjects[j].CollisionHandler, allGameObjects[i].CollisionHandler.Collider);
@@ -59,6 +59,9 @@ namespace CrossPlatformDesktopProject.CollisionStuff
             else if (collider.GameObject is ISword)
             {
                 collisionHandler.HandleSwordCollision(collider);
+            } else if (collider.GameObject is IDoor) 
+            {
+                collisionHandler.HandleDoorCollision(collider);
             }
         }
 
