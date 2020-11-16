@@ -11,6 +11,8 @@ namespace Sprint0
         public Color OverlayColor { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
         public Texture2D Texture { get; set; }
+        public string carriedLoot { get; set; }
+
 
         public int spritePositionX;
         public int spritePositionY;

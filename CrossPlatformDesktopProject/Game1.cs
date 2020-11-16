@@ -135,8 +135,8 @@ namespace Sprint0
                 spriteBatch.Begin();
                 foreach (IGameObject g in currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Doors).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }))
                 {
-                    Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);
-                    spriteBatch.Draw(squareOutline, rec, new Color(Color.LimeGreen, 1));
+                    //Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);
+                    //spriteBatch.Draw(squareOutline, rec, new Color(Color.LimeGreen, 1));
                 }
                 spriteBatch.End();
 			}

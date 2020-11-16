@@ -12,6 +12,7 @@ namespace Sprint0
         public Color OverlayColor { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
         public Texture2D Texture { get; set; }
+        public string carriedLoot {get; set;}
         private IPlayer player;
         private Game1 game;
         private int health = 6;
