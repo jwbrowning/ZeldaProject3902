@@ -14,6 +14,7 @@ using CrossPlatformDesktopProject.SoundManagement;
 using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -65,6 +66,8 @@ namespace Sprint0
 			{
 				player.Health = 1000;
 				player.TotalHealth = 1000;
+				player.ItemCounts[ItemType.Map]++;
+				player.ItemCounts[ItemType.Compass]++;
 			}
 
 			hud = new HeadsUpDisplay(this, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
@@ -76,6 +79,8 @@ namespace Sprint0
 
 			currentRoom = new Room1(this, new Vector2(graphics.PreferredBackBufferWidth/2, graphics.PreferredBackBufferHeight/2+84), floortilebase);
             currentRoom.LoadRoom("RoomC6");
+			//currentRoom.LoadRoom("RoomDEBUG");
+			roomIndex = Array.FindIndex(rooms, x => x == "RoomC6");
 
 			//SoundFactory.Instance.musicDungeonLoop.Play();
 		}
@@ -183,6 +188,7 @@ namespace Sprint0
         {
 			gameState = new RoomTransitionGameState(this);
 			currentRoom.ChangeRoom(nextRoomName, direction);
+			roomIndex = Array.FindIndex(rooms, x => x == nextRoomName);
 			player.ActiveItems.Clear();
         }
 	}

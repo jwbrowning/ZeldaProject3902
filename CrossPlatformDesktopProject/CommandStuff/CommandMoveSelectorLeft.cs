@@ -10,7 +10,7 @@
 
         public void Execute()
         {
-
+            myGame.hud.MoveSelectorLeft();
         }
     }
 }

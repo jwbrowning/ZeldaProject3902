@@ -37,6 +37,11 @@ namespace CrossPlatformDesktopProject.UsableItems
             downBeam = content.Load<Texture2D>("UsableItems/SwordBeamDown");
         }
 
+        public ISprite CreateSwordSprite()
+        {
+            return new UsableItemSprite(upBeam, 1, 4, 0, 1, 2);
+        }
+
         public ISprite CreateBombSprite()
         {
             return new UsableItemSprite(bomb, 1, 1, 0, 1, 1);

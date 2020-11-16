@@ -72,12 +72,15 @@
     <Compile Include="CommandStuff\CommandQuit.cs" />
     <Compile Include="CommandStuff\CommandRemoveColliders.cs" />
     <Compile Include="CommandStuff\CommandReset.cs" />
+    <Compile Include="CommandStuff\CommandSelect.cs" />
     <Compile Include="CommandStuff\CommandShowColliders.cs" />
     <Compile Include="CommandStuff\CommandSword.cs" />
     <Compile Include="CommandStuff\CommandUnpause.cs" />
     <Compile Include="CommandStuff\CommandUseItem.cs" />
     <Compile Include="CommandStuff\CommandUseItem2.cs" />
     <Compile Include="CommandStuff\CommandUseItem3.cs" />
+    <Compile Include="CommandStuff\CommandUseItemN.cs" />
+    <Compile Include="CommandStuff\CommandUseItemB.cs" />
     <Compile Include="ControllerStuff\ControllerMouse.cs" />
     <Compile Include="ControllerStuff\GameOverKeyboardController.cs" />
     <Compile Include="ControllerStuff\InventoryKeyboardController.cs" />
@@ -90,6 +93,7 @@
     <Compile Include="EnemySpriteClasses\NPCSpriteFactory.cs" />
     <Compile Include="Entities\ExplosionEffect.cs" />
     <Compile Include="Entities\IEntity.cs" />
+    <Compile Include="Entities\SplittingEffect.cs" />
     <Compile Include="Environment\BlockSpriteFactory.cs" />
     <Compile Include="Environment\BlockWater.cs" />
     <Compile Include="Environment\BlockStandard.cs" />

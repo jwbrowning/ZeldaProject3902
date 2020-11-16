@@ -7,7 +7,7 @@ namespace CrossPlatformDesktopProject.HeadsUpDisplayStuff
     class HUDSpriteFactory
     {
         private Texture2D headerBackground, inventoryBackground;
-        private Texture2D heart, lostHeart, selector;
+        private Texture2D heart, lostHeart, selector, compassMarker;
         private static HUDSpriteFactory instance = new HUDSpriteFactory();
 
         public static HUDSpriteFactory Instance
@@ -27,6 +27,7 @@ namespace CrossPlatformDesktopProject.HeadsUpDisplayStuff
             heart = content.Load<Texture2D>("HUD/HUDHeart");
             lostHeart = content.Load<Texture2D>("HUD/HUDLostHeart");
             selector = content.Load<Texture2D>("HUD/HUDSelector");
+            compassMarker = content.Load<Texture2D>("HUD/CompassMarker");
         }
 
         public ISprite CreateHeaderBackground()
@@ -52,6 +53,11 @@ namespace CrossPlatformDesktopProject.HeadsUpDisplayStuff
         public ISprite CreateSelector()
         {
             return new HUDSprite(selector);
+        }
+
+        public ISprite CreateCompassMarker()
+        {
+            return new HUDSprite(compassMarker);
         }
 
     }

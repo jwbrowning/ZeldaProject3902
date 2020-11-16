@@ -212,6 +212,18 @@
 /processorParam:TextureFormat=Compressed
 /build:font.spritefont;arial.spritefont
 
+#begin HUD/CompassMarker.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:HUD/CompassMarker.png
+
 #begin HUD/HUDHeaderInfo.png
 /importer:TextureImporter
 /processor:TextureProcessor

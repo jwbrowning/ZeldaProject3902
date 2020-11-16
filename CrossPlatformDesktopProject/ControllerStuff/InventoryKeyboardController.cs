@@ -24,6 +24,7 @@ namespace Sprint0
             RegisterCommand(Keys.Down, new CommandSelectorMoveDown(game));
             RegisterCommand(Keys.Left, new CommandSelectorMoveLeft(game));
             RegisterCommand(Keys.Right, new CommandSelectorMoveRight(game));
+            RegisterCommand(Keys.Enter, new CommandSelect(game));
             RegisterCommand(Keys.Escape, new CommandCloseInventory(game));
             RegisterCommand(Keys.I, new CommandCloseInventory(game));
             RegisterCommand(Keys.R, new CommandReset(game));

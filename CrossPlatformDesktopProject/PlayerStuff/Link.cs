@@ -113,6 +113,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
 
         public void ShootArrow()
         {
+            if (ActiveItems.FindAll((IUsableItem item) => item is UsableArrow).Count > 0) return;
             if (ItemCounts[ItemType.Bow] == 0) return;
             if (ItemCounts[ItemType.Arrow] <= 0) return;
             State.ShootArrow();
@@ -120,12 +121,14 @@ namespace CrossPlatformDesktopProject.PlayerStuff
 
         public void ThrowBoomerang()
         {
+            if (ActiveItems.FindAll((IUsableItem item) => item is UsableBoomerang).Count > 0) return;
             if (ItemCounts[ItemType.Boomerang] - ActiveItems.FindAll((IUsableItem item) => item is UsableBoomerang).Count <= 0) return;
             State.ThrowBoomerang();
         }
 
         public void UseBomb()
         {
+            if (ActiveItems.FindAll((IUsableItem item) => item is UsableBomb).Count > 0) return;
             if (ItemCounts[ItemType.Bomb] <= 0) return;
             State.UseBomb();
         }

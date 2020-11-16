@@ -8,8 +8,8 @@ namespace CrossPlatformDesktopProject
     public class HeadsUpDisplay
     {
         private Game1 game;
-        private HeaderInfo headerInfo;
-        private InventoryInfo inventoryInfo;
+        public HeaderInfo headerInfo;
+        public InventoryInfo inventoryInfo;
         public Vector2 Position { get; set; }
         public Point Size { get; set; }
         private Vector2 normalPos;
@@ -58,6 +58,31 @@ namespace CrossPlatformDesktopProject
         public void CloseInventory()
         {
             inventoryOpen = false;
+        }
+
+        public void MoveSelectorUp()
+        {
+            inventoryInfo.MoveSelectorUp();
+        }
+
+        public void MoveSelectorDown()
+        {
+            inventoryInfo.MoveSelectorDown();
+        }
+
+        public void MoveSelectorLeft()
+        {
+            inventoryInfo.MoveSelectorLeft();
+        }
+
+        public void MoveSelectorRight()
+        {
+            inventoryInfo.MoveSelectorRight();
+        }
+
+        public void Select()
+        {
+            inventoryInfo.Select();
         }
 
     }

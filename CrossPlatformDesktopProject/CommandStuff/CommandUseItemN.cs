@@ -1,16 +1,17 @@
 ﻿namespace Sprint0
 {
-    class CommandSelectorMoveDown : ICommand
+    class CommandUseItemN : ICommand
     {
         private Game1 myGame;
-        public CommandSelectorMoveDown(Game1 game)
+
+        public CommandUseItemN(Game1 game)
         {
             myGame = game;
         }
 
         public void Execute()
         {
-            myGame.hud.MoveSelectorDown();
+            myGame.player.Attack();
         }
     }
 }

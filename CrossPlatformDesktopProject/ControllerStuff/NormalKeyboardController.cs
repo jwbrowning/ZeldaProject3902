@@ -27,11 +27,11 @@ namespace Sprint0
             moveMappings.Add(Keys.Down, new CommandMoveDown(game));
             moveMappings.Add(Keys.Left, new CommandMoveLeft(game));
             moveMappings.Add(Keys.Right, new CommandMoveRight(game));
-            RegisterCommand(Keys.D1, new CommandUseItem(game));
+            /*RegisterCommand(Keys.D1, new CommandUseItem(game));
             RegisterCommand(Keys.D2, new CommandUseItem2(game));
-            RegisterCommand(Keys.D3, new CommandUseItem3(game));
-            RegisterCommand(Keys.Z, new CommandSword(game));
-            RegisterCommand(Keys.N, new CommandSword(game));
+            RegisterCommand(Keys.D3, new CommandUseItem3(game));*/
+            RegisterCommand(Keys.B, new CommandUseItemB(game));
+            RegisterCommand(Keys.N, new CommandUseItemN(game));
             RegisterCommand(Keys.E, new CommandDamage(game));
             RegisterCommand(Keys.C, new CommandShowColliders(game));
             RegisterCommand(Keys.V, new CommandRemoveColliders(game));
