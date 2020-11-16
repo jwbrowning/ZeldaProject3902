@@ -34,9 +34,9 @@ namespace CrossPlatformDesktopProject.Environment
                 sourceRectangle = new Rectangle(914, 11, 32, 32);
             } else if(type == "Down") {
                 sourceRectangle = new Rectangle(914, 110, 32, 32);
-            } else if(type == "Right") {
-                sourceRectangle = new Rectangle(914, 44, 32, 32);
             } else if(type == "Left") {
+                sourceRectangle = new Rectangle(914, 44, 32, 32);
+            } else if(type == "Right") {
                 sourceRectangle = new Rectangle(914, 77, 32, 32);
             }
             

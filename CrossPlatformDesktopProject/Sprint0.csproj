@@ -52,6 +52,7 @@
     <Compile Include="CollisionStuff\CollisionHandlerStuff\ItemCollisionHandler.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\LinkCollisionHandler.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\NPCCollisionHandler.cs" />
+    <Compile Include="CollisionStuff\CollisionHandlerStuff\DoorCollisionHandler.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\SwordCollisionHandler.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\UsableItemCollisionHandler.cs" />
     <Compile Include="CollisionStuff\ICollidable.cs" />
@@ -100,6 +101,8 @@
     <Compile Include="Environment\FloorTile.cs" />
     <Compile Include="Environment\GapTile.cs" />
     <Compile Include="Environment\IBlock.cs" />
+    <Compile Include="Environment\IDoor.cs" />
+    <Compile Include="Environment\DoorSpriteFactory.cs" />
     <Compile Include="Environment\Ladder.cs" />
     <Compile Include="Environment\RoomBorder.cs" />
     <Compile Include="Environment\Stairs.cs" />

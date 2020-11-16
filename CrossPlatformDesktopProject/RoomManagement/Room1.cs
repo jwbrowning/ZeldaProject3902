@@ -57,29 +57,29 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		{
 			Vector2 position = Vector2.Zero;
 			//Vector2 destination = Vector2.Zero;
-			if (direction == "Down")
+			if (direction == "Up")
 			{
 				Destination = Position + new Vector2(0, size.Y);
 				position = Position + new Vector2(0, -size.Y);
-				mygame.player.Position += new Vector2(0, size.Y * .9f);
+				mygame.player.Position += new Vector2(0, size.Y * .6f);
 			}
-			else if(direction == "Up")
+			else if(direction == "Down")
 			{
 				Destination = Position + new Vector2(0, -size.Y);
 				position = Position + new Vector2(0, size.Y);
-				mygame.player.Position += new Vector2(0,-size.Y * .9f);
+				mygame.player.Position += new Vector2(0,-size.Y * .6f);
 			}
 			else if (direction == "Left")
 			{
 				Destination = Position + new Vector2(-size.X, 0);
 				position = Position + new Vector2(size.X, 0);
-				mygame.player.Position += new Vector2(-size.X*.9f, 0); 
+				mygame.player.Position += new Vector2(-size.X*.65f, 0); 
 			}
 			else if (direction == "Right")
 			{
 				Destination = Position + new Vector2(size.X, 0);
 				position = Position + new Vector2(-size.X, 0);
-				mygame.player.Position += new Vector2(size.X * .9f, 0);
+				mygame.player.Position += new Vector2(size.X * .65f, 0);
 			}
 			nextRoom = new Room1(mygame,position,floorBaseWithWalls);
 			nextRoom.Destination = Position;
@@ -98,7 +98,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			CurrentRoom = roomName;
 
 			//moves Link to the bottom of the map to avoid issues where blocks would spawn on top of him
-			mygame.player.Position = new Vector2(6 * XSCALE + XOFFSET, 7 * YSCALE + YOFFSET);
+			//mygame.player.Position = new Vector2(6 * XSCALE + XOFFSET, 7 * YSCALE + YOFFSET);
 
 			XElement roomFile = XElement.Load("../../../../Content/Rooms/" + roomName + ".xml");
 
@@ -344,49 +344,51 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				{
 					Doors.Add(new DoorBombed(new Vector2(6 * XSCALE + XOFFSET + 32, 10* YSCALE + YOFFSET-96),"Down",next));
 				}
-			} else if ((string)doorObject.Element("DoorPosition") == "Right") {
-				if ((string)doorObject.Element("DoorType") == "Closed")
-				{
-					Doors.Add(new DoorClosed(new Vector2(XSCALE+32, 5* YSCALE + YOFFSET-96),"Right",next));
-				}
-				if ((string)doorObject.Element("DoorType") == "Open")
-				{
-					Doors.Add(new DoorOpen(new Vector2(XSCALE+32, 5* YSCALE + YOFFSET-96),"Right",next));
-				}
-				if ((string)doorObject.Element("DoorType") == "Locked")
-				{
-					Doors.Add(new DoorLocked(new Vector2(XSCALE+32, 5* YSCALE + YOFFSET-96),"Right",next));
-				}
-				if ((string)doorObject.Element("DoorType") == "Bombed")
-				{
-					Doors.Add(new DoorBombed(new Vector2(XSCALE+32, 5* YSCALE + YOFFSET-96),"Right",next));
-				}
 			} else if ((string)doorObject.Element("DoorPosition") == "Left") {
 				if ((string)doorObject.Element("DoorType") == "Closed")
 				{
-					Doors.Add(new DoorClosed(new Vector2(13*XSCALE+XOFFSET+16, 5* YSCALE + YOFFSET-96),"Left",next));
+					Doors.Add(new DoorClosed(new Vector2(-16 + XOFFSET, 5* YSCALE + YOFFSET-96), "Left", next));
 				}
 				if ((string)doorObject.Element("DoorType") == "Open")
 				{
-					Doors.Add(new DoorOpen(new Vector2(13*XSCALE+XOFFSET+16, 5* YSCALE + YOFFSET-96),"Left",next));
+					Doors.Add(new DoorOpen(new Vector2(-16 + XOFFSET, 5* YSCALE + YOFFSET-96), "Left", next));
 				}
 				if ((string)doorObject.Element("DoorType") == "Locked")
 				{
-					Doors.Add(new DoorLocked(new Vector2(13*XSCALE+XOFFSET+16, 5* YSCALE + YOFFSET-96),"Left",next));
+					Doors.Add(new DoorLocked(new Vector2(-16 + XOFFSET, 5* YSCALE + YOFFSET-96), "Left", next));
 				}
 				if ((string)doorObject.Element("DoorType") == "Bombed")
 				{
-					Doors.Add(new DoorBombed(new Vector2(13*XSCALE+XOFFSET+16, 5* YSCALE + YOFFSET-96),"Left",next));
+					Doors.Add(new DoorBombed(new Vector2(-16 + XOFFSET, 5* YSCALE + YOFFSET-96), "Left", next));
+				}
+			} else if ((string)doorObject.Element("DoorPosition") == "Right") {
+				if ((string)doorObject.Element("DoorType") == "Closed")
+				{
+					Doors.Add(new DoorClosed(new Vector2(13*XSCALE+XOFFSET+16, 5* YSCALE + YOFFSET-96), "Right", next));
+				}
+				if ((string)doorObject.Element("DoorType") == "Open")
+				{
+					Doors.Add(new DoorOpen(new Vector2(13*XSCALE+XOFFSET+16, 5* YSCALE + YOFFSET-96), "Right", next));
+				}
+				if ((string)doorObject.Element("DoorType") == "Locked")
+				{
+					Doors.Add(new DoorLocked(new Vector2(13*XSCALE+XOFFSET+16, 5* YSCALE + YOFFSET-96), "Right", next));
+				}
+				if ((string)doorObject.Element("DoorType") == "Bombed")
+				{
+					Doors.Add(new DoorBombed(new Vector2(13*XSCALE+XOFFSET+16, 5* YSCALE + YOFFSET-96), "Right", next));
 				}
 			}
 		}
+		
 		public void UpdateRooms()
         {
 			Position = Vector2.Lerp(Position, Destination, lerpSpeed);
-			if(Vector2.Distance(Position,Destination) < 1 && nextRoom == null){
+			if(Vector2.Distance(Position,Destination) < 3 && nextRoom == null){
 				mygame.FinishTransition(this);
             }
 		}
+
 		public void UpdateNPCS()
 		{
 			for (int i = 0; i < NPCs.Count; i++)
@@ -470,7 +472,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		{
 			foreach (IDoor door in Doors)
 			{
-				door.Draw(spriteBatch);
+				door.Draw(spriteBatch, Position);
 			}
 		}
 

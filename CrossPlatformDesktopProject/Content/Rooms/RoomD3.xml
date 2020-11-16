@@ -16,7 +16,7 @@
 		<Door>
 			<DoorPosition>Right</DoorPosition>
 			<DoorType>Open</DoorType>
-			<DoorDestination>RoomE4</DoorDestination>
+			<DoorDestination>RoomE3</DoorDestination>
 		</Door>
 		<Item>
 			<ObjectType>Environment</ObjectType>

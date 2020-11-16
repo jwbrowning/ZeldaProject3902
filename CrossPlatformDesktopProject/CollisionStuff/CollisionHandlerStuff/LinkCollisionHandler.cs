@@ -152,16 +152,17 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
         {
             if(collider.GameObject is DoorOpen) 
             {
-                game.currentRoom.LoadRoom(((DoorOpen)collider.GameObject).next);
+                game.ChangeRoom(((DoorOpen)collider.GameObject).next, ((DoorOpen)collider.GameObject).type);
             } else if(collider.GameObject is DoorClosed) 
             {
-                game.currentRoom.LoadRoom(((DoorClosed)collider.GameObject).next);
+                game.ChangeRoom(((DoorClosed)collider.GameObject).next, ((DoorClosed)collider.GameObject).type);
             } else if(collider.GameObject is DoorBombed) 
             {
-                game.currentRoom.LoadRoom(((DoorBombed)collider.GameObject).next);
-            }else if(collider.GameObject is DoorLocked) 
+                game.ChangeRoom(((DoorBombed)collider.GameObject).next, ((DoorBombed)collider.GameObject).type);
+            }
+            else if(collider.GameObject is DoorLocked) 
             {
-                game.currentRoom.LoadRoom(((DoorLocked)collider.GameObject).next);
+                game.ChangeRoom(((DoorLocked)collider.GameObject).next, ((DoorLocked)collider.GameObject).type);
             }
         }
     }

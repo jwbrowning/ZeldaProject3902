@@ -58,7 +58,7 @@ namespace Sprint0
 		{
 			LoadContent();
 			player = new Link(this);
-			player.Position = new Vector2(200, 360);
+			player.Position = new Vector2(0, 160);
 			LinkSpriteFactory.Instance.player = player;
 
 			hud = new HeadsUpDisplay(this, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
@@ -90,6 +90,7 @@ namespace Sprint0
 			NPCSpriteFactory.Instance.LoadAllTextures(Content);
 			LinkSpriteFactory.Instance.LoadAllTextures(Content);
 			ItemSpriteFactory.Instance.LoadAllTextures(Content);
+			DoorSpriteFactory.Instance.LoadAllTextures(Content);
 			SoundFactory.Instance.LoadAllSounds(Content);
 
 			font = Content.Load<SpriteFont>("arial");
@@ -106,7 +107,7 @@ namespace Sprint0
 		{
 			gameState.Update();
 
-            List<IGameObject> allGameObjects = currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }).ToList();
+            List<IGameObject> allGameObjects = currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Doors).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }).ToList();
             CollisionDetection.DetectCollisions(allGameObjects);
 
 			base.Update(gameTime);
@@ -121,7 +122,7 @@ namespace Sprint0
             if (showCollisions)
             {
                 spriteBatch.Begin();
-                foreach (IGameObject g in currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }))
+                foreach (IGameObject g in currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Doors).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }))
                 {
                     Rectangle rec = CollisionDetection.GetColliderRectangle(g);
                     spriteBatch.Draw(squareOutline, rec, new Color(Color.LimeGreen, 1));
@@ -146,7 +147,6 @@ namespace Sprint0
         {
 			screen = new NormalScreen(this, GraphicsDevice, graphics);
 			gameState = new NormalGameState(this);
-			ChangeRoom("RoomDEBUG","Right");
 		}
 
 		public void OpenInventory()
