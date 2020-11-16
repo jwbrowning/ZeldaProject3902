@@ -27,7 +27,7 @@ namespace CrossPlatformDesktopProject.Environment
             Rectangle destinationRectangle;
 
             sourceRectangle = new Rectangle(0, 0, 16, 16);
-            destinationRectangle = new Rectangle((int)(Position.X-size.X/2f), (int)(Position.Y-size.Y/2f), (int)size.X, (int)size.Y);
+            destinationRectangle = new Rectangle((int)(Position.X - size.X / 2f), (int)(Position.Y - size.Y / 2f), (int)size.X, (int)size.Y);
 
             spriteBatch.Begin();
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);

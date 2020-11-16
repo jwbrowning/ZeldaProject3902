@@ -16,7 +16,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         private void HandleGenericCollision(ICollider collider)
         {
-            
+
         }
 
         public void HandleBlockCollision(ICollider collider)

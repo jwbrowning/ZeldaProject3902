@@ -58,7 +58,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandlePickupItemCollision(ICollider collider)
         {
-            if(collider.GameObject is Arrow)
+            if (collider.GameObject is Arrow)
             {
                 game.player.PickUp(ItemType.Arrow, 1);
                 SoundFactory.Instance.sfxItemPickup.Play();
@@ -68,62 +68,62 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
                 game.player.ItemCounts[ItemType.Bomb]++;
                 SoundFactory.Instance.sfxItemPickup.Play();
             }
-            else if(collider.GameObject is Boomerang)
+            else if (collider.GameObject is Boomerang)
             {
                 game.player.ItemCounts[ItemType.Boomerang]++;
                 SoundFactory.Instance.sfxItemPickup.Play();
             }
-            else if(collider.GameObject is Bow)
+            else if (collider.GameObject is Bow)
             {
                 game.player.ItemCounts[ItemType.Bow]++;
                 SoundFactory.Instance.sfxNewItem.Play();
             }
-            else if(collider.GameObject is Clock)
+            else if (collider.GameObject is Clock)
             {
                 game.player.ItemCounts[ItemType.Clock]++;
                 SoundFactory.Instance.sfxItemPickup.Play();
             }
-            else if(collider.GameObject is Compass)
+            else if (collider.GameObject is Compass)
             {
                 game.player.ItemCounts[ItemType.Compass]++;
                 SoundFactory.Instance.sfxItemPickup.Play();
             }
-            else if(collider.GameObject is Fairy)
+            else if (collider.GameObject is Fairy)
             {
                 game.player.ItemCounts[ItemType.Fairy]++;
                 game.player.Health = game.player.TotalHealth;
                 SoundFactory.Instance.sfxItemPickup.Play();
             }
-            else if(collider.GameObject is Heart)
+            else if (collider.GameObject is Heart)
             {
                 game.player.ItemCounts[ItemType.Heart]++;
                 game.player.Health++;
                 SoundFactory.Instance.sfxHeartKeyPickup.Play();
                 if (game.player.Health > game.player.TotalHealth) game.player.Health = game.player.TotalHealth;
             }
-            else if(collider.GameObject is HeartContainer)
+            else if (collider.GameObject is HeartContainer)
             {
                 game.player.ItemCounts[ItemType.HeartContainer]++;
                 game.player.TotalHealth++;
                 game.player.Health++;
                 SoundFactory.Instance.sfxItemPickup.Play();
             }
-            else if(collider.GameObject is Key)
+            else if (collider.GameObject is Key)
             {
                 game.player.ItemCounts[ItemType.Key]++;
                 SoundFactory.Instance.sfxHeartKeyPickup.Play();
             }
-            else if(collider.GameObject is Map)
+            else if (collider.GameObject is Map)
             {
                 game.player.ItemCounts[ItemType.Map]++;
                 SoundFactory.Instance.sfxItemPickup.Play();
             }
-            else if(collider.GameObject is Rupee)
+            else if (collider.GameObject is Rupee)
             {
                 game.player.ItemCounts[ItemType.Rupee]++;
                 SoundFactory.Instance.sfxRupeePickup.Play();
             }
-            else if(collider.GameObject is TriforcePiece)
+            else if (collider.GameObject is TriforcePiece)
             {
                 game.player.ItemCounts[ItemType.TriforcePiece]++;
                 game.Win();

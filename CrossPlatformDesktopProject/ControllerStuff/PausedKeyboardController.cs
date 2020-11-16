@@ -41,7 +41,7 @@ namespace Sprint0
                         controllerMappings[key].Execute();
                     }
                 }
-            } 
+            }
             else
             {
                 wait--;

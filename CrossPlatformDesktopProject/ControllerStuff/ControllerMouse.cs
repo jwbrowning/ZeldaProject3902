@@ -9,8 +9,9 @@ namespace Sprint0
         MouseState state;
         bool leftPressedLast = false;
         bool rightPressedLast = false;
-        public ControllerMouse(Game1 game) {
-            this.game = game;           
+        public ControllerMouse(Game1 game)
+        {
+            this.game = game;
         }
 
         public void Update()
@@ -18,7 +19,7 @@ namespace Sprint0
             state = Mouse.GetState();
             bool leftPressed = ButtonState.Pressed == state.LeftButton ? true : false;
             bool rightPressed = ButtonState.Pressed == state.RightButton ? true : false;
-           
+
             if (rightPressed && !rightPressedLast)
             {
                 if (game.roomIndex + 1 < game.rooms.Length)

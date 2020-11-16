@@ -67,7 +67,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandleUsableItemCollision(ICollider collider)
         {
-            if(collider.GameObject is UsableBoomerang)
+            if (collider.GameObject is UsableBoomerang)
             {
                 ((UsableBoomerang)collider.GameObject).ComeBack();
                 Vector2 direction = collider.GameObject.Position - item.Position;

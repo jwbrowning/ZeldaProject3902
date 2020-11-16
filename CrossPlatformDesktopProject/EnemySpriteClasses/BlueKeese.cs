@@ -71,13 +71,13 @@ namespace Sprint0
             float playerPositionY = position.Y;
 
             animationFrame++;
-            
+
             if (animationFrame == 10)
                 animationFrame = 1;
 
             //keese simply chases after the player's current position
 
-            if(playerPositionX < spritePositionX)
+            if (playerPositionX < spritePositionX)
             {
                 spritePositionX = spritePositionX - 2;
             }

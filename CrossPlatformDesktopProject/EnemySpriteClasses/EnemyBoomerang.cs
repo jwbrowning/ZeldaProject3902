@@ -77,7 +77,7 @@ namespace Sprint0
                 {
                     spritePositionY = spritePositionY - 5;
                 }
-                else if(movementFrame >= 50 && movementFrame <= 100)
+                else if (movementFrame >= 50 && movementFrame <= 100)
                 {
                     spritePositionY = spritePositionY + 5;
                 }
@@ -128,7 +128,7 @@ namespace Sprint0
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
 
-            if(drawBoomerang == true)
+            if (drawBoomerang == true)
             {
                 if (animationFrame >= 1 && animationFrame < 7)
                 {
