@@ -59,21 +59,25 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			{
 				Destination = Position + new Vector2(0, size.Y);
 				position = Position + new Vector2(0, -size.Y);
+				mygame.player.Position += new Vector2(0, size.Y * .9f);
 			}
 			else if(direction == "South")
 			{
 				Destination = Position + new Vector2(0, -size.Y);
 				position = Position + new Vector2(0, size.Y);
+				mygame.player.Position += new Vector2(0,-size.Y * .9f);
 			}
 			else if (direction == "East")
 			{
 				Destination = Position + new Vector2(-size.X, 0);
 				position = Position + new Vector2(size.X, 0);
+				mygame.player.Position += new Vector2(-size.X*.9f, 0); 
 			}
 			else if (direction == "West")
 			{
 				Destination = Position + new Vector2(size.X, 0);
 				position = Position + new Vector2(-size.X, 0);
+				mygame.player.Position += new Vector2(size.X * .9f, 0);
 			}
 			nextRoom = new Room1(mygame,position,floorBaseWithWalls);
 			nextRoom.Destination = Position;
