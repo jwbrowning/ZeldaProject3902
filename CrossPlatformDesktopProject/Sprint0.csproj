@@ -65,6 +65,7 @@
     <Compile Include="CommandStuff\CommandMoveSelectorRight.cs" />
     <Compile Include="CommandStuff\CommandMoveSelectorUp.cs" />
     <Compile Include="CommandStuff\CommandMoveUp.cs" />
+    <Compile Include="CommandStuff\CommandMute.cs" />
     <Compile Include="CommandStuff\CommandOpenInventory.cs" />
     <Compile Include="CommandStuff\CommandPause.cs" />
     <Compile Include="CommandStuff\CommandQuit.cs" />
@@ -188,6 +189,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomManagement\iRoom.cs" />
     <Compile Include="RoomManagement\Room1.cs" />
+    <Compile Include="SoundManagement\SoundFactory.cs" />
     <Compile Include="UsableItems\IUsableItem.cs" />
     <Compile Include="UsableItems\SpriteStuff\UsableItemSprite.cs" />
     <Compile Include="UsableItems\SpriteStuff\UsableItemSpriteFactory.cs" />

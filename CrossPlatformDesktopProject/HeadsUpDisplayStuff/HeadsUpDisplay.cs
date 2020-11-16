@@ -1,13 +1,7 @@
 ﻿using CrossPlatformDesktopProject.HeadsUpDisplayStuff;
-using CrossPlatformDesktopProject.PlayerStuff;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject
 {
@@ -29,7 +23,7 @@ namespace CrossPlatformDesktopProject
             this.game = game;
             Size = new Point(rectX, rectY);
             pausedPos = new Vector2(rectX / 2f, rectY / 2f);
-            normalPos = new Vector2(rectX / 2f, -rectY/2f + 190);
+            normalPos = new Vector2(rectX / 2f, -rectY / 2f + 190);
             Position = normalPos;
             headerInfo = new HeaderInfo(game, this);
             inventoryInfo = new InventoryInfo(game, this);
@@ -37,7 +31,7 @@ namespace CrossPlatformDesktopProject
 
         public void Update()
         {
-            if(inventoryOpen)
+            if (inventoryOpen)
             {
                 Position = Vector2.Lerp(Position, pausedPos, lerpSpeed);
             }
@@ -50,7 +44,7 @@ namespace CrossPlatformDesktopProject
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
-            spriteBatch.Draw(game.rect, new Rectangle(new Point((int)(Position.X - Size.X/2f),(int)(Position.Y-Size.Y/2f)), Size), Color.Black);
+            spriteBatch.Draw(game.rect, new Rectangle(new Point((int)(Position.X - Size.X / 2f), (int)(Position.Y - Size.Y / 2f)), Size), Color.Black);
             spriteBatch.End();
             headerInfo.Draw(spriteBatch);
             inventoryInfo.Draw(spriteBatch);

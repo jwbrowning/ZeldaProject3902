@@ -72,7 +72,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         {
             Sprite.Update();
             Position += MoveDirection * speed;
-            for(int i=0;i<ActiveItems.Count;i++)
+            for (int i = 0; i < ActiveItems.Count; i++)
             {
                 ActiveItems[i].Update();
             }
@@ -83,7 +83,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             LinkSprite s = (LinkSprite)Sprite;
             s.overlayColor = Color.White;
             Sprite = s;
-            Sprite.Draw(spriteBatch,Position);
+            Sprite.Draw(spriteBatch, Position);
             for (int i = 0; i < ActiveItems.Count; i++)
             {
                 ActiveItems[i].Draw(spriteBatch);
@@ -99,7 +99,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         {
             game.player = new DamagedLink(this, game);
             Health--;
-            if(Health <= 0)
+            if (Health <= 0)
             {
                 game.GameOver();
             }
@@ -108,6 +108,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
         public void Attack()
         {
             State.Attack();
+            //SoundFactory.Instance.sfxSword.Play();
         }
 
         public void ShootArrow()

@@ -37,17 +37,18 @@ namespace CrossPlatformDesktopProject.PlayerStuff.SpriteStuff
         public void Update()
         {
             frameCounter++;
-            if (frameCounter >= frameInterval) 
+            if (frameCounter >= frameInterval)
             {
                 frameCounter = 0;
 
                 currentFrame++;
                 if (currentFrame >= startFrame + totalFrames)
                 {
-                    if(!loop)
+                    if (!loop)
                     {
                         Finish();
-                    } else
+                    }
+                    else
                     {
                         currentFrame = startFrame;
                     }
@@ -57,7 +58,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff.SpriteStuff
 
         void Finish()
         {
-            if(player!=null) player.FinishAction();
+            if (player != null) player.FinishAction();
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)

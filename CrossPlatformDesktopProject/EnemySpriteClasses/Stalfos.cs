@@ -1,6 +1,7 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.PlayerStuff;
+using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -49,6 +50,7 @@ namespace Sprint0
         public void TakeDamage()
         {
             health--;
+            SoundFactory.Instance.sfxEnemyDamage.Play();
             if (health <= 0)
             {
                 Die();
@@ -61,7 +63,7 @@ namespace Sprint0
 
         public void Die()
         {
-
+            SoundFactory.Instance.sfxEnemyDeath.Play();
         }
 
         public void Update()
@@ -80,13 +82,13 @@ namespace Sprint0
                 patrolFrame = 1;
 
 
-            if(patrolPhase == 1) //default phase of enemies, is changed after the enemy "sees" link 
+            if (patrolPhase == 1) //default phase of enemies, is changed after the enemy "sees" link 
             {
-                if(patrolFrame <= 100)
+                if (patrolFrame <= 100)
                 {
                     directionCode = 0;
                 }
-                else if(patrolFrame > 100)
+                else if (patrolFrame > 100)
                 {
                     directionCode = 1;
                 }
@@ -99,39 +101,39 @@ namespace Sprint0
             }
 
 
-          if(patrolPhase == 0)
+            if (patrolPhase == 0)
+            {
+                if ((spritePositionX - 10) <= playerPositionX && playerPositionX <= (spritePositionX + 10))
                 {
-                    if ((spritePositionX - 10) <= playerPositionX && playerPositionX <= (spritePositionX + 10))
+                    if (playerPositionY < spritePositionY)
                     {
-                        if (playerPositionY < spritePositionY)
-                        {
-                            directionCode = 0;
-                        }
-                        else if (playerPositionY > spritePositionY)
-                        {
-                            directionCode = 1;
-                        }
+                        directionCode = 0;
                     }
-
-                    if ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 10))
+                    else if (playerPositionY > spritePositionY)
                     {
-                        if (playerPositionX < spritePositionX)
-                        {
-                            directionCode = 2;
-                        }
-                        else if (playerPositionX > spritePositionX)
-                        {
-                            directionCode = 3;
-                        }
+                        directionCode = 1;
                     }
                 }
-            
+
+                if ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 10))
+                {
+                    if (playerPositionX < spritePositionX)
+                    {
+                        directionCode = 2;
+                    }
+                    else if (playerPositionX > spritePositionX)
+                    {
+                        directionCode = 3;
+                    }
+                }
+            }
+
 
             if (directionCode == 0)
             {
                 spritePositionY = spritePositionY - 2;
             }
-            else if(directionCode == 1)
+            else if (directionCode == 1)
             {
                 spritePositionY = spritePositionY + 2;
             }

@@ -47,7 +47,7 @@ namespace CrossPlatformDesktopProject.UsableItems
 
         public void Update()
         {
-            if(timer > 300)
+            if (timer > 300)
             {
                 timer--;
             }
@@ -65,7 +65,7 @@ namespace CrossPlatformDesktopProject.UsableItems
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if(timer<=300) Sprite.Draw(spriteBatch, Position);
+            if (timer <= 300) Sprite.Draw(spriteBatch, Position);
         }
     }
 }

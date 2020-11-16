@@ -1,10 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
 {
@@ -25,12 +21,16 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
             {
                 currentController.Update();
             }
+            game.currentRoom.UpdateRooms();
+            game.currentRoom.nextRoom.UpdateRooms();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             game.currentRoom.DrawBackground(spriteBatch);
-            game.currentRoom.DrawBlocks(spriteBatch);
+            //game.currentRoom.DrawBlocks(spriteBatch);
+            game.currentRoom.nextRoom.DrawBackground(spriteBatch);
+
         }
     }
 }

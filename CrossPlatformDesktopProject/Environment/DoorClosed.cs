@@ -4,7 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CrossPlatformDesktopProject.Environment
 {
+
     class DoorClosed : IDoor
+
     {
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }

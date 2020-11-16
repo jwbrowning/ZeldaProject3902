@@ -1,6 +1,7 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.PlayerStuff;
+using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -50,6 +51,7 @@ namespace Sprint0
         public void TakeDamage()
         {
             health--;
+            SoundFactory.Instance.sfxEnemyDamage.Play();
             if (health <= 0)
             {
                 Die();
@@ -62,7 +64,7 @@ namespace Sprint0
 
         public void Die()
         {
-
+            SoundFactory.Instance.sfxEnemyDeath.Play();
         }
 
         public void Update()

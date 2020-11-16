@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.PlayerStuff;
+using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
@@ -23,12 +24,13 @@ namespace CrossPlatformDesktopProject.UsableItems
             this.direction = direction;
             this.player = player;
             Sprite = UsableItemSpriteFactory.Instance.CreateBoomerangSprite();
+            SoundFactory.Instance.sfxBoomerang.Play();
             CollisionHandler = new UsableItemCollisionHandler(player, this, 32, 32, 0, 0);
         }
 
         public void Update()
         {
-            if(timer > 0)
+            if (timer > 0)
             {
                 Position += direction * speed;
                 timer--;
@@ -36,10 +38,10 @@ namespace CrossPlatformDesktopProject.UsableItems
             }
             else
             {
-                if(Vector2.Distance(player.Position,Position) < dist)
+                if (Vector2.Distance(player.Position, Position) < dist)
                 {
                     if (player.ActiveItems.Contains(this)) player.ActiveItems.Remove(this);
-                } 
+                }
                 else
                 {
                     Vector2 tempDirection = player.Position - Position;

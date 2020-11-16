@@ -10,6 +10,7 @@ using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
 using CrossPlatformDesktopProject.RoomManagement;
 using CrossPlatformDesktopProject.ScreenStuff;
+using CrossPlatformDesktopProject.SoundManagement;
 using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -69,6 +70,8 @@ namespace Sprint0
 
 			currentRoom = new Room1(this, new Vector2(graphics.PreferredBackBufferWidth/2, graphics.PreferredBackBufferHeight/2+84), floortilebase);
             currentRoom.LoadRoom("RoomDEBUG");
+
+			SoundFactory.Instance.musicDungeonLoop.Play();
 		}
 
 		protected override void LoadContent()
@@ -87,6 +90,7 @@ namespace Sprint0
 			NPCSpriteFactory.Instance.LoadAllTextures(Content);
 			LinkSpriteFactory.Instance.LoadAllTextures(Content);
 			ItemSpriteFactory.Instance.LoadAllTextures(Content);
+			SoundFactory.Instance.LoadAllSounds(Content);
 
 			font = Content.Load<SpriteFont>("arial");
 
@@ -127,7 +131,11 @@ namespace Sprint0
 
 			base.Draw(gameTime);
 		}
-
+		public void FinishTransition(iRoom room)
+        {
+			gameState = new NormalGameState(this);
+			currentRoom = room;
+        }
 		public void Pause()
         {
 			screen = new PauseScreen(this, GraphicsDevice, graphics);
@@ -138,6 +146,7 @@ namespace Sprint0
         {
 			screen = new NormalScreen(this, GraphicsDevice, graphics);
 			gameState = new NormalGameState(this);
+			ChangeRoom("RoomDEBUG","Right");
 		}
 
 		public void OpenInventory()
@@ -164,10 +173,10 @@ namespace Sprint0
 			gameState = new WinningGameState(this);
 		}
 
-		public void ChangeRoom(string nextRoomName)
+		public void ChangeRoom(string nextRoomName, string direction)
         {
 			gameState = new RoomTransitionGameState(this);
-			currentRoom.ChangeRoom(nextRoomName);
+			currentRoom.ChangeRoom(nextRoomName, direction);
         }
 	}
 }

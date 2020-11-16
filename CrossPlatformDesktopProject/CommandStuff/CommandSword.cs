@@ -4,7 +4,7 @@
     {
         private Game1 myGame;
 
-        public CommandSword (Game1 game)
+        public CommandSword(Game1 game)
         {
             myGame = game;
         }
