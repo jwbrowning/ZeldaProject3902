@@ -90,5 +90,9 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
         {
 
         }
+        public void HandleWallCollision(ICollider collider)
+        {
+            HandleGenericCollision(collider);
+        }
     }
 }

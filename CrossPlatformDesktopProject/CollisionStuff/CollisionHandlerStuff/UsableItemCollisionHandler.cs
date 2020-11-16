@@ -79,5 +79,10 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
                 ((SwordBeam)item).Destroy();
             }
         }
+
+        public void HandleWallCollision(ICollider collider)
+        {
+            HandleGenericCollision(collider);
+        }
     }
 }

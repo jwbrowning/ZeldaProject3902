@@ -13,6 +13,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
         List<IItem> Items { get; set; }
         List<INPC> NPCs { get; set; }
         List<IDoor> Doors { get; set; }
+        List<IWall> Walls { get; set; }
         Vector2 Position { get; set; }
         Vector2 Destination { get; set; }
         iRoom nextRoom { get; set; }
@@ -29,6 +30,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
         void UpdateDoors();
 
         void UpdateRooms();
+        void UpdateWalls();
 
         void DrawBackground(SpriteBatch spriteBatch);
         void DrawBlocks(SpriteBatch spriteBatch);
@@ -36,6 +38,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
         void DrawEnemies(SpriteBatch spriteBatch);
         void DrawItems(SpriteBatch spriteBatch);
         void DrawDoors(SpriteBatch spriteBatch);
+        void DrawWalls(SpriteBatch spriteBatch);
 
     }
 }

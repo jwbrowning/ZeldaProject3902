@@ -103,6 +103,7 @@ namespace Sprint0
 			LinkSpriteFactory.Instance.LoadAllTextures(Content);
 			ItemSpriteFactory.Instance.LoadAllTextures(Content);
 			DoorSpriteFactory.Instance.LoadAllTextures(Content);
+			WallSpriteFactory.Instance.LoadAllTextures(Content);
 			SoundFactory.Instance.LoadAllSounds(Content);
 
 			font = Content.Load<SpriteFont>("arial");
@@ -131,7 +132,7 @@ namespace Sprint0
             if (showCollisions)
             {
                 spriteBatch.Begin();
-                foreach (IGameObject g in currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Doors).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }))
+                foreach (IGameObject g in currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Doors).Concat(currentRoom.Walls).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }))
                 {
                     Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);
                     spriteBatch.Draw(squareOutline, rec, new Color(Color.LimeGreen, 1));
