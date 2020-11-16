@@ -3,15 +3,15 @@ using CrossPlatformDesktopProject.Environment;
 
 namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 {
-    class BlockCollisionHandler : ICollisionHandler
+    class WallCollisionHandler : ICollisionHandler
     {
-        private IBlock block;
+        private IWall wall;
         public ICollider Collider { get; set; }
 
-        public BlockCollisionHandler(IBlock block, float colliderWidth, float colliderHeight, float offsetX, float offsetY)
+        public WallCollisionHandler(IWall wall, float colliderWidth, float colliderHeight, float offsetX, float offsetY)
         {
-            this.block = block;
-            Collider = new BoxCollider(block, colliderWidth, colliderHeight, offsetX, offsetY);
+            this.wall = wall;
+            Collider = new BoxCollider(wall, colliderWidth, colliderHeight, offsetX, offsetY);
         }
 
         private void HandleGenericCollision(ICollider collider)
