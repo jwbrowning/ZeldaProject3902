@@ -20,6 +20,10 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		public Vector2 Position { get; set; }
 		private Texture2D floorBaseWithWalls;
 		private Vector2 size = new Vector2(1024,704);
+		public Vector2 Destination { get; set; }
+		private string CurrentRoom;
+		public iRoom nextRoom { get; set; }
+		private float lerpSpeed = .05f;
 
 		/*XSCALE and YSCALE convert the object coordinates from tiles to pixels. 
 		In the original game each tile is 16 pixels wide, but upscaled by 4 for 
@@ -43,13 +47,40 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			this.floorBaseWithWalls = floorBaseWithWalls;
 			XOFFSET = 98 + (int)(Position.X - size.X / 2f);
 			YOFFSET = 98 + (int)(Position.Y - size.Y / 2f);
+			Destination = position;
 		}
 		
 		//unused, to be used to manage transitions/animations when changing rooms
-		public void ChangeRoom(string nextRoomName)
+		public void ChangeRoom(string nextRoomName, string direction)
 		{
-			throw new NotImplementedException();
+			Vector2 position = Vector2.Zero;
+			//Vector2 destination = Vector2.Zero;
+			if (direction == "North")
+			{
+				Destination = Position + new Vector2(0, size.Y);
+				position = Position + new Vector2(0, -size.Y);
+			}
+			else if(direction == "South")
+			{
+				Destination = Position + new Vector2(0, -size.Y);
+				position = Position + new Vector2(0, size.Y);
+			}
+			else if (direction == "East")
+			{
+				Destination = Position + new Vector2(-size.X, 0);
+				position = Position + new Vector2(size.X, 0);
+			}
+			else if (direction == "West")
+			{
+				Destination = Position + new Vector2(size.X, 0);
+				position = Position + new Vector2(-size.X, 0);
+			}
+			nextRoom = new Room1(mygame,position,floorBaseWithWalls);
+			nextRoom.Destination = Position;
+			nextRoom.LoadRoom(nextRoomName);
+
 		}
+
 
 		public void LoadRoom(String roomName)
 		{
@@ -57,7 +88,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			Blocks.Clear();
 			Items.Clear();
 			NPCs.Clear();
-
+			CurrentRoom = roomName;
 			//moves Link to the bottom of the map to avoid issues where blocks would spawn on top of him
 			mygame.player.Position = new Vector2(6 * XSCALE + XOFFSET, 7 * YSCALE + YOFFSET);
 
@@ -270,7 +301,13 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			}
 
 		}
-
+		public void UpdateRooms()
+        {
+			Position = Vector2.Lerp(Position, Destination, lerpSpeed);
+			if(Vector2.Distance(Position,Destination) < 1 && nextRoom == null){
+				mygame.FinishTransition(this);
+            }
+		}
 		public void UpdateNPCS()
 		{
 			for (int i = 0; i < NPCs.Count; i++)

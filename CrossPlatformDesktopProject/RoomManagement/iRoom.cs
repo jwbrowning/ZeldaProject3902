@@ -13,8 +13,9 @@ namespace CrossPlatformDesktopProject.RoomManagement
         List<IItem> Items { get; set; }
         List<INPC> NPCs { get; set; }
         Vector2 Position { get; set; }
-
-        void ChangeRoom(string nextRoomName);
+        Vector2 Destination { get; set; }
+        iRoom nextRoom { get; set; }
+        void ChangeRoom(string nextRoomName, string direction);
 
         void LoadRoom(string roomName);
 
@@ -24,7 +25,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
         void UpdateNPCS();
         void UpdateEnemies();
         void UpdateItems();
-
+        void UpdateRooms();
         void DrawBackground(SpriteBatch spriteBatch);
         void DrawBlocks(SpriteBatch spriteBatch);
         void DrawNPCS(SpriteBatch spriteBatch);

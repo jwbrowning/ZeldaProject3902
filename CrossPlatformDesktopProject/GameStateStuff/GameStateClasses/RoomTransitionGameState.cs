@@ -25,12 +25,16 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
             {
                 currentController.Update();
             }
+            game.currentRoom.UpdateRooms();
+            game.currentRoom.nextRoom.UpdateRooms();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             game.currentRoom.DrawBackground(spriteBatch);
-            game.currentRoom.DrawBlocks(spriteBatch);
+            //game.currentRoom.DrawBlocks(spriteBatch);
+            game.currentRoom.nextRoom.DrawBackground(spriteBatch);
+
         }
     }
 }

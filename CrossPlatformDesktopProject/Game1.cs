@@ -131,7 +131,11 @@ namespace Sprint0
 
 			base.Draw(gameTime);
 		}
-
+		public void FinishTransition(iRoom room)
+        {
+			gameState = new NormalGameState(this);
+			currentRoom = room;
+        }
 		public void Pause()
         {
 			screen = new PauseScreen(this, GraphicsDevice, graphics);
@@ -142,6 +146,7 @@ namespace Sprint0
         {
 			screen = new NormalScreen(this, GraphicsDevice, graphics);
 			gameState = new NormalGameState(this);
+			ChangeRoom("RoomDEBUG");
 		}
 
 		public void OpenInventory()
@@ -171,7 +176,7 @@ namespace Sprint0
 		public void ChangeRoom(string nextRoomName)
         {
 			gameState = new RoomTransitionGameState(this);
-			currentRoom.ChangeRoom(nextRoomName);
+			currentRoom.ChangeRoom(nextRoomName, "North");
         }
 	}
 }
