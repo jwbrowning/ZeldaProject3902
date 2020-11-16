@@ -84,13 +84,15 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				position = Position + new Vector2(-size.X, 0);
 				mygame.player.Position = comingLeftLocation;
 			}
-			nextRoom = new Room1(mygame,position,floorBaseWithWalls);
-			nextRoom.Destination = Position;
-			nextRoom.LoadRoom(nextRoomName);
+            nextRoom = new Room1(mygame, position, floorBaseWithWalls)
+            {
+                Destination = Position
+            };
+            nextRoom.LoadRoom(nextRoomName);
 		}
 
 
-		public void LoadRoom(String roomName)
+		public void LoadRoom(string roomName)
 		{
 			Enemies.Clear();
 			Blocks.Clear();

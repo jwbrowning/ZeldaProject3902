@@ -1,6 +1,7 @@
 ﻿
 using CrossPlatformDesktopProject;
 using CrossPlatformDesktopProject.CollisionStuff;
+using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.Environment;
 using CrossPlatformDesktopProject.GameStateStuff;
@@ -29,7 +30,7 @@ namespace Sprint0
 		public SpriteFont font;
 
 		public bool showCollisions = false;
-		public bool playerDebug = true;
+		public bool playerDebug = false;
 
 		static public Texture2D environment,squareOutline,floortilebase;
 		public Texture2D rect;
@@ -118,9 +119,6 @@ namespace Sprint0
 		{
 			gameState.Update();
 
-            List<IGameObject> allGameObjects = currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Doors).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }).ToList();
-            CollisionDetection.DetectCollisions(allGameObjects);
-
 			base.Update(gameTime);
 		}
 
@@ -145,9 +143,10 @@ namespace Sprint0
 		}
 		public void FinishTransition(iRoom room)
         {
-			gameState = new NormalGameState(this);
 			currentRoom = room;
-        }
+			gameState = new NormalGameState(this);
+			player.CollisionHandler = new LinkCollisionHandler(this, player, 56, 50, 0, 10);
+		}
 		public void Pause()
         {
 			screen = new PauseScreen(this, GraphicsDevice, graphics);
@@ -186,6 +185,7 @@ namespace Sprint0
 
 		public void ChangeRoom(string nextRoomName, string direction)
         {
+			player.CollisionHandler = new EmptyCollisionHandler(player);
 			gameState = new RoomTransitionGameState(this);
 			currentRoom.ChangeRoom(nextRoomName, direction);
 			roomIndex = Array.FindIndex(rooms, x => x == nextRoomName);

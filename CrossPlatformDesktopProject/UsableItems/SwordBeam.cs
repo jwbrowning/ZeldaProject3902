@@ -17,7 +17,7 @@ namespace CrossPlatformDesktopProject.UsableItems
         private IPlayer player;
         private int timer = 310;
         private bool destroying;
-        float destroyTime = 25;
+        float destroyTime = 15;
         private IEntity effect;
 
         public SwordBeam(Vector2 position, Vector2 direction, IPlayer player)
