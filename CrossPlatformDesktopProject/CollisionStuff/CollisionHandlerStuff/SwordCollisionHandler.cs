@@ -48,5 +48,10 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
         {
 
         }
+        
+        public void HandleDoorCollision(ICollider collider)
+        {
+
+        }
     }
 }

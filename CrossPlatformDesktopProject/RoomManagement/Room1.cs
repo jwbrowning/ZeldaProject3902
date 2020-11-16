@@ -1,4 +1,4 @@
-﻿using CrossPlatformDesktopProject.EnemySpriteClasses;
+﻿﻿using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.Environment;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -17,6 +17,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
         public List<IBlock> Blocks { get; set; }
 		public List<IItem> Items { get; set; }
 		public List<INPC> NPCs { get; set; }
+		public List<IDoor> Doors {get; set; }
 		public Vector2 Position { get; set; }
 		private Texture2D floorBaseWithWalls;
 		private Vector2 size = new Vector2(1024,704);
@@ -43,6 +44,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			Blocks = new List<IBlock>();
 			Items = new List<IItem>();
 			NPCs = new List<INPC>();
+			Doors = new List<IDoor>();
 			Position = position;
 			this.floorBaseWithWalls = floorBaseWithWalls;
 			XOFFSET = 98 + (int)(Position.X - size.X / 2f);
@@ -92,7 +94,9 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			Blocks.Clear();
 			Items.Clear();
 			NPCs.Clear();
+			Doors.Clear();
 			CurrentRoom = roomName;
+
 			//moves Link to the bottom of the map to avoid issues where blocks would spawn on top of him
 			mygame.player.Position = new Vector2(6 * XSCALE + XOFFSET, 7 * YSCALE + YOFFSET);
 
@@ -124,6 +128,12 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			foreach (XElement NPCObject in loadedNPCs)
 			{
 				AddNPC(NPCObject);
+			}
+			IEnumerable<XElement> loadedDoors = from item in roomFile.Descendants("Door")
+												select item;
+			foreach (XElement DoorObject in loadedDoors)
+			{
+				AddDoor(DoorObject);
 			}
 		}
 
@@ -299,11 +309,76 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		
 		void AddDoor(XElement doorObject)
 		{
-			if ((string)doorObject.Element("DoorPosition") == "Up")
-			{
-
+			string next = (string)doorObject.Element("DoorDestination");
+			if((string)doorObject.Element("DoorPosition") == "Up") {
+				if ((string)doorObject.Element("DoorType") == "Closed")
+				{
+					Doors.Add(new DoorClosed(new Vector2(6 * XSCALE + XOFFSET + 32, YSCALE + YOFFSET-96),"Up",next));
+				}
+				if ((string)doorObject.Element("DoorType") == "Open")
+				{
+					Doors.Add(new DoorOpen(new Vector2(6 * XSCALE + XOFFSET + 32, YSCALE + YOFFSET-96),"Up",next));
+				}
+				if ((string)doorObject.Element("DoorType") == "Locked")
+				{
+					Doors.Add(new DoorLocked(new Vector2(6 * XSCALE + XOFFSET + 32, YSCALE + YOFFSET-96),"Up",next));
+				}
+				if ((string)doorObject.Element("DoorType") == "Bombed")
+				{
+					Doors.Add(new DoorBombed(new Vector2(6 * XSCALE + XOFFSET + 32, YSCALE + YOFFSET-96),"Up",next));
+				}
+			} else if((string)doorObject.Element("DoorPosition") == "Down") {
+				if ((string)doorObject.Element("DoorType") == "Closed")
+				{
+					Doors.Add(new DoorClosed(new Vector2(6 * XSCALE + XOFFSET + 32, 10* YSCALE + YOFFSET-96),"Down",next));
+				}
+				if ((string)doorObject.Element("DoorType") == "Open")
+				{
+					Doors.Add(new DoorOpen(new Vector2(6 * XSCALE + XOFFSET + 32, 10* YSCALE + YOFFSET-96),"Down",next));
+				}
+				if ((string)doorObject.Element("DoorType") == "Locked")
+				{
+					Doors.Add(new DoorLocked(new Vector2(6 * XSCALE + XOFFSET + 32, 10* YSCALE + YOFFSET-96),"Down",next));
+				}
+				if ((string)doorObject.Element("DoorType") == "Bombed")
+				{
+					Doors.Add(new DoorBombed(new Vector2(6 * XSCALE + XOFFSET + 32, 10* YSCALE + YOFFSET-96),"Down",next));
+				}
+			} else if ((string)doorObject.Element("DoorPosition") == "Right") {
+				if ((string)doorObject.Element("DoorType") == "Closed")
+				{
+					Doors.Add(new DoorClosed(new Vector2(XSCALE+32, 5* YSCALE + YOFFSET-96),"Right",next));
+				}
+				if ((string)doorObject.Element("DoorType") == "Open")
+				{
+					Doors.Add(new DoorOpen(new Vector2(XSCALE+32, 5* YSCALE + YOFFSET-96),"Right",next));
+				}
+				if ((string)doorObject.Element("DoorType") == "Locked")
+				{
+					Doors.Add(new DoorLocked(new Vector2(XSCALE+32, 5* YSCALE + YOFFSET-96),"Right",next));
+				}
+				if ((string)doorObject.Element("DoorType") == "Bombed")
+				{
+					Doors.Add(new DoorBombed(new Vector2(XSCALE+32, 5* YSCALE + YOFFSET-96),"Right",next));
+				}
+			} else if ((string)doorObject.Element("DoorPosition") == "Left") {
+				if ((string)doorObject.Element("DoorType") == "Closed")
+				{
+					Doors.Add(new DoorClosed(new Vector2(13*XSCALE+XOFFSET+16, 5* YSCALE + YOFFSET-96),"Left",next));
+				}
+				if ((string)doorObject.Element("DoorType") == "Open")
+				{
+					Doors.Add(new DoorOpen(new Vector2(13*XSCALE+XOFFSET+16, 5* YSCALE + YOFFSET-96),"Left",next));
+				}
+				if ((string)doorObject.Element("DoorType") == "Locked")
+				{
+					Doors.Add(new DoorLocked(new Vector2(13*XSCALE+XOFFSET+16, 5* YSCALE + YOFFSET-96),"Left",next));
+				}
+				if ((string)doorObject.Element("DoorType") == "Bombed")
+				{
+					Doors.Add(new DoorBombed(new Vector2(13*XSCALE+XOFFSET+16, 5* YSCALE + YOFFSET-96),"Left",next));
+				}
 			}
-
 		}
 		public void UpdateRooms()
         {
@@ -344,6 +419,14 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			}
 		}
 
+		public void UpdateDoors()
+		{
+			for (int i = 0; i < Doors.Count; i++)
+			{
+				Doors[i].Update();
+			}
+		}
+
 		public void DrawBackground(SpriteBatch spriteBatch)
 		{
 			spriteBatch.Begin();
@@ -380,6 +463,14 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			foreach (IItem item in Items)
 			{
 				item.Draw(spriteBatch);
+			}
+		}
+
+		public void DrawDoors(SpriteBatch spriteBatch)
+		{
+			foreach (IDoor door in Doors)
+			{
+				door.Draw(spriteBatch);
 			}
 		}
 
