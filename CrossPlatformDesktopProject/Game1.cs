@@ -146,7 +146,7 @@ namespace Sprint0
         {
 			screen = new NormalScreen(this, GraphicsDevice, graphics);
 			gameState = new NormalGameState(this);
-			ChangeRoom("RoomDEBUG");
+			ChangeRoom("RoomDEBUG","Right");
 		}
 
 		public void OpenInventory()
@@ -173,10 +173,10 @@ namespace Sprint0
 			gameState = new WinningGameState(this);
 		}
 
-		public void ChangeRoom(string nextRoomName)
+		public void ChangeRoom(string nextRoomName, string direction)
         {
 			gameState = new RoomTransitionGameState(this);
-			currentRoom.ChangeRoom(nextRoomName, "North");
+			currentRoom.ChangeRoom(nextRoomName, direction);
         }
 	}
 }

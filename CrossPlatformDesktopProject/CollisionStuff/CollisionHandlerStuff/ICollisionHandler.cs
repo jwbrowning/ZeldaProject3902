@@ -12,5 +12,6 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
         void HandleNPCCollision(ICollider collider);
         void HandleEnemyCollision(ICollider collider);
         void HandleSwordCollision(ICollider collider);
+        void HandleDoorCollision(ICollider collider);
     }
 }

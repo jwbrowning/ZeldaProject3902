@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.ColliderStuff;
 using CrossPlatformDesktopProject.PlayerStuff;
+using CrossPlatformDesktopProject.Environment;
 using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Sprint0;
@@ -145,6 +146,23 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
         public void HandleSwordCollision(ICollider collider)
         {
 
+        }
+
+        public void HandleDoorCollision(ICollider collider)
+        {
+            if(collider.GameObject is DoorOpen) 
+            {
+                game.currentRoom.LoadRoom(((DoorOpen)collider.GameObject).next);
+            } else if(collider.GameObject is DoorClosed) 
+            {
+                game.currentRoom.LoadRoom(((DoorClosed)collider.GameObject).next);
+            } else if(collider.GameObject is DoorBombed) 
+            {
+                game.currentRoom.LoadRoom(((DoorBombed)collider.GameObject).next);
+            }else if(collider.GameObject is DoorLocked) 
+            {
+                game.currentRoom.LoadRoom(((DoorLocked)collider.GameObject).next);
+            }
         }
     }
 }

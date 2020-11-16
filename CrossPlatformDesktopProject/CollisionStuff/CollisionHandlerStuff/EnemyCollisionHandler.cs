@@ -84,6 +84,11 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
         public void HandleSwordCollision(ICollider collider)
         {
             if (game.currentRoom.Enemies.Contains(enemy)) enemy.TakeDamage();
+        }        
+        
+        public void HandleDoorCollision(ICollider collider)
+        {
+
         }
     }
 }
