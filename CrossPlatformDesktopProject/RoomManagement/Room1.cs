@@ -69,13 +69,13 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				position = Position + new Vector2(0, size.Y);
 				mygame.player.Position += new Vector2(0,-size.Y * .6f);
 			}
-			else if (direction == "Left")
+			else if (direction == "Right")
 			{
 				Destination = Position + new Vector2(-size.X, 0);
 				position = Position + new Vector2(size.X, 0);
 				mygame.player.Position += new Vector2(-size.X*.65f, 0); 
 			}
-			else if (direction == "Right")
+			else if (direction == "Left")
 			{
 				Destination = Position + new Vector2(size.X, 0);
 				position = Position + new Vector2(-size.X, 0);
