@@ -1,4 +1,4 @@
-﻿using CrossPlatformDesktopProject.EnemySpriteClasses;
+﻿﻿using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.Environment;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,6 +12,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
         List<IBlock> Blocks { get; set; }
         List<IItem> Items { get; set; }
         List<INPC> NPCs { get; set; }
+        List<IDoor> Doors { get; set; }
         Vector2 Position { get; set; }
 
         void ChangeRoom(string nextRoomName);
@@ -24,12 +25,14 @@ namespace CrossPlatformDesktopProject.RoomManagement
         void UpdateNPCS();
         void UpdateEnemies();
         void UpdateItems();
+        void UpdateDoors();
 
         void DrawBackground(SpriteBatch spriteBatch);
         void DrawBlocks(SpriteBatch spriteBatch);
         void DrawNPCS(SpriteBatch spriteBatch);
         void DrawEnemies(SpriteBatch spriteBatch);
         void DrawItems(SpriteBatch spriteBatch);
+        void DrawDoors(SpriteBatch spriteBatch);
 
     }
 }
