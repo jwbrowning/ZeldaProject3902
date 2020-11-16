@@ -10,7 +10,7 @@
 		<Door>
 			<DoorPosition>Right</DoorPosition>
 			<DoorType>Open</DoorType>
-			<DoorDestination>RoomD5</DoorDestination>
+			<DoorDestination>RoomD4</DoorDestination>
 		</Door>
 		<Door>
 			<DoorPosition>Down</DoorPosition>
@@ -20,7 +20,7 @@
 		<Door>
 			<DoorPosition>Left</DoorPosition>
 			<DoorType>Open</DoorType>
-			<DoorDestination>RoomB5</DoorDestination>
+			<DoorDestination>RoomB4</DoorDestination>
 		</Door>
 		<Item>
 			<ObjectType>Environment</ObjectType>

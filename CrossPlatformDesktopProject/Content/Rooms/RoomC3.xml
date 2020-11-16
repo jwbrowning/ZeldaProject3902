@@ -14,7 +14,7 @@
 		</Door>
 		<Door>
 			<DoorPosition>Down</DoorPosition>
-			<DoorType>Bombed</DoorType>
+			<DoorType>Bombable</DoorType>
 			<DoorDestination>RoomC4</DoorDestination>
 		</Door>
 		<Door>

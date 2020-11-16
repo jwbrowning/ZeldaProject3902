@@ -3,7 +3,7 @@
 <!-- Object coordinates are given in tiles -->
 	<Asset Type="Room">
 		<Door>
-			<DoorPosition>Right</DoorPosition>
+			<DoorPosition>Left</DoorPosition>
 			<DoorType>Locked</DoorType>
 			<DoorDestination>RoomB1</DoorDestination>
 		</Door>

@@ -9,7 +9,7 @@ namespace CrossPlatformDesktopProject.Environment
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
-        private Vector2 size = new Vector2(96, 96);
+        private Vector2 size = new Vector2(128, 128);
         public string next;
         public string type;
 
@@ -17,7 +17,7 @@ namespace CrossPlatformDesktopProject.Environment
         {
             Texture = DoorSpriteFactory.Instance.environment;
             Position = position;
-            CollisionHandler = new DoorCollisionHandler(this, size.X, size.Y, 0, 0);
+            CollisionHandler = new DoorCollisionHandler(this, size.X - 16f, size.Y - 16f, 0, 0);
             type = t;
             next = n;
         }

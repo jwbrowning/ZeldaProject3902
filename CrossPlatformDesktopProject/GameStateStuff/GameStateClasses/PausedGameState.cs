@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 using System.Collections.Generic;
 
@@ -28,7 +29,17 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
 
         public void Draw(SpriteBatch spriteBatch)
         {
-
+            game.currentRoom.DrawBackground(spriteBatch);
+            game.currentRoom.DrawBlocks(spriteBatch);
+            game.currentRoom.DrawNPCS(spriteBatch);
+            game.currentRoom.DrawEnemies(spriteBatch);
+            game.currentRoom.DrawItems(spriteBatch);
+            game.currentRoom.DrawDoors(spriteBatch);
+            game.player.Draw(spriteBatch, game.currentRoom.Position);
+            game.hud.Draw(spriteBatch);
+            spriteBatch.Begin();
+            spriteBatch.DrawString(game.font, "PAUSED", new Vector2(500,464), Color.White);
+            spriteBatch.End();
         }
     }
 }

@@ -2,6 +2,11 @@
 	<!-- Room: B1 -->
 	<!-- Object coordinates are given in tiles -->
 	<Asset Type="Room">
+    <Door>
+      <DoorPosition>Right</DoorPosition>
+      <DoorType>Locked</DoorType>
+      <DoorDestination>RoomC1</DoorDestination>
+    </Door>
 		<Item>
 			<ObjectType>Enemy</ObjectType>
 			<ObjectName>BladeTrap</ObjectName>

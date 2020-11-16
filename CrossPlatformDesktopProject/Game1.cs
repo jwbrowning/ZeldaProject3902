@@ -28,6 +28,7 @@ namespace Sprint0
 		public SpriteFont font;
 
 		public bool showCollisions = false;
+		public bool playerDebug = true;
 
 		static public Texture2D environment,squareOutline,floortilebase;
 		public Texture2D rect;
@@ -60,6 +61,11 @@ namespace Sprint0
 			player = new Link(this);
 			player.Position = new Vector2(0, 160);
 			LinkSpriteFactory.Instance.player = player;
+			if(playerDebug)
+			{
+				player.Health = 1000;
+				player.TotalHealth = 1000;
+			}
 
 			hud = new HeadsUpDisplay(this, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
 			screen = new NormalScreen(this, GraphicsDevice, graphics);
@@ -69,7 +75,7 @@ namespace Sprint0
 			base.Initialize();
 
 			currentRoom = new Room1(this, new Vector2(graphics.PreferredBackBufferWidth/2, graphics.PreferredBackBufferHeight/2+84), floortilebase);
-            currentRoom.LoadRoom("RoomDEBUG");
+            currentRoom.LoadRoom("RoomC6");
 
 			//SoundFactory.Instance.musicDungeonLoop.Play();
 		}
@@ -177,6 +183,7 @@ namespace Sprint0
         {
 			gameState = new RoomTransitionGameState(this);
 			currentRoom.ChangeRoom(nextRoomName, direction);
+			player.ActiveItems.Clear();
         }
 	}
 }

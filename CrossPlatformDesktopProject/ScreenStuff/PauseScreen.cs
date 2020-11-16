@@ -20,7 +20,7 @@ namespace CrossPlatformDesktopProject.HeadsUpDisplayStuff
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            graphicsDevice.Clear(Color.DarkMagenta);
+            //graphicsDevice.Clear(Color.DarkMagenta);
             spriteBatch.Begin();
             spriteBatch.DrawString(game.font, "PAUSED", new Vector2(graphics.PreferredBackBufferWidth / 3f, graphics.PreferredBackBufferHeight / 3f), Color.White);
             spriteBatch.End();
