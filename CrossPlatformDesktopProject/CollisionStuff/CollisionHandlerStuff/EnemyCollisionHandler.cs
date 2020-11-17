@@ -64,6 +64,10 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
         public void HandlePlayerCollision(ICollider collider)
         {
             //HandleGenericCollision(collider);
+            if(enemy is WallMaster)
+            {
+                game.ChangeRoom("RoomC6", "Up");
+            }
         }
 
         public void HandlePickupItemCollision(ICollider collider)
