@@ -45,11 +45,13 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
         {
             if (collider.GameObject is Stairs)
             {
+                SoundFactory.Instance.sfxStairs.Play();
                 game.ChangeRoom("RoomBOW", "Right");
             }
             else if (collider.GameObject is StairsInvisible)
             {
                 game.ChangeRoom("RoomB1", "Left");
+                SoundFactory.Instance.sfxStairs.Play();
             }
             else
             {

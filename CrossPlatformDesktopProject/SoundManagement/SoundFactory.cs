@@ -24,7 +24,7 @@ namespace CrossPlatformDesktopProject.SoundManagement
         public SoundEffect sfxRupeePickup;
         private SoundEffect sfxSecret; //unused - puzzles not implemented
         private SoundEffect sfxShieldBlock; //unused - shield not implemented
-        private SoundEffect sfxStairs; //TODO - stairs not yet implemented
+        public SoundEffect sfxStairs; 
         public SoundEffect sfxSword;
         public SoundEffect sfxSwordBeam;
         private SoundEffect sfxTextAppears; //unused
