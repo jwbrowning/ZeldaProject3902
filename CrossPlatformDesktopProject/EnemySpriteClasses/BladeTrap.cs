@@ -176,6 +176,7 @@ namespace Sprint0
             {
                 patrolPhase = 1;
                 activeFrame = 1;
+                directionCode = -1;
                 resetting = true;
             }
 
