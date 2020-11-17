@@ -1,0 +1,9 @@
+Author of the code review: Aidan Haskett
+Date of the code review: 11/16/2020
+Sprint number: 4
+Name of the .cs file being reviewed: Room1.cs specifically changeRoom
+Author of the .cs file being reviewed: Hemil
+Number of minutes taken to complete the review: 20
+Specific comments on what is readable and what is not:
+Code is pretty readable mostly ust if chains to determine what is what. The code gets long at points but that 
+is because there is a lot of items. Overall it is a well made class though.

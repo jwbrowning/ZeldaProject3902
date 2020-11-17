@@ -1,0 +1,9 @@
+Author of the code review: Aidan
+Date of the code review: 11/16/2020
+Sprint number: 4
+Name of the .cs file being reviewed: Room1.cs
+Author of the .cs file being reviewed: Hemil
+Specific comments on code quality:
+I like the code quality it is mostly if chains but I do not think there is a better way to do it without being very complex.
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change:
+One thing i might change one adding more comments to increase readability in addition to making some other methods in order t keep some less crowded.
