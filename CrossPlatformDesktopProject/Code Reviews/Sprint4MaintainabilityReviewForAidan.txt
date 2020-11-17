@@ -1,0 +1,9 @@
+Code Maintainability Review
+11/16/20
+Johnathan Browning
+Sprint 3
+DoorBombed.cs
+Aidan Haskett
+10
+Good code quality is used throughout the file. The code functions well and allows you to bomb a door to open it. The code also allows you to keep track of whether or not doors in a specific room have been bombed or not, by making use of a static dictionary. It also makes sure when you bomb a door on one side, the other side is opened as well.
+One change I might make is to separate the door sprites from the door class itself, that way the draw method isn't cluttered, and the door sprite can take care of drawing. 
