@@ -58,11 +58,11 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             ItemCounts.Add(ItemType.Key, 0);
             ItemCounts.Add(ItemType.HeartContainer, 0);
             ItemCounts.Add(ItemType.TriforcePiece, 0);
-            ItemCounts.Add(ItemType.Boomerang, 1);
-            ItemCounts.Add(ItemType.Bow, 1);
+            ItemCounts.Add(ItemType.Boomerang, 0);
+            ItemCounts.Add(ItemType.Bow, 0);
             ItemCounts.Add(ItemType.Heart, 0);
-            ItemCounts.Add(ItemType.Arrow, 20);
-            ItemCounts.Add(ItemType.Bomb, 20);
+            ItemCounts.Add(ItemType.Arrow, 1);
+            ItemCounts.Add(ItemType.Bomb, 8);
             ItemCounts.Add(ItemType.Fairy, 0);
             ItemCounts.Add(ItemType.Clock, 0);
             ItemCounts.Add(ItemType.Compass, 0);
