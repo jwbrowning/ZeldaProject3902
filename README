@@ -12,12 +12,11 @@ Down Arrow / S - Moves the link character down
 Left Arrow / A - Moves the link character left
 Right Arrow / D - Moves the link character right
 
-B -
-N - 
-E -
+B - Uses the Item in the B slot
+N - Uses the Item in the N slot
 C - Shows the coliders in the game
 V - Hides the coliders that are previously shown
-G -
+G - Spaws the clock for testing
 
 Esc - Pause/Unpause the Game
 I - Open/Close the inventory
