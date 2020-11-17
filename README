@@ -21,7 +21,7 @@ WASD - Controls inventory selector
 Enter - Selects an item in the inventory
 R - Resets the game
 Q - Quits the game
-M - Mutes the sound in the game
+M - Mutes the background music
 
 CONTROLS FOR TESTING
 E - Damages Link
@@ -33,6 +33,8 @@ Known Issues and Roadmap
 
 We decided not to implement moveable blocks, but might in the future.
 Bug: Keys still spawn in the same room after you collect it then leave and return. We noticed this pretty late and will fix it before the next sprint. The same thing applies to enemies that drop a key, and keys that spawn when all enemies are killed
+Sometimes the game over audio will play to completion, even after you reset the game.
+If you change rooms with the mouse and end up inside a block, Link vanishes and you'll need to reset the game with R.
 
 Code Analysis
 
@@ -53,9 +55,6 @@ Most things for this sprint took about as long as we expected.
 The Game State Transitionts were a lot simpler than we had first thought, originally we wanted two people to work on them but we ended up just having one person, and it took half the time expected.
 The Doors and Walls turned out to be more complicated than we thought, we hadn't considered all the different functionalities for doors like bombing, unlocking, and opening closed doors.
 Overall it felt like we were more prepared for work this sprint, however we still had quite a bit to do the weekend before the due date.
-
-We had these warnings when we tried doing analysis:
--
 
 
 
