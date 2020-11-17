@@ -41,7 +41,7 @@ namespace CrossPlatformDesktopProject.UsableItems
                 Sprite = UsableItemSpriteFactory.Instance.CreateUpArrowSprite();
                 CollisionHandler = new UsableItemCollisionHandler(player, this, 8, 32, 0, 0);
             }
-            this.player.ItemCounts[ItemType.Arrow]--;
+            this.player.ItemCounts[ItemType.Rupee]--;
         }
 
         public void Update()

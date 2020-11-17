@@ -116,6 +116,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             if (ActiveItems.FindAll((IUsableItem item) => item is UsableArrow).Count > 0) return;
             if (ItemCounts[ItemType.Bow] == 0) return;
             if (ItemCounts[ItemType.Arrow] <= 0) return;
+            if (ItemCounts[ItemType.Rupee] <= 0) return;
             State.ShootArrow();
         }
 
