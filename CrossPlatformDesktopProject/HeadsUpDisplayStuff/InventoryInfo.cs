@@ -68,13 +68,13 @@ namespace CrossPlatformDesktopProject.HeadsUpDisplayStuff
             {
                 ISprite compass = ItemSpriteFactory.Instance.CreateSpriteCompass();
                 compass.Draw(spriteBatch, position + compassPos);
-                if (game.rooms[game.roomIndex] != "RoomDEBUG")
+                if (game.rooms[game.roomIndex] != "RoomDEBUG" && game.rooms[game.roomIndex] != "RoomBOW")
                 {
                     compassMarker.Draw(spriteBatch, position + compassMarkerA1Pos + RoomPosAdjustment(game.rooms[game.roomIndex]));
                 }
                 else
                 {
-                    compassMarker.Draw(spriteBatch, position + compassMarkerA1Pos + RoomPosAdjustment("RoomC1"));
+                    compassMarker.Draw(spriteBatch, position + compassMarkerA1Pos + RoomPosAdjustment("RoomB1"));
                 }
             }
 

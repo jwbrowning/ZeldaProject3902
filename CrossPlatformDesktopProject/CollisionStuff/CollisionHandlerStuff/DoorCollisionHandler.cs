@@ -1,14 +1,15 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.ColliderStuff;
 using CrossPlatformDesktopProject.Environment;
+using CrossPlatformDesktopProject.PlayerStuff;
 
 namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 {
     class DoorCollisionHandler : ICollisionHandler
     {
-        private IDoor door;
+        private IGameObject door;
         public ICollider Collider { get; set; }
 
-        public DoorCollisionHandler(IDoor doors, float colliderWidth, float colliderHeight, float offsetX, float offsetY)
+        public DoorCollisionHandler(IGameObject doors, float colliderWidth, float colliderHeight, float offsetX, float offsetY)
         {
             this.door = doors;
             Collider = new BoxCollider(doors, colliderWidth, colliderHeight, offsetX, offsetY);

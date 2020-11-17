@@ -53,7 +53,9 @@ namespace CrossPlatformDesktopProject.Environment
                 }
         }
 
-        public void Update() { }
+        public void Update() { 
+        
+        }
 
         public void updateIsUnlocked()
         {

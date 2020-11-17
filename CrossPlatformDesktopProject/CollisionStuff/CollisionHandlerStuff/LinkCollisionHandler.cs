@@ -44,7 +44,18 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandleBlockCollision(ICollider collider)
         {
-            HandleGenericCollision(collider);
+            if (collider.GameObject is Stairs)
+            {
+                game.ChangeRoom("RoomBOW", "Right");
+            } 
+            else if (collider.GameObject is StairsInvisible)
+            {
+                game.ChangeRoom("RoomB1", "Left");
+            }
+            else
+            {
+                HandleGenericCollision(collider);
+            }
         }
 
         public void HandleEnemyCollision(ICollider collider)
