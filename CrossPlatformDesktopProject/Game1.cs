@@ -69,6 +69,7 @@ namespace Sprint0
 				player.TotalHealth = 1000;
 				player.ItemCounts[ItemType.Map]++;
 				player.ItemCounts[ItemType.Compass]++;
+				player.ItemCounts[ItemType.Key] = 10;
 			}
 
 			hud = new HeadsUpDisplay(this, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);

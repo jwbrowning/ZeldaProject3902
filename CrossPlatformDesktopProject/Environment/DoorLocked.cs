@@ -79,18 +79,18 @@ namespace CrossPlatformDesktopProject.Environment
         public string getNextKey()
         {
             string hold = "";
-            if(currentRoom == "Up")
+            if(type == "Up")
             {
                 hold = "Down";
-            } else if(currentRoom == "Down")
+            } else if(type == "Down")
             {
                 hold = "Up";
             }
-            else if (currentRoom == "Right")
+            else if (type == "Right")
             {
                 hold = "Left";
             }
-            else if (currentRoom == "Left")
+            else if (type == "Left")
             {
                 hold = "Right";
             }
