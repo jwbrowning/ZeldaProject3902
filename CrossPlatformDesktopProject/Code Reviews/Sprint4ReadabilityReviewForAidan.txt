@@ -1,0 +1,9 @@
+Code Readability Review
+11/16/20
+Johnathan Browning
+Sprint 3
+DoorBombed.cs
+Aidan Haskett
+10
+All in all seems easy to read and understand. The constructor does have parameters with 1 letter names, however its not very hard to tell what they refer to. The only problem might be when you're creating an instance of the class from elsewhere, you might forget what those letters stand for and need to check the class to find out.
+The methods within the class have inconsistent naming conventions. Some of them start with a captial letter, like Update and Draw, and others start with lower case, like updateIsBombed and getCollider.
