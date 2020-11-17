@@ -312,7 +312,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Map")
 			{
-				list.Add(new Map(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+                list.Add(new Map(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Compass")
 			{

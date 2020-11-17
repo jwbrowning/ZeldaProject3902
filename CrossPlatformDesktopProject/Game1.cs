@@ -78,7 +78,7 @@ namespace Sprint0
 			base.Initialize();
 
 			currentRoom = new Room1(this, new Vector2(graphics.PreferredBackBufferWidth/2, graphics.PreferredBackBufferHeight/2+84), floortilebase);
-            currentRoom.LoadRoom("RoomC6");
+            currentRoom.LoadRoom("RoomC4");
 			//currentRoom.LoadRoom("RoomDEBUG");
 			roomIndex = Array.FindIndex(rooms, x => x == "RoomC6");
 
