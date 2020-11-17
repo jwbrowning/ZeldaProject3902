@@ -15,7 +15,7 @@ namespace CrossPlatformDesktopProject.SoundManagement
         public SoundEffect sfxEnemyDeath;
         private SoundEffect sfxHealthRestore; //unused?
         public SoundEffect sfxHeartKeyPickup;
-        private SoundEffect sfxHiddenKeyAppears; //TODO - enemy death not yet implemented
+        public SoundEffect sfxHiddenKeyAppears;
         public SoundEffect sfxItemPickup;
         public SoundEffect sfxLinkDamage;
         private SoundEffect sfxLinkDeath; //unused, made redundant by musicGameOver

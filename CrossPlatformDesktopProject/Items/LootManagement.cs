@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.RoomManagement;
+using CrossPlatformDesktopProject.SoundManagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,8 +78,9 @@ namespace CrossPlatformDesktopProject.Items
         void revealHiddenLoot(iRoom room)
         {
             if(room.Enemies.Count == 1)
-                //triggers if the enemy that died is the last enemy in the room
+                //triggers if this enemy that died is the last enemy in the room
             {
+                SoundFactory.Instance.sfxHiddenKeyAppears.Play();
                 room.Items.AddRange(room.HiddenItems);
             }
         }
