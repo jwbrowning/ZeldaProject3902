@@ -397,7 +397,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				Vector2 doorLocation = new Vector2(upLocation.X * XSCALE + doorOffset.X + XOFFSET, upLocation.Y * YSCALE - doorOffset.Y + YOFFSET);
 				if ((string)doorObject.Element("DoorType") == "Closed")
 				{
-					Doors.Add(new DoorClosed(doorLocation, "Up", next));
+					Doors.Add(new DoorClosed(doorLocation, "Up", next, Enemies));
 				}
 				if ((string)doorObject.Element("DoorType") == "Open")
 				{
@@ -416,7 +416,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				Vector2 doorLocation = new Vector2(downLocation.X * XSCALE + doorOffset.X + XOFFSET, downLocation.Y * YSCALE - doorOffset.Y + YOFFSET);
 				if ((string)doorObject.Element("DoorType") == "Closed")
 				{
-					Doors.Add(new DoorClosed(doorLocation, "Down",next));
+					Doors.Add(new DoorClosed(doorLocation, "Down",next, Enemies));
 				}
 				if ((string)doorObject.Element("DoorType") == "Open")
 				{
@@ -435,7 +435,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				Vector2 doorLocation = new Vector2(leftLocation.X * XSCALE + doorOffset.X + XOFFSET, leftLocation.Y * YSCALE - doorOffset.Y + YOFFSET);
 				if ((string)doorObject.Element("DoorType") == "Closed")
 				{
-					Doors.Add(new DoorClosed(doorLocation, "Left", next));
+					Doors.Add(new DoorClosed(doorLocation, "Left", next, Enemies));
 				}
 				if ((string)doorObject.Element("DoorType") == "Open")
 				{
@@ -454,7 +454,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				Vector2 doorLocation = new Vector2(rightLocation.X * XSCALE + doorOffset.X + XOFFSET, rightLocation.Y * YSCALE - doorOffset.Y + YOFFSET);
 				if ((string)doorObject.Element("DoorType") == "Closed")
 				{
-					Doors.Add(new DoorClosed(doorLocation, "Right", next));
+					Doors.Add(new DoorClosed(doorLocation, "Right", next, Enemies));
 				}
 				if ((string)doorObject.Element("DoorType") == "Open")
 				{
