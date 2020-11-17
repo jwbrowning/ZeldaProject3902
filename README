@@ -31,14 +31,25 @@ Particles like the enemy spawn effect, death effect, and sword beam particles ne
 
 Additional Features
 
-In addition to the required features for the sprint, we also added a new feature of our own. We made the boomerang able to carry items along with it as it is thrown. So if you throw your boomerang at an item on the ground, such as a map, it will carry the map back to you.
-For testing purposes, we also added controls to enable/disable showing of colliders by pressing c and v.
+In addition to the required features for the sprint, we also added a new feature of our own. We made the boomerang able to carry items along with it as it is thrown. So if you throw your 
+boomerang at an item on the ground, such as a map, it will carry the map back to you.For testing purposes, we also added controls to enable/disable 
+showing of colliders by pressing c and v.
 
 Code Analysis
 
 Sprint Reflection
-As a team we did a better job being more on top of the work this sprint. However, we are still waiting until the last few days to get a lot of the work done, but it is understandable with everyone having busy schedules. On the contrary we did a better job of communicating during the sprint and giving updates on what work we had done in comparison to sprint 2. At the beginning of the sprint we thought doing collision code would take us about 10 hours in total to get working and smoothed out which was close to what actually ended up happening. In total the collision code took about 10-15 hours. On the other hand, we thought creating rooms would only take about 5-7 hours, but we ran into some issues and it ended up taking much longer, closer to 10-15 in order to get transitions and loading all pieces in smoothly. In conclusion I feel like we did a better job overall organizing and getting work done this sprint even though we have definite room to continue to get better in the next few coming sprints.
-
+As a team we did a better job being more on top of the work this sprint. However, we are still waiting until the last few days to get a lot of the work
+done, but it is understandable with everyone having busy schedules. On the contrary we did a better job of communicating during the sprint and giving 
+updates on what work we had done in comparison to sprint 3. Here are the time estimated and time worked.
+Heads Up Display   5hrs - 6hrs
+Resetting level   2hrs - 2hrs
+Doors   2hrs - 3hrs 
+Scrolling Transition    3hrs - 3hrs
+Game State Transitions    8hr - 9hrs 
+Sounds    3hrs - 4hrs
+Enenmy Pathing    2hrs - 3hrs
+Game Walls    1hrs - 2 hrs
+In conclusion I feel like we did a better job overall organizing and getting work done this sprint.
 
 We had these warnings when we tried doing analysis:
 
