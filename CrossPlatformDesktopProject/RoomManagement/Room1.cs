@@ -144,7 +144,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
                 {
 					Background = BlockSpriteFactory.Instance.RoomBowBackground;
                 }
-				else if (roomFile.Element("Asset").Element("Background").Value == "BlackWithWall")
+				else if (roomFile.Element("Asset").Element("Background").Value == "BlackWithWallBackground")
                 {
 					Background = BlockSpriteFactory.Instance.BlackWithWallBackground;
                 }
