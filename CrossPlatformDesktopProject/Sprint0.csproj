@@ -282,6 +282,7 @@
     <Content Include="Content\Rooms\RoomB3.xml" />
     <Content Include="Content\Rooms\RoomB4.xml" />
     <Content Include="Content\Rooms\RoomB6.xml" />
+    <Content Include="Content\Rooms\RoomBow.xml" />
     <Content Include="Content\Rooms\RoomC1.xml" />
     <Content Include="Content\Rooms\RoomC2.xml" />
     <Content Include="Content\Rooms\RoomC3.xml" />
