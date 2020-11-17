@@ -181,6 +181,18 @@
 /processorParam:TextureFormat=Color
 /build:blackPixel.png
 
+#begin BlackWithWallBackground.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BlackWithWallBackground.png
+
 #begin environment.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -463,6 +475,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NES_-_The_Legend_of_Zelda_-_Dungeon_Enemies.png
+
+#begin RoomBowBackground.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:RoomBowBackground.png
 
 #begin SpriteArrows.png
 /importer:TextureImporter

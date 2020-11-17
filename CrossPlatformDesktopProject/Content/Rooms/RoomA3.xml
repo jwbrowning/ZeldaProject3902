@@ -2,7 +2,7 @@
 <!-- Room: A3 -->
 <!-- Object coordinates are given in tiles -->
 	<Asset Type="Room">
-
+		<Background>BlackWithWallBackground</Background>
 		<Door>
 			<DoorPosition>Right</DoorPosition>
 			<DoorType>Open</DoorType>
