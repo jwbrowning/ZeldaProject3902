@@ -48,7 +48,8 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			Items = new List<IItem>();
 			NPCs = new List<INPC>();
 			Doors = new List<IDoor>();
-			Walls = new List<IWall>(); 
+			Walls = new List<IWall>();
+			HiddenItems = new List<IItem>();
 			Position = position;
 			this.floorBaseWithWalls = floorBaseWithWalls;
 			XOFFSET = 96 + (int)( - size.X / 2f);
@@ -121,6 +122,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			NPCs.Clear();
 			Doors.Clear();
 			Walls.Clear();
+			HiddenItems.Clear();
 
 			CurrentRoom = roomName;
 
@@ -150,7 +152,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 												  select item;
 			foreach (XElement itemObject in loadedItems)
 			{
-				AddItem(itemObject, HiddenItems);
+				AddItem(itemObject, Items);
 			}
 
 			IEnumerable<XElement> loadedHiddenItems = from item in roomFile.Descendants("Item")
@@ -158,7 +160,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 													  select item;
 			foreach (XElement itemObject in loadedHiddenItems)
 			{
-				AddItem(itemObject, Items);
+				AddItem(itemObject, HiddenItems);
 			}
 
 			IEnumerable<XElement> loadedNPCs = from item in roomFile.Descendants("Item")
