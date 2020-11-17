@@ -50,7 +50,7 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
             game.currentRoom.DrawEnemies(spriteBatch);
             game.currentRoom.DrawItems(spriteBatch);
             game.currentRoom.DrawDoors(spriteBatch);
-
+            game.currentRoom.DrawDialogue(spriteBatch);
 
             game.player.Draw(spriteBatch, game.currentRoom.Position);
             game.hud.Draw(spriteBatch);

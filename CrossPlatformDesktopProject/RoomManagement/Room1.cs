@@ -29,6 +29,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		public iRoom nextRoom { get; set; }
 		public Texture2D Background { get; set; }
 		private float roomTransitionSpeed = 16f;
+		public string Dialogue { get; set; }
 
 		/*XSCALE and YSCALE convert the object coordinates from tiles to pixels. 
 		In the original game each tile is 16 pixels wide, but upscaled by 4 for 
@@ -127,6 +128,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			Doors.Clear();
 			Walls.Clear();
 			HiddenItems.Clear();
+			Dialogue = "";
 
 			CurrentRoom = roomName;
 
@@ -316,6 +318,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			if ((string)NPC.Element("ObjectName") == "OldMan")
 			{
 				NPCs.Add(new OldMan(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				Dialogue = NPC.Element("Dialogue").Value;
 			}
 			else
 			{
@@ -586,6 +589,13 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			{
 				wall.Draw(spriteBatch, Position);
 			}
+		}
+
+		public void DrawDialogue(SpriteBatch spriteBatch)
+        {
+			spriteBatch.Begin();
+			spriteBatch.DrawString(mygame.font, Dialogue, new Vector2(size.X/3,size.Y/2), Color.White);
+			spriteBatch.End();
 		}
 
 	}

@@ -30,7 +30,7 @@ namespace Sprint0
 		public SpriteFont font;
 
 		public bool showCollisions = false;
-		public bool playerDebug = true;
+		public bool playerDebug = false;
 
 		static public Texture2D environment,squareOutline,floortilebase;
 		public Texture2D rect;
@@ -79,7 +79,7 @@ namespace Sprint0
 			base.Initialize();
 
 			currentRoom = new Room1(this, new Vector2(graphics.PreferredBackBufferWidth/2, graphics.PreferredBackBufferHeight/2+84), floortilebase);
-            currentRoom.LoadRoom("RoomC6");
+            currentRoom.LoadRoom("RoomA3");
 			roomIndex = Array.FindIndex(rooms, x => x == "RoomC6");
 
 			//SoundFactory.Instance.musicDungeonLoop.Play();
