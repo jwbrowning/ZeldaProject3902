@@ -5,6 +5,7 @@ using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Sprint0
 {
@@ -18,14 +19,19 @@ namespace Sprint0
         public Texture2D Texture { get; set; }
         private int animationFrame = 1;
         private int movementFrame = 1;
-        private int spritePositionX = 500;
-        private int spritePositionY = 300;
+        private int spritePositionX;
+        private int spritePositionY;
+
         private IPlayer player;
         private Game1 game;
         private int health = 1;
         int patrolPhase = 1;
         int patrolFrame = 1;
+        int activeFrame = 1;
+        bool resetting = false;
         int directionCode = -1; //keeps track of which direction sprite should move. 0 is up, 1 is down, 2 is left, 3 is right.
+        int originalPositionX;
+        int originalPositionY;
 
         private Vector2 size = new Vector2(60, 60);
         public Vector2 Position
@@ -52,6 +58,8 @@ namespace Sprint0
             CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 0, 0);
             this.player = game.player;
             this.game = game;
+            originalPositionX = spritePositionX;
+            originalPositionY = spritePositionY;
         }
 
         public void TakeDamage()
@@ -106,27 +114,29 @@ namespace Sprint0
             float playerPositionX = position.X;
             float playerPositionY = position.Y;
 
+
             animationFrame++;
             patrolFrame++;
 
             if (animationFrame == 20)
                 animationFrame = 1;
 
-            if (patrolFrame == 200)
-                patrolFrame = 1;
 
 
-            if (patrolPhase == 1) //default phase of enemies, is changed after the enemy "sees" link. Bladetrap stays still
+
+            if (patrolPhase == 1 && resetting == false) //default phase of enemies, is changed after the enemy "sees" link. Bladetrap stays still
             {
-                if (((spritePositionX - 10) <= playerPositionX && playerPositionX <= (spritePositionX + 10)) || ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 10)))
+                Console.WriteLine(patrolPhase);
+
+                if (((spritePositionX) <= playerPositionX && playerPositionX <= (spritePositionX + 40)) || ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 10)))
                 {
                     patrolPhase = 0;
                 }
             }
 
-            if (patrolPhase == 0)
+            if (patrolPhase == 0 && resetting == false)
             {
-                if ((spritePositionX - 10) <= playerPositionX && playerPositionX <= (spritePositionX + 10))
+                if ((spritePositionX) <= playerPositionX && playerPositionX <= (spritePositionX + 40))
                 {
                     if (playerPositionY < spritePositionY)
                     {
@@ -138,7 +148,7 @@ namespace Sprint0
                     }
                 }
 
-                if ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 10))
+                if ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 30))
                 {
                     if (playerPositionX < spritePositionX)
                     {
@@ -150,24 +160,67 @@ namespace Sprint0
                     }
                 }
 
+            }
+
+            if (!(patrolPhase == 1) && resetting == false)
+            {
+                activeFrame++;
+            }
+
+            if (activeFrame > 100 && resetting == false)
+            {
+                patrolPhase = 1;
+                activeFrame = 1;
+                resetting = true;
+            }
+
+            if (activeFrame > 1 && activeFrame <= 100 && resetting == false)
+            {
                 patrolPhase = -1;
             }
 
-            if (directionCode == 0)
+            if (resetting == true)
             {
-                spritePositionY = spritePositionY - 5;
+                if (spritePositionX > originalPositionX)
+                {
+                    spritePositionX = spritePositionX - 2;
+                }
+                if (spritePositionX < originalPositionX)
+                {
+                    spritePositionX = spritePositionX + 2;
+                }
+                if (spritePositionY > originalPositionY)
+                {
+                    spritePositionY = spritePositionY - 2;
+                }
+                if (spritePositionY < originalPositionY)
+                {
+                    spritePositionY = spritePositionY + 2;
+                }
             }
-            else if (directionCode == 1)
+
+
+
+            if (directionCode == 0 && resetting == false)
             {
-                spritePositionY = spritePositionY + 5;
+                spritePositionY = spritePositionY - 8;
             }
-            else if (directionCode == 2)
+            else if (directionCode == 1 && resetting == false)
             {
-                spritePositionX = spritePositionX - 5;
+                spritePositionY = spritePositionY + 8;
             }
-            else if (directionCode == 3)
+            else if (directionCode == 2 && resetting == false)
             {
-                spritePositionX = spritePositionX + 5;
+                spritePositionX = spritePositionX - 8;
+            }
+            else if (directionCode == 3 && resetting == false)
+            {
+                spritePositionX = spritePositionX + 8;
+            }
+
+            if (spritePositionX == originalPositionX && spritePositionY == originalPositionY)
+            {
+                resetting = false;
             }
         }
 

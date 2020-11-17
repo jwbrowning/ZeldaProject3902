@@ -18,10 +18,9 @@ namespace Sprint0
         public ICollisionHandler CollisionHandler { get; set; }
         public Texture2D Texture { get; set; }
         private int animationFrame = 1;
-        private int spritePositionX = 500;
-        private int spritePositionY = 300;
+        private int spritePositionX;
+        private int spritePositionY;
         int directionCode = 0; //keeps track of which direction sprite should move. 0 is up, 1 is down, 2 is left, 3 is right.
-        int patrolPhase = 1;
         int patrolFrame = 1;
         int tileFrame = 1; //used to regulate movement to tile by tile movement.
         private IPlayer player;
