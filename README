@@ -1,8 +1,29 @@
 # CSE3209Project Sprint 3
 Authors Aidan Haskett, Hemil Amin, Abhi Malisetty, Matthew Landwehr, and Johnathan Browning
 
-README Code Description
-Our code currently hits all Sprint 3 specifications building off of our sprint 2 foundation. We have implemented collision handling code for link, enemies, environment, and items. Where link and enemies are unable to walk through walls or environmental obstacles. Items such as the boomerang can not go through walls but are able to fly over some environmental obstacles. Additionally, we have all of our room data stored in xml files and are able to cycle through rooms by clicking the left and right mouse buttons. Each room is modeled after the first dungeon and is equipped with enemies and obstacles. 
+README
+
+Code Description
+This program is the completed first level of the legend of zelda game.
+
+Keyboard Controls
+Up Arrow / W - Moves the link character up
+Down Arrow / S - Moves the link character down
+Left Arrow / A - Moves the link character left
+Right Arrow / D - Moves the link character right
+
+B -
+N - 
+E -
+C - Shows the coliders in the game
+V - Hides the coliders that are previously shown
+G -
+
+Esc - Pause/Unpause the Game
+I - Open/Close the inventory
+R - Resets the game
+Q - Quits the game
+M - Mutes the sound in the game
 
 Known Issues and Roadmap
 
