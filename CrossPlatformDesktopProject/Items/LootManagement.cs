@@ -76,9 +76,10 @@ namespace CrossPlatformDesktopProject.Items
 
         void revealHiddenLoot(iRoom room)
         {
-            if(room.Enemies.Count <= 0)
+            if(room.Enemies.Count == 1)
+                //triggers if the enemy that died is the last enemy in the room
             {
-                room.Items.Concat(room.HiddenItems);
+                room.Items.AddRange(room.HiddenItems);
             }
         }
 
