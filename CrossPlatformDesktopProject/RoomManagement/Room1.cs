@@ -27,6 +27,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		public Vector2 Destination { get; set; }
 		private string CurrentRoom;
 		public iRoom nextRoom { get; set; }
+		public Texture2D Background { get; set; }
 		private float roomTransitionSpeed = 16f;
 
 		/*XSCALE and YSCALE convert the object coordinates from tiles to pixels. 
@@ -134,6 +135,22 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			addWalls();
 
 			XElement roomFile = XElement.Load("../../../../Content/Rooms/" + roomName + ".xml");
+
+			if(roomFile.Descendants("Background").Count() > 0)
+            {
+				if(roomFile.Element("Background").Value == "RoomBow")
+                {
+					Background = BlockSpriteFactory.Instance.RoomBowBackground;
+                }
+				else if (roomFile.Element("Background").Value == "BlackWithWall")
+                {
+					Background = BlockSpriteFactory.Instance.BlackWithWallBackground;
+                }
+            }
+            else
+            {
+				Background = floorBaseWithWalls;
+            }
 
 			IEnumerable <XElement> loadedEnvironmentObjects = from item in roomFile.Descendants("Item")
 					  where (string)item.Element("ObjectType") == "Environment"
@@ -509,7 +526,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		public void DrawBackground(SpriteBatch spriteBatch)
 		{
 			spriteBatch.Begin();
-			spriteBatch.Draw(floorBaseWithWalls, new Rectangle((int)(Position.X - size.X / 2f), (int)(Position.Y - size.Y / 2f), (int)size.X, (int)size.Y), Color.White);
+			spriteBatch.Draw(Background, new Rectangle((int)(Position.X - size.X / 2f), (int)(Position.Y - size.Y / 2f), (int)size.X, (int)size.Y), Color.White);
 			spriteBatch.End();
 		}
 

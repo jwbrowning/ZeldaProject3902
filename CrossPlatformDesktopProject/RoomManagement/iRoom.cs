@@ -18,6 +18,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
         Vector2 Position { get; set; }
         Vector2 Destination { get; set; }
         iRoom nextRoom { get; set; }
+        Texture2D Background { get; set; }
         void ChangeRoom(string nextRoomName, string direction);
 
         void LoadRoom(string roomName);
