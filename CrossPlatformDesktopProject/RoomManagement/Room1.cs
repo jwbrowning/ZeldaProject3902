@@ -19,6 +19,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		public List<IItem> Items { get; set; }
 		public List<INPC> NPCs { get; set; }
 		public List<IDoor> Doors {get; set; }
+		public List<IItem> HiddenItems { get; set; }
 		public List<IWall> Walls { get; set; }
 		public Vector2 Position { get; set; }
 		private Texture2D floorBaseWithWalls;
@@ -47,7 +48,8 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			Items = new List<IItem>();
 			NPCs = new List<INPC>();
 			Doors = new List<IDoor>();
-			Walls = new List<IWall>(); 
+			Walls = new List<IWall>();
+			HiddenItems = new List<IItem>();
 			Position = position;
 			this.floorBaseWithWalls = floorBaseWithWalls;
 			XOFFSET = 96 + (int)( - size.X / 2f);
@@ -122,6 +124,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			NPCs.Clear();
 			Doors.Clear();
 			Walls.Clear();
+			HiddenItems.Clear();
 
 			CurrentRoom = roomName;
 
@@ -151,8 +154,17 @@ namespace CrossPlatformDesktopProject.RoomManagement
 												  select item;
 			foreach (XElement itemObject in loadedItems)
 			{
-				AddItem(itemObject);
+				AddItem(itemObject, Items);
 			}
+
+			IEnumerable<XElement> loadedHiddenItems = from item in roomFile.Descendants("Item")
+													  where (string)item.Element("ObjectType") == "HiddenItem"
+													  select item;
+			foreach (XElement itemObject in loadedHiddenItems)
+			{
+				AddItem(itemObject, HiddenItems);
+			}
+
 			IEnumerable<XElement> loadedNPCs = from item in roomFile.Descendants("Item")
 												where (string)item.Element("ObjectType") == "NPC"
 												select item;
@@ -216,46 +228,56 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			int x = int.Parse(location[0]);
 			int y = int.Parse(location[1]);
 
+			IEnemy createdEnemy;
+
 			if ((string)enemy.Element("ObjectName") == "BlueKeese")
 			{
-				Enemies.Add(new BlueKeese(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new BlueKeese(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)enemy.Element("ObjectName") == "RedGoriya")
 			{
-				Enemies.Add(new BlueGoriya(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new BlueGoriya(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)enemy.Element("ObjectName") == "Stalfos")
 			{
-				Enemies.Add(new Stalfos(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new Stalfos(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)enemy.Element("ObjectName") == "BlackGel")
 			{
-				Enemies.Add(new BlackGel(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new BlackGel(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)enemy.Element("ObjectName") == "BladeTrap")
 			{
-				Enemies.Add(new BladeTrap(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new BladeTrap(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)enemy.Element("ObjectName") == "WallMaster")
 			{
-				Enemies.Add(new WallMaster(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new WallMaster(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)enemy.Element("ObjectName") == "Aquamentus")
 			{
-				Enemies.Add(new Aquamentus(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new Aquamentus(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)enemy.Element("ObjectName") == "Flame")
 			{
-				Enemies.Add(new Flame(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new Flame(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)enemy.Element("ObjectName") == "Wallmaster")
 			{
-				Enemies.Add(new WallMaster(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new WallMaster(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else
 			{
 				Console.WriteLine("ERROR: " + (string)enemy.Element("ObjectName") + " is not a recognized enemy.");
+				return;
 			}
+
+			if (enemy.Descendants("DropsItem").Count() > 0)
+            {
+				createdEnemy.carriedLoot = enemy.Element("DropsItem").Value;
+            }
+
+			Enemies.Add(createdEnemy);
 		}
 
 		void AddNPC(XElement NPC)
@@ -274,7 +296,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			}
 		}
 
-		void AddItem(XElement itemObject)
+		void AddItem(XElement itemObject, List<IItem> list)
 		{
 			string[] location = ((string)itemObject.Element("Location")).Split(' ');
 			int x = int.Parse(location[0]);
@@ -282,55 +304,55 @@ namespace CrossPlatformDesktopProject.RoomManagement
 
 			if ((string)itemObject.Element("ObjectName") == "Boomerang")
 			{
-				Items.Add(new Boomerang(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Boomerang(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Bow")
 			{
-				Items.Add(new Bow(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Bow(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Key")
 			{
-				Items.Add(new Key(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Key(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Map")
 			{
-				Items.Add(new Map(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Map(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Compass")
 			{
-				Items.Add(new Compass(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Compass(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "HeartContainer")
 			{
-				Items.Add(new HeartContainer(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new HeartContainer(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "TriforcePiece")
 			{
-				Items.Add(new TriforcePiece(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new TriforcePiece(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Arrows")
 			{
-				Items.Add(new Arrow(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Arrow(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Bomb")
 			{
-				Items.Add(new Bomb(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Bomb(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Clock")
 			{
-				Items.Add(new Clock(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Clock(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Fairy")
 			{
-				Items.Add(new Fairy(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Fairy(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Heart")
 			{
-				Items.Add(new Heart(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Heart(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Rupee")
 			{
-				Items.Add(new Rupee(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Rupee(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else
 			{

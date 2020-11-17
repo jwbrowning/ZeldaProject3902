@@ -125,6 +125,7 @@
     <Compile Include="GameStateStuff\GameStateClasses\RoomTransitionGameState.cs" />
     <Compile Include="GameStateStuff\GameStateClasses\WinningGameState.cs" />
     <Compile Include="GameStateStuff\IGameState.cs" />
+    <Compile Include="Items\LootManagement.cs" />
     <Compile Include="ScreenStuff\GameOverScreen.cs" />
     <Compile Include="HeadsUpDisplayStuff\HeaderInfo.cs" />
     <Compile Include="HeadsUpDisplayStuff\HeadsUpDisplay.cs" />

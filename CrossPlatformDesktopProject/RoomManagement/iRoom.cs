@@ -11,6 +11,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
         List<IEnemy> Enemies { get; set; }
         List<IBlock> Blocks { get; set; }
         List<IItem> Items { get; set; }
+        List<IItem> HiddenItems { get; set; }
         List<INPC> NPCs { get; set; }
         List<IDoor> Doors { get; set; }
         List<IWall> Walls { get; set; }

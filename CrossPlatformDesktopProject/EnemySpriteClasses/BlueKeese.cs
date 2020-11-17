@@ -1,6 +1,7 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.Entities;
+using CrossPlatformDesktopProject.Items;
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
@@ -17,6 +18,8 @@ namespace Sprint0
         public Color OverlayColor { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
         public Texture2D Texture { get; set; }
+        public string carriedLoot { get; set; }
+
         private int animationFrame = 1;
         private int spritePositionX = 500;
         private int spritePositionY = 300;
@@ -76,6 +79,7 @@ namespace Sprint0
                 dying = true;
                 CollisionHandler = new EmptyCollisionHandler(this);
                 SoundFactory.Instance.sfxEnemyDeath.Play();
+                LootManagement.Instance.enemyDeathLootCheck(game.currentRoom, this);
             }
         }
 

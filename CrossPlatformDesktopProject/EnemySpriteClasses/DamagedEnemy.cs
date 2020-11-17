@@ -13,6 +13,8 @@ namespace CrossPlatformDesktopProject.EnemySpriteClasses
 
         public Color OverlayColor { get => enemy.OverlayColor; set => enemy.OverlayColor = value; }
         public Vector2 Position { get => enemy.Position; set => enemy.Position = value; }
+        public string carriedLoot { get; set; }
+
         public ICollisionHandler CollisionHandler { get => enemy.CollisionHandler; set => enemy.CollisionHandler = value; }
 
         public DamagedEnemy(IEnemy enemy, Game1 game)
