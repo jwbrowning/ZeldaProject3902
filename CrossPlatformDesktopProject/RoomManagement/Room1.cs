@@ -224,6 +224,14 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			{
 				Blocks.Add(new Stairs(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
+			else if ((string)environmentObject.Element("ObjectName") == "InvisibleStairs")
+			{
+				Blocks.Add(new InvisibleStairs(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+			}
+			else if ((string)environmentObject.Element("ObjectName") == "InvisibleBlock")
+			{
+				Blocks.Add(new BlockInvisible(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+			}
 			else if ((string)environmentObject.Element("ObjectName") == "BlockMovable")
 			{
 				//TODO: Implement BlockMovable
