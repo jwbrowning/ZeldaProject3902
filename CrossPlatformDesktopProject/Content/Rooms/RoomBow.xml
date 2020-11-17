@@ -12,72 +12,187 @@
 		<Item>	
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>InvisibleBlock</ObjectName>
-			<Location>2 1</Location>
+			<Location>1 1</Location>
 		</Item>
 		<Item>	
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>InvisibleBlock</ObjectName>
-			<Location>2 2</Location>
+			<Location>1 2</Location>
 		</Item>
 		<Item>	
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>InvisibleBlock</ObjectName>
-			<Location>2 3</Location>
+			<Location>1 3</Location>
 		</Item>
 		<Item>	
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>InvisibleBlock</ObjectName>
-			<Location>2 4</Location>
+			<Location>1 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>1 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>1 6</Location>
 		</Item>
 		<Item>	
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>InvisibleBlock</ObjectName>
-			<Location>4 1</Location>
+			<Location>3 1</Location>
 		</Item>
 		<Item>	
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>InvisibleBlock</ObjectName>
-			<Location>4 2</Location>
+			<Location>3 2</Location>
 		</Item>
 		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>3 3</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>3 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>3 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>3 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>4 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>5 5</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>6 5</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>7 5</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>8 5</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>9 5</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>11 5</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>12 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>4 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>5 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>6 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>7 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>8 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>9 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>11 6</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>12 6</Location>
+		</Item>
+		<Item>
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>InvisibleBlock</ObjectName>
 			<Location>4 3</Location>
 		</Item>
-		<Item>	
+		<Item>
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>InvisibleBlock</ObjectName>
-			<Location>4 4</Location>
+			<Location>5 3</Location>
 		</Item>
-		<Item>	
+		<Item>
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>InvisibleBlock</ObjectName>
-			<Location>6 4</Location>
+			<Location>6 3</Location>
 		</Item>
-		<Item>	
+		<Item>
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>InvisibleBlock</ObjectName>
-			<Location>7 4</Location>
+			<Location>7 3</Location>
 		</Item>
-		<Item>	
+		<Item>
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>InvisibleBlock</ObjectName>
-			<Location>8 4</Location>
+			<Location>8 3</Location>
 		</Item>
-		<Item>	
+		<Item>
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>InvisibleBlock</ObjectName>
-			<Location>9 4</Location>
+			<Location>9 3</Location>
 		</Item>
-		<Item>	
+		<Item>
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>InvisibleBlock</ObjectName>
-			<Location>11 4</Location>
+			<Location>10 3</Location>
 		</Item>
-		<Item>	
+		<Item>
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>InvisibleBlock</ObjectName>
-			<Location>12 4</Location>
+			<Location>11 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>12 3</Location>
 		</Item>
 		<Item>	
 			<ObjectType>Environment</ObjectType>
@@ -94,6 +209,12 @@
 			<ObjectName>InvisibleBlock</ObjectName>
 			<Location>5 3</Location>
 		</Item>
+		<Item>
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>5 4</Location>
+		</Item>
+		
 		
 		
 		<Item>	

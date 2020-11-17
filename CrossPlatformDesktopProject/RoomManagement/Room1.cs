@@ -56,6 +56,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			XOFFSET = 96 + (int)( - size.X / 2f);
 			YOFFSET = 96 + (int)( - size.Y / 2f);
 			Destination = position;
+			Background = floorBaseWithWalls;
 		}
 		
 		public void ChangeRoom(string nextRoomName, string direction)
@@ -136,13 +137,14 @@ namespace CrossPlatformDesktopProject.RoomManagement
 
 			XElement roomFile = XElement.Load("../../../../Content/Rooms/" + roomName + ".xml");
 
-			if(roomFile.Descendants("Background").Count() > 0)
+			if (roomFile.Descendants("Background").Count() > 0)	
             {
-				if(roomFile.Element("Background").Value == "RoomBow")
+				Console.WriteLine(roomFile.Descendants("Background").Count());
+				if (roomFile.Element("Asset").Element("Background").Value == "RoomBowBackground")
                 {
 					Background = BlockSpriteFactory.Instance.RoomBowBackground;
                 }
-				else if (roomFile.Element("Background").Value == "BlackWithWall")
+				else if (roomFile.Element("Asset").Element("Background").Value == "BlackWithWallBackground")
                 {
 					Background = BlockSpriteFactory.Instance.BlackWithWallBackground;
                 }

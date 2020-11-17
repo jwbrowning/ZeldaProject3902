@@ -32,7 +32,7 @@ namespace Sprint0
         int tileFrame = 1;
         Random rand = new Random();
 
-        private Vector2 size = new Vector2(45, 45);
+        private Vector2 size = new Vector2(40, 40);
         public Vector2 Position
         {
             get
@@ -54,7 +54,7 @@ namespace Sprint0
             OverlayColor = Color.White;
             Texture = NPCSpriteFactory.Instance.textureEnemies;
             Position = position;
-            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 9, 9);
+            CollisionHandler = new EnemyCollisionHandler(game, this, size.X, size.Y, 0, 2);
             this.player = game.player;
             this.game = game;
         }
