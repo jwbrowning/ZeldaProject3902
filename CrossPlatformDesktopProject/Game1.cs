@@ -30,7 +30,7 @@ namespace Sprint0
 		public SpriteFont font;
 
 		public bool showCollisions = false;
-		public bool playerDebug = false;
+		public bool playerDebug = true;
 
 		static public Texture2D environment,squareOutline,floortilebase;
 		public Texture2D rect;
@@ -132,12 +132,22 @@ namespace Sprint0
             if (showCollisions)
             {
                 spriteBatch.Begin();
-                foreach (IGameObject g in currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Doors).Concat(currentRoom.Walls).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }))
+                foreach (IGameObject g in currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }))
                 {
                     Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);
                     spriteBatch.Draw(squareOutline, rec, new Color(Color.LimeGreen, 1));
-                }
-                spriteBatch.End();
+				}
+				foreach (IGameObject g in currentRoom.Walls)
+				{
+					Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);
+					spriteBatch.Draw(squareOutline, rec, new Color(Color.Coral, .5f));
+				}
+				foreach (IGameObject g in currentRoom.Doors)
+				{
+					Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);
+					spriteBatch.Draw(squareOutline, rec, Color.Blue);
+				}
+				spriteBatch.End();
 			}
 
 			base.Draw(gameTime);
