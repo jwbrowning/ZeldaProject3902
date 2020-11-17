@@ -79,7 +79,8 @@ namespace Sprint0
 			base.Initialize();
 
 			currentRoom = new Room1(this, new Vector2(graphics.PreferredBackBufferWidth/2, graphics.PreferredBackBufferHeight/2+84), floortilebase);
-            currentRoom.LoadRoom("RoomA3");
+            currentRoom.LoadRoom("RoomC6");
+			//currentRoom.LoadRoom("RoomDEBUG");
 			roomIndex = Array.FindIndex(rooms, x => x == "RoomC6");
 
 			//SoundFactory.Instance.musicDungeonLoop.Play();
