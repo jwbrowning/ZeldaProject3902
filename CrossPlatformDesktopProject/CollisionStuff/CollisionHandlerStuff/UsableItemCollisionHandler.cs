@@ -1,6 +1,7 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.ColliderStuff;
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.UsableItems;
+using CrossPlatformDesktopProject.Environment;
 
 namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 {
@@ -77,6 +78,10 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
             if (item is SwordBeam)
             {
                 ((SwordBeam)item).Destroy();
+            }
+            if(item is UsableBomb && collider.GameObject is DoorBombed)
+            {
+                ((DoorBombed)collider.GameObject).updateIsBombed();
             }
         }
 

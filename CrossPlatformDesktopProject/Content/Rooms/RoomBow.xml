@@ -1,0 +1,121 @@
+<XnaContent>	
+<!-- Room: Bow -->
+<!-- Object coordinates are given in tiles -->
+	<Asset Type="Room">
+		<Background>RoomBowBackground</Background>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleStairs</ObjectName>
+			<Location>2 1</Location>
+		</Item>
+		<!-- Leads to B1 -->
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>2 1</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>2 2</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>2 3</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>2 4</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>4 1</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>4 2</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>4 3</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>4 4</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>6 4</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>7 4</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>8 4</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>9 4</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>11 4</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>12 4</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>5 1</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>5 2</Location>
+		</Item>
+		<Item>	
+			<ObjectType>Environment</ObjectType>
+			<ObjectName>InvisibleBlock</ObjectName>
+			<Location>5 3</Location>
+		</Item>
+		
+		
+		<Item>	
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Bow</ObjectName>
+			<Location>7 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>3 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>6 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Enemy</ObjectType>
+			<ObjectName>BlueKeese</ObjectName>
+			<Location>11 5</Location>
+		</Item>
+
+	</Asset>
+</XnaContent>

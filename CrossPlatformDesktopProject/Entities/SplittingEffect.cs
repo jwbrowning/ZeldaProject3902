@@ -13,7 +13,7 @@ namespace CrossPlatformDesktopProject.Entities
         public ICollisionHandler CollisionHandler { get; set; }
         private ISprite topLeft,topRight,bottomLeft,bottomRight;
         float distance = 8;
-        const float speed = 2.5f;
+        const float speed = 5f;
         private Random random;
         private float timer = 0, interval = 5;
 

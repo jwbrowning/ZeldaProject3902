@@ -8,11 +8,13 @@ namespace CrossPlatformDesktopProject.EnemySpriteClasses
     public class DamagedEnemy : IEnemy
     {
         private IEnemy enemy;
-        private int timer = 1000;
+        private int timer = 20;
         private Game1 game;
 
         public Color OverlayColor { get => enemy.OverlayColor; set => enemy.OverlayColor = value; }
         public Vector2 Position { get => enemy.Position; set => enemy.Position = value; }
+        public string carriedLoot { get; set; }
+
         public ICollisionHandler CollisionHandler { get => enemy.CollisionHandler; set => enemy.CollisionHandler = value; }
 
         public DamagedEnemy(IEnemy enemy, Game1 game)
@@ -23,7 +25,7 @@ namespace CrossPlatformDesktopProject.EnemySpriteClasses
 
         public void Update()
         {
-            timer -= 9;
+            timer -= 1;
             if (timer <= 0)
             {
                 RemoveDecorator();
@@ -40,9 +42,9 @@ namespace CrossPlatformDesktopProject.EnemySpriteClasses
 
         public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
-            float value = 1.2f - timer / 1100f;
-            float r = ((timer / 100) % 2) * .5f + .5f;
-            enemy.OverlayColor = new Color(r, value, r);
+            float value = 1.2f - timer / 20f;
+            float r = ((timer / 8) % 2) * .5f + .5f;
+            enemy.OverlayColor = new Color(r, value, r, .8f);
             enemy.Draw(spriteBatch, parentPos);
         }
 

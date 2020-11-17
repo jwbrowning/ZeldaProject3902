@@ -19,9 +19,24 @@ namespace CrossPlatformDesktopProject.Environment
         {
             Texture = DoorSpriteFactory.Instance.environment;
             Position = position;
-            CollisionHandler = new DoorCollisionHandler(this, size.X - 16f, size.Y - 16f, 0, 0);
             type = t;
             next = n;
+            if (type == "Up")
+            {
+                CollisionHandler = new DoorCollisionHandler(this, size.X / 4, size.Y - 16, 0, 0);
+            }
+            else if (type == "Down")
+            {
+                CollisionHandler = new DoorCollisionHandler(this, size.X / 4, size.Y - 16, 0, 0);
+            }
+            else if (type == "Left")
+            {
+                CollisionHandler = new DoorCollisionHandler(this, size.X - 16, size.Y / 4, 0, 0);
+            }
+            else if (type == "Right")
+            {
+                CollisionHandler = new DoorCollisionHandler(this, size.X - 16, size.Y / 4, 0, 0);
+            }
         }
 
         public void Update() { }

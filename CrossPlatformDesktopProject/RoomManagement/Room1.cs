@@ -19,6 +19,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		public List<IItem> Items { get; set; }
 		public List<INPC> NPCs { get; set; }
 		public List<IDoor> Doors {get; set; }
+		public List<IItem> HiddenItems { get; set; }
 		public List<IWall> Walls { get; set; }
 		public Vector2 Position { get; set; }
 		private Texture2D floorBaseWithWalls;
@@ -26,6 +27,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		public Vector2 Destination { get; set; }
 		private string CurrentRoom;
 		public iRoom nextRoom { get; set; }
+		public Texture2D Background { get; set; }
 		private float roomTransitionSpeed = 16f;
 
 		/*XSCALE and YSCALE convert the object coordinates from tiles to pixels. 
@@ -47,7 +49,8 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			Items = new List<IItem>();
 			NPCs = new List<INPC>();
 			Doors = new List<IDoor>();
-			Walls = new List<IWall>(); 
+			Walls = new List<IWall>();
+			HiddenItems = new List<IItem>();
 			Position = position;
 			this.floorBaseWithWalls = floorBaseWithWalls;
 			XOFFSET = 96 + (int)( - size.X / 2f);
@@ -86,9 +89,11 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				position = Position + new Vector2(-size.X, 0);
 				mygame.player.Position = comingLeftLocation;
 			}
-			nextRoom = new Room1(mygame,position,floorBaseWithWalls);
-			nextRoom.Destination = Position;
-			nextRoom.LoadRoom(nextRoomName);
+            nextRoom = new Room1(mygame, position, floorBaseWithWalls)
+            {
+                Destination = Position
+            };
+            nextRoom.LoadRoom(nextRoomName);
 		}
 		public void addWalls()
         {
@@ -112,7 +117,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			}
         }
 
-		public void LoadRoom(String roomName)
+		public void LoadRoom(string roomName)
 		{
 			Enemies.Clear();
 			Blocks.Clear();
@@ -120,6 +125,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			NPCs.Clear();
 			Doors.Clear();
 			Walls.Clear();
+			HiddenItems.Clear();
 
 			CurrentRoom = roomName;
 
@@ -129,6 +135,22 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			addWalls();
 
 			XElement roomFile = XElement.Load("../../../../Content/Rooms/" + roomName + ".xml");
+
+			if(roomFile.Descendants("Background").Count() > 0)
+            {
+				if(roomFile.Element("Background").Value == "RoomBow")
+                {
+					Background = BlockSpriteFactory.Instance.RoomBowBackground;
+                }
+				else if (roomFile.Element("Background").Value == "BlackWithWall")
+                {
+					Background = BlockSpriteFactory.Instance.BlackWithWallBackground;
+                }
+            }
+            else
+            {
+				Background = floorBaseWithWalls;
+            }
 
 			IEnumerable <XElement> loadedEnvironmentObjects = from item in roomFile.Descendants("Item")
 					  where (string)item.Element("ObjectType") == "Environment"
@@ -149,8 +171,17 @@ namespace CrossPlatformDesktopProject.RoomManagement
 												  select item;
 			foreach (XElement itemObject in loadedItems)
 			{
-				AddItem(itemObject);
+				AddItem(itemObject, Items);
 			}
+
+			IEnumerable<XElement> loadedHiddenItems = from item in roomFile.Descendants("Item")
+													  where (string)item.Element("ObjectType") == "HiddenItem"
+													  select item;
+			foreach (XElement itemObject in loadedHiddenItems)
+			{
+				AddItem(itemObject, HiddenItems);
+			}
+
 			IEnumerable<XElement> loadedNPCs = from item in roomFile.Descendants("Item")
 												where (string)item.Element("ObjectType") == "NPC"
 												select item;
@@ -193,6 +224,14 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			{
 				Blocks.Add(new Stairs(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
+			else if ((string)environmentObject.Element("ObjectName") == "InvisibleStairs")
+			{
+				Blocks.Add(new StairsInvisible(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+			}
+			else if ((string)environmentObject.Element("ObjectName") == "InvisibleBlock")
+			{
+				Blocks.Add(new BlockInvisible(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+			}
 			else if ((string)environmentObject.Element("ObjectName") == "BlockMovable")
 			{
 				//TODO: Implement BlockMovable
@@ -214,46 +253,56 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			int x = int.Parse(location[0]);
 			int y = int.Parse(location[1]);
 
+			IEnemy createdEnemy;
+
 			if ((string)enemy.Element("ObjectName") == "BlueKeese")
 			{
-				Enemies.Add(new BlueKeese(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new BlueKeese(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)enemy.Element("ObjectName") == "RedGoriya")
 			{
-				Enemies.Add(new BlueGoriya(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new BlueGoriya(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)enemy.Element("ObjectName") == "Stalfos")
 			{
-				Enemies.Add(new Stalfos(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new Stalfos(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)enemy.Element("ObjectName") == "BlackGel")
 			{
-				Enemies.Add(new BlackGel(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new BlackGel(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)enemy.Element("ObjectName") == "BladeTrap")
 			{
-				Enemies.Add(new BladeTrap(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new BladeTrap(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)enemy.Element("ObjectName") == "WallMaster")
 			{
-				Enemies.Add(new WallMaster(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new WallMaster(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)enemy.Element("ObjectName") == "Aquamentus")
 			{
-				Enemies.Add(new Aquamentus(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new Aquamentus(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)enemy.Element("ObjectName") == "Flame")
 			{
-				Enemies.Add(new Flame(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new Flame(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)enemy.Element("ObjectName") == "Wallmaster")
 			{
-				Enemies.Add(new WallMaster(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				createdEnemy = (new WallMaster(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else
 			{
 				Console.WriteLine("ERROR: " + (string)enemy.Element("ObjectName") + " is not a recognized enemy.");
+				return;
 			}
+
+			if (enemy.Descendants("DropsItem").Count() > 0)
+            {
+				createdEnemy.carriedLoot = enemy.Element("DropsItem").Value;
+            }
+
+			Enemies.Add(createdEnemy);
 		}
 
 		void AddNPC(XElement NPC)
@@ -272,7 +321,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			}
 		}
 
-		void AddItem(XElement itemObject)
+		void AddItem(XElement itemObject, List<IItem> list)
 		{
 			string[] location = ((string)itemObject.Element("Location")).Split(' ');
 			int x = int.Parse(location[0]);
@@ -280,55 +329,55 @@ namespace CrossPlatformDesktopProject.RoomManagement
 
 			if ((string)itemObject.Element("ObjectName") == "Boomerang")
 			{
-				Items.Add(new Boomerang(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Boomerang(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Bow")
 			{
-				Items.Add(new Bow(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Bow(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Key")
 			{
-				Items.Add(new Key(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Key(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Map")
 			{
-				Items.Add(new Map(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+                list.Add(new Map(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Compass")
 			{
-				Items.Add(new Compass(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Compass(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "HeartContainer")
 			{
-				Items.Add(new HeartContainer(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new HeartContainer(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "TriforcePiece")
 			{
-				Items.Add(new TriforcePiece(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new TriforcePiece(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Arrows")
 			{
-				Items.Add(new Arrow(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Arrow(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Bomb")
 			{
-				Items.Add(new Bomb(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Bomb(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Clock")
 			{
-				Items.Add(new Clock(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Clock(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Fairy")
 			{
-				Items.Add(new Fairy(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Fairy(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Heart")
 			{
-				Items.Add(new Heart(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Heart(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else if ((string)itemObject.Element("ObjectName") == "Rupee")
 			{
-				Items.Add(new Rupee(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				list.Add(new Rupee(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
 			}
 			else
 			{
@@ -356,11 +405,11 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				}
 				if ((string)doorObject.Element("DoorType") == "Locked")
 				{
-					Doors.Add(new DoorLocked(doorLocation, "Up", next));
+					Doors.Add(new DoorLocked(doorLocation, "Up", next, CurrentRoom));
 				}
 				if ((string)doorObject.Element("DoorType") == "Bombable")
 				{
-					Doors.Add(new DoorBombed(doorLocation, "Up", next));
+					Doors.Add(new DoorBombed(doorLocation, "Up", next, CurrentRoom));
 				}
 			} else if((string)doorObject.Element("DoorPosition") == "Down")
 			{
@@ -375,11 +424,11 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				}
 				if ((string)doorObject.Element("DoorType") == "Locked")
 				{
-					Doors.Add(new DoorLocked(doorLocation, "Down",next));
+					Doors.Add(new DoorLocked(doorLocation, "Down",next, CurrentRoom));
 				}
 				if ((string)doorObject.Element("DoorType") == "Bombable")
 				{
-					Doors.Add(new DoorBombed(doorLocation, "Down",next));
+					Doors.Add(new DoorBombed(doorLocation, "Down",next, CurrentRoom));
 				}
 			} else if ((string)doorObject.Element("DoorPosition") == "Left")
 			{
@@ -394,11 +443,11 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				}
 				if ((string)doorObject.Element("DoorType") == "Locked")
 				{
-					Doors.Add(new DoorLocked(doorLocation, "Left", next));
+					Doors.Add(new DoorLocked(doorLocation, "Left", next, CurrentRoom));
 				}
 				if ((string)doorObject.Element("DoorType") == "Bombable")
 				{
-					Doors.Add(new DoorBombed(doorLocation, "Left", next));
+					Doors.Add(new DoorBombed(doorLocation, "Left", next, CurrentRoom));
 				}
 			} else if ((string)doorObject.Element("DoorPosition") == "Right")
 			{
@@ -413,11 +462,11 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				}
 				if ((string)doorObject.Element("DoorType") == "Locked")
 				{
-					Doors.Add(new DoorLocked(doorLocation, "Right", next));
+					Doors.Add(new DoorLocked(doorLocation, "Right", next, CurrentRoom));
 				}
 				if ((string)doorObject.Element("DoorType") == "Bombable")
 				{
-					Doors.Add(new DoorBombed(doorLocation, "Right", next));
+					Doors.Add(new DoorBombed(doorLocation, "Right", next, CurrentRoom));
 				}
 			}
 		}
@@ -485,7 +534,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		public void DrawBackground(SpriteBatch spriteBatch)
 		{
 			spriteBatch.Begin();
-			spriteBatch.Draw(floorBaseWithWalls, new Rectangle((int)(Position.X - size.X / 2f), (int)(Position.Y - size.Y / 2f), (int)size.X, (int)size.Y), Color.White);
+			spriteBatch.Draw(Background, new Rectangle((int)(Position.X - size.X / 2f), (int)(Position.Y - size.Y / 2f), (int)size.X, (int)size.Y), Color.White);
 			spriteBatch.End();
 		}
 

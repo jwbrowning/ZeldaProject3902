@@ -1,6 +1,9 @@
-﻿﻿using Microsoft.Xna.Framework.Graphics;
+﻿using CrossPlatformDesktopProject.CollisionStuff;
+using CrossPlatformDesktopProject.PlayerStuff;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
 {
@@ -33,6 +36,9 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
             game.currentRoom.UpdateDoors();
             game.currentRoom.UpdateWalls();
             game.hud.Update();
+
+            List<IGameObject> allGameObjects = game.currentRoom.Blocks.Concat<IGameObject>(game.currentRoom.Items).Concat(game.currentRoom.Doors).Concat(game.currentRoom.Walls).Concat(game.currentRoom.Enemies).Concat(game.currentRoom.NPCs).Concat(game.player.ActiveItems).Concat(new List<IGameObject>() { game.player, game.player.Sword }).ToList();
+            CollisionDetection.DetectCollisions(allGameObjects);
         }
 
         public void Draw(SpriteBatch spriteBatch)

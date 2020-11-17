@@ -97,6 +97,7 @@
     <Compile Include="Entities\ExplosionEffect.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\SplittingEffect.cs" />
+    <Compile Include="Environment\BlockInvisible.cs" />
     <Compile Include="Environment\BlockSpriteFactory.cs" />
     <Compile Include="Environment\BlockWater.cs" />
     <Compile Include="Environment\BlockStandard.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Environment\Ladder.cs" />
     <Compile Include="Environment\RoomBorder.cs" />
     <Compile Include="Environment\Stairs.cs" />
+    <Compile Include="Environment\StairsInvisible.cs" />
     <Compile Include="Environment\Statue.cs" />
     <Compile Include="Environment\StatueDragon.cs" />
     <Compile Include="Environment\Wall.cs" />
@@ -125,6 +127,7 @@
     <Compile Include="GameStateStuff\GameStateClasses\RoomTransitionGameState.cs" />
     <Compile Include="GameStateStuff\GameStateClasses\WinningGameState.cs" />
     <Compile Include="GameStateStuff\IGameState.cs" />
+    <Compile Include="Items\LootManagement.cs" />
     <Compile Include="ScreenStuff\GameOverScreen.cs" />
     <Compile Include="HeadsUpDisplayStuff\HeaderInfo.cs" />
     <Compile Include="HeadsUpDisplayStuff\HeadsUpDisplay.cs" />
@@ -281,6 +284,7 @@
     <Content Include="Content\Rooms\RoomB3.xml" />
     <Content Include="Content\Rooms\RoomB4.xml" />
     <Content Include="Content\Rooms\RoomB6.xml" />
+    <Content Include="Content\Rooms\RoomBow.xml" />
     <Content Include="Content\Rooms\RoomC1.xml" />
     <Content Include="Content\Rooms\RoomC2.xml" />
     <Content Include="Content\Rooms\RoomC3.xml" />

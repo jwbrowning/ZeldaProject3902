@@ -1,6 +1,7 @@
 ﻿
 using CrossPlatformDesktopProject;
 using CrossPlatformDesktopProject.CollisionStuff;
+using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.Environment;
 using CrossPlatformDesktopProject.GameStateStuff;
@@ -78,7 +79,7 @@ namespace Sprint0
 			base.Initialize();
 
 			currentRoom = new Room1(this, new Vector2(graphics.PreferredBackBufferWidth/2, graphics.PreferredBackBufferHeight/2+84), floortilebase);
-            currentRoom.LoadRoom("RoomC6");
+            currentRoom.LoadRoom("RoomC3");
 			//currentRoom.LoadRoom("RoomDEBUG");
 			roomIndex = Array.FindIndex(rooms, x => x == "RoomC6");
 
@@ -119,9 +120,6 @@ namespace Sprint0
 		{
 			gameState.Update();
 
-            List<IGameObject> allGameObjects = currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Doors).Concat(currentRoom.Walls).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }).ToList();
-            CollisionDetection.DetectCollisions(allGameObjects);
-
 			base.Update(gameTime);
 		}
 
@@ -134,21 +132,32 @@ namespace Sprint0
             if (showCollisions)
             {
                 spriteBatch.Begin();
-                foreach (IGameObject g in currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Doors).Concat(currentRoom.Walls).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }))
+                foreach (IGameObject g in currentRoom.Blocks.Concat<IGameObject>(currentRoom.Items).Concat(currentRoom.Enemies).Concat(currentRoom.NPCs).Concat(player.ActiveItems).Concat(new List<IGameObject>() { player, player.Sword }))
                 {
                     Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);
                     spriteBatch.Draw(squareOutline, rec, new Color(Color.LimeGreen, 1));
-                }
-                spriteBatch.End();
+				}
+				/*foreach (IGameObject g in currentRoom.Walls)
+				{
+					Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);
+					spriteBatch.Draw(squareOutline, rec, new Color(Color.Coral, .5f));
+				}*/
+				foreach (IGameObject g in currentRoom.Doors)
+				{
+					Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);
+					spriteBatch.Draw(squareOutline, rec, Color.Blue);
+				}
+				spriteBatch.End();
 			}
 
 			base.Draw(gameTime);
 		}
 		public void FinishTransition(iRoom room)
         {
-			gameState = new NormalGameState(this);
 			currentRoom = room;
-        }
+			gameState = new NormalGameState(this);
+			player.CollisionHandler = new LinkCollisionHandler(this, player, 56, 50, 0, 10);
+		}
 		public void Pause()
         {
 			screen = new PauseScreen(this, GraphicsDevice, graphics);
@@ -187,6 +196,7 @@ namespace Sprint0
 
 		public void ChangeRoom(string nextRoomName, string direction)
         {
+			player.CollisionHandler = new EmptyCollisionHandler(player);
 			gameState = new RoomTransitionGameState(this);
 			currentRoom.ChangeRoom(nextRoomName, direction);
 			roomIndex = Array.FindIndex(rooms, x => x == nextRoomName);

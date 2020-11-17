@@ -33,12 +33,12 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
             game.currentRoom.nextRoom.DrawBlocks(spriteBatch);
             game.currentRoom.DrawNPCS(spriteBatch);
             game.currentRoom.nextRoom.DrawNPCS(spriteBatch);
-            game.currentRoom.DrawEnemies(spriteBatch);
-            game.currentRoom.nextRoom.DrawEnemies(spriteBatch);
             game.currentRoom.DrawItems(spriteBatch);
             game.currentRoom.nextRoom.DrawItems(spriteBatch);
             game.currentRoom.DrawDoors(spriteBatch);
             game.currentRoom.nextRoom.DrawDoors(spriteBatch);
+            game.currentRoom.DrawEnemies(spriteBatch);
+            game.currentRoom.nextRoom.DrawEnemies(spriteBatch);
             game.player.Draw(spriteBatch, game.currentRoom.nextRoom.Position);
             game.hud.Draw(spriteBatch);
         }
