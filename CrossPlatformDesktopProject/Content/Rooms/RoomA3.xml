@@ -9,12 +9,12 @@
 			<DoorDestination>RoomB3</DoorDestination>
 		</Door>
 		<Item>
-			<ObjectType>NPC</ObjectType>
+			<ObjectType>Enemy</ObjectType>
 			<ObjectName>Flame</ObjectName>
 			<Location>3 3</Location>
 		</Item>
 		<Item>
-			<ObjectType>NPC</ObjectType>
+			<ObjectType>Enemy</ObjectType>
 			<ObjectName>Flame</ObjectName>
 			<Location>10 3</Location>
 		</Item>
