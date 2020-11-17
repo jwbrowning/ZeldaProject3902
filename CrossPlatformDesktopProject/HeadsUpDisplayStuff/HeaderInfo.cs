@@ -63,13 +63,13 @@ namespace CrossPlatformDesktopProject.HeadsUpDisplayStuff
 
             if (game.player.ItemCounts[PlayerStuff.ItemType.Compass] > 0)
             {
-                if (game.rooms[game.roomIndex] != "RoomDEBUG")
+                if (game.rooms[game.roomIndex] != "RoomDEBUG" && game.rooms[game.roomIndex] != "RoomBOW")
                 {
                     compassMarker.Draw(spriteBatch, position + compassMarkerA1Pos + RoomPosAdjustment(game.rooms[game.roomIndex]));
                 }
                 else
                 {
-                    compassMarker.Draw(spriteBatch, position + compassMarkerA1Pos + RoomPosAdjustment("RoomC1"));
+                    compassMarker.Draw(spriteBatch, position + compassMarkerA1Pos + RoomPosAdjustment("RoomB1"));
                 }
             }
 

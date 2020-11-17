@@ -67,7 +67,22 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			Vector2 comingDownLocation = new Vector2(6.5f * XSCALE + XOFFSET, 1 * YSCALE + YOFFSET);
 			Vector2 comingRightLocation = new Vector2(1 * XSCALE + XOFFSET, 4f * YSCALE + YOFFSET);
 			Vector2 comingLeftLocation = new Vector2(12 * XSCALE + XOFFSET, 4f * YSCALE + YOFFSET);
-			if (direction == "Up")
+			Vector2 inToBasementLocation = new Vector2(2 * XSCALE + XOFFSET, 2 * YSCALE + YOFFSET);
+			Vector2 outOfBasementLocation = new Vector2(6 * XSCALE + XOFFSET, 4f * YSCALE + YOFFSET);
+
+			if (nextRoomName=="RoomBOW")
+			{
+				Destination = Position + new Vector2(0, -size.Y);
+				position = Position + new Vector2(0, size.Y);
+				mygame.player.Position = inToBasementLocation;
+			}
+			else if(CurrentRoom == "RoomBOW")
+			{
+				Destination = Position + new Vector2(0, size.Y);
+				position = Position + new Vector2(0, -size.Y);
+				mygame.player.Position = outOfBasementLocation;
+			}
+			else if (direction == "Up")
 			{
 				Destination = Position + new Vector2(0, size.Y);
 				position = Position + new Vector2(0, -size.Y);
