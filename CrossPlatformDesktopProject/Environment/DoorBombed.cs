@@ -56,8 +56,9 @@ namespace CrossPlatformDesktopProject.Environment
             }
         }
 
-        public void Update() {
-            
+        public void Update()
+        {
+
         }
 
         public void updateIsBombed()
@@ -66,7 +67,8 @@ namespace CrossPlatformDesktopProject.Environment
             if (!isBombed.ContainsKey(next))
             {
                 isBombed.Add(next, true);
-            } else
+            }
+            else
             {
                 isBombed[next] = true;
             }
@@ -76,21 +78,28 @@ namespace CrossPlatformDesktopProject.Environment
 
         public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
-            Rectangle sourceRectangle = new Rectangle(0,0,0,0);
+            Rectangle sourceRectangle = new Rectangle(0, 0, 0, 0);
             Rectangle destinationRectangle;
 
-            if(type == "Up"){
+            if (type == "Up")
+            {
                 sourceRectangle = new Rectangle(947, 11, 32, 32);
-            } else if(type == "Down") {
+            }
+            else if (type == "Down")
+            {
                 sourceRectangle = new Rectangle(947, 110, 32, 32);
-            } else if(type == "Left") {
+            }
+            else if (type == "Left")
+            {
                 sourceRectangle = new Rectangle(947, 44, 32, 32);
-            } else if(type == "Right") {
+            }
+            else if (type == "Right")
+            {
                 sourceRectangle = new Rectangle(947, 77, 32, 32);
             }
 
             destinationRectangle = new Rectangle((int)(Position.X - size.X / 2f), (int)(Position.Y - size.Y / 2f), (int)size.X, (int)size.Y);
-            if(isBombed[currentRoom])
+            if (isBombed[currentRoom])
             {
                 spriteBatch.Begin();
                 spriteBatch.Draw(Texture, new Rectangle(destinationRectangle.Location + new Point((int)parentPos.X, (int)parentPos.Y), destinationRectangle.Size), sourceRectangle, Color.White);

@@ -59,10 +59,12 @@ namespace CrossPlatformDesktopProject.CollisionStuff
             else if (collider.GameObject is ISword)
             {
                 collisionHandler.HandleSwordCollision(collider);
-            } else if (collider.GameObject is IDoor) 
+            }
+            else if (collider.GameObject is IDoor)
             {
                 collisionHandler.HandleDoorCollision(collider);
-            } else if (collider.GameObject is IWall)
+            }
+            else if (collider.GameObject is IWall)
             {
                 collisionHandler.HandleWallCollision(collider);
             }

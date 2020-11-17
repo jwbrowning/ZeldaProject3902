@@ -11,7 +11,7 @@ namespace CrossPlatformDesktopProject.Entities
     {
         public Vector2 Position { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
-        private ISprite topLeft,topRight,bottomLeft,bottomRight;
+        private ISprite topLeft, topRight, bottomLeft, bottomRight;
         float distance = 8;
         const float speed = 5f;
         private Random random;
@@ -31,7 +31,7 @@ namespace CrossPlatformDesktopProject.Entities
         public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
             Color overlay;
-            if((int)(timer/interval)%5==0)
+            if ((int)(timer / interval) % 5 == 0)
             {
                 overlay = Color.White;
             }

@@ -38,7 +38,7 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
             game.player.Draw(spriteBatch, game.currentRoom.Position);
             game.hud.Draw(spriteBatch);
             spriteBatch.Begin();
-            spriteBatch.Draw(game.rect, new Rectangle(0, 0, 2000, 2000), new Color(0,0,0,.5f));
+            spriteBatch.Draw(game.rect, new Rectangle(0, 0, 2000, 2000), new Color(0, 0, 0, .5f));
             spriteBatch.DrawString(game.font, "PAUSED", new Vector2(480, 440), Color.White);
             spriteBatch.End();
         }

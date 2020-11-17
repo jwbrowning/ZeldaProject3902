@@ -1,7 +1,6 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 
 
@@ -18,7 +17,7 @@ namespace CrossPlatformDesktopProject.Environment
         public string type;
         public static Dictionary<string, bool> isUnlocked = new Dictionary<string, bool>();
         public string currentRoom;
-        
+
         public DoorLocked(Vector2 position, string t, string n, string c)
         {
             Texture = DoorSpriteFactory.Instance.environment;
@@ -37,38 +36,39 @@ namespace CrossPlatformDesktopProject.Environment
 
         private void getCollider()
         {
-                if (type == "Up")
-                {
-                    CollisionHandler = new DoorCollisionHandler(this, size.X / 4, size.Y - 16, 0, 0);
-                }
-                else if (type == "Down")
-                {
-                    CollisionHandler = new DoorCollisionHandler(this, size.X / 4, size.Y - 16, 0, 0);
-                }
-                else if (type == "Left")
-                {
-                    CollisionHandler = new DoorCollisionHandler(this, size.X - 16, size.Y / 4, 0, 0);
-                }
-                else if (type == "Right")
-                {
-                    CollisionHandler = new DoorCollisionHandler(this, size.X - 16, size.Y / 4, 0, 0);
-                }
+            if (type == "Up")
+            {
+                CollisionHandler = new DoorCollisionHandler(this, size.X / 4, size.Y - 16, 0, 0);
+            }
+            else if (type == "Down")
+            {
+                CollisionHandler = new DoorCollisionHandler(this, size.X / 4, size.Y - 16, 0, 0);
+            }
+            else if (type == "Left")
+            {
+                CollisionHandler = new DoorCollisionHandler(this, size.X - 16, size.Y / 4, 0, 0);
+            }
+            else if (type == "Right")
+            {
+                CollisionHandler = new DoorCollisionHandler(this, size.X - 16, size.Y / 4, 0, 0);
+            }
         }
 
-        public void Update() { 
-        
+        public void Update()
+        {
+
         }
 
         public void updateIsUnlocked()
         {
-            isUnlocked[currentRoom+type] = true;
-            if (!isUnlocked.ContainsKey(next+getNextKey()))
+            isUnlocked[currentRoom + type] = true;
+            if (!isUnlocked.ContainsKey(next + getNextKey()))
             {
-                isUnlocked.Add(next+getNextKey(), true);
+                isUnlocked.Add(next + getNextKey(), true);
             }
             else
             {
-                isUnlocked[next+getNextKey()] = true;
+                isUnlocked[next + getNextKey()] = true;
             }
         }
         public bool getisUnlocked()
@@ -79,10 +79,11 @@ namespace CrossPlatformDesktopProject.Environment
         public string getNextKey()
         {
             string hold = "";
-            if(type == "Up")
+            if (type == "Up")
             {
                 hold = "Down";
-            } else if(type == "Down")
+            }
+            else if (type == "Down")
             {
                 hold = "Up";
             }
@@ -98,9 +99,9 @@ namespace CrossPlatformDesktopProject.Environment
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
-            Rectangle sourceRectangle = new Rectangle(0,0,0,0);
+            Rectangle sourceRectangle = new Rectangle(0, 0, 0, 0);
             Rectangle destinationRectangle;
-            if(isUnlocked[currentRoom+type])
+            if (isUnlocked[currentRoom + type])
             {
                 if (type == "Up")
                 {
@@ -118,7 +119,8 @@ namespace CrossPlatformDesktopProject.Environment
                 {
                     sourceRectangle = new Rectangle(848, 77, 32, 32);
                 }
-            } else
+            }
+            else
             {
                 if (type == "Up")
                 {

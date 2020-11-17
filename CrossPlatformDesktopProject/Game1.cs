@@ -23,112 +23,118 @@ namespace Sprint0
 {
 
     public class Game1 : Game
-	{
-		GraphicsDeviceManager graphics;
-		SpriteBatch spriteBatch;
+    {
+        GraphicsDeviceManager graphics;
+        SpriteBatch spriteBatch;
 
-		public SpriteFont font;
+        public SpriteFont font;
 
-		public bool showCollisions = false;
-		public bool playerDebug = false;
+        public bool showCollisions = false;
 
-		static public Texture2D environment,squareOutline,floortilebase;
-		public Texture2D rect;
+        //Enable debug mode, granting extra health, items, and
+        //access to the debug room.
+        public bool playerDebug = false;
 
-		public IPlayer player;
-		public HeadsUpDisplay hud;
-		public IScreen screen;
-		private IGameState gameState;
+        static public Texture2D environment, squareOutline, floortilebase;
+        public Texture2D rect;
 
-		public iRoom currentRoom;
-		public int roomIndex = 0;
-		public string[] rooms = {"RoomDEBUG", "RoomBOW", "RoomA3", "RoomB1", "RoomB3", "RoomB4", "RoomB6", "RoomC1", "RoomC2", "RoomC3", "RoomC4", "RoomC5", "RoomC6", "RoomD3", "RoomD4", "RoomD6", "RoomE2", "RoomE3", "RoomF2"};
+        public IPlayer player;
+        public HeadsUpDisplay hud;
+        public IScreen screen;
+        private IGameState gameState;
 
-		public Game1()
-		{
-			graphics = new GraphicsDeviceManager(this);
-			Content.RootDirectory = "Content";
-			graphics.PreferredBackBufferWidth = 1024 + 64;  // set this value to the desired width of your window
-			graphics.PreferredBackBufferHeight = 704 + 112*2;   // set this value to the desired height of your window
-			graphics.ApplyChanges();
-		}
+        public iRoom currentRoom;
+        public int roomIndex = 0;
+        public string[] rooms = { "RoomDEBUG", "RoomBOW", "RoomA3", "RoomB1", "RoomB3", "RoomB4", "RoomB6", "RoomC1", "RoomC2", "RoomC3", "RoomC4", "RoomC5", "RoomC6", "RoomD3", "RoomD4", "RoomD6", "RoomE2", "RoomE3", "RoomF2" };
 
-		public void Reinitialize()
-		{
-			Initialize();
-		}
-		protected override void Initialize()
-		{
-			LoadContent();
-			player = new Link(this);
-			player.Position = new Vector2(0, 160);
-			LinkSpriteFactory.Instance.player = player;
-			if(playerDebug)
-			{
-				player.Health = 1000;
-				player.TotalHealth = 1000;
-				player.ItemCounts[ItemType.Map]++;
-				player.ItemCounts[ItemType.Compass]++;
-				player.ItemCounts[ItemType.Rupee] = 89;
-			}
+        public Game1()
+        {
+            graphics = new GraphicsDeviceManager(this);
+            Content.RootDirectory = "Content";
+            graphics.PreferredBackBufferWidth = 1024 + 64;  // set this value to the desired width of your window
+            graphics.PreferredBackBufferHeight = 704 + 112 * 2;   // set this value to the desired height of your window
+            graphics.ApplyChanges();
+        }
 
-			player.ItemCounts[ItemType.Rupee] += 10;
-			hud = new HeadsUpDisplay(this, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
-			screen = new NormalScreen(this, GraphicsDevice, graphics);
-			gameState = new NormalGameState(this);
+        public void Reinitialize()
+        {
+            Initialize();
+        }
+        protected override void Initialize()
+        {
+            LoadContent();
+            player = new Link(this);
+            player.Position = new Vector2(0, 160);
+            LinkSpriteFactory.Instance.player = player;
+            if (playerDebug)
+            {
+                player.Health = 1000;
+                player.TotalHealth = 1000;
+                player.ItemCounts[ItemType.Map]++;
+                player.ItemCounts[ItemType.Compass]++;
+                player.ItemCounts[ItemType.Rupee] = 89;
+            }
 
-			this.IsMouseVisible = true;
-			base.Initialize();
+            player.ItemCounts[ItemType.Rupee] += 10;
+            hud = new HeadsUpDisplay(this, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            screen = new NormalScreen(this, GraphicsDevice, graphics);
+            gameState = new NormalGameState(this);
 
-			currentRoom = new Room1(this, new Vector2(graphics.PreferredBackBufferWidth/2, graphics.PreferredBackBufferHeight/2+84), floortilebase);
+            this.IsMouseVisible = true;
+            base.Initialize();
+
+            currentRoom = new Room1(this, new Vector2(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight / 2 + 84), floortilebase);
             currentRoom.LoadRoom("RoomC6");
-			//currentRoom.LoadRoom("RoomDEBUG");
-			roomIndex = Array.FindIndex(rooms, x => x == "RoomC6");
+            if (playerDebug)
+            {
+                currentRoom.LoadRoom("RoomDEBUG");
+            }
+            roomIndex = Array.FindIndex(rooms, x => x == "RoomC6");
 
-			//SoundFactory.Instance.musicDungeonLoop.Play();
-		}
+            SoundFactory.Instance.musicDungeonLoop.Play();
+        }
 
-		protected override void LoadContent()
-		{
-			// Create a new SpriteBatch, which can be used to draw textures.
-			spriteBatch = new SpriteBatch(GraphicsDevice);
+        protected override void LoadContent()
+        {
+            // Create a new SpriteBatch, which can be used to draw textures.
+            spriteBatch = new SpriteBatch(GraphicsDevice);
 
-			rect = new Texture2D(graphics.GraphicsDevice, 1, 1);
-			rect.SetData(new[] { Color.White });
-			environment = Content.Load<Texture2D>("environment");
-			squareOutline = Content.Load<Texture2D>("SquareOutline");
-			floortilebase = Content.Load<Texture2D>("floortilewithwall");
-			HUDSpriteFactory.Instance.LoadAllTextures(Content);
-			BlockSpriteFactory.Instance.LoadAllTextures(Content);
-			UsableItemSpriteFactory.Instance.LoadAllTextures(Content);
-			NPCSpriteFactory.Instance.LoadAllTextures(Content);
-			LinkSpriteFactory.Instance.LoadAllTextures(Content);
-			ItemSpriteFactory.Instance.LoadAllTextures(Content);
-			DoorSpriteFactory.Instance.LoadAllTextures(Content);
-			WallSpriteFactory.Instance.LoadAllTextures(Content);
-			SoundFactory.Instance.LoadAllSounds(Content);
+            rect = new Texture2D(graphics.GraphicsDevice, 1, 1);
+            rect.SetData(new[] { Color.White });
+            environment = Content.Load<Texture2D>("environment");
+            squareOutline = Content.Load<Texture2D>("SquareOutline");
+            floortilebase = Content.Load<Texture2D>("floortilewithwall");
+            HUDSpriteFactory.Instance.LoadAllTextures(Content);
+            BlockSpriteFactory.Instance.LoadAllTextures(Content);
+            UsableItemSpriteFactory.Instance.LoadAllTextures(Content);
+            NPCSpriteFactory.Instance.LoadAllTextures(Content);
+            LinkSpriteFactory.Instance.LoadAllTextures(Content);
+            ItemSpriteFactory.Instance.LoadAllTextures(Content);
+            DoorSpriteFactory.Instance.LoadAllTextures(Content);
+            WallSpriteFactory.Instance.LoadAllTextures(Content);
+            SoundFactory.Instance.LoadAllSounds(Content);
 
-			font = Content.Load<SpriteFont>("arial");
+            font = Content.Load<SpriteFont>("arial");
 
-		}
+        }
 
-		//unused, kept just in case
-		protected override void UnloadContent()
-		{
-			//unused
-		}
+        //unused, kept just in case
+        protected override void UnloadContent()
+        {
+            //unused
+        }
 
-		protected override void Update(GameTime gameTime)
-		{
-			gameState.Update();
+        protected override void Update(GameTime gameTime)
+        {
+            gameState.Update();
 
-			base.Update(gameTime);
-		}
+            base.Update(gameTime);
+        }
 
-		protected override void Draw(GameTime gameTime)
-		{
-			screen.Draw(spriteBatch);
-			gameState.Draw(spriteBatch);
+        protected override void Draw(GameTime gameTime)
+        {
+            screen.Draw(spriteBatch);
+            gameState.Draw(spriteBatch);
 
             // For testing, set showCollisions to true to show an outline around all colliders:
             if (showCollisions)
@@ -138,72 +144,67 @@ namespace Sprint0
                 {
                     Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);
                     spriteBatch.Draw(squareOutline, rec, new Color(Color.LimeGreen, 1));
-				}
-				/*foreach (IGameObject g in currentRoom.Walls)
-				{
-					Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);
-					spriteBatch.Draw(squareOutline, rec, new Color(Color.Coral, .5f));
-				}*/
-				foreach (IGameObject g in currentRoom.Doors)
-				{
-					Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);
-					spriteBatch.Draw(squareOutline, rec, Color.Blue);
-				}
-				spriteBatch.End();
-			}
+                }
+                foreach (IGameObject g in currentRoom.Doors)
+                {
+                    Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);
+                    spriteBatch.Draw(squareOutline, rec, Color.Blue);
+                }
+                spriteBatch.End();
+            }
 
-			base.Draw(gameTime);
-		}
-		public void FinishTransition(iRoom room)
+            base.Draw(gameTime);
+        }
+        public void FinishTransition(iRoom room)
         {
-			currentRoom = room;
-			gameState = new NormalGameState(this);
-			player.CollisionHandler = new LinkCollisionHandler(this, player, 56, 50, 0, 10);
-		}
-		public void Pause()
+            currentRoom = room;
+            gameState = new NormalGameState(this);
+            player.CollisionHandler = new LinkCollisionHandler(this, player, 56, 50, 0, 10);
+        }
+        public void Pause()
         {
-			screen = new PauseScreen(this, GraphicsDevice, graphics);
-			gameState = new PausedGameState(this);
+            screen = new PauseScreen(this, GraphicsDevice, graphics);
+            gameState = new PausedGameState(this);
         }
 
-		public void Unpause()
+        public void Unpause()
         {
-			screen = new NormalScreen(this, GraphicsDevice, graphics);
-			gameState = new NormalGameState(this);
-		}
-
-		public void OpenInventory()
-		{
-			hud.OpenInventory();
-			gameState = new InventoryGameState(this);
-		}
-
-		public void CloseInventory()
-		{
-			hud.CloseInventory();
-			gameState = new NormalGameState(this);
-		}
-
-		public void GameOver()
-        {
-			screen = new GameOverScreen(this, GraphicsDevice, graphics);
-			gameState = new GameOverGameState(this);
+            screen = new NormalScreen(this, GraphicsDevice, graphics);
+            gameState = new NormalGameState(this);
         }
 
-		public void Win()
-		{
-			screen = new WinScreen(this, GraphicsDevice, graphics);
-			gameState = new WinningGameState(this);
-		}
-
-		public void ChangeRoom(string nextRoomName, string direction)
+        public void OpenInventory()
         {
-			player.CollisionHandler = new EmptyCollisionHandler(player);
-			gameState = new RoomTransitionGameState(this);
-			currentRoom.ChangeRoom(nextRoomName, direction);
-			roomIndex = Array.FindIndex(rooms, x => x == nextRoomName);
-			player.ActiveItems.Clear();
-			player.ItemCounts[ItemType.Clock] = 0;
+            hud.OpenInventory();
+            gameState = new InventoryGameState(this);
         }
-	}
+
+        public void CloseInventory()
+        {
+            hud.CloseInventory();
+            gameState = new NormalGameState(this);
+        }
+
+        public void GameOver()
+        {
+            screen = new GameOverScreen(this, GraphicsDevice, graphics);
+            gameState = new GameOverGameState(this);
+        }
+
+        public void Win()
+        {
+            screen = new WinScreen(this, GraphicsDevice, graphics);
+            gameState = new WinningGameState(this);
+        }
+
+        public void ChangeRoom(string nextRoomName, string direction)
+        {
+            player.CollisionHandler = new EmptyCollisionHandler(player);
+            gameState = new RoomTransitionGameState(this);
+            currentRoom.ChangeRoom(nextRoomName, direction);
+            roomIndex = Array.FindIndex(rooms, x => x == nextRoomName);
+            player.ActiveItems.Clear();
+            player.ItemCounts[ItemType.Clock] = 0;
+        }
+    }
 }

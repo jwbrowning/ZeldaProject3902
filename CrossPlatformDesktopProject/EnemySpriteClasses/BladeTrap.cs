@@ -6,7 +6,6 @@ using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace Sprint0
 {
@@ -86,7 +85,7 @@ namespace Sprint0
                 deathEffect = new DeathEffect(Position);
                 dying = true;
                 CollisionHandler = new EmptyCollisionHandler(this);
-                SoundFactory.Instance.sfxEnemyDeath.Play(); 
+                SoundFactory.Instance.sfxEnemyDeath.Play();
                 LootManagement.Instance.enemyDeathLootCheck(game.currentRoom, this);
 
             }

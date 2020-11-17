@@ -1,7 +1,7 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.ColliderStuff;
+using CrossPlatformDesktopProject.Environment;
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.UsableItems;
-using CrossPlatformDesktopProject.Environment;
 
 namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 {
@@ -24,7 +24,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
             {
                 ((UsableBoomerang)item).ComeBack();
             }
-            else if(item is SwordBeam)
+            else if (item is SwordBeam)
             {
                 ((SwordBeam)item).Destroy();
             }
@@ -79,7 +79,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
             {
                 ((SwordBeam)item).Destroy();
             }
-            if(item is UsableBomb && collider.GameObject is DoorBombed)
+            if (item is UsableBomb && collider.GameObject is DoorBombed)
             {
                 ((DoorBombed)collider.GameObject).updateIsBombed();
             }

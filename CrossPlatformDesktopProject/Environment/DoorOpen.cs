@@ -13,7 +13,7 @@ namespace CrossPlatformDesktopProject.Environment
         public string next;
         public string type;
 
-        public DoorOpen(Vector2 position,string t, string n)
+        public DoorOpen(Vector2 position, string t, string n)
         {
             Texture = DoorSpriteFactory.Instance.environment;
             Position = position;
@@ -41,16 +41,23 @@ namespace CrossPlatformDesktopProject.Environment
 
         public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
-            Rectangle sourceRectangle = new Rectangle(0,0,0,0);
+            Rectangle sourceRectangle = new Rectangle(0, 0, 0, 0);
             Rectangle destinationRectangle;
 
-            if(type == "Up"){
+            if (type == "Up")
+            {
                 sourceRectangle = new Rectangle(848, 11, 32, 32);
-            } else if(type == "Down") {
+            }
+            else if (type == "Down")
+            {
                 sourceRectangle = new Rectangle(848, 110, 32, 32);
-            } else if(type == "Left") {
+            }
+            else if (type == "Left")
+            {
                 sourceRectangle = new Rectangle(848, 44, 32, 32);
-            } else if(type == "Right") {
+            }
+            else if (type == "Right")
+            {
                 sourceRectangle = new Rectangle(848, 77, 32, 32);
             }
 

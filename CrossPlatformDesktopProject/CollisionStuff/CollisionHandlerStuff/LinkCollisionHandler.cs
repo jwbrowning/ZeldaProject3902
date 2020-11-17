@@ -1,10 +1,9 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.ColliderStuff;
-using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.Environment;
+using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Sprint0;
-using System;
 
 namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 {
@@ -47,7 +46,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
             if (collider.GameObject is Stairs)
             {
                 game.ChangeRoom("RoomBOW", "Right");
-            } 
+            }
             else if (collider.GameObject is StairsInvisible)
             {
                 game.ChangeRoom("RoomB1", "Left");
@@ -168,17 +167,19 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandleDoorCollision(ICollider collider)
         {
-            if(collider.GameObject is DoorOpen) 
+            if (collider.GameObject is DoorOpen)
             {
                 game.ChangeRoom(((DoorOpen)collider.GameObject).next, ((DoorOpen)collider.GameObject).type);
-            } else if(collider.GameObject is DoorClosed) 
+            }
+            else if (collider.GameObject is DoorClosed)
             {
                 game.ChangeRoom(((DoorClosed)collider.GameObject).next, ((DoorClosed)collider.GameObject).type);
-            } else if(collider.GameObject is DoorBombed) 
+            }
+            else if (collider.GameObject is DoorBombed)
             {
                 game.ChangeRoom(((DoorBombed)collider.GameObject).next, ((DoorBombed)collider.GameObject).type);
             }
-            else if(collider.GameObject is DoorLocked) 
+            else if (collider.GameObject is DoorLocked)
             {
                 doorLockedOptions(collider);
             }
@@ -188,14 +189,15 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
         {
             if (!((DoorLocked)collider.GameObject).getisUnlocked() && game.player.ItemCounts[ItemType.Key] > 0)
             {
-                    ((DoorLocked)collider.GameObject).updateIsUnlocked();
-                    game.player.ItemCounts[ItemType.Key]--;
-                    game.ChangeRoom(((DoorLocked)collider.GameObject).next, ((DoorLocked)collider.GameObject).type);
-            } else if(((DoorLocked)collider.GameObject).getisUnlocked())
+                ((DoorLocked)collider.GameObject).updateIsUnlocked();
+                game.player.ItemCounts[ItemType.Key]--;
+                game.ChangeRoom(((DoorLocked)collider.GameObject).next, ((DoorLocked)collider.GameObject).type);
+            }
+            else if (((DoorLocked)collider.GameObject).getisUnlocked())
             {
                 game.ChangeRoom(((DoorLocked)collider.GameObject).next, ((DoorLocked)collider.GameObject).type);
             }
-            
+
         }
 
         public void HandleWallCollision(ICollider collider)
