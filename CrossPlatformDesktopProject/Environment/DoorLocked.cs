@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
+
 namespace CrossPlatformDesktopProject.Environment
 {
     class DoorLocked : IDoor
@@ -17,6 +18,7 @@ namespace CrossPlatformDesktopProject.Environment
         public string type;
         public static Dictionary<string, bool> isUnlocked = new Dictionary<string, bool>();
         public string currentRoom;
+        
         public DoorLocked(Vector2 position, string t, string n, string c)
         {
             Texture = DoorSpriteFactory.Instance.environment;
@@ -77,18 +79,18 @@ namespace CrossPlatformDesktopProject.Environment
         public string getNextKey()
         {
             string hold = "";
-            if(currentRoom == "Up")
+            if(type == "Up")
             {
                 hold = "Down";
-            } else if(currentRoom == "Down")
+            } else if(type == "Down")
             {
                 hold = "Up";
             }
-            else if (currentRoom == "Right")
+            else if (type == "Right")
             {
                 hold = "Left";
             }
-            else if (currentRoom == "Left")
+            else if (type == "Left")
             {
                 hold = "Right";
             }

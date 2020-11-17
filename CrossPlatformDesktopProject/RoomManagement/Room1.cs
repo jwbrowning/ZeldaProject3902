@@ -29,6 +29,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		public iRoom nextRoom { get; set; }
 		public Texture2D Background { get; set; }
 		private float roomTransitionSpeed = 16f;
+		public string Dialogue { get; set; }
 
 		/*XSCALE and YSCALE convert the object coordinates from tiles to pixels. 
 		In the original game each tile is 16 pixels wide, but upscaled by 4 for 
@@ -142,6 +143,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			Doors.Clear();
 			Walls.Clear();
 			HiddenItems.Clear();
+			Dialogue = "";
 
 			CurrentRoom = roomName;
 
@@ -159,7 +161,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
                 {
 					Background = BlockSpriteFactory.Instance.RoomBowBackground;
                 }
-				else if (roomFile.Element("Asset").Element("Background").Value == "BlackWithWall")
+				else if (roomFile.Element("Asset").Element("Background").Value == "BlackWithWallBackground")
                 {
 					Background = BlockSpriteFactory.Instance.BlackWithWallBackground;
                 }
@@ -331,6 +333,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			if ((string)NPC.Element("ObjectName") == "OldMan")
 			{
 				NPCs.Add(new OldMan(new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+				Dialogue = NPC.Element("Dialogue").Value;
 			}
 			else
 			{
@@ -414,7 +417,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				Vector2 doorLocation = new Vector2(upLocation.X * XSCALE + doorOffset.X + XOFFSET, upLocation.Y * YSCALE - doorOffset.Y + YOFFSET);
 				if ((string)doorObject.Element("DoorType") == "Closed")
 				{
-					Doors.Add(new DoorClosed(doorLocation, "Up", next));
+					Doors.Add(new DoorClosed(doorLocation, "Up", next, Enemies));
 				}
 				if ((string)doorObject.Element("DoorType") == "Open")
 				{
@@ -433,7 +436,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				Vector2 doorLocation = new Vector2(downLocation.X * XSCALE + doorOffset.X + XOFFSET, downLocation.Y * YSCALE - doorOffset.Y + YOFFSET);
 				if ((string)doorObject.Element("DoorType") == "Closed")
 				{
-					Doors.Add(new DoorClosed(doorLocation, "Down",next));
+					Doors.Add(new DoorClosed(doorLocation, "Down",next, Enemies));
 				}
 				if ((string)doorObject.Element("DoorType") == "Open")
 				{
@@ -452,7 +455,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				Vector2 doorLocation = new Vector2(leftLocation.X * XSCALE + doorOffset.X + XOFFSET, leftLocation.Y * YSCALE - doorOffset.Y + YOFFSET);
 				if ((string)doorObject.Element("DoorType") == "Closed")
 				{
-					Doors.Add(new DoorClosed(doorLocation, "Left", next));
+					Doors.Add(new DoorClosed(doorLocation, "Left", next, Enemies));
 				}
 				if ((string)doorObject.Element("DoorType") == "Open")
 				{
@@ -471,7 +474,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				Vector2 doorLocation = new Vector2(rightLocation.X * XSCALE + doorOffset.X + XOFFSET, rightLocation.Y * YSCALE - doorOffset.Y + YOFFSET);
 				if ((string)doorObject.Element("DoorType") == "Closed")
 				{
-					Doors.Add(new DoorClosed(doorLocation, "Right", next));
+					Doors.Add(new DoorClosed(doorLocation, "Right", next, Enemies));
 				}
 				if ((string)doorObject.Element("DoorType") == "Open")
 				{
@@ -601,6 +604,13 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			{
 				wall.Draw(spriteBatch, Position);
 			}
+		}
+
+		public void DrawDialogue(SpriteBatch spriteBatch)
+        {
+			spriteBatch.Begin();
+			spriteBatch.DrawString(mygame.font, Dialogue, new Vector2(size.X/3,size.Y/2), Color.White);
+			spriteBatch.End();
 		}
 
 	}

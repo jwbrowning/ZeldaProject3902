@@ -41,7 +41,7 @@
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>Stairs</ObjectName>
 			<Location>7 4</Location>
-			<!-- Leads to UndergroundBow -->
+			<!-- Leads to RoomBow -->
 		</Item>
 		<Item>
 			<ObjectType>Block</ObjectType>

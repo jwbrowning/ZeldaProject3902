@@ -80,8 +80,11 @@ namespace CrossPlatformDesktopProject.Items
             if(room.Enemies.Count == 1)
                 //triggers if this enemy that died is the last enemy in the room
             {
-                SoundFactory.Instance.sfxHiddenKeyAppears.Play();
-                room.Items.AddRange(room.HiddenItems);
+                if (room.HiddenItems.Count > 0)
+                {
+                    SoundFactory.Instance.sfxHiddenKeyAppears.Play();
+                    room.Items.AddRange(room.HiddenItems);
+                }
             }
         }
 

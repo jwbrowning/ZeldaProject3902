@@ -131,7 +131,6 @@ namespace Sprint0
 
             if (patrolPhase == 1 && resetting == false) //default phase of enemies, is changed after the enemy "sees" link. Bladetrap stays still
             {
-                Console.WriteLine(patrolPhase);
 
                 if (((spritePositionX) <= playerPositionX && playerPositionX <= (spritePositionX + 40)) || ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 10)))
                 {

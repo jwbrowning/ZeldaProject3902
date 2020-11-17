@@ -1,6 +1,9 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using CrossPlatformDesktopProject.EnemySpriteClasses;
+using System.Collections.Generic;
+using System;
 
 namespace CrossPlatformDesktopProject.Environment
 {
@@ -14,46 +17,99 @@ namespace CrossPlatformDesktopProject.Environment
         private Vector2 size = new Vector2(128, 128);
         public string type;
         public string next;
+        public List<IEnemy> enemies;
+        public static Dictionary<string, bool> isClosed = new Dictionary<string, bool>();
 
-        public DoorClosed(Vector2 position, string t, string n)
+        public DoorClosed(Vector2 position, string t, string n, List<IEnemy> e)
         {
             Texture = DoorSpriteFactory.Instance.environment;
             Position = position;
             type = t;
             next = n;
-            if (type == "Up")
+            enemies = e;
+            if (!isClosed.ContainsKey(next))
             {
-                CollisionHandler = new DoorCollisionHandler(this, size.X / 4, size.Y - 16, 0, 0);
+                isClosed.Add(next, false);
             }
-            else if (type == "Down")
+            getCollider();
+        }
+
+        private void getCollider()
+        {
+            if (enemies.Count == 0)
             {
-                CollisionHandler = new DoorCollisionHandler(this, size.X / 4, size.Y - 16, 0, 0);
+                if (type == "Up")
+                {
+                    CollisionHandler = new DoorCollisionHandler(this, size.X / 4, size.Y - 16, 0, 0);
+                }
+                else if (type == "Down")
+                {
+                    CollisionHandler = new DoorCollisionHandler(this, size.X / 4, size.Y - 16, 0, 0);
+                }
+                else if (type == "Left")
+                {
+                    CollisionHandler = new DoorCollisionHandler(this, size.X - 16, size.Y / 4, 0, 0);
+                }
+                else if (type == "Right")
+                {
+                    CollisionHandler = new DoorCollisionHandler(this, size.X - 16, size.Y / 4, 0, 0);
+                }
             }
-            else if (type == "Left")
+            else
             {
-                CollisionHandler = new DoorCollisionHandler(this, size.X - 16, size.Y / 4, 0, 0);
-            }
-            else if (type == "Right")
-            {
-                CollisionHandler = new DoorCollisionHandler(this, size.X - 16, size.Y / 4, 0, 0);
+                CollisionHandler = new DoorCollisionHandler(this, size.X / 4, size.Y / 4, 0, 0);
             }
         }
 
-        public void Update() { }
+        public void Update() {
+            if (enemies.Count == 0)
+            {
+                getCollider();
+            }
+        }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
             Rectangle sourceRectangle = new Rectangle(0,0,0,0);
             Rectangle destinationRectangle;
-            if(type == "Up"){
-                sourceRectangle = new Rectangle(914, 11, 32, 32);
-            } else if(type == "Down") {
-                sourceRectangle = new Rectangle(914, 110, 32, 32);
-            } else if(type == "Left") {
-                sourceRectangle = new Rectangle(914, 44, 32, 32);
-            } else if(type == "Right") {
-                sourceRectangle = new Rectangle(914, 77, 32, 32);
+            if(enemies.Count==0)
+            {
+                if (type == "Up")
+                {
+                    sourceRectangle = new Rectangle(848, 11, 32, 32);
+                }
+                else if (type == "Down")
+                {
+                    sourceRectangle = new Rectangle(848, 110, 32, 32);
+                }
+                else if (type == "Left")
+                {
+                    sourceRectangle = new Rectangle(848, 44, 32, 32);
+                }
+                else if (type == "Right")
+                {
+                    sourceRectangle = new Rectangle(848, 77, 32, 32);
+                }
+            } else
+            {
+                if (type == "Up")
+                {
+                    sourceRectangle = new Rectangle(914, 11, 32, 32);
+                }
+                else if (type == "Down")
+                {
+                    sourceRectangle = new Rectangle(914, 110, 32, 32);
+                }
+                else if (type == "Left")
+                {
+                    sourceRectangle = new Rectangle(914, 44, 32, 32);
+                }
+                else if (type == "Right")
+                {
+                    sourceRectangle = new Rectangle(914, 77, 32, 32);
+                }
             }
+
             
             destinationRectangle = new Rectangle((int)(Position.X - size.X / 2f), (int)(Position.Y - size.Y / 2f), (int)size.X, (int)size.Y);
 

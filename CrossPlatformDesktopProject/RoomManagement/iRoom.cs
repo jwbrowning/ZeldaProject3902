@@ -41,6 +41,6 @@ namespace CrossPlatformDesktopProject.RoomManagement
         void DrawItems(SpriteBatch spriteBatch);
         void DrawDoors(SpriteBatch spriteBatch);
         void DrawWalls(SpriteBatch spriteBatch);
-
+        void DrawDialogue(SpriteBatch spriteBatch);
     }
 }
