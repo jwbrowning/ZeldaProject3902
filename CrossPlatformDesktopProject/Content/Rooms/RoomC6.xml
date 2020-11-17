@@ -17,12 +17,6 @@
 			<DoorType>Open</DoorType>
 			<DoorDestination>RoomB6</DoorDestination>
 		</Door>
-		<Door>
-			<DoorPosition>Down</DoorPosition>
-			<DoorType>Open</DoorType>
-			<DoorDestination>RoomC6</DoorDestination>
-			<!-- Just reenters room, overworld not implemented -->
-		</Door>
 		<Item>
 			<ObjectType>Environment</ObjectType>
 			<ObjectName>StatueFish</ObjectName>
