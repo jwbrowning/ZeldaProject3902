@@ -49,21 +49,12 @@ namespace Sprint0
 
         public void TakeDamage()
         {
-            health--;
-            SoundFactory.Instance.sfxEnemyDamage.Play();
-            if (health <= 0)
-            {
-                Die();
-            }
-            else
-            {
-                game.currentRoom.Enemies[game.currentRoom.Enemies.IndexOf(this)] = new DamagedEnemy(this, game);
-            }
+
         }
 
         public void Die()
         {
-            SoundFactory.Instance.sfxEnemyDeath.Play();
+
         }
 
         public void Update()

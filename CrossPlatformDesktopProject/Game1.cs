@@ -30,7 +30,7 @@ namespace Sprint0
 		public SpriteFont font;
 
 		public bool showCollisions = false;
-		public bool playerDebug = true;
+		public bool playerDebug = false;
 
 		static public Texture2D environment,squareOutline,floortilebase;
 		public Texture2D rect;
@@ -69,9 +69,10 @@ namespace Sprint0
 				player.TotalHealth = 1000;
 				player.ItemCounts[ItemType.Map]++;
 				player.ItemCounts[ItemType.Compass]++;
-				player.ItemCounts[ItemType.Key] = 10;
+				player.ItemCounts[ItemType.Rupee] = 89;
 			}
 
+			player.ItemCounts[ItemType.Rupee] += 10;
 			hud = new HeadsUpDisplay(this, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
 			screen = new NormalScreen(this, GraphicsDevice, graphics);
 			gameState = new NormalGameState(this);

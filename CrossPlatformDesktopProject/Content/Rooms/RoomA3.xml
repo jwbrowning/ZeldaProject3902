@@ -21,7 +21,7 @@
 		<Item>
 			<ObjectType>NPC</ObjectType>
 			<ObjectName>OldMan</ObjectName>
-			<!-- Dialogue: "EASTMOST PENNINSULA IS THE SECRET." -->
+			<Dialogue>PLEASE GIVE US AN A</Dialogue>
 			<Location>6 3</Location>
 		</Item>
 	</Asset>
