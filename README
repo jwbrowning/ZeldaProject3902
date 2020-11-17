@@ -1,4 +1,4 @@
-# CSE3209Project Sprint 3
+# CSE3209Project Sprint 4
 Authors Aidan Haskett, Hemil Amin, Abhi Malisetty, Matthew Landwehr, and Johnathan Browning
 
 README
@@ -31,8 +31,6 @@ G - Spawns a clock for testing
 
 Known Issues and Roadmap
 
-Enemy pathing works but needs improvement. Currently enemies will try to track link however especially with the bats they will overlap and then basically be one bat following around link.
-Particles like the enemy spawn effect, death effect, and sword beam particles need to be added.
 We decided not to implement moveable blocks, but might in the future.
 Bug: Keys still spawn in the same room after you collect it then leave and return. We noticed this pretty late and will fix it before the next sprint. The same thing applies to enemies that drop a key, and keys that spawn when all enemies are killed
 
@@ -41,14 +39,14 @@ Code Analysis
 Sprint Reflection
 As a team we did a better job being more on top of the work this sprint. However, we are still waiting until the last few days to get a lot of the work
 done, but it is understandable with everyone having busy schedules. On the contrary we did a better job of communicating during the sprint and giving 
-updates on what work we had done in comparison to sprint 3. Here are the time estimated and time worked.
+updates on what work we had done in comparison to sprint 3. Here are the time estimated vs. time worked.
 Heads Up Display   5hrs - 5hrs
 Resetting level   2hrs - 2hrs
 Doors   2hrs - 6hrs 
 Scrolling Transition    3hrs - 3hrs
 Game State Transitions    8hr - 4hrs 
 Sounds    3hrs - 4hrs
-Enenmy Pathing    2hrs - 3hrs
+Enemy Pathing    2hrs - 4hrs
 Game Walls    1hrs - 3 hrs
 In conclusion I feel like we did a better job overall organizing and getting work done this sprint.
 Most things for this sprint took about as long as we expected. 
