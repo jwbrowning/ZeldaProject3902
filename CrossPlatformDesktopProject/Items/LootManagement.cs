@@ -11,9 +11,28 @@ namespace CrossPlatformDesktopProject.Items
     class LootManagement
     {
         const int heartChance = 10;
-        const int rupeeChance = heartChance + 10;
-        const int clockChance = rupeeChance + 5;
-        const int bombChance = clockChance + 5;
+        const int rupeeChance = 10;
+        const int clockChance = 5;
+        const int bombChance = 5;
+
+        int heartWindow = heartChance;
+        int rupeeWindow = heartChance + rupeeChance;
+        int clockWindow = rupeeChance + clockChance;
+        int bombWindow = clockChance + bombChance;
+
+        private static LootManagement instance = new LootManagement();
+        public static LootManagement Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+        public LootManagement()
+        {
+
+        }
 
         void rollRandomLoot(iRoom room, IEnemy enemy)
         {
@@ -22,19 +41,19 @@ namespace CrossPlatformDesktopProject.Items
             //Drops the random item at the same position of the enemy
             int lootRoll =  rand.Next(1,101);
 
-            if (lootRoll <= heartChance)
+            if (lootRoll <= heartWindow)
             {
                 room.Items.Add(new Heart(enemy.Position));
             }
-            else if (lootRoll <= rupeeChance)
+            else if (lootRoll <= rupeeWindow)
             {
                 room.Items.Add(new Rupee(enemy.Position));
             }
-            else if (lootRoll <= clockChance)
+            else if (lootRoll <= clockWindow)
             {
                 room.Items.Add(new Clock(enemy.Position));
             }
-            else if (lootRoll <= bombChance)
+            else if (lootRoll <= bombWindow)
             {
                 room.Items.Add(new Bomb(enemy.Position));
             }
@@ -63,7 +82,7 @@ namespace CrossPlatformDesktopProject.Items
             }
         }
 
-        void enemyDeathLootCheck(iRoom room, IEnemy enemy)
+        public void enemyDeathLootCheck(iRoom room, IEnemy enemy)
         {
             rollRandomLoot(room, enemy);
             dropSpecificLoot(room, enemy);

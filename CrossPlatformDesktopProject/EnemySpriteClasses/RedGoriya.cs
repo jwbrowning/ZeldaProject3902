@@ -2,6 +2,6 @@
 {
     class RedGoriya
     {
-
+        //unimplemented
     }
 }

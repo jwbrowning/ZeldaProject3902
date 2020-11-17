@@ -48,7 +48,8 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			Items = new List<IItem>();
 			NPCs = new List<INPC>();
 			Doors = new List<IDoor>();
-			Walls = new List<IWall>(); 
+			Walls = new List<IWall>();
+			HiddenItems = new List<IItem>();
 			Position = position;
 			this.floorBaseWithWalls = floorBaseWithWalls;
 			XOFFSET = 96 + (int)( - size.X / 2f);
@@ -87,9 +88,11 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				position = Position + new Vector2(-size.X, 0);
 				mygame.player.Position = comingLeftLocation;
 			}
-			nextRoom = new Room1(mygame,position,floorBaseWithWalls);
-			nextRoom.Destination = Position;
-			nextRoom.LoadRoom(nextRoomName);
+            nextRoom = new Room1(mygame, position, floorBaseWithWalls)
+            {
+                Destination = Position
+            };
+            nextRoom.LoadRoom(nextRoomName);
 		}
 		public void addWalls()
         {
@@ -113,7 +116,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			}
         }
 
-		public void LoadRoom(String roomName)
+		public void LoadRoom(string roomName)
 		{
 			Enemies.Clear();
 			Blocks.Clear();
@@ -121,6 +124,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			NPCs.Clear();
 			Doors.Clear();
 			Walls.Clear();
+			HiddenItems.Clear();
 
 			CurrentRoom = roomName;
 
@@ -150,7 +154,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 												  select item;
 			foreach (XElement itemObject in loadedItems)
 			{
-				AddItem(itemObject, HiddenItems);
+				AddItem(itemObject, Items);
 			}
 
 			IEnumerable<XElement> loadedHiddenItems = from item in roomFile.Descendants("Item")
@@ -158,7 +162,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 													  select item;
 			foreach (XElement itemObject in loadedHiddenItems)
 			{
-				AddItem(itemObject, Items);
+				AddItem(itemObject, HiddenItems);
 			}
 
 			IEnumerable<XElement> loadedNPCs = from item in roomFile.Descendants("Item")

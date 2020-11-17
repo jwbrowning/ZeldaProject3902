@@ -1,6 +1,7 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
 using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.Entities;
+using CrossPlatformDesktopProject.Items;
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
@@ -77,7 +78,9 @@ namespace Sprint0
                 deathEffect = new DeathEffect(Position);
                 dying = true;
                 CollisionHandler = new EmptyCollisionHandler(this);
-                SoundFactory.Instance.sfxEnemyDeath.Play();
+                SoundFactory.Instance.sfxEnemyDeath.Play(); 
+                LootManagement.Instance.enemyDeathLootCheck(game.currentRoom, this);
+
             }
         }
 

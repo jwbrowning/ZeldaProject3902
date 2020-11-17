@@ -20,9 +20,10 @@ namespace CrossPlatformDesktopProject.HeadsUpDisplayStuff
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            graphicsDevice.Clear(Color.DarkBlue);
+            graphicsDevice.Clear(Color.Black);
             spriteBatch.Begin();
-            spriteBatch.DrawString(game.font, "GAME OVER", new Vector2(graphics.PreferredBackBufferWidth / 3f, graphics.PreferredBackBufferHeight / 3f), Color.White);
+            spriteBatch.DrawString(game.font, "GAME OVER", new Vector2(480, 440), Color.White);
+            spriteBatch.DrawString(game.font, "R or Enter to Reset", new Vector2(480, 480), Color.White);
             spriteBatch.End();
         }
     }

@@ -48,13 +48,13 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandleEnemyCollision(ICollider collider)
         {
-            if (!(game.player is DamagedLink))
+            /*if (!(game.player is DamagedLink))
             {
                 float magnitude = 32;
                 Vector2 direction = game.player.Position - collider.GameObject.Position;
                 direction.Normalize();
                 game.player.Position += direction * magnitude;
-            }
+            }*/
             game.player.TakeDamage();
         }
 
