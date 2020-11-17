@@ -14,26 +14,27 @@ Right Arrow / D - Moves the link character right
 
 B - Uses the Item in the B slot
 N - Uses the Item in the N slot
-C - Shows the coliders in the game
-V - Hides the coliders that are previously shown
-G - Spaws the clock for testing
 
 Esc - Pause/Unpause the Game
 I - Open/Close the inventory
+WASD - Controls inventory selector
+Enter - Selects an item in the inventory
 R - Resets the game
 Q - Quits the game
 M - Mutes the sound in the game
+
+CONTROLS FOR TESTING
+E - Damages Link
+C - Shows the coliders in the game
+V - Hides the coliders that are previously shown
+G - Spawns a clock for testing
 
 Known Issues and Roadmap
 
 Enemy pathing works but needs improvement. Currently enemies will try to track link however especially with the bats they will overlap and then basically be one bat following around link.
 Particles like the enemy spawn effect, death effect, and sword beam particles need to be added.
-
-Additional Features
-
-In addition to the required features for the sprint, we also added a new feature of our own. We made the boomerang able to carry items along with it as it is thrown. So if you throw your 
-boomerang at an item on the ground, such as a map, it will carry the map back to you.For testing purposes, we also added controls to enable/disable 
-showing of colliders by pressing c and v.
+We decided not to implement moveable blocks, but might in the future.
+Bug: Keys still spawn in the same room after you collect it then leave and return. We noticed this pretty late and will fix it before the next sprint. The same thing applies to enemies that drop a key, and keys that spawn when all enemies are killed
 
 Code Analysis
 
@@ -41,18 +42,22 @@ Sprint Reflection
 As a team we did a better job being more on top of the work this sprint. However, we are still waiting until the last few days to get a lot of the work
 done, but it is understandable with everyone having busy schedules. On the contrary we did a better job of communicating during the sprint and giving 
 updates on what work we had done in comparison to sprint 3. Here are the time estimated and time worked.
-Heads Up Display   5hrs - 6hrs
+Heads Up Display   5hrs - 5hrs
 Resetting level   2hrs - 2hrs
 Doors   2hrs - 6hrs 
 Scrolling Transition    3hrs - 3hrs
-Game State Transitions    8hr - 9hrs 
+Game State Transitions    8hr - 4hrs 
 Sounds    3hrs - 4hrs
 Enenmy Pathing    2hrs - 3hrs
 Game Walls    1hrs - 3 hrs
 In conclusion I feel like we did a better job overall organizing and getting work done this sprint.
+Most things for this sprint took about as long as we expected. 
+The Game State Transitionts were a lot simpler than we had first thought, originally we wanted two people to work on them but we ended up just having one person, and it took half the time expected.
+The Doors and Walls turned out to be more complicated than we thought, we hadn't considered all the different functionalities for doors like bombing, unlocking, and opening closed doors.
+Overall it felt like we were more prepared for work this sprint, however we still had quite a bit to do the weekend before the due date.
 
 We had these warnings when we tried doing analysis:
-
+-
 
 
 
