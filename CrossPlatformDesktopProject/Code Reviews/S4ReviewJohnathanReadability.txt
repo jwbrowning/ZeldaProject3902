@@ -1,0 +1,10 @@
+﻿Author: Matthew Landwehr
+Date: 16 November 2020
+Sprint: 4
+File under review: InventoryInfo.cs
+Author of file: Johnathan Browning
+Time to complete review: 10
+Comments: Some lines like 59 feature a lot of math that should probably be broken into multiple lines and multiple variables
+	I might add some comments to explain what certain items like the map and compass do,
+	if you're not familiar with the game. Some iterators like 103-110 could use more
+	descriptive variable names.
