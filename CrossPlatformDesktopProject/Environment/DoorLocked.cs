@@ -1,4 +1,5 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
+using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -65,6 +66,7 @@ namespace CrossPlatformDesktopProject.Environment
             if (!isUnlocked.ContainsKey(next + getNextKey()))
             {
                 isUnlocked.Add(next + getNextKey(), true);
+                SoundFactory.Instance.sfxDoorUnlock.Play();
             }
             else
             {

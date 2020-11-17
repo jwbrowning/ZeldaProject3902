@@ -9,11 +9,11 @@ namespace CrossPlatformDesktopProject.SoundManagement
         public SoundEffect sfxBombPlace;
         public SoundEffect sfxBoomerang;
         public SoundEffect sfxBossScream;
-        public SoundEffect sfxCandle; //unused?
-        private SoundEffect sfxDoorUnlock; //TODO - Doors not yet implemented
+        public SoundEffect sfxCandle; //unused
+        public SoundEffect sfxDoorUnlock;
         public SoundEffect sfxEnemyDamage;
         public SoundEffect sfxEnemyDeath;
-        private SoundEffect sfxHealthRestore; //unused?
+        private SoundEffect sfxHealthRestore; //unused
         public SoundEffect sfxHeartKeyPickup;
         public SoundEffect sfxHiddenKeyAppears;
         public SoundEffect sfxItemPickup;
@@ -22,12 +22,12 @@ namespace CrossPlatformDesktopProject.SoundManagement
         private SoundEffect sfxLowHealthBeep;
         public SoundEffect sfxNewItem;
         public SoundEffect sfxRupeePickup;
-        private SoundEffect sfxSecret; //TODO - puzzled not yet implemented
-        private SoundEffect sfxShieldBlock; //TODO - shield not yet implemented
+        private SoundEffect sfxSecret; //unused - puzzles not implemented
+        private SoundEffect sfxShieldBlock; //unused - shield not implemented
         private SoundEffect sfxStairs; //TODO - stairs not yet implemented
         public SoundEffect sfxSword;
         public SoundEffect sfxSwordBeam;
-        private SoundEffect sfxTextAppears; //TODO - text not yet implemented
+        private SoundEffect sfxTextAppears; //unused
         public SoundEffect musicGameOver;
         public SoundEffect musicTriforce;
         public SoundEffect musicDungeon;
