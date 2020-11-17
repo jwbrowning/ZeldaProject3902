@@ -79,7 +79,7 @@ namespace Sprint0
 			base.Initialize();
 
 			currentRoom = new Room1(this, new Vector2(graphics.PreferredBackBufferWidth/2, graphics.PreferredBackBufferHeight/2+84), floortilebase);
-            currentRoom.LoadRoom("RoomC4");
+            currentRoom.LoadRoom("RoomC3");
 			//currentRoom.LoadRoom("RoomDEBUG");
 			roomIndex = Array.FindIndex(rooms, x => x == "RoomC6");
 
@@ -137,11 +137,11 @@ namespace Sprint0
                     Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);
                     spriteBatch.Draw(squareOutline, rec, new Color(Color.LimeGreen, 1));
 				}
-				foreach (IGameObject g in currentRoom.Walls)
+				/*foreach (IGameObject g in currentRoom.Walls)
 				{
 					Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);
 					spriteBatch.Draw(squareOutline, rec, new Color(Color.Coral, .5f));
-				}
+				}*/
 				foreach (IGameObject g in currentRoom.Doors)
 				{
 					Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);

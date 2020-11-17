@@ -380,11 +380,11 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				}
 				if ((string)doorObject.Element("DoorType") == "Locked")
 				{
-					Doors.Add(new DoorLocked(doorLocation, "Up", next));
+					Doors.Add(new DoorLocked(doorLocation, "Up", next, CurrentRoom));
 				}
 				if ((string)doorObject.Element("DoorType") == "Bombable")
 				{
-					Doors.Add(new DoorBombed(doorLocation, "Up", next));
+					Doors.Add(new DoorBombed(doorLocation, "Up", next, CurrentRoom));
 				}
 			} else if((string)doorObject.Element("DoorPosition") == "Down")
 			{
@@ -399,11 +399,11 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				}
 				if ((string)doorObject.Element("DoorType") == "Locked")
 				{
-					Doors.Add(new DoorLocked(doorLocation, "Down",next));
+					Doors.Add(new DoorLocked(doorLocation, "Down",next, CurrentRoom));
 				}
 				if ((string)doorObject.Element("DoorType") == "Bombable")
 				{
-					Doors.Add(new DoorBombed(doorLocation, "Down",next));
+					Doors.Add(new DoorBombed(doorLocation, "Down",next, CurrentRoom));
 				}
 			} else if ((string)doorObject.Element("DoorPosition") == "Left")
 			{
@@ -418,11 +418,11 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				}
 				if ((string)doorObject.Element("DoorType") == "Locked")
 				{
-					Doors.Add(new DoorLocked(doorLocation, "Left", next));
+					Doors.Add(new DoorLocked(doorLocation, "Left", next, CurrentRoom));
 				}
 				if ((string)doorObject.Element("DoorType") == "Bombable")
 				{
-					Doors.Add(new DoorBombed(doorLocation, "Left", next));
+					Doors.Add(new DoorBombed(doorLocation, "Left", next, CurrentRoom));
 				}
 			} else if ((string)doorObject.Element("DoorPosition") == "Right")
 			{
@@ -437,11 +437,11 @@ namespace CrossPlatformDesktopProject.RoomManagement
 				}
 				if ((string)doorObject.Element("DoorType") == "Locked")
 				{
-					Doors.Add(new DoorLocked(doorLocation, "Right", next));
+					Doors.Add(new DoorLocked(doorLocation, "Right", next, CurrentRoom));
 				}
 				if ((string)doorObject.Element("DoorType") == "Bombable")
 				{
-					Doors.Add(new DoorBombed(doorLocation, "Right", next));
+					Doors.Add(new DoorBombed(doorLocation, "Right", next, CurrentRoom));
 				}
 			}
 		}

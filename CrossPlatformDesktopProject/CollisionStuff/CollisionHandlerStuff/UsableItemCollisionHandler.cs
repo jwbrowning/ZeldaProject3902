@@ -79,9 +79,9 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
             {
                 ((SwordBeam)item).Destroy();
             }
-            if(item is Bomb && collider is DoorBombed)
+            if(item is UsableBomb && collider.GameObject is DoorBombed)
             {
-                ((DoorBombed)collider).updateIsBombed();
+                ((DoorBombed)collider.GameObject).updateIsBombed();
             }
         }
 

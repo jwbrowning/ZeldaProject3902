@@ -4,6 +4,7 @@ using CrossPlatformDesktopProject.Environment;
 using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Sprint0;
+using System;
 
 namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 {
@@ -168,9 +169,24 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
             }
             else if(collider.GameObject is DoorLocked) 
             {
-                game.ChangeRoom(((DoorLocked)collider.GameObject).next, ((DoorLocked)collider.GameObject).type);
+                doorLockedOptions(collider);
             }
         }
+
+        private void doorLockedOptions(ICollider collider)
+        {
+            if (!((DoorLocked)collider.GameObject).getisUnlocked() && game.player.ItemCounts[ItemType.Key] > 0)
+            {
+                    ((DoorLocked)collider.GameObject).updateIsUnlocked();
+                    game.player.ItemCounts[ItemType.Key]--;
+                    game.ChangeRoom(((DoorLocked)collider.GameObject).next, ((DoorLocked)collider.GameObject).type);
+            } else if(((DoorLocked)collider.GameObject).getisUnlocked())
+            {
+                game.ChangeRoom(((DoorLocked)collider.GameObject).next, ((DoorLocked)collider.GameObject).type);
+            }
+            
+        }
+
         public void HandleWallCollision(ICollider collider)
         {
             HandleGenericCollision(collider);
