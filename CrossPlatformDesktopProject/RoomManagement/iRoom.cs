@@ -16,6 +16,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
         List<IDoor> Doors { get; set; }
         List<IWall> Walls { get; set; }
         Vector2 Position { get; set; }
+        Vector2 Size { get; set; }
         Vector2 Destination { get; set; }
         iRoom nextRoom { get; set; }
         Texture2D Background { get; set; }

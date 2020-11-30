@@ -7,8 +7,10 @@ using CrossPlatformDesktopProject.Environment;
 using CrossPlatformDesktopProject.GameStateStuff;
 using CrossPlatformDesktopProject.GameStateStuff.GameStateClasses;
 using CrossPlatformDesktopProject.HeadsUpDisplayStuff;
+using CrossPlatformDesktopProject.LightingStuff;
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
+using CrossPlatformDesktopProject.ReverseTimeStuff;
 using CrossPlatformDesktopProject.RoomManagement;
 using CrossPlatformDesktopProject.ScreenStuff;
 using CrossPlatformDesktopProject.SoundManagement;
@@ -32,6 +34,8 @@ namespace Sprint0
 		public bool showCollisions = false;
 		public bool playerDebug = false;
 
+		public bool reversingTime = false;
+
 		static public Texture2D environment,squareOutline,floortilebase;
 		public Texture2D rect;
 
@@ -39,6 +43,7 @@ namespace Sprint0
 		public HeadsUpDisplay hud;
 		public IScreen screen;
 		private IGameState gameState;
+		public LightingManager lightingManager;
 
 		public iRoom currentRoom;
 		public int roomIndex = 0;
@@ -85,6 +90,8 @@ namespace Sprint0
 			//currentRoom.LoadRoom("RoomDEBUG");
 			roomIndex = Array.FindIndex(rooms, x => x == "RoomC6");
 
+			lightingManager = new LightingManager(this);
+
 			//SoundFactory.Instance.musicDungeonLoop.Play();
 		}
 
@@ -121,6 +128,7 @@ namespace Sprint0
 		protected override void Update(GameTime gameTime)
 		{
 			gameState.Update();
+			lightingManager.Update();
 
 			base.Update(gameTime);
 		}
@@ -129,6 +137,7 @@ namespace Sprint0
 		{
 			screen.Draw(spriteBatch);
 			gameState.Draw(spriteBatch);
+			lightingManager.Draw(spriteBatch);
 
             // For testing, set showCollisions to true to show an outline around all colliders:
             if (showCollisions)
@@ -149,6 +158,13 @@ namespace Sprint0
 					Rectangle rec = CollisionDetection.GetColliderRectangle(g, currentRoom.Position);
 					spriteBatch.Draw(squareOutline, rec, Color.Blue);
 				}
+				spriteBatch.End();
+			}
+
+			if(reversingTime)
+			{
+				spriteBatch.Begin();
+				spriteBatch.Draw(rect, new Rectangle(new Point(0, 0), new Point(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight)), new Color(.1f,.2f,.1f,.1f));
 				spriteBatch.End();
 			}
 

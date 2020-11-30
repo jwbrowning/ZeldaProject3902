@@ -78,6 +78,15 @@ namespace Sprint0
                     }
                 }
 
+                if (!prevPressedKeys.Contains(Keys.LeftShift) && pressedKeys.Contains(Keys.LeftShift))
+                {
+                    game.reversingTime = true;
+                }
+                if (prevPressedKeys.Contains(Keys.LeftShift) && !pressedKeys.Contains(Keys.LeftShift))
+                {
+                    game.reversingTime = false;
+                }
+
                 bool doneMovement = false;
                 foreach (Keys key in pressedKeys)
                 {

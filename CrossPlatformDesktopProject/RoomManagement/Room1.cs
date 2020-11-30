@@ -23,7 +23,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		public List<IWall> Walls { get; set; }
 		public Vector2 Position { get; set; }
 		private Texture2D floorBaseWithWalls;
-		private Vector2 size = new Vector2(1024,704);
+		public Vector2 Size { get; set; }
 		public Vector2 Destination { get; set; }
 		private string CurrentRoom;
 		public iRoom nextRoom { get; set; }
@@ -54,8 +54,9 @@ namespace CrossPlatformDesktopProject.RoomManagement
 			HiddenItems = new List<IItem>();
 			Position = position;
 			this.floorBaseWithWalls = floorBaseWithWalls;
-			XOFFSET = 96 + (int)( - size.X / 2f);
-			YOFFSET = 96 + (int)( - size.Y / 2f);
+			Size = new Vector2(1024, 704);
+			XOFFSET = 96 + (int)( - Size.X / 2f);
+			YOFFSET = 96 + (int)( - Size.Y / 2f);
 			Destination = position;
 			Background = floorBaseWithWalls;
 		}
@@ -72,38 +73,38 @@ namespace CrossPlatformDesktopProject.RoomManagement
 
 			if (nextRoomName=="RoomBOW")
 			{
-				Destination = Position + new Vector2(0, -size.Y);
-				position = Position + new Vector2(0, size.Y);
+				Destination = Position + new Vector2(0, -Size.Y);
+				position = Position + new Vector2(0, Size.Y);
 				mygame.player.Position = inToBasementLocation;
 			}
 			else if(CurrentRoom == "RoomBOW")
 			{
-				Destination = Position + new Vector2(0, size.Y);
-				position = Position + new Vector2(0, -size.Y);
+				Destination = Position + new Vector2(0, Size.Y);
+				position = Position + new Vector2(0, -Size.Y);
 				mygame.player.Position = outOfBasementLocation;
 			}
 			else if (direction == "Up")
 			{
-				Destination = Position + new Vector2(0, size.Y);
-				position = Position + new Vector2(0, -size.Y);
+				Destination = Position + new Vector2(0, Size.Y);
+				position = Position + new Vector2(0, -Size.Y);
 				mygame.player.Position = comingUpLocation;
 			}
 			else if(direction == "Down")
 			{
-				Destination = Position + new Vector2(0, -size.Y);
-				position = Position + new Vector2(0, size.Y);
+				Destination = Position + new Vector2(0, -Size.Y);
+				position = Position + new Vector2(0, Size.Y);
 				mygame.player.Position = comingDownLocation;
 			}
 			else if (direction == "Right")
 			{
-				Destination = Position + new Vector2(-size.X, 0);
-				position = Position + new Vector2(size.X, 0);
+				Destination = Position + new Vector2(-Size.X, 0);
+				position = Position + new Vector2(Size.X, 0);
 				mygame.player.Position = comingRightLocation;
 			}
 			else if (direction == "Left")
 			{
-				Destination = Position + new Vector2(size.X, 0);
-				position = Position + new Vector2(-size.X, 0);
+				Destination = Position + new Vector2(Size.X, 0);
+				position = Position + new Vector2(-Size.X, 0);
 				mygame.player.Position = comingLeftLocation;
 			}
             nextRoom = new Room1(mygame, position, floorBaseWithWalls)
@@ -554,7 +555,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		public void DrawBackground(SpriteBatch spriteBatch)
 		{
 			spriteBatch.Begin();
-			spriteBatch.Draw(Background, new Rectangle((int)(Position.X - size.X / 2f), (int)(Position.Y - size.Y / 2f), (int)size.X, (int)size.Y), Color.White);
+			spriteBatch.Draw(Background, new Rectangle((int)(Position.X - Size.X / 2f), (int)(Position.Y - Size.Y / 2f), (int)Size.X, (int)Size.Y), Color.White);
 			spriteBatch.End();
 		}
 
@@ -570,7 +571,10 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		{
 			foreach (INPC npc in NPCs)
 			{
-				npc.Draw(spriteBatch, Position);
+				if (mygame.lightingManager.InsideVisibleRegion(npc.Position + Position))
+				{
+					npc.Draw(spriteBatch, Position);
+				}
 			}
 		}
 
@@ -578,7 +582,10 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		{
 			foreach (IEnemy enemy in Enemies)
 			{
-				enemy.Draw(spriteBatch, Position);
+				if(mygame.lightingManager.InsideVisibleRegion(enemy.Position + Position))
+				{
+					enemy.Draw(spriteBatch, Position);
+				}
 			}
 		}
 
@@ -586,7 +593,10 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		{
 			foreach (IItem item in Items)
 			{
-				item.Draw(spriteBatch, Position);
+				if (mygame.lightingManager.InsideVisibleRegion(item.Position + Position))
+				{
+					item.Draw(spriteBatch, Position);
+				}
 			}
 		}
 
@@ -609,7 +619,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		public void DrawDialogue(SpriteBatch spriteBatch)
         {
 			spriteBatch.Begin();
-			spriteBatch.DrawString(mygame.font, Dialogue, new Vector2(size.X/3,size.Y/2), Color.White);
+			spriteBatch.DrawString(mygame.font, Dialogue, new Vector2(Size.X/3,Size.Y/2), Color.White);
 			spriteBatch.End();
 		}
 

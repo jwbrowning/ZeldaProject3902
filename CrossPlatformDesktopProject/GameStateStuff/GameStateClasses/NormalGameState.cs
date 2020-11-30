@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff;
 using CrossPlatformDesktopProject.PlayerStuff;
+using CrossPlatformDesktopProject.ReverseTimeStuff;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
     {
         private Game1 game;
         private List<IController> controllers;
+        private TimeManager timeManager;
 
         public NormalGameState(Game1 game)
         {
@@ -20,6 +22,7 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
                 new NormalKeyboardController(game),
                 new ControllerMouse(game)
             };
+            timeManager = new TimeManager(game);
         }
 
         public void Update()
@@ -28,17 +31,26 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
             {
                 currentController.Update();
             }
-            game.player.Update();
-            game.currentRoom.UpdateBlocks();
-            game.currentRoom.UpdateNPCS();
-            if(game.player.ItemCounts[PlayerStuff.ItemType.Clock] == 0) game.currentRoom.UpdateEnemies();
-            game.currentRoom.UpdateItems();
-            game.currentRoom.UpdateDoors();
-            game.currentRoom.UpdateWalls();
-            game.hud.Update();
+            if(game.reversingTime)
+            {
+                timeManager.ReverseTime();
+            } 
+            else
+            {
+                game.player.Update();
+                game.currentRoom.UpdateBlocks();
+                game.currentRoom.UpdateNPCS();
+                if (game.player.ItemCounts[PlayerStuff.ItemType.Clock] == 0) game.currentRoom.UpdateEnemies();
+                game.currentRoom.UpdateItems();
+                game.currentRoom.UpdateDoors();
+                game.currentRoom.UpdateWalls();
+                game.hud.Update();
 
-            List<IGameObject> allGameObjects = game.currentRoom.Blocks.Concat<IGameObject>(game.currentRoom.Items).Concat(game.currentRoom.Doors).Concat(game.currentRoom.Walls).Concat(game.currentRoom.Enemies).Concat(game.currentRoom.NPCs).Concat(game.player.ActiveItems).Concat(new List<IGameObject>() { game.player, game.player.Sword }).ToList();
-            CollisionDetection.DetectCollisions(allGameObjects);
+                List<IGameObject> allGameObjects = game.currentRoom.Blocks.Concat<IGameObject>(game.currentRoom.Items).Concat(game.currentRoom.Doors).Concat(game.currentRoom.Walls).Concat(game.currentRoom.Enemies).Concat(game.currentRoom.NPCs).Concat(game.player.ActiveItems).Concat(new List<IGameObject>() { game.player, game.player.Sword }).ToList();
+                CollisionDetection.DetectCollisions(allGameObjects);
+
+                timeManager.Update();
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
