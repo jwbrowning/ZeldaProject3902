@@ -2,10 +2,6 @@
 using CrossPlatformDesktopProject.RoomManagement;
 using CrossPlatformDesktopProject.SoundManagement;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Items
 {
@@ -40,7 +36,7 @@ namespace CrossPlatformDesktopProject.Items
             Random rand = new Random();
             //Chooses a random number between 1 and 100, and compares it to a table of loot.
             //Drops the random item at the same position of the enemy
-            int lootRoll =  rand.Next(1,101);
+            int lootRoll = rand.Next(1, 101);
 
             if (lootRoll <= heartWindow)
             {
@@ -77,8 +73,8 @@ namespace CrossPlatformDesktopProject.Items
 
         void revealHiddenLoot(iRoom room)
         {
-            if(room.Enemies.Count == 1)
-                //triggers if this enemy that died is the last enemy in the room
+            if (room.Enemies.Count == 1)
+            //triggers if this enemy that died is the last enemy in the room
             {
                 if (room.HiddenItems.Count > 0)
                 {

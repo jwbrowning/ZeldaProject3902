@@ -17,7 +17,7 @@ namespace Sprint0
         public Color OverlayColor { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
         public Texture2D Texture { get; set; }
-        public string carriedLoot {get; set;}
+        public string carriedLoot { get; set; }
         private IPlayer player;
         private Game1 game;
         private int health = 6;
@@ -73,35 +73,35 @@ namespace Sprint0
 
         public void Die()
         {
-            if(!dying)
+            if (!dying)
             {
                 deathEffect = new DeathEffect(Position);
                 dying = true;
                 CollisionHandler = new EmptyCollisionHandler(this);
                 SoundFactory.Instance.sfxEnemyDeath.Play();
-                LootManagement.Instance.enemyDeathLootCheck(game.currentRoom,this);
+                LootManagement.Instance.enemyDeathLootCheck(game.currentRoom, this);
             }
         }
 
         public void Update()
         {
-            if(spawning)
+            if (spawning)
             {
                 spawnTime--;
                 spawnEffect.Update();
-                if (spawnTime<=0)
+                if (spawnTime <= 0)
                 {
                     spawning = false;
                 }
                 return;
             }
-            if(dying)
+            if (dying)
             {
                 deathTime--;
                 deathEffect.Update();
                 if (deathTime <= 0)
                 {
-                    if(game.currentRoom.Enemies.Contains(this)) game.currentRoom.Enemies.Remove(this);
+                    if (game.currentRoom.Enemies.Contains(this)) game.currentRoom.Enemies.Remove(this);
                 }
                 return;
             }

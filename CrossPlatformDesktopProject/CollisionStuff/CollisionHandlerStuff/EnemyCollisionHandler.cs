@@ -64,7 +64,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
         public void HandlePlayerCollision(ICollider collider)
         {
             //HandleGenericCollision(collider);
-            if(enemy is WallMaster)
+            if (enemy is WallMaster)
             {
                 game.ChangeRoom("RoomC6", "Up");
             }
@@ -88,8 +88,8 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
         public void HandleSwordCollision(ICollider collider)
         {
             if (game.currentRoom.Enemies.Contains(enemy)) enemy.TakeDamage();
-        }        
-        
+        }
+
         public void HandleDoorCollision(ICollider collider)
         {
 

@@ -30,7 +30,7 @@ namespace CrossPlatformDesktopProject.Environment
             destinationRectangle = new Rectangle((int)(Position.X - size.X / 2f), (int)(Position.Y - size.Y / 2f), (int)size.X, (int)size.Y);
 
             spriteBatch.Begin();
-            spriteBatch.Draw(Texture, new Rectangle(destinationRectangle.Location + new Point((int)parentPos.X, (int)parentPos.Y), destinationRectangle.Size), sourceRectangle, new Color(0,0,0,0));
+            spriteBatch.Draw(Texture, new Rectangle(destinationRectangle.Location + new Point((int)parentPos.X, (int)parentPos.Y), destinationRectangle.Size), sourceRectangle, new Color(0, 0, 0, 0));
             spriteBatch.End();
         }
     }

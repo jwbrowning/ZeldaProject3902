@@ -1,1 +1,14 @@
+Review Author: Abhi Malisetty
+Date: 11/16/2020
+Sprint 4
+File Under Review: LootManagement.cs
+Author of File: Matthew Landwehr
+Time taken for review: 10 minutes
 
+Comments: 
+
+No issues in the code. Constants at beginning of the classfile can easily be adjusted to modify the drop chance of certain items. Having different methods for different kinds of drops makes it easier to add in new kinds of drops later. 
+
+Hypothetical Change: 
+
+Adding new items to the drop table would be quite simple as it would just require another constant for the item's drop chance and minor adjustments to the if else structure in rollRandomLoot. There is also a precedent for having unique conditions be met to drop certain loot so future additions of that nature can be modelled after revealHiddenLoot. 

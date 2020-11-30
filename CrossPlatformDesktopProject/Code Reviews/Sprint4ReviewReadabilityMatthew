@@ -1,1 +1,12 @@
+Review Author: Abhi Malisetty
+Date: 11/16/2020
+Sprint 4
+File Under Review: LootManagement.cs
+Author of File: Matthew Landwehr
+Time taken for review: 10 minutes
 
+Comments: 
+
+This is a lightweight classfile for a pretty specific job and it does it nicely while being clean. Code is concise and easy to read. Adequate commenting where needed and is largely self-explanatory and easy to understand. Good separation of code using methods. 
+
+public LootManagement(){} empty, seems like unnecessary code. Just a remark though does not hamper readability.

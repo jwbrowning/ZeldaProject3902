@@ -33,7 +33,7 @@ namespace Sprint0
         private int health = 2;
         Random rand = new Random();
 
-       
+
         private Vector2 size = new Vector2(60, 60);
         public Vector2 Position
         {
@@ -132,7 +132,7 @@ namespace Sprint0
             if (tileFrame == 64)
                 tileFrame = 1;
 
-            
+
             /*
             if(patrolPhase == 1) //default phase of enemies, is changed after the enemy "sees" link 
             {
@@ -185,7 +185,7 @@ namespace Sprint0
             {
                 spritePositionY = spritePositionY - 1;
             }
-            else if(directionCode == 1)
+            else if (directionCode == 1)
             {
                 spritePositionY = spritePositionY + 1;
             }

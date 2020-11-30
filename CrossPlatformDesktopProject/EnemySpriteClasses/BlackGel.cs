@@ -121,7 +121,7 @@ namespace Sprint0
             animationFrame++;
             patrolFrame++;
             tileFrame++;
-            
+
 
             if (animationFrame == 10)
                 animationFrame = 1;

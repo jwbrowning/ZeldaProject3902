@@ -13,7 +13,7 @@ namespace Sprint0
 
         public void Execute()
         {
-            switch(myGame.hud.inventoryInfo.selectedItem)
+            switch (myGame.hud.inventoryInfo.selectedItem)
             {
                 case InventoryInfo.InventoryItem.Bomb:
                     myGame.player.UseBomb();

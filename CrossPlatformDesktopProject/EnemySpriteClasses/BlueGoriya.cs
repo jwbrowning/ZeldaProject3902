@@ -119,14 +119,14 @@ namespace Sprint0
                 directionCode = rand.Next(4);
             }
 
-            if(boomerangThrown == false)
+            if (boomerangThrown == false)
             {
                 tileFrame++;
             }
 
             animationFrame++;
             patrolFrame++;
-            
+
 
             if (animationFrame == 20)
                 animationFrame = 1;

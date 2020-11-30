@@ -1,4 +1,4 @@
-﻿﻿using CrossPlatformDesktopProject.EnemySpriteClasses;
+﻿using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.Environment;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

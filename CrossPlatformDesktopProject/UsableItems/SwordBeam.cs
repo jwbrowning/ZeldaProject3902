@@ -51,11 +51,11 @@ namespace CrossPlatformDesktopProject.UsableItems
 
         public void Update()
         {
-            if(destroying)
+            if (destroying)
             {
                 destroyTime--;
                 effect.Update();
-                if(destroyTime<=0)
+                if (destroyTime <= 0)
                 {
                     if (player.ActiveItems.Contains(this)) player.ActiveItems.Remove(this);
                 }
@@ -85,7 +85,7 @@ namespace CrossPlatformDesktopProject.UsableItems
 
         public void Destroy()
         {
-            if(!destroying)
+            if (!destroying)
             {
                 CollisionHandler = new EmptyCollisionHandler(this);
                 effect = new SplittingEffect(Position);

@@ -1,5 +1,4 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.ColliderStuff;
-using CrossPlatformDesktopProject.Environment;
 using CrossPlatformDesktopProject.PlayerStuff;
 
 namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff

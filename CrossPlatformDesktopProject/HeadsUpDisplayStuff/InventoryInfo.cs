@@ -59,7 +59,7 @@ namespace CrossPlatformDesktopProject.HeadsUpDisplayStuff
                 spriteBatch.Draw(game.rect, new Rectangle(new Point(mapCoverPos.X - (int)(mapCoverSize.X / 2f) + (int)position.X, mapCoverPos.Y - (int)(mapCoverSize.Y / 2f) + (int)position.Y), mapCoverSize), Color.Black);
             }
             spriteBatch.End();
-            if(game.player.ItemCounts[PlayerStuff.ItemType.Map] > 0)
+            if (game.player.ItemCounts[PlayerStuff.ItemType.Map] > 0)
             {
                 ISprite map = ItemSpriteFactory.Instance.CreateSpriteMap();
                 map.Draw(spriteBatch, position + mapPos);
@@ -79,7 +79,7 @@ namespace CrossPlatformDesktopProject.HeadsUpDisplayStuff
             }
 
             int index = 0;
-            if(game.player.ItemCounts[PlayerStuff.ItemType.Bomb] > 0)
+            if (game.player.ItemCounts[PlayerStuff.ItemType.Bomb] > 0)
             {
                 inventoryItems[index / 4, index % 4] = InventoryItem.Bomb;
                 index++;
@@ -100,19 +100,19 @@ namespace CrossPlatformDesktopProject.HeadsUpDisplayStuff
                 index++;
             }
 
-            for (int i=0;i<2;i++)
+            for (int i = 0; i < 2; i++)
             {
-                for(int j=0;j<4;j++)
+                for (int j = 0; j < 4; j++)
                 {
                     ISprite item = CorrectItemSprite(inventoryItems[i, j]);
-                    if(item!=null) item.Draw(spriteBatch, position + new Vector2(inventoryItemSize.X * j, inventoryItemSize.Y * i) + inventoryPos);
+                    if (item != null) item.Draw(spriteBatch, position + new Vector2(inventoryItemSize.X * j, inventoryItemSize.Y * i) + inventoryPos);
                 }
             }
             selector.Draw(spriteBatch, position + new Vector2(inventoryItemSize.X * selectorIndices.X, inventoryItemSize.Y * selectorIndices.Y) + inventoryPos);
 
 
             ISprite selectedItemSprite = CorrectItemSprite(selectedItem);
-            if(selectedItemSprite!=null) selectedItemSprite.Draw(spriteBatch, position + selectedItemPos);
+            if (selectedItemSprite != null) selectedItemSprite.Draw(spriteBatch, position + selectedItemPos);
         }
 
         public ISprite CorrectItemSprite(InventoryItem item)

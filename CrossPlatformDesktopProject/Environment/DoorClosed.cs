@@ -1,9 +1,8 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff;
+using CrossPlatformDesktopProject.EnemySpriteClasses;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using CrossPlatformDesktopProject.EnemySpriteClasses;
 using System.Collections.Generic;
-using System;
 
 namespace CrossPlatformDesktopProject.Environment
 {
@@ -61,7 +60,8 @@ namespace CrossPlatformDesktopProject.Environment
             }
         }
 
-        public void Update() {
+        public void Update()
+        {
             if (enemies.Count == 0)
             {
                 getCollider();
@@ -70,9 +70,9 @@ namespace CrossPlatformDesktopProject.Environment
 
         public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
-            Rectangle sourceRectangle = new Rectangle(0,0,0,0);
+            Rectangle sourceRectangle = new Rectangle(0, 0, 0, 0);
             Rectangle destinationRectangle;
-            if(enemies.Count==0)
+            if (enemies.Count == 0)
             {
                 if (type == "Up")
                 {
@@ -90,7 +90,8 @@ namespace CrossPlatformDesktopProject.Environment
                 {
                     sourceRectangle = new Rectangle(848, 77, 32, 32);
                 }
-            } else
+            }
+            else
             {
                 if (type == "Up")
                 {
@@ -110,7 +111,7 @@ namespace CrossPlatformDesktopProject.Environment
                 }
             }
 
-            
+
             destinationRectangle = new Rectangle((int)(Position.X - size.X / 2f), (int)(Position.Y - size.Y / 2f), (int)size.X, (int)size.Y);
 
             spriteBatch.Begin();

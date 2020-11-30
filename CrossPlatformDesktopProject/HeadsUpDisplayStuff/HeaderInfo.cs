@@ -13,7 +13,7 @@ namespace CrossPlatformDesktopProject.HeadsUpDisplayStuff
         private HeadsUpDisplay hud;
         private ISprite background;
         private ISprite compassMarker;
-        private Vector2 compassMarkerA1Pos = new Vector2(-205*1.75f,-11*1.75f);
+        private Vector2 compassMarkerA1Pos = new Vector2(-205 * 1.75f, -11 * 1.75f);
         private Vector2 heartsPos = new Vector2(180, 25);
         private Vector2 rupeeCountPos = new Vector2(-115, -40);
         private Vector2 keyCountPos = new Vector2(-115, 13);
@@ -84,9 +84,9 @@ namespace CrossPlatformDesktopProject.HeadsUpDisplayStuff
         {
             string coords = roomName.Substring(4);
             char[] letters = new char[] { 'A', 'B', 'C', 'D', 'E', 'F' };
-            float xAdjust = Array.FindIndex(letters, x => x==coords[0]);
+            float xAdjust = Array.FindIndex(letters, x => x == coords[0]);
             xAdjust *= 16 * 1.75f;
-            float yAdjust = int.Parse(""+coords[1]);
+            float yAdjust = int.Parse("" + coords[1]);
             yAdjust *= 8 * 1.75f;
             return new Vector2(xAdjust, yAdjust);
         }
