@@ -133,6 +133,8 @@
     <Compile Include="GameStateStuff\IGameState.cs" />
     <Compile Include="Items\LootManagement.cs" />
     <Compile Include="LightingStuff\LightingManager.cs" />
+    <Compile Include="Notifications\INotification.cs" />
+    <Compile Include="Notifications\Notification1.cs" />
     <Compile Include="ReverseTimeStuff\TimeManager.cs" />
     <Compile Include="ReverseTimeStuff\TimeState.cs" />
     <Compile Include="ScreenStuff\GameOverScreen.cs" />

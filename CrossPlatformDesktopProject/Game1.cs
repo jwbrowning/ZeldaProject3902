@@ -8,6 +8,7 @@ using CrossPlatformDesktopProject.GameStateStuff;
 using CrossPlatformDesktopProject.GameStateStuff.GameStateClasses;
 using CrossPlatformDesktopProject.HeadsUpDisplayStuff;
 using CrossPlatformDesktopProject.LightingStuff;
+using CrossPlatformDesktopProject.Notifications;
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.PlayerStuff.SpriteStuff;
 using CrossPlatformDesktopProject.ReverseTimeStuff;
@@ -56,8 +57,7 @@ namespace Sprint0
 		public int roomIndex = 0;
 		public string[] rooms = { "RoomDEBUG", "RoomBOW", "RoomA3", "RoomB1", "RoomB3", "RoomB4", "RoomB6", "RoomC1", "RoomC2", "RoomC3", "RoomC4", "RoomC5", "RoomC6", "RoomD3", "RoomD4", "RoomD6", "RoomE2", "RoomE3", "RoomF2" };
 		bool isGameSaved = false;
-		private int justSavedTimer;
-		private int justLoadedTimer;
+		Queue<INotification> notificationsQueue;
 
 		public Game1()
 		{
@@ -109,6 +109,8 @@ namespace Sprint0
 			savedRoom = new Room1(this, new Vector2(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight / 2 + 84), floortilebase);
 			savedScreen = new NormalScreen(this, GraphicsDevice, graphics);
 
+			notificationsQueue = new Queue<INotification>();
+
 			//SoundFactory.Instance.musicDungeonLoop.Play();
 		}
 
@@ -146,7 +148,14 @@ namespace Sprint0
 		{
 			gameState.Update();
 			lightingManager.Update();
-
+            if (notificationsQueue.Count > 0)
+            {
+				notificationsQueue.Peek().Update();
+				if(notificationsQueue.Peek().timeLeft <= 0)
+                {
+					notificationsQueue.Dequeue();
+                }
+			}
 			base.Update(gameTime);
 		}
 
@@ -184,6 +193,13 @@ namespace Sprint0
 				spriteBatch.Draw(rect, new Rectangle(new Point(0, 0), new Point(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight)), new Color(.1f,.2f,.1f,.1f));
 				spriteBatch.End();
 			}
+
+            if (notificationsQueue.Count() > 0)
+            {
+				spriteBatch.Begin();
+				spriteBatch.DrawString(font, notificationsQueue.Peek().notificationText, new Vector2(700, 8), Color.White);
+				spriteBatch.End();
+            }
 
 			base.Draw(gameTime);
 		}
@@ -250,6 +266,7 @@ namespace Sprint0
 				property.SetValue(savedPlayer, property.GetValue(player, null), null);
 			}
 			isGameSaved = true;
+			notificationsQueue.Enqueue(new Notification1(this, "Game Saved!"));
 		}
 
 		public void LoadGame()
@@ -257,6 +274,7 @@ namespace Sprint0
 			if (!isGameSaved)
 			{
 				//no saved game!
+				notificationsQueue.Enqueue(new Notification1(this, "No Saved Game Available"));
 			}
 			else
 			{
@@ -268,6 +286,8 @@ namespace Sprint0
 				{
 					property.SetValue(player, property.GetValue(savedPlayer, null), null);
 				}
+
+				notificationsQueue.Enqueue(new Notification1(this, "Game Loaded!"));
 			}
 
 		}
