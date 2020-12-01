@@ -27,28 +27,20 @@ namespace Sprint0
             moveMappings.Add(Keys.Down, new CommandMoveDown(game));
             moveMappings.Add(Keys.Left, new CommandMoveLeft(game));
             moveMappings.Add(Keys.Right, new CommandMoveRight(game));
-            /*RegisterCommand(Keys.D1, new CommandUseItem(game));
-            RegisterCommand(Keys.D2, new CommandUseItem2(game));
-            RegisterCommand(Keys.D3, new CommandUseItem3(game));*/
             RegisterCommand(Keys.B, new CommandUseItemB(game));
             RegisterCommand(Keys.N, new CommandUseItemN(game));
             RegisterCommand(Keys.E, new CommandDamage(game));
             RegisterCommand(Keys.C, new CommandShowColliders(game));
             RegisterCommand(Keys.V, new CommandRemoveColliders(game));
             RegisterCommand(Keys.G, new CommandSpawnItem(game));
-            /*Leftover code from Sprint 2
-            RegisterCommand(Keys.T, new CommandSwitchBlockForward(game));
-            RegisterCommand(Keys.Y, new CommandSwitchBlockBack(game));
-            RegisterCommand(Keys.U, new CommandSwitchItemForward(game));
-            RegisterCommand(Keys.I, new CommandSwitchItemBack(game));
-            RegisterCommand(Keys.O, new CommandSwitchNPCForward(game));
-            RegisterCommand(Keys.P, new CommandSwitchNPCBack(game));
-            */
             RegisterCommand(Keys.Escape, new CommandPause(game));
             RegisterCommand(Keys.I, new CommandOpenInventory(game));
             RegisterCommand(Keys.R, new CommandReset(game));
             RegisterCommand(Keys.Q, new CommandQuit(game));
             RegisterCommand(Keys.M, new CommandMute());
+            RegisterCommand(Keys.F5, new CommandSaveGame(game));
+            RegisterCommand(Keys.F9, new CommandLoadGame(game));
+            
         }
 
 

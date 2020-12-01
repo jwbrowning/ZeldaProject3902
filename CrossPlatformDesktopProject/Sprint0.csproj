@@ -73,6 +73,8 @@
     <Compile Include="CommandStuff\CommandQuit.cs" />
     <Compile Include="CommandStuff\CommandRemoveColliders.cs" />
     <Compile Include="CommandStuff\CommandReset.cs" />
+    <Compile Include="CommandStuff\CommandLoadGame.cs" />
+    <Compile Include="CommandStuff\CommandSaveGame.cs" />
     <Compile Include="CommandStuff\CommandStartReversingTime.cs" />
     <Compile Include="CommandStuff\CommandSelect.cs" />
     <Compile Include="CommandStuff\CommandShowColliders.cs" />
