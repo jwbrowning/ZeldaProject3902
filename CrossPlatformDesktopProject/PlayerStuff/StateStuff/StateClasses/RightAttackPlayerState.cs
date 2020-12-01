@@ -19,6 +19,7 @@ namespace CrossPlatformDesktopProject.PlayerStuff.StateStuff.StateClasses
             SoundFactory.Instance.sfxSword.Play();
             if (this.player.Health == this.player.TotalHealth)
             {
+                if (player.ActiveItems.FindAll((IUsableItem item) => item is SwordBeam).Count > 0) return;
                 IUsableItem swordBeam = new SwordBeam(this.player.Position + 16 * Vector2.UnitX, Vector2.UnitX, this.player);
                 this.player.ActiveItems.Add(swordBeam);
                 SoundFactory.Instance.sfxSwordBeam.Play();

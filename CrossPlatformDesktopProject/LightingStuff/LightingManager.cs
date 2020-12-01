@@ -1,4 +1,6 @@
 ﻿using CrossPlatformDesktopProject.Environment;
+using CrossPlatformDesktopProject.RoomManagement;
+using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -71,10 +73,20 @@ namespace CrossPlatformDesktopProject.LightingStuff
 
         private Game1 game;
         private Vector2 prevPlayerPos;
-        private Vector2 blockSize = new Vector2(65, 65);
+        private Vector2 blockSize = new Vector2(68, 68);
         private List<RaycastPoint> visibleRegion;
-        private Microsoft.Xna.Framework.Color shadowColor = new Microsoft.Xna.Framework.Color(0, 0, 0, .5f);
-        private Texture2D lightingTexture;
+        private Color shadowColor = new Color(0, 0, 0, .5f);
+        private Color lightingColor = new Color(.1f, .1f, 0, .05f);
+        //private Texture2D lightingTexture;
+        private float visionRadius = 2 * 64f;
+        private float visionRadiusTarget = 2 * 64f;
+        private float lerpSpeed = .025f;
+        private float shadowSmoothLength = 2 * 64f;
+        private float swordBeamLightRadius = 2 * 64f;
+        private float swordBeamSmoothLength = 2 * 64f;
+        private Vector2 swordBeamPos = Vector2.Zero;
+        private bool litBySwordBeam = false;
+        private bool litByPlayer = false;
 
         public static object TextureUsage { get; private set; }
 
@@ -86,8 +98,23 @@ namespace CrossPlatformDesktopProject.LightingStuff
             //lightingTexture = game.Content.Load<Texture2D>("VisibilityRectangle2");
         }
 
+        public void TurnOnLights()
+        {
+            visionRadiusTarget = 12 * 64f;
+            lerpSpeed = .01f;
+        }
+
+        public void TurnOffLights()
+        {
+            visionRadiusTarget = 2 * 64f;
+            lerpSpeed = .025f;
+        }
+
         public void Update()
         {
+            visionRadius += (visionRadiusTarget - visionRadius) * lerpSpeed;
+            shadowSmoothLength = visionRadius;
+
             //if (game.player.Position != prevPlayerPos) 
             visibleRegion = VisibleRegion(game.player.Position + game.currentRoom.Position);
 
@@ -109,9 +136,9 @@ namespace CrossPlatformDesktopProject.LightingStuff
             {
                 Ray ray = new Ray(sourcePoint, corner - sourcePoint);
                 Ray ray1 = new Ray(sourcePoint, corner - sourcePoint);
-                ray1.Angle += .00001f;
+                ray1.Angle += .001f;
                 Ray ray2 = new Ray(sourcePoint, corner - sourcePoint);
-                ray2.Angle -= .00001f;
+                ray2.Angle -= .001f;
                 Vector2 closestIntersect = new Vector2(float.MaxValue, float.MaxValue);
                 Vector2 closestIntersect1 = new Vector2(float.MaxValue, float.MaxValue);
                 Vector2 closestIntersect2 = new Vector2(float.MaxValue, float.MaxValue);
@@ -185,13 +212,25 @@ namespace CrossPlatformDesktopProject.LightingStuff
 
         private List<LineSegment> GetWallLineSegments()
         {
+            List<LineSegment> lineSegments = GetWallLineSegmentsFromRoom(game.currentRoom);
+            
+            if(game.currentRoom.nextRoom != null)
+            {
+                //lineSegments.AddRange(GetWallLineSegmentsFromRoom(game.currentRoom.nextRoom));
+            }
+
+            return lineSegments;
+        }
+
+        private List<LineSegment> GetWallLineSegmentsFromRoom(iRoom room)
+        {
             List<LineSegment> lineSegments = new List<LineSegment>();
 
             // add walls:
-            Vector2 topLeft = game.currentRoom.Position - game.currentRoom.Size / 2f;
-            Vector2 bottomRight = game.currentRoom.Position + game.currentRoom.Size / 2f;
-            Vector2 bottomLeft = new Vector2(game.currentRoom.Position.X - game.currentRoom.Size.X / 2f, game.currentRoom.Position.Y + game.currentRoom.Size.Y / 2f);
-            Vector2 topRight = new Vector2(game.currentRoom.Position.X + game.currentRoom.Size.X / 2f, game.currentRoom.Position.Y - game.currentRoom.Size.Y / 2f);
+            Vector2 topLeft = room.Position - room.Size / 2f;
+            Vector2 bottomRight = room.Position + room.Size / 2f;
+            Vector2 bottomLeft = new Vector2(room.Position.X - room.Size.X / 2f, room.Position.Y + room.Size.Y / 2f);
+            Vector2 topRight = new Vector2(room.Position.X + room.Size.X / 2f, room.Position.Y - room.Size.Y / 2f);
             lineSegments.Add(new LineSegment(topLeft, topRight));
             lineSegments.Add(new LineSegment(topRight, bottomRight));
             lineSegments.Add(new LineSegment(bottomRight, bottomLeft));
@@ -201,10 +240,10 @@ namespace CrossPlatformDesktopProject.LightingStuff
             foreach (IBlock block in game.currentRoom.Blocks)
             {
                 if (block is Stairs || block is StairsInvisible || block is BlockWater) continue;
-                topLeft = new Vector2(block.Position.X + game.currentRoom.Position.X - blockSize.X / 2f, block.Position.Y + game.currentRoom.Position.Y - blockSize.Y / 2f);
-                bottomLeft = new Vector2(block.Position.X + game.currentRoom.Position.X - blockSize.X / 2f, block.Position.Y + game.currentRoom.Position.Y + blockSize.Y / 2f);
-                topRight = new Vector2(block.Position.X + game.currentRoom.Position.X + blockSize.X / 2f, block.Position.Y + game.currentRoom.Position.Y - blockSize.Y / 2f);
-                bottomRight = new Vector2(block.Position.X + game.currentRoom.Position.X + blockSize.X / 2f, block.Position.Y + game.currentRoom.Position.Y + blockSize.Y / 2f);
+                topLeft = new Vector2(block.Position.X + room.Position.X - blockSize.X / 2f, block.Position.Y + room.Position.Y - blockSize.Y / 2f);
+                bottomLeft = new Vector2(block.Position.X + room.Position.X - blockSize.X / 2f, block.Position.Y + room.Position.Y + blockSize.Y / 2f);
+                topRight = new Vector2(block.Position.X + room.Position.X + blockSize.X / 2f, block.Position.Y + room.Position.Y - blockSize.Y / 2f);
+                bottomRight = new Vector2(block.Position.X + room.Position.X + blockSize.X / 2f, block.Position.Y + room.Position.Y + blockSize.Y / 2f);
                 lineSegments.Add(new LineSegment(topLeft, topRight));
                 lineSegments.Add(new LineSegment(topRight, bottomRight));
                 lineSegments.Add(new LineSegment(bottomRight, bottomLeft));
@@ -216,13 +255,25 @@ namespace CrossPlatformDesktopProject.LightingStuff
 
         private List<Vector2> GetWallCorners()
         {
+            List<Vector2> corners = GetWallCornersFromRoom(game.currentRoom);
+
+            if(game.currentRoom.nextRoom != null)
+            {
+                //corners.AddRange(GetWallCornersFromRoom(game.currentRoom.nextRoom));
+            }
+
+            return corners;
+        }
+
+        private List<Vector2> GetWallCornersFromRoom(iRoom room)
+        {
             List<Vector2> corners = new List<Vector2>();
 
-            // add corners of the room's walls:
-            Vector2 topLeft = game.currentRoom.Position - game.currentRoom.Size / 2f;
-            Vector2 bottomRight = game.currentRoom.Position + game.currentRoom.Size / 2f;
-            Vector2 bottomLeft = new Vector2(game.currentRoom.Position.X - game.currentRoom.Size.X / 2f, game.currentRoom.Position.Y + game.currentRoom.Size.Y / 2f);
-            Vector2 topRight = new Vector2(game.currentRoom.Position.X + game.currentRoom.Size.X / 2f, game.currentRoom.Position.Y - game.currentRoom.Size.Y / 2f);
+            // add wall corners:
+            Vector2 topLeft = room.Position - room.Size / 2f;
+            Vector2 bottomRight = room.Position + room.Size / 2f;
+            Vector2 bottomLeft = new Vector2(room.Position.X - room.Size.X / 2f, room.Position.Y + room.Size.Y / 2f);
+            Vector2 topRight = new Vector2(room.Position.X + room.Size.X / 2f, room.Position.Y - room.Size.Y / 2f);
             corners.Add(topLeft);
             corners.Add(topRight);
             corners.Add(bottomRight);
@@ -231,11 +282,11 @@ namespace CrossPlatformDesktopProject.LightingStuff
             // add corners of each block:
             foreach (IBlock block in game.currentRoom.Blocks)
             {
-                if (block is Stairs || block is StairsInvisible) continue;
-                topLeft = new Vector2(block.Position.X + game.currentRoom.Position.X - blockSize.X / 2f, block.Position.Y + game.currentRoom.Position.Y - blockSize.Y / 2f);
-                bottomLeft = new Vector2(block.Position.X + game.currentRoom.Position.X - blockSize.X / 2f, block.Position.Y + game.currentRoom.Position.Y + blockSize.Y / 2f);
-                topRight = new Vector2(block.Position.X + game.currentRoom.Position.X + blockSize.X / 2f, block.Position.Y + game.currentRoom.Position.Y - blockSize.Y / 2f);
-                bottomRight = new Vector2(block.Position.X + game.currentRoom.Position.X + blockSize.X / 2f, block.Position.Y + game.currentRoom.Position.Y + blockSize.Y / 2f);
+                if (block is Stairs || block is StairsInvisible || block is BlockWater) continue;
+                topLeft = new Vector2(block.Position.X + room.Position.X - blockSize.X / 2f, block.Position.Y + room.Position.Y - blockSize.Y / 2f);
+                bottomLeft = new Vector2(block.Position.X + room.Position.X - blockSize.X / 2f, block.Position.Y + room.Position.Y + blockSize.Y / 2f);
+                topRight = new Vector2(block.Position.X + room.Position.X + blockSize.X / 2f, block.Position.Y + room.Position.Y - blockSize.Y / 2f);
+                bottomRight = new Vector2(block.Position.X + room.Position.X + blockSize.X / 2f, block.Position.Y + room.Position.Y + blockSize.Y / 2f);
                 corners.Add(topLeft);
                 corners.Add(topRight);
                 corners.Add(bottomRight);
@@ -247,13 +298,10 @@ namespace CrossPlatformDesktopProject.LightingStuff
 
         private void DrawVisibleRegion(SpriteBatch spriteBatch, List<RaycastPoint> region)
         {
+            Vector2 sourcePos = game.player.Position + game.currentRoom.Position;
+
             spriteBatch.Begin();
             int pixelSize = 8;
-            foreach (RaycastPoint rcp in region)
-            {
-                Rectangle destinationRectangle = new Rectangle((int)rcp.Point.X, (int)rcp.Point.Y, pixelSize, pixelSize);
-                //spriteBatch.Draw(game.rect, destinationRectangle, new Color(1f * region.IndexOf(rcp) / region.Count, 0, 1 - 1f * region.IndexOf(rcp) / region.Count));
-            }
 
             int startX = (int)(game.currentRoom.Position.X - game.currentRoom.Size.X / 2f);
             int startY = (int)(game.currentRoom.Position.Y - game.currentRoom.Size.Y / 2f);
@@ -262,24 +310,86 @@ namespace CrossPlatformDesktopProject.LightingStuff
             {
                 for (int j = startY; j < startY + game.currentRoom.Size.Y; j += pixelSize)
                 {
-                    if (!InsideRegion(region, new Vector2(i + pixelSize / 2, j + pixelSize / 2)))
+                    Vector2 pixelPos = new Vector2(i + pixelSize / 2, j + pixelSize / 2);
+                    Rectangle destinationRectangle = new Rectangle(i, j, pixelSize, pixelSize);
+                    if (!InsideRegion(region, pixelPos))
                     {
-                        Rectangle destinationRectangle = new Rectangle(i, j, pixelSize, pixelSize);
                         spriteBatch.Draw(game.rect, destinationRectangle, shadowColor);
                     }
-                    else
+                    else if (litBySwordBeam && !litByPlayer)
                     {
-                        Rectangle destinationRectangle = new Rectangle(i, j, pixelSize, pixelSize);
-                        spriteBatch.Draw(game.rect, destinationRectangle, new Color(.1f, .1f, 0, .05f));
+                        if (Vector2.Distance(swordBeamPos, pixelPos) > swordBeamLightRadius - swordBeamSmoothLength)
+                        {
+                            float shadowWeight = (Vector2.Distance(swordBeamPos, pixelPos) - (swordBeamLightRadius - swordBeamSmoothLength)) / swordBeamSmoothLength;
+                            float lightWeight = 1f - shadowWeight;
+                            Color lightLevel = new Color(shadowWeight * shadowColor.R / 255f + lightWeight * lightingColor.R / 255f,
+                                                         shadowWeight * shadowColor.G / 255f + lightWeight * lightingColor.G / 255f,
+                                                         shadowWeight * shadowColor.B / 255f + lightWeight * lightingColor.B / 255f,
+                                                         shadowWeight * shadowColor.A / 255f + lightWeight * lightingColor.A / 255f);
+                            spriteBatch.Draw(game.rect, destinationRectangle, lightLevel);
+                        }
+                        else
+                        {
+                            spriteBatch.Draw(game.rect, destinationRectangle, lightingColor);
+                        }
+                    }
+                    else if(litByPlayer && !litBySwordBeam)
+                    {
+                        if (Vector2.Distance(sourcePos, pixelPos) > visionRadius - shadowSmoothLength)
+                        {
+                            float shadowWeight = (Vector2.Distance(sourcePos, pixelPos) - (visionRadius - shadowSmoothLength)) / shadowSmoothLength;
+                            float lightWeight = 1f - shadowWeight;
+                            Color lightLevel = new Color(shadowWeight * shadowColor.R / 255f + lightWeight * lightingColor.R / 255f,
+                                                         shadowWeight * shadowColor.G / 255f + lightWeight * lightingColor.G / 255f,
+                                                         shadowWeight * shadowColor.B / 255f + lightWeight * lightingColor.B / 255f,
+                                                         shadowWeight * shadowColor.A / 255f + lightWeight * lightingColor.A / 255f);
+                            spriteBatch.Draw(game.rect, destinationRectangle, lightLevel);
+                        }
+                        else
+                        {
+                            spriteBatch.Draw(game.rect, destinationRectangle, lightingColor);
+                        }
+                    }
+                    else if(litByPlayer && litBySwordBeam)
+                    {
+                        float playerLight = Vector2.Distance(sourcePos, pixelPos) - visionRadius + shadowSmoothLength;
+                        float swordBeamLight = Vector2.Distance(swordBeamPos, pixelPos) - swordBeamLightRadius + swordBeamSmoothLength;
+                        if (Math.Min(playerLight, swordBeamLight) > 0)
+                        {
+                            float shadowWeight1 = playerLight / shadowSmoothLength;
+                            float shadowWeight2 = swordBeamLight / swordBeamSmoothLength;
+                            float shadowWeight = Math.Min(shadowWeight1, shadowWeight2);
+                            float lightWeight = 1f - shadowWeight;
+                            Color lightLevel = new Color(shadowWeight * shadowColor.R / 255f + lightWeight * lightingColor.R / 255f,
+                                                         shadowWeight * shadowColor.G / 255f + lightWeight * lightingColor.G / 255f,
+                                                         shadowWeight * shadowColor.B / 255f + lightWeight * lightingColor.B / 255f,
+                                                         shadowWeight * shadowColor.A / 255f + lightWeight * lightingColor.A / 255f);
+                            spriteBatch.Draw(game.rect, destinationRectangle, lightLevel);
+                        }
+                        else
+                        {
+                            spriteBatch.Draw(game.rect, destinationRectangle, lightingColor);
+                        }
                     }
                 }
             }
 
-            List<LineSegment> regionSegments = RegionLineSegments(visibleRegion);
-            foreach(LineSegment lineSegment in regionSegments)
+            // Show all rays and theyre closest collisions:
+            /*foreach (RaycastPoint rcp in region)
             {
-                //DrawLineSegment(lineSegment, spriteBatch);
-            }
+                Rectangle destinationRectangle = new Rectangle((int)rcp.Point.X - pixelSize / 2, (int)rcp.Point.Y - pixelSize / 2, pixelSize, pixelSize);
+                LineSegment lineSegment = new LineSegment(sourcePos, rcp.Point);
+                DrawLineSegment(lineSegment, spriteBatch);
+                //spriteBatch.Draw(game.rect, destinationRectangle, new Color(1f * region.IndexOf(rcp) / region.Count, 0, 1 - 1f * region.IndexOf(rcp) / region.Count));
+                spriteBatch.Draw(game.circle, destinationRectangle, new Color(.1f, .1f, 0, .05f));
+            }*/
+
+            // Show outline of visible region:
+            /*List<LineSegment> regionSegments = RegionLineSegments(visibleRegion);
+            foreach (LineSegment lineSegment in regionSegments)
+            {
+                DrawLineSegment(lineSegment, spriteBatch);
+            }*/
 
             spriteBatch.End();
 
@@ -292,33 +402,16 @@ namespace CrossPlatformDesktopProject.LightingStuff
                     i--;
                 }
             }*/
-
-            BasicEffect basicEffect = new BasicEffect(game.GraphicsDevice);
-            basicEffect.Texture = game.rect;
-            basicEffect.TextureEnabled = true;
-
-            VertexPositionTexture[] vert = new VertexPositionTexture[visibleRegion.Count];
-            for(int i=0;i<visibleRegion.Count;i++)
-            {
-                vert[i].Position = new Vector3(visibleRegion[i].Point.X, visibleRegion[i].Point.Y, 0);
-                vert[i].TextureCoordinate = new Vector2(0, 0);
-            }
-
-            foreach (EffectPass effectPass in basicEffect.CurrentTechnique.Passes)
-            {
-                effectPass.Apply();
-                //game.GraphicsDevice.DrawUserIndexedPrimitives<VertexPositionTexture>(PrimitiveType.TriangleList, vert, 0, vert.Length, new short[] { 0 }, 0,0);
-            }
         }
 
         private void DrawLineSegment(LineSegment lineSegment, SpriteBatch spriteBatch)
         {
-            Rectangle destination = new Rectangle((int)lineSegment.A.X, (int)lineSegment.A.Y, (int)Vector2.Distance(lineSegment.A, lineSegment.B), 4);
+            Rectangle destination = new Rectangle((int)lineSegment.A.X, (int)lineSegment.A.Y, (int)Vector2.Distance(lineSegment.A, lineSegment.B), 2);
             Rectangle source = new Rectangle(0, 0, 1, 1);
             Vector2 direction = lineSegment.B - lineSegment.A;
             direction.Normalize();
             float angle = (float)Math.Atan2(direction.Y, direction.X);
-            spriteBatch.Draw(game.rect, destination, source, Color.Yellow, angle, Vector2.Zero, SpriteEffects.None, 0);
+            spriteBatch.Draw(game.rect, destination, source, new Color(.1f,.1f,0,.05f), angle, Vector2.Zero, SpriteEffects.None, 0);
         }
 
         public bool InsideVisibleRegion(Vector2 point)
@@ -328,7 +421,19 @@ namespace CrossPlatformDesktopProject.LightingStuff
 
         private bool InsideRegion(List<RaycastPoint> region, Vector2 point)
         {
-            if (region.Count < 3) return false;
+            litBySwordBeam = false;
+            litByPlayer = false;
+            foreach (IUsableItem item in game.player.ActiveItems.FindAll((IUsableItem i) => i is SwordBeam))
+            {
+                if (Vector2.Distance(point, item.Position + game.currentRoom.Position) < swordBeamLightRadius)
+                {
+                    litBySwordBeam = true;
+                    swordBeamPos = item.Position + game.currentRoom.Position;
+                    break;
+                }
+            }
+            if (!litBySwordBeam && region.Count < 3) return false;
+            if (!litBySwordBeam && Vector2.Distance(game.player.Position + game.currentRoom.Position, point) > visionRadius) return false;
             Vector2 source = game.player.Position + game.currentRoom.Position;
             Vector2 direction = point - source;
             direction.Normalize();
@@ -341,7 +446,8 @@ namespace CrossPlatformDesktopProject.LightingStuff
             double a2 = AreaOfTriangle(point, region[lower].Point, region[upper].Point);
             double a3 = AreaOfTriangle(point, region[upper].Point, source);
             double total = AreaOfTriangle(source, region[lower].Point, region[upper].Point);
-            return Math.Abs(total - (a1 + a2 + a3)) < .1f;
+            litByPlayer = Math.Abs(total - (a1 + a2 + a3)) < .075f;
+            return litByPlayer || litBySwordBeam;
 
             /*Ray ray = new Ray(point, Vector2.UnitY);
             int intersectCount = 0;

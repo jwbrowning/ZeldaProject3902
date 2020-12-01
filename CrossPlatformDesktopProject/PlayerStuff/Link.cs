@@ -58,8 +58,8 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             ItemCounts.Add(ItemType.Key, 0);
             ItemCounts.Add(ItemType.HeartContainer, 0);
             ItemCounts.Add(ItemType.TriforcePiece, 0);
-            ItemCounts.Add(ItemType.Boomerang, 0);
-            ItemCounts.Add(ItemType.Bow, 0);
+            ItemCounts.Add(ItemType.Boomerang, 1);
+            ItemCounts.Add(ItemType.Bow, 1);
             ItemCounts.Add(ItemType.Heart, 0);
             ItemCounts.Add(ItemType.Arrow, 1);
             ItemCounts.Add(ItemType.Bomb, 8);
@@ -86,7 +86,10 @@ namespace CrossPlatformDesktopProject.PlayerStuff
             Sprite.Draw(spriteBatch, parentPos + Position);
             for (int i = 0; i < ActiveItems.Count; i++)
             {
-                ActiveItems[i].Draw(spriteBatch, parentPos);
+                if (game.lightingManager.InsideVisibleRegion(ActiveItems[i].Position + parentPos))
+                {
+                    ActiveItems[i].Draw(spriteBatch, parentPos);
+                }
             }
         }
 

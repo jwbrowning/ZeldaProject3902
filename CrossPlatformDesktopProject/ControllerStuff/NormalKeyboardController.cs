@@ -49,6 +49,8 @@ namespace Sprint0
             RegisterCommand(Keys.R, new CommandReset(game));
             RegisterCommand(Keys.Q, new CommandQuit(game));
             RegisterCommand(Keys.M, new CommandMute());
+            RegisterCommand(Keys.L, new CommandLightsOn(game));
+            RegisterCommand(Keys.K, new CommandLightsOff(game));
         }
 
 

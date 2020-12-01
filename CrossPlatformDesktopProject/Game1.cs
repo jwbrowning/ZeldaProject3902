@@ -40,7 +40,7 @@ namespace Sprint0
 		public bool reversingTime = false;
 
 		static public Texture2D environment,squareOutline,floortilebase;
-		public Texture2D rect;
+		public Texture2D rect, circle;
 
 		public IPlayer player;
 		public HeadsUpDisplay hud;
@@ -108,6 +108,7 @@ namespace Sprint0
 
             rect = new Texture2D(graphics.GraphicsDevice, 1, 1);
             rect.SetData(new[] { Color.White });
+            circle = Content.Load<Texture2D>("UsableItems/Circle");
             environment = Content.Load<Texture2D>("environment");
             squareOutline = Content.Load<Texture2D>("SquareOutline");
             floortilebase = Content.Load<Texture2D>("floortilewithwall");
