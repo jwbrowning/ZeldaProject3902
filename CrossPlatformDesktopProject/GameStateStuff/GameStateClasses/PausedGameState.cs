@@ -36,6 +36,7 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
             game.currentRoom.DrawItems(spriteBatch);
             game.currentRoom.DrawDoors(spriteBatch);
             game.player.Draw(spriteBatch, game.currentRoom.Position);
+            game.lightingManager.Draw(spriteBatch);
             game.hud.Draw(spriteBatch);
             spriteBatch.Begin();
             spriteBatch.Draw(game.rect, new Rectangle(0, 0, 2000, 2000), new Color(0, 0, 0, .5f));

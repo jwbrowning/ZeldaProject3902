@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using CrossPlatformDesktopProject.LightingStuff;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 using System.Collections.Generic;
 
@@ -23,6 +24,7 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
             }
             game.currentRoom.UpdateRooms();
             game.currentRoom.nextRoom.UpdateRooms();
+            game.lightingManager.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -40,6 +42,7 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
             game.currentRoom.DrawEnemies(spriteBatch);
             game.currentRoom.nextRoom.DrawEnemies(spriteBatch);
             game.player.Draw(spriteBatch, game.currentRoom.nextRoom.Position);
+            game.lightingManager.DrawDark(spriteBatch);
             game.hud.Draw(spriteBatch);
         }
     }

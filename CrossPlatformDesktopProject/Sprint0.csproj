@@ -59,6 +59,8 @@
     <Compile Include="CollisionStuff\ICollidable.cs" />
     <Compile Include="CommandStuff\CommandCloseInventory.cs" />
     <Compile Include="CommandStuff\CommandDamage.cs" />
+    <Compile Include="CommandStuff\CommandDisablePartyLights.cs" />
+    <Compile Include="CommandStuff\CommandEnablePartyLights.cs" />
     <Compile Include="CommandStuff\CommandLightsOff.cs" />
     <Compile Include="CommandStuff\CommandLightsOn.cs" />
     <Compile Include="CommandStuff\CommandMoveDown.cs" />

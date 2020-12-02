@@ -2,6 +2,7 @@
 using CrossPlatformDesktopProject.Environment;
 using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.UsableItems;
+using Sprint0;
 
 namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 {
@@ -45,7 +46,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandleEnemyCollision(ICollider collider)
         {
-            HandleGenericCollision(collider);
+            if (!(collider.GameObject is Fireball)) HandleGenericCollision(collider);
         }
 
         public void HandlePlayerCollision(ICollider collider)

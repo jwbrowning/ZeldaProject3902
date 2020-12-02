@@ -75,8 +75,9 @@ namespace CrossPlatformDesktopProject.LightingStuff
         private Vector2 prevPlayerPos;
         private Vector2 blockSize = new Vector2(68, 68);
         private List<RaycastPoint> visibleRegion;
-        private Color shadowColor = new Color(0, 0, 0, .5f);
-        private Color lightingColor = new Color(.1f, .1f, 0, .05f);
+        private Color shadowColor = new Color(0, 0, 0, .9f);
+        private Color normalLightingColor = new Color(.15f, .15f, 0, .10f);
+        private Color lightingColor;
         //private Texture2D lightingTexture;
         private float visionRadius = 2 * 64f;
         private float visionRadiusTarget = 2 * 64f;
@@ -87,6 +88,9 @@ namespace CrossPlatformDesktopProject.LightingStuff
         private Vector2 swordBeamPos = Vector2.Zero;
         private bool litBySwordBeam = false;
         private bool litByPlayer = false;
+        private int pixelSize = 8;
+        private bool partyMode = false;
+        private int partyTimer = 0;
 
         public static object TextureUsage { get; private set; }
 
@@ -94,6 +98,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
         {
             this.game = game;
             prevPlayerPos = Vector2.Zero;
+            DisablePartyMode();
             visibleRegion = VisibleRegion(game.player.Position + game.currentRoom.Position);
             //lightingTexture = game.Content.Load<Texture2D>("VisibilityRectangle2");
         }
@@ -110,8 +115,47 @@ namespace CrossPlatformDesktopProject.LightingStuff
             lerpSpeed = .025f;
         }
 
+        public void EnablePartyMode()
+        {
+            partyMode = true;
+        }
+
+        public void DisablePartyMode()
+        {
+            partyMode = false;
+            lightingColor = normalLightingColor;
+        }
+
         public void Update()
         {
+            if(partyMode)
+            {
+                int stage = partyTimer / 25;
+                float c = .6f;
+                float a = .4f;
+                if (stage == 0)
+                {
+                    lightingColor = new Color(c, 0, 0, a);
+                } 
+                else if (stage == 1)
+                {
+                    lightingColor = new Color(c, .5f*c, 0, a);
+                }
+                else if (stage == 2)
+                {
+                    lightingColor = new Color(0, c, 0, a);
+                }
+                else if (stage == 3)
+                {
+                    lightingColor = new Color(0, 0, c, a);
+                }
+                partyTimer++;
+                if(partyTimer >= 100)
+                {
+                    partyTimer = 0;
+                }
+            }
+
             visionRadius += (visionRadiusTarget - visionRadius) * lerpSpeed;
             shadowSmoothLength = visionRadius;
 
@@ -200,7 +244,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
             yMult = intersectionDirection.Y / ray.Direction.Y;
             if (intersection.X >= Math.Min(lineSegment.A.X,lineSegment.B.X) && intersection.X <= Math.Max(lineSegment.A.X, lineSegment.B.X)
                 && intersection.Y >= Math.Min(lineSegment.A.Y, lineSegment.B.Y) && intersection.Y <= Math.Max(lineSegment.A.Y, lineSegment.B.Y)
-                && xMult - yMult < .01f && xMult > 0 && yMult > 0)
+                && xMult - yMult < .1f && xMult > 0 && yMult > 0)
             {
                 return intersection;
             }
@@ -239,7 +283,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
             // add edges of each block:
             foreach (IBlock block in game.currentRoom.Blocks)
             {
-                if (block is Stairs || block is StairsInvisible || block is BlockWater) continue;
+                if (block is Stairs || block is StairsInvisible || block is BlockWater || block is BlockInvisible || block is Ladder) continue;
                 topLeft = new Vector2(block.Position.X + room.Position.X - blockSize.X / 2f, block.Position.Y + room.Position.Y - blockSize.Y / 2f);
                 bottomLeft = new Vector2(block.Position.X + room.Position.X - blockSize.X / 2f, block.Position.Y + room.Position.Y + blockSize.Y / 2f);
                 topRight = new Vector2(block.Position.X + room.Position.X + blockSize.X / 2f, block.Position.Y + room.Position.Y - blockSize.Y / 2f);
@@ -282,7 +326,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
             // add corners of each block:
             foreach (IBlock block in game.currentRoom.Blocks)
             {
-                if (block is Stairs || block is StairsInvisible || block is BlockWater) continue;
+                if (block is Stairs || block is StairsInvisible || block is BlockWater || block is BlockInvisible || block is Ladder) continue;
                 topLeft = new Vector2(block.Position.X + room.Position.X - blockSize.X / 2f, block.Position.Y + room.Position.Y - blockSize.Y / 2f);
                 bottomLeft = new Vector2(block.Position.X + room.Position.X - blockSize.X / 2f, block.Position.Y + room.Position.Y + blockSize.Y / 2f);
                 topRight = new Vector2(block.Position.X + room.Position.X + blockSize.X / 2f, block.Position.Y + room.Position.Y - blockSize.Y / 2f);
@@ -296,12 +340,45 @@ namespace CrossPlatformDesktopProject.LightingStuff
             return corners;
         }
 
+        public void DrawDark(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Begin();
+
+            int startX = (int)(game.currentRoom.Position.X - game.currentRoom.Size.X / 2f);
+            int startY = (int)(game.currentRoom.Position.Y - game.currentRoom.Size.Y / 2f);
+
+            for (int i = startX; i < startX + game.currentRoom.Size.X; i += pixelSize)
+            {
+                for (int j = startY; j < startY + game.currentRoom.Size.Y; j += pixelSize)
+                {
+                    Rectangle destinationRectangle = new Rectangle(i, j, pixelSize, pixelSize);
+                    spriteBatch.Draw(game.rect, destinationRectangle, shadowColor);
+                }
+            }
+
+            if(game.currentRoom.nextRoom != null)
+            {
+                startX = (int)(game.currentRoom.nextRoom.Position.X - game.currentRoom.nextRoom.Size.X / 2f);
+                startY = (int)(game.currentRoom.nextRoom.Position.Y - game.currentRoom.nextRoom.Size.Y / 2f);
+
+                for (int i = startX; i < startX + game.currentRoom.nextRoom.Size.X; i += pixelSize)
+                {
+                    for (int j = startY; j < startY + game.currentRoom.nextRoom.Size.Y; j += pixelSize)
+                    {
+                        Rectangle destinationRectangle = new Rectangle(i, j, pixelSize, pixelSize);
+                        spriteBatch.Draw(game.rect, destinationRectangle, shadowColor);
+                    }
+                }
+            }
+
+            spriteBatch.End();
+        }
+
         private void DrawVisibleRegion(SpriteBatch spriteBatch, List<RaycastPoint> region)
         {
             Vector2 sourcePos = game.player.Position + game.currentRoom.Position;
 
             spriteBatch.Begin();
-            int pixelSize = 8;
 
             int startX = (int)(game.currentRoom.Position.X - game.currentRoom.Size.X / 2f);
             int startY = (int)(game.currentRoom.Position.Y - game.currentRoom.Size.Y / 2f);

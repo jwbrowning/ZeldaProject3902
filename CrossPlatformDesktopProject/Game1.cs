@@ -148,7 +148,6 @@ namespace Sprint0
 		protected override void Update(GameTime gameTime)
 		{
 			gameState.Update();
-			lightingManager.Update();
             if (notificationsQueue.Count > 0)
             {
 				notificationsQueue.Peek().Update();
@@ -164,7 +163,6 @@ namespace Sprint0
 		{
 			screen.Draw(spriteBatch);
 			gameState.Draw(spriteBatch);
-			lightingManager.Draw(spriteBatch);
 
 			// For testing, set showCollisions to true to show an outline around all colliders:
 			if (showCollisions)

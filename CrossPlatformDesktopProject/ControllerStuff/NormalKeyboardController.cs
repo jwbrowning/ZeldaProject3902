@@ -40,6 +40,8 @@ namespace Sprint0
             RegisterCommand(Keys.M, new CommandMute());
             RegisterCommand(Keys.L, new CommandLightsOn(game));
             RegisterCommand(Keys.K, new CommandLightsOff(game));
+            RegisterCommand(Keys.P, new CommandEnablePartyLights(game));
+            RegisterCommand(Keys.O, new CommandDisablePartyLights(game));
             RegisterCommand(Keys.F5, new CommandSaveGame(game));
             RegisterCommand(Keys.F9, new CommandLoadGame(game));
             
