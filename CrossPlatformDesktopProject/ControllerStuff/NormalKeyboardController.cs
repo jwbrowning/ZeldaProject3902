@@ -11,6 +11,8 @@ namespace Sprint0
         private Keys[] prevPressedKeys = new Keys[0];
         private Dictionary<Keys, ICommand> controllerMappings;
         private Dictionary<Keys, ICommand> moveMappings;
+        private Dictionary<List<Keys>, int> cheatCodePositions;
+        private Dictionary<List<Keys>, ICommand> cheatCommands;
         private int wait = 1;
 
 
@@ -18,7 +20,17 @@ namespace Sprint0
         {
             this.game = game;
             controllerMappings = new Dictionary<Keys, ICommand>();
+            
+            cheatCommands = new Dictionary<List<Keys>, ICommand>() {
+                {new List<Keys>() {Keys.Up,Keys.Down,Keys.Up,Keys.Down }, new CommandLightsOn(game) }
+            };
+            cheatCodePositions = new Dictionary<List<Keys>, int>();
+            foreach (KeyValuePair<List<Keys>, ICommand> kvp in cheatCommands)
+            {
+                cheatCodePositions.Add(kvp.Key,0);
+            }
             moveMappings = new Dictionary<Keys, ICommand>();
+
             moveMappings.Add(Keys.W, new CommandMoveUp(game));
             moveMappings.Add(Keys.A, new CommandMoveLeft(game));
             moveMappings.Add(Keys.S, new CommandMoveDown(game));
@@ -47,7 +59,40 @@ namespace Sprint0
             
         }
 
+        private void CheckCheatCodes(Keys[] pressedKeys)
+        {
+            List<List<Keys>> cheatIncement = new List<List<Keys>>();
+            List<List<Keys>> cheatSetZero = new List<List<Keys>>();
 
+            foreach (List<Keys> cheatCode in cheatCodePositions.Keys)
+            {
+                if (pressedKeys.Contains(cheatCode[cheatCodePositions[cheatCode]]) && !prevPressedKeys.Contains(cheatCode[cheatCodePositions[cheatCode]]))
+                {
+                    cheatIncement.Add(cheatCode);
+                }
+                else if (!(pressedKeys.Contains(cheatCode[cheatCodePositions[cheatCode]]) && 
+                    !prevPressedKeys.Contains(cheatCode[cheatCodePositions[cheatCode]]))
+                    && pressedKeys.Length > 0 && prevPressedKeys.Length == 0)
+                {
+                    cheatSetZero.Add(cheatCode);
+                }
+            }
+            for (int i = 0; i < cheatIncement.Count; i++)
+            {
+                List<Keys> cheatCode = cheatIncement[i];
+                cheatCodePositions[cheatCode]++;
+                if (cheatCodePositions[cheatCode] == cheatCode.Count)
+                {
+                    cheatCodePositions[cheatCode] = 0;
+                    cheatCommands[cheatCode].Execute();
+                }
+            }
+            for(int i = 0; i < cheatSetZero.Count; i++)
+            {
+                    cheatCodePositions[cheatSetZero[i]] = 0;
+                
+            }
+        }
         public void RegisterCommand(Keys key, ICommand command)
         {
             controllerMappings.Add(key, command);
@@ -56,7 +101,7 @@ namespace Sprint0
         public void Update()
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-
+            CheckCheatCodes(pressedKeys);   
             if (wait <= 0)
             {
                 if (prevPressedKeys.Contains(Keys.W) || prevPressedKeys.Contains(Keys.A) || prevPressedKeys.Contains(Keys.S) || prevPressedKeys.Contains(Keys.D))
