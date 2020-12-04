@@ -1,6 +1,7 @@
 ﻿using CrossPlatformDesktopProject.EnemySpriteClasses;
 using CrossPlatformDesktopProject.RoomManagement;
 using CrossPlatformDesktopProject.SoundManagement;
+using Sprint0;
 using System;
 using System.Collections.Generic;
 
@@ -84,7 +85,7 @@ namespace CrossPlatformDesktopProject.Items
 
         void revealHiddenLoot(iRoom room)
         {
-            if (room.Enemies.Count == 1)
+            if (room.Enemies.FindAll(enemy => !(enemy is EnemyBoomerang || enemy is Fireball)).Count == 1)
             //triggers if this enemy that died is the last enemy in the room
             {
                 if (room.HiddenItems.Count > 0)
