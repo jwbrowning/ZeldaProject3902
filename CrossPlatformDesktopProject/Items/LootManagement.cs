@@ -9,10 +9,10 @@ namespace CrossPlatformDesktopProject.Items
 {
     class LootManagement
     {
-        const int heartChance = 10;
-        const int rupeeChance = 10;
+        const int heartChance = 15;
+        const int rupeeChance = 15;
         const int clockChance = 5;
-        const int bombChance = 5;
+        const int bombChance = 10;
 
         int heartWindow = heartChance;
         int rupeeWindow = heartChance + rupeeChance;
