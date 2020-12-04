@@ -13,21 +13,31 @@ Left Arrow / A - Moves the link character left
 Right Arrow / D - Moves the link character right
 
 B - Uses the Item in the B slot
-N - Uses the Item in the N slot
+N - Uses the Item in the N slot, your sword
 
 Esc - Pause/Unpause the Game
 I - Open/Close the inventory
-WASD - Controls inventory selector
+WASD/Arrow Keys - Controls inventory selector
 Enter - Selects an item in the inventory
 R - Resets the game
 Q - Quits the game
 M - Mutes the background music
+
+F5 - Saves your game
+F9 - Load your saved game
+Saved games only last for that play session, and are deleted when you close the game
+
 
 CONTROLS FOR TESTING
 E - Damages Link
 C - Shows the coliders in the game
 V - Hides the coliders that are previously shown
 G - Spawns a clock for testing
+K - Dims the light to a small circle around Link
+L - Returns the light to its normal visibility
+P - Enables party lighting
+O - Disables party lighting
+
 
 Known Issues and Roadmap
 
