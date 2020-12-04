@@ -288,10 +288,15 @@ namespace Sprint0
 				{
 					property.SetValue(currentRoom, property.GetValue(savedRoom, null), null);
 				}
+				if (currentRoom.Dialogue == null)
+                {
+					currentRoom.Dialogue = "";
+                }
 				foreach (PropertyInfo property in typeof(Link).GetProperties().Where(p => p.CanWrite))
 				{
 					property.SetValue(player, property.GetValue(savedPlayer, null), null);
 				}
+				
 
 				notificationsQueue.Enqueue(new Notification1(this, "Game Loaded!"));
 			}
