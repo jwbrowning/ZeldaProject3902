@@ -92,6 +92,8 @@
     <Compile Include="CommandStuff\CommandUseItem3.cs" />
     <Compile Include="CommandStuff\CommandUseItemN.cs" />
     <Compile Include="CommandStuff\CommandUseItemB.cs" />
+	<Compile Include="CommandStuff\CommandUnlimitedWeapons.cs" />  
+	<Compile Include="CommandStuff\CommandKillAllEnemies.cs" />    
     <Compile Include="ControllerStuff\ControllerMouse.cs" />
     <Compile Include="ControllerStuff\GameOverKeyboardController.cs" />
     <Compile Include="ControllerStuff\InventoryKeyboardController.cs" />

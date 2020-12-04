@@ -22,7 +22,9 @@ namespace Sprint0
             controllerMappings = new Dictionary<Keys, ICommand>();
             
             cheatCommands = new Dictionary<List<Keys>, ICommand>() {
-                {new List<Keys>() {Keys.Up,Keys.Down,Keys.Up,Keys.Down }, new CommandLightsOn(game) }
+                {new List<Keys>() {Keys.Up,Keys.Down,Keys.Up,Keys.Down,Keys.Z,Keys.X,Keys.C }, new CommandKillAllEnemies(game) },
+                {new List<Keys>() {Keys.Up,Keys.Down,Keys.Up,Keys.Left,Keys.Z }, new CommandCheatCodeHealth(game) },
+                {new List<Keys>() {Keys.Up,Keys.Down,Keys.Up,Keys.Z,Keys.Z }, new CommandUnlimitedWeapons(game) }
             };
             cheatCodePositions = new Dictionary<List<Keys>, int>();
             foreach (KeyValuePair<List<Keys>, ICommand> kvp in cheatCommands)
