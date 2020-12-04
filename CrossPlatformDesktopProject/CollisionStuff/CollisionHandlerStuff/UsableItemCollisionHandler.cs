@@ -33,6 +33,11 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
             {
                 player.ActiveItems.Remove(item);
             }
+
+            if (item is UsableBomb && collider.GameObject is Dodongo)
+            {
+                player.ActiveItems.Remove(this.item);
+            }
         }
 
         public void HandleBlockCollision(ICollider collider)

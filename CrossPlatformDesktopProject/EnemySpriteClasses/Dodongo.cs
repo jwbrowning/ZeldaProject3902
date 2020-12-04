@@ -6,6 +6,7 @@ using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Sprint0
 {
@@ -25,9 +26,14 @@ namespace Sprint0
         int directionCode = 0; //keeps track of which direction sprite should move. 0 is up, 1 is down, 2 is left, 3 is right.
         int patrolPhase = 1;
         int patrolFrame = 1;
+        int ateBombFrames = 1;
+        int tileFrame = 1;
         private IPlayer player;
         private Game1 game;
-        private int health = 6;
+        private int health = 3;
+        private int previousHealth = 3;
+        public bool ateBomb;
+        Random rand = new Random();
 
         private Vector2 size = new Vector2(60, 60);
         public Vector2 Position
@@ -109,8 +115,27 @@ namespace Sprint0
             float playerPositionX = position.X;
             float playerPositionY = position.Y;
 
+
+            if (tileFrame == 1)
+            {
+                directionCode = rand.Next(4);
+            }
+
+            if(health < previousHealth)
+            {
+                ateBomb = true;
+                ateBombFrames++;
+                if(ateBombFrames > 60)
+                {
+                    ateBombFrames = 1;
+                    ateBomb = false;
+                    previousHealth = health;
+                }
+            }
+
             animationFrame++;
             patrolFrame++;
+            tileFrame++;
 
             if (animationFrame == 20)
                 animationFrame = 1;
@@ -118,8 +143,11 @@ namespace Sprint0
             if (patrolFrame == 200)
                 patrolFrame = 1;
 
+            if (tileFrame == 128)
+                tileFrame = 1;
 
-            if (patrolPhase == 1) //default phase of enemies, is changed after the enemy "sees" link 
+
+           /* if (patrolPhase == 1) //default phase of enemies, is changed after the enemy "sees" link 
             {
                 if (patrolFrame <= 100)
                 {
@@ -162,23 +190,23 @@ namespace Sprint0
                         directionCode = 3;
                     }
                 }
-            }
+            }*/
 
-            if (directionCode == 0)
+            if (directionCode == 0 && ateBomb == false)
             {
-                spritePositionY = spritePositionY - 2;
+                spritePositionY = spritePositionY - 1;
             }
-            else if (directionCode == 1)
+            else if (directionCode == 1 && ateBomb == false)
             {
-                spritePositionY = spritePositionY + 2;
+                spritePositionY = spritePositionY + 1;
             }
-            else if (directionCode == 2)
+            else if (directionCode == 2 && ateBomb == false)
             {
-                spritePositionX = spritePositionX - 2;
+                spritePositionX = spritePositionX - 1;
             }
-            else if (directionCode == 3)
+            else if (directionCode == 3 && ateBomb == false)
             {
-                spritePositionX = spritePositionX + 2;
+                spritePositionX = spritePositionX + 1;
             }
         }
 
@@ -197,7 +225,7 @@ namespace Sprint0
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
 
-            if (directionCode == 3)
+            if (directionCode == 3 && ateBomb == false)
             {
                 if (animationFrame >= 1 && animationFrame < 10)
                 {
@@ -215,7 +243,7 @@ namespace Sprint0
                     destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 120, 60);
                 }
             }
-            else if (directionCode == 0)
+            else if (directionCode == 0 && ateBomb == false)
             {
                 if (animationFrame >= 1 && animationFrame < 10)
                 {
@@ -233,7 +261,7 @@ namespace Sprint0
                     destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 60, 60);
                 }
             }
-            else if (directionCode == 2)
+            else if (directionCode == 2 && ateBomb == false)
             {
                 if (animationFrame >= 1 && animationFrame < 10)
                 {
@@ -251,7 +279,7 @@ namespace Sprint0
                     destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 120, 60);
                 }
             }
-            else if (directionCode == 1)
+            else if (directionCode == 1 && ateBomb == false)
             {
                 if (animationFrame >= 1 && animationFrame < 10)
                 {
@@ -268,6 +296,26 @@ namespace Sprint0
                     sourceRectangle = new Rectangle(381, 270, 16, 16);
                     destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 60, 60);
                 }
+            }
+            else if (directionCode == 3 && ateBomb == true)
+            {
+                    sourceRectangle = new Rectangle(135, 58, 32, 16);
+                    destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 120, 60);
+            }
+            else if (directionCode == 0 && ateBomb == true)
+            {
+                    sourceRectangle = new Rectangle(52, 58, 16, 16);
+                    destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 60, 60);
+            }
+            else if (directionCode == 2 && ateBomb == true)
+            {
+                    sourceRectangle = new Rectangle(231, 270, 32, 16);
+                    destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 120, 60);
+            }
+            else if (directionCode == 1 && ateBomb == true)
+            {
+                    sourceRectangle = new Rectangle(18, 58, 16, 16);
+                    destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 60, 60);
             }
             else
             {

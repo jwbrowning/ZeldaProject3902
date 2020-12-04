@@ -304,6 +304,10 @@ namespace CrossPlatformDesktopProject.RoomManagement
             {
                 createdEnemy = (new Aquamentus(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
             }
+            else if ((string)enemy.Element("ObjectName") == "Dodongo")
+            {
+                createdEnemy = (new Dodongo(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
+            }
             else if ((string)enemy.Element("ObjectName") == "Flame")
             {
                 createdEnemy = (new Flame(mygame, new Vector2(x * XSCALE + XOFFSET, y * YSCALE + YOFFSET)));
