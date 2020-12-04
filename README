@@ -41,30 +41,23 @@ O - Disables party lighting
 
 Known Issues and Roadmap
 
-We decided not to implement moveable blocks, but might in the future.
-Bug: Keys still spawn in the same room after you collect it then leave and return. We noticed this pretty late and will fix it before the next sprint. The same thing applies to enemies that drop a key, and keys that spawn when all enemies are killed
-Sometimes the game over audio will play to completion, even after you reset the game.
+We decided not to implement moveable blocks
+Bugs: Sometimes the game over audio will play to completion, even after you reset the game.
 If you change rooms with the mouse and end up inside a block, Link vanishes and you'll need to reset the game with R.
 
 Code Analysis
 
 Sprint Reflection
-As a team we did a better job being more on top of the work this sprint. However, we are still waiting until the last few days to get a lot of the work
-done, but it is understandable with everyone having busy schedules. On the contrary we did a better job of communicating during the sprint and giving 
-updates on what work we had done in comparison to sprint 3. Here are the time estimated vs. time worked.
-Heads Up Display   5hrs - 5hrs
-Resetting level   2hrs - 2hrs
-Doors   2hrs - 6hrs 
-Scrolling Transition    3hrs - 3hrs
-Game State Transitions    8hr - 4hrs 
-Sounds    3hrs - 4hrs
-Enemy Pathing    2hrs - 4hrs
-Game Walls    1hrs - 3 hrs
-In conclusion I feel like we did a better job overall organizing and getting work done this sprint.
-Most things for this sprint took about as long as we expected. 
-The Game State Transitionts were a lot simpler than we had first thought, originally we wanted two people to work on them but we ended up just having one person, and it took half the time expected.
-The Doors and Walls turned out to be more complicated than we thought, we hadn't considered all the different functionalities for doors like bombing, unlocking, and opening closed doors.
-Overall it felt like we were more prepared for work this sprint, however we still had quite a bit to do the weekend before the due date.
+We did a better job at getting work done this sprint but with break and finals approaching people have limited availability making it harder to meet up and coordinate then other sprints. Overall we were able to achieve most of what we wanted and are proud of how the game has progressed and turned out.
+Lights: 3 hours -> 4 hours
+Reverse Time: 2 hours -> 3 hours
+Cheat Codes: 2 hours -> 4 hours
+Updated AI: 3 hours -> 4 hours
+Bug Fixes: 1 hours –> 2 hours
+In conclusion I feel like we did a good job with this sprint a lot of work was done in advance before the due date and not that much was saved for the last minute. 
+Most things took about as long as we expected although we may have undersold it a bit. 
+Overall, it was a successful sprint and we were able to achieve most of what we wanted.
+better job overall organizing and getting work done this sprint.
 
 
 
