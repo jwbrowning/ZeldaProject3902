@@ -61,6 +61,11 @@ namespace CrossPlatformDesktopProject.Environment
 
         }
 
+        public static void ResetBombedDoors()
+        {
+            isBombed.Clear();
+        }
+
         public void updateIsBombed()
         {
             isBombed[currentRoom] = true;

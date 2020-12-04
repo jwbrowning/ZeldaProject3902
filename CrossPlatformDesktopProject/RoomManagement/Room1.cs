@@ -25,7 +25,7 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		private Texture2D floorBaseWithWalls;
 		public Vector2 Size { get; set; }
 		public Vector2 Destination { get; set; }
-		private string CurrentRoom;
+		public string CurrentRoom;
 		public iRoom nextRoom { get; set; }
 		public Texture2D Background { get; set; }
 		private float roomTransitionSpeed = 16f;

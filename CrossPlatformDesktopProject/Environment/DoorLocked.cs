@@ -60,6 +60,11 @@ namespace CrossPlatformDesktopProject.Environment
 
         }
 
+        public static void ResetLockedfDoors()
+        {
+            isUnlocked.Clear();
+        }
+
         public void updateIsUnlocked()
         {
             isUnlocked[currentRoom + type] = true;

@@ -1,6 +1,8 @@
 ﻿using CrossPlatformDesktopProject.CollisionStuff.ColliderStuff;
 using CrossPlatformDesktopProject.Environment;
+using CrossPlatformDesktopProject.Items;
 using CrossPlatformDesktopProject.PlayerStuff;
+using CrossPlatformDesktopProject.RoomManagement;
 using CrossPlatformDesktopProject.SoundManagement;
 using Microsoft.Xna.Framework;
 using Sprint0;
@@ -132,6 +134,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
             {
                 game.player.ItemCounts[ItemType.Key]++;
                 SoundFactory.Instance.sfxHeartKeyPickup.Play();
+                LootManagement.lootAlreadyDropped.Add(((Room1)game.currentRoom).CurrentRoom);
             }
             else if (collider.GameObject is Map)
             {

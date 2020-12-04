@@ -7,6 +7,7 @@ using CrossPlatformDesktopProject.Environment;
 using CrossPlatformDesktopProject.GameStateStuff;
 using CrossPlatformDesktopProject.GameStateStuff.GameStateClasses;
 using CrossPlatformDesktopProject.HeadsUpDisplayStuff;
+using CrossPlatformDesktopProject.Items;
 using CrossPlatformDesktopProject.LightingStuff;
 using CrossPlatformDesktopProject.Notifications;
 using CrossPlatformDesktopProject.PlayerStuff;
@@ -75,6 +76,12 @@ namespace Sprint0
 		protected override void Initialize()
 		{
 			LoadContent();
+
+			DoorBombed.ResetBombedDoors();
+			DoorClosed.ResetClosedDoors();
+			DoorLocked.ResetLockedfDoors();
+			LootManagement.ResetLoot();
+
 			player = new Link(this);
 			player.Position = new Vector2(0, 160);
 			LinkSpriteFactory.Instance.player = player;

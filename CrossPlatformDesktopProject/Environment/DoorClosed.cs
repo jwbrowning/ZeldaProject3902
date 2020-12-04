@@ -68,6 +68,11 @@ namespace CrossPlatformDesktopProject.Environment
             }
         }
 
+        public static void ResetClosedDoors()
+        {
+            isClosed.Clear();
+        }
+
         public void Draw(SpriteBatch spriteBatch, Vector2 parentPos)
         {
             Rectangle sourceRectangle = new Rectangle(0, 0, 0, 0);

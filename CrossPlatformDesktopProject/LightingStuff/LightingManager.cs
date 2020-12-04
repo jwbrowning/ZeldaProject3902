@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CrossPlatformDesktopProject.LightingStuff
 {
@@ -20,6 +21,22 @@ namespace CrossPlatformDesktopProject.LightingStuff
             {
                 A = a;
                 B = b;
+            }
+            public override bool Equals(object obj)
+            {
+                if (obj is LineSegment)
+                {
+                    LineSegment ls = ((LineSegment)obj);
+                    return (ls.A == A && ls.B == B) || (ls.A == B && ls.B == A);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            public override int GetHashCode()
+            {
+                throw new NotImplementedException();
             }
         }
 
@@ -73,7 +90,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
 
         private Game1 game;
         private Vector2 prevPlayerPos;
-        private Vector2 blockSize = new Vector2(68, 68);
+        private Vector2 blockSize = new Vector2(64, 64);
         private List<RaycastPoint> visibleRegion;
         private Color shadowColor = new Color(0, 0, 0, .9f);
         private Color normalLightingColor = new Color(.15f, .15f, 0, .10f);
@@ -92,15 +109,18 @@ namespace CrossPlatformDesktopProject.LightingStuff
         private bool partyMode = false;
         private int partyTimer = 0;
 
-        public static object TextureUsage { get; private set; }
+        const bool displayRays = false;
+        const bool displayOutline = false;
 
         public LightingManager(Game1 game)
         {
+            //normalLightingColor = new Color(1, 1, 1, 0);
             this.game = game;
             prevPlayerPos = Vector2.Zero;
             DisablePartyMode();
             visibleRegion = VisibleRegion(game.player.Position + game.currentRoom.Position);
             //lightingTexture = game.Content.Load<Texture2D>("VisibilityRectangle2");
+            TurnOnLights();
         }
 
         public void TurnOnLights()
@@ -288,10 +308,18 @@ namespace CrossPlatformDesktopProject.LightingStuff
                 bottomLeft = new Vector2(block.Position.X + room.Position.X - blockSize.X / 2f, block.Position.Y + room.Position.Y + blockSize.Y / 2f);
                 topRight = new Vector2(block.Position.X + room.Position.X + blockSize.X / 2f, block.Position.Y + room.Position.Y - blockSize.Y / 2f);
                 bottomRight = new Vector2(block.Position.X + room.Position.X + blockSize.X / 2f, block.Position.Y + room.Position.Y + blockSize.Y / 2f);
-                lineSegments.Add(new LineSegment(topLeft, topRight));
-                lineSegments.Add(new LineSegment(topRight, bottomRight));
-                lineSegments.Add(new LineSegment(bottomRight, bottomLeft));
-                lineSegments.Add(new LineSegment(bottomLeft, topLeft));
+                LineSegment top = new LineSegment(topLeft, topRight);
+                LineSegment right = new LineSegment(topRight, bottomRight);
+                LineSegment bottom = new LineSegment(bottomRight, bottomLeft);
+                LineSegment left = new LineSegment(bottomLeft, topLeft);
+                if (Contains(lineSegments, top)) lineSegments.Remove(top);
+                else lineSegments.Add(top);
+                if (Contains(lineSegments, right)) lineSegments.Remove(right);
+                else lineSegments.Add(right);
+                if (Contains(lineSegments, bottom)) lineSegments.Remove(bottom);
+                else lineSegments.Add(bottom);
+                if (Contains(lineSegments, left)) lineSegments.Remove(left);
+                else lineSegments.Add(left);
             }
 
             return lineSegments;
@@ -331,13 +359,29 @@ namespace CrossPlatformDesktopProject.LightingStuff
                 bottomLeft = new Vector2(block.Position.X + room.Position.X - blockSize.X / 2f, block.Position.Y + room.Position.Y + blockSize.Y / 2f);
                 topRight = new Vector2(block.Position.X + room.Position.X + blockSize.X / 2f, block.Position.Y + room.Position.Y - blockSize.Y / 2f);
                 bottomRight = new Vector2(block.Position.X + room.Position.X + blockSize.X / 2f, block.Position.Y + room.Position.Y + blockSize.Y / 2f);
-                corners.Add(topLeft);
-                corners.Add(topRight);
-                corners.Add(bottomRight);
-                corners.Add(bottomLeft);
+                if(corners.Contains(topLeft)) corners.Remove(topLeft);
+                else corners.Add(topLeft);
+                if (corners.Contains(topRight)) corners.Remove(topRight);
+                else corners.Add(topRight);
+                if (corners.Contains(bottomRight)) corners.Remove(bottomRight);
+                else corners.Add(bottomRight);
+                if (corners.Contains(bottomLeft)) corners.Remove(bottomLeft);
+                else corners.Add(bottomLeft);
             }
 
             return corners;
+        }
+
+        private bool Contains(List<LineSegment> list, LineSegment ls)
+        {
+            foreach(LineSegment l in list)
+            {
+                if(ls.Equals(l))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void DrawDark(SpriteBatch spriteBatch)
@@ -452,21 +496,27 @@ namespace CrossPlatformDesktopProject.LightingStuff
             }
 
             // Show all rays and theyre closest collisions:
-            /*foreach (RaycastPoint rcp in region)
+            if(displayRays)
             {
-                Rectangle destinationRectangle = new Rectangle((int)rcp.Point.X - pixelSize / 2, (int)rcp.Point.Y - pixelSize / 2, pixelSize, pixelSize);
-                LineSegment lineSegment = new LineSegment(sourcePos, rcp.Point);
-                DrawLineSegment(lineSegment, spriteBatch);
-                //spriteBatch.Draw(game.rect, destinationRectangle, new Color(1f * region.IndexOf(rcp) / region.Count, 0, 1 - 1f * region.IndexOf(rcp) / region.Count));
-                spriteBatch.Draw(game.circle, destinationRectangle, new Color(.1f, .1f, 0, .05f));
-            }*/
+                foreach (RaycastPoint rcp in region)
+                {
+                    Rectangle destinationRectangle = new Rectangle((int)rcp.Point.X - pixelSize / 2, (int)rcp.Point.Y - pixelSize / 2, pixelSize, pixelSize);
+                    LineSegment lineSegment = new LineSegment(sourcePos, rcp.Point);
+                    DrawLineSegment(lineSegment, spriteBatch);
+                    //spriteBatch.Draw(game.rect, destinationRectangle, new Color(1f * region.IndexOf(rcp) / region.Count, 0, 1 - 1f * region.IndexOf(rcp) / region.Count));
+                    spriteBatch.Draw(game.circle, destinationRectangle, Color.Yellow);
+                }
+            }
 
             // Show outline of visible region:
-            /*List<LineSegment> regionSegments = RegionLineSegments(visibleRegion);
-            foreach (LineSegment lineSegment in regionSegments)
+            if(displayOutline)
             {
-                DrawLineSegment(lineSegment, spriteBatch);
-            }*/
+                List<LineSegment> regionSegments = RegionLineSegments(visibleRegion);
+                foreach (LineSegment lineSegment in regionSegments)
+                {
+                    DrawLineSegment(lineSegment, spriteBatch);
+                }
+            }
 
             spriteBatch.End();
 
@@ -488,7 +538,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
             Vector2 direction = lineSegment.B - lineSegment.A;
             direction.Normalize();
             float angle = (float)Math.Atan2(direction.Y, direction.X);
-            spriteBatch.Draw(game.rect, destination, source, new Color(.1f,.1f,0,.05f), angle, Vector2.Zero, SpriteEffects.None, 0);
+            spriteBatch.Draw(game.rect, destination, source, Color.Yellow, angle, Vector2.Zero, SpriteEffects.None, 0);
         }
 
         public bool InsideVisibleRegion(Vector2 point)

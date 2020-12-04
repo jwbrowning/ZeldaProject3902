@@ -2,6 +2,7 @@
 using CrossPlatformDesktopProject.RoomManagement;
 using CrossPlatformDesktopProject.SoundManagement;
 using System;
+using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.Items
 {
@@ -17,6 +18,8 @@ namespace CrossPlatformDesktopProject.Items
         int clockWindow = rupeeChance + clockChance;
         int bombWindow = clockChance + bombChance;
 
+        public static List<string> lootAlreadyDropped = new List<string>();
+
         private static LootManagement instance = new LootManagement();
         public static LootManagement Instance
         {
@@ -29,6 +32,11 @@ namespace CrossPlatformDesktopProject.Items
         public LootManagement()
         {
 
+        }
+
+        public static void ResetLoot()
+        {
+            lootAlreadyDropped.Clear();
         }
 
         void rollRandomLoot(iRoom room, IEnemy enemy)
@@ -66,7 +74,10 @@ namespace CrossPlatformDesktopProject.Items
             {
                 if (enemy.carriedLoot == "Key")
                 {
-                    room.Items.Add(new Key(enemy.Position));
+                    if (!lootAlreadyDropped.Contains(((Room1)room).CurrentRoom))
+                    {
+                        room.Items.Add(new Key(enemy.Position));
+                    }
                 }
             }
         }
@@ -78,8 +89,11 @@ namespace CrossPlatformDesktopProject.Items
             {
                 if (room.HiddenItems.Count > 0)
                 {
-                    SoundFactory.Instance.sfxHiddenKeyAppears.Play();
-                    room.Items.AddRange(room.HiddenItems);
+                    if (!lootAlreadyDropped.Contains(((Room1)room).CurrentRoom))
+                    {
+                        SoundFactory.Instance.sfxHiddenKeyAppears.Play();
+                        room.Items.AddRange(room.HiddenItems);
+                    }
                 }
             }
         }
