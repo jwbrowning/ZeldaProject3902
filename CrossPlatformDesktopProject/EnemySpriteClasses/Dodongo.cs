@@ -30,8 +30,8 @@ namespace Sprint0
         int tileFrame = 1;
         private IPlayer player;
         private Game1 game;
-        private int health = 3;
-        private int previousHealth = 3;
+        private int health = 2;
+        private int previousHealth = 2;
         public bool ateBomb;
         Random rand = new Random();
 

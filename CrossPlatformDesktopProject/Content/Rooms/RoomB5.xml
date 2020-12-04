@@ -1,0 +1,96 @@
+﻿<XnaContent>
+	<!-- Room: B5 -->
+	<!-- Object coordinates are given in tiles -->
+	<Asset Type="Room">
+		<Door>
+			<DoorPosition>Right</DoorPosition>
+			<DoorType>Open</DoorType>
+			<DoorDestination>RoomB2</DoorDestination>
+		</Door>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>HeartContainer</ObjectName>
+			<Location>6 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Rupee</ObjectName>
+			<Location>6 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Rupee</ObjectName>
+			<Location>6 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Rupee</ObjectName>
+			<Location>5 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Rupee</ObjectName>
+			<Location>5 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Rupee</ObjectName>
+			<Location>5 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Rupee</ObjectName>
+			<Location>7 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Rupee</ObjectName>
+			<Location>7 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Item</ObjectType>
+			<ObjectName>Rupee</ObjectName>
+			<Location>7 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Block</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>7 2</Location>
+		</Item>
+		<Item>
+			<ObjectType>Block</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>6 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Block</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>8 3</Location>
+		</Item>
+		<Item>
+			<ObjectType>Block</ObjectType>
+			<ObjectName>BlockMovable</ObjectName>
+			<Location>5 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Block</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>9 4</Location>
+		</Item>
+		<Item>
+			<ObjectType>Block</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>6 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Block</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>8 5</Location>
+		</Item>
+		<Item>
+			<ObjectType>Block</ObjectType>
+			<ObjectName>BlockStandard</ObjectName>
+			<Location>7 6</Location>
+		</Item>
+	</Asset>
+</XnaContent>

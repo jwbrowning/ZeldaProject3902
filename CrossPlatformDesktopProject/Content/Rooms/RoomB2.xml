@@ -1,26 +1,26 @@
-<XnaContent>
-	<!-- Room: B1 -->
+﻿<XnaContent>
+	<!-- Room: B2 -->
 	<!-- Object coordinates are given in tiles -->
 	<Asset Type="Room">
-    <Door>
-      <DoorPosition>Right</DoorPosition>
-      <DoorType>Locked</DoorType>
-      <DoorDestination>RoomC1</DoorDestination>
-    </Door>
-    <Door>
-      <DoorPosition>Left</DoorPosition>
-      <DoorType>Open</DoorType>
-      <DoorDestination>RoomB2</DoorDestination>
-    </Door>
+		<Door>
+			<DoorPosition>Right</DoorPosition>
+			<DoorType>Open</DoorType>
+			<DoorDestination>RoomB1</DoorDestination>
+		</Door>
+		<Door>
+			<DoorPosition>Left</DoorPosition>
+			<DoorType>Locked</DoorType>
+			<DoorDestination>RoomB5</DoorDestination>
+		</Door>
 		<Item>
 			<ObjectType>Enemy</ObjectType>
-			<ObjectName>BladeTrap</ObjectName>
-			<Location>1 1</Location>
+			<ObjectName>Dodongo</ObjectName>
+			<Location>7 4</Location>
 		</Item>
 		<Item>
 			<ObjectType>Enemy</ObjectType>
-			<ObjectName>BladeTrap</ObjectName>
-			<Location>12 1</Location>
+			<ObjectName>Dodongo</ObjectName>
+			<Location>4 4</Location>
 		</Item>
 		<Item>
 			<ObjectType>Block</ObjectType>
@@ -43,12 +43,6 @@
 			<Location>5 4</Location>
 		</Item>
 		<Item>
-			<ObjectType>Environment</ObjectType>
-			<ObjectName>Stairs</ObjectName>
-			<Location>7 4</Location>
-			<!-- Leads to RoomBow -->
-		</Item>
-		<Item>
 			<ObjectType>Block</ObjectType>
 			<ObjectName>BlockStandard</ObjectName>
 			<Location>9 4</Location>
@@ -69,14 +63,9 @@
 			<Location>7 6</Location>
 		</Item>
 		<Item>
-			<ObjectType>Enemy</ObjectType>
-			<ObjectName>BladeTrap</ObjectName>
-			<Location>1 7</Location>
-		</Item>
-		<Item>
-			<ObjectType>Enemy</ObjectType>
-			<ObjectName>BladeTrap</ObjectName>
-			<Location>12 7</Location>
+			<ObjectType>HiddenItem</ObjectType>
+			<ObjectName>Key</ObjectName>
+			<Location>6 4</Location>
 		</Item>
 	</Asset>
 </XnaContent>
