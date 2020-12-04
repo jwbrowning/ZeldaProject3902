@@ -57,6 +57,7 @@
     <Compile Include="CollisionStuff\CollisionHandlerStuff\UsableItemCollisionHandler.cs" />
     <Compile Include="CollisionStuff\CollisionHandlerStuff\WallCollisionHandler.cs" />
     <Compile Include="CollisionStuff\ICollidable.cs" />
+    <Compile Include="CommandStuff\CommandCheatCodeHealth.cs" />
     <Compile Include="CommandStuff\CommandCloseInventory.cs" />
     <Compile Include="CommandStuff\CommandDamage.cs" />
     <Compile Include="CommandStuff\CommandDisablePartyLights.cs" />
