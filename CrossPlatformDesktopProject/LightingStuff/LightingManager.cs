@@ -103,7 +103,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
         private Vector2 swordBeamPos = Vector2.Zero;
         private bool litBySwordBeam = false;
         private bool litByPlayer = false;
-        private int pixelSize = 16;
+        private int pixelSize = 8;
         private bool partyMode = false;
         private int partyTimer = 0;
 

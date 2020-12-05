@@ -117,7 +117,7 @@ namespace Sprint0
 
             notificationsQueue = new Queue<INotification>();
 
-            //SoundFactory.Instance.musicDungeonLoop.Play();
+            SoundFactory.Instance.musicDungeonLoop.Play();
         }
 
         protected override void LoadContent()
