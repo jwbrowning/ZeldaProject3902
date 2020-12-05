@@ -1,0 +1,16 @@
+﻿Author: Matthew Landwehr
+Date: 2020 DEC 04
+Sprint: 5
+File under review: LightingManager.cs
+Author of file: Johnathan Browning
+Comments: Some methods are really long, like DrawVisibleRegion() at around 
+	74 lines. It may be better to split it up into a couple of methods, 
+	just for readability. It looks like most methods only take 1 or 2 arguments,
+	which is good. 
+Hypothetical change: Currently, the only two things that emit light are Link
+	and the sword beam. If we wanted more light emitters like torches or 
+	special items, they'd have to be hard coded in to the lighting manager.
+	It might be better to edit items and environmental objects to have some
+	kind of "emitsLight" boolean field, or a "lightingRadius" float field, where 
+	0 represents a non-emitting object. Then the manager could use this data for
+	its calculations instead of relying on hardcoded information.

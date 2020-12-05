@@ -1,0 +1,12 @@
+﻿Author: Matthew Landwehr
+Date: 2020 DEC 04
+Sprint: 5
+File under review: LightingManager.cs
+Author of file: Johnathan Browning
+Time to complete: 20 minutes
+Comments: While most of the methods are understandable, I think some comments
+	could help the reader to understand some things, e.g. the purposes of Ray
+	vs RaycastPoint. Some method names could be changed, such as changing
+	VisibleRegion() to GetVisibleRegion(), or Intersection() to FindIntersection().
+	Maybe some minor organizational changes as well, so that it's easier to see 
+	where certain methods are used.

@@ -92,8 +92,8 @@
     <Compile Include="CommandStuff\CommandUseItem3.cs" />
     <Compile Include="CommandStuff\CommandUseItemN.cs" />
     <Compile Include="CommandStuff\CommandUseItemB.cs" />
-	<Compile Include="CommandStuff\CommandUnlimitedWeapons.cs" />  
-	<Compile Include="CommandStuff\CommandKillAllEnemies.cs" />    
+    <Compile Include="CommandStuff\CommandUnlimitedWeapons.cs" />
+    <Compile Include="CommandStuff\CommandKillAllEnemies.cs" />
     <Compile Include="ControllerStuff\ControllerMouse.cs" />
     <Compile Include="ControllerStuff\GameOverKeyboardController.cs" />
     <Compile Include="ControllerStuff\InventoryKeyboardController.cs" />
@@ -298,6 +298,8 @@
     <Content Include="Code Reviews\S3ReviewJohnathanReadability.txt" />
     <Content Include="Code Reviews\S4ReviewJohnathanQuality.txt" />
     <Content Include="Code Reviews\S4ReviewJohnathanReadability.txt" />
+    <Content Include="Code Reviews\S5ReviewJohnathanQuality.txt" />
+    <Content Include="Code Reviews\S5ReviewJohnathanReadability.txt" />
     <Content Include="Content\Rooms\RoomA3.xml" />
     <Content Include="Content\Rooms\RoomB1.xml" />
     <Content Include="Content\Rooms\RoomB3.xml" />
