@@ -1,9 +1,0 @@
-﻿Author: Matthew Landwehr
-Date: 16 November 2020
-Sprint: 4
-File under review: InventorInfo.cs
-Author of file: Johnathan Browning
-Comments: There's a couple magic numbers, like in line 145 or 147.
-Hypothetical change: It looks like we'd be able to add items pretty easily, up to 8
-	of them. Past that, we'd have to adjust the image itself. The map seems
-	pretty adjustable too, if we have dungeons more than 6 rooms wide.

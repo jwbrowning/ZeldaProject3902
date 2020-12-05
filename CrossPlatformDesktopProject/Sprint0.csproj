@@ -291,13 +291,6 @@
     <None Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Code Reviews\S4ReviewAbhiQuality.txt" />
-    <Content Include="Code Reviews\S4ReviewAbhiReadability.txt" />
-    <Content Include="Code Reviews\S3ReviewAbhiReadability.txt" />
-    <Content Include="Code Reviews\S3ReviewJohnathanQuality.txt" />
-    <Content Include="Code Reviews\S3ReviewJohnathanReadability.txt" />
-    <Content Include="Code Reviews\S4ReviewJohnathanQuality.txt" />
-    <Content Include="Code Reviews\S4ReviewJohnathanReadability.txt" />
     <Content Include="Code Reviews\S5ReviewJohnathanQuality.txt" />
     <Content Include="Code Reviews\S5ReviewJohnathanReadability.txt" />
     <Content Include="Content\Rooms\RoomA3.xml" />
