@@ -34,6 +34,8 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
             if (game.reversingTime)
             {
                 timeManager.ReverseTime();
+                game.lightingManager.Update();
+                game.player.ActiveItems.Clear();
             }
             else
             {
