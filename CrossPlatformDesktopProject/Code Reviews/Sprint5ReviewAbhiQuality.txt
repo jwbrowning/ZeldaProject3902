@@ -1,0 +1,14 @@
+Author of the code review: Hemil Amin
+Date of the code review: Monday December 4, 2020
+Sprint number: Sprint 5
+Name of the .cs file being reviewed: Dodongo.cs
+Author of the .cs file being reviewed: Abhi Malisetty
+
+Specific comments on code quality
+	- Strong/high cohesion, loose coupling
+
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change
+	⁃	I don’t see any change currently that couldn’t be implemented with the given code.
+		- could remove some of the commmented out part of the code extra storage waste
+	⁃	Over all the code is of good quality, it does what it needs to do
+	- Could try a diffrent approach to make the methodology a little bit simpler other than that great job
