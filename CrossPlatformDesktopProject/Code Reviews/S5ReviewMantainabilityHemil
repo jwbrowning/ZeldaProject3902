@@ -1,0 +1,9 @@
+Code review 2
+
+* Author of the code review: Aidan Haskett 
+* Date of the code review:12/4/2020
+* Sprint number:5
+* Name of the .cs file being reviewed:normalController
+* Author of the .cs file being reviewed:Hemil Amin
+* Specific comments on code quality: I thought this code was all of very high quality
+* A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change: I would just change some of the methods to make it a little more readable 
