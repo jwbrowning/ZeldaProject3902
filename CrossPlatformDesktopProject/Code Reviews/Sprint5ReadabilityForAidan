@@ -1,0 +1,8 @@
+Code Readability Review
+12/4/20
+Johnathan Browning
+Sprint 3
+DoorLocked.cs
+Aidan Haskett
+10
+Code seems well written and easy to understand. The constructor has parameters with 1 letter names, however its pretty clear what they stand for. Same as other door classes, the only problem might be when you're creating an instance of the class from elsewhere, you might forget what those letters stand for and need to check the class to find out.

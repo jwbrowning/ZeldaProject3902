@@ -1,0 +1,8 @@
+Code Maintainability Review
+12/4/20
+Johnathan Browning
+Sprint 3
+DoorLocked.cs
+Aidan Haskett
+10
+Code quality seems good, it makes use of a static Dictionary with strings as keys and bools as values to keep track of which doors have been unlocked, so that way they stay unlocked. It seems like just a static List<string> could accomplish the same goal, and it is simpler. Instead of keeping track of bools attached to each string, the list could just contain the names of the doors that have been unlocked.
