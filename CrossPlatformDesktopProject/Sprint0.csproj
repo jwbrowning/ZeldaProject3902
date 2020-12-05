@@ -302,8 +302,10 @@
     <Content Include="Code Reviews\S5ReviewJohnathanReadability.txt" />
     <Content Include="Content\Rooms\RoomA3.xml" />
     <Content Include="Content\Rooms\RoomB1.xml" />
+    <Content Include="Content\Rooms\RoomB2.xml" />
     <Content Include="Content\Rooms\RoomB3.xml" />
     <Content Include="Content\Rooms\RoomB4.xml" />
+    <Content Include="Content\Rooms\RoomB5.xml" />
     <Content Include="Content\Rooms\RoomB6.xml" />
     <Content Include="Content\Rooms\RoomBow.xml" />
     <Content Include="Content\Rooms\RoomC1.xml" />

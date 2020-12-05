@@ -56,7 +56,7 @@ namespace Sprint0
 		public iRoom currentRoom;
 		private iRoom savedRoom;
 		public int roomIndex = 0;
-		public string[] rooms = { "RoomDEBUG", "RoomBOW", "RoomA3", "RoomB1", "RoomB3", "RoomB4", "RoomB6", "RoomC1", "RoomC2", "RoomC3", "RoomC4", "RoomC5", "RoomC6", "RoomD3", "RoomD4", "RoomD6", "RoomE2", "RoomE3", "RoomF2" };
+		public string[] rooms = { "RoomDEBUG", "RoomBOW", "RoomA3", "RoomB1", "RoomB2", "RoomB3", "RoomB4", "RoomB5", "RoomB6", "RoomC1", "RoomC2", "RoomC3", "RoomC4", "RoomC5", "RoomC6", "RoomD3", "RoomD4", "RoomD6", "RoomE2", "RoomE3", "RoomF2" };
 		bool isGameSaved = false;
 		Queue<INotification> notificationsQueue;
 
