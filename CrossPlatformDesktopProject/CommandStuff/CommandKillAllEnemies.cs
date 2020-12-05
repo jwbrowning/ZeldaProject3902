@@ -14,7 +14,7 @@ namespace Sprint0
         public void Execute()
         {
             //myGame.currentRoom.Enemies.Clear();
-            foreach(IEnemy enemy in myGame.currentRoom.Enemies)
+            foreach (IEnemy enemy in myGame.currentRoom.Enemies)
             {
                 enemy.Die();
             }

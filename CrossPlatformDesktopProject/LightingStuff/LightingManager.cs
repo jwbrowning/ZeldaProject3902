@@ -2,12 +2,10 @@
 using CrossPlatformDesktopProject.RoomManagement;
 using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CrossPlatformDesktopProject.LightingStuff
 {
@@ -109,6 +107,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
         private bool partyMode = false;
         private int partyTimer = 0;
 
+        //Used for debugging
         const bool displayRays = false;
         const bool displayOutline = false;
 
@@ -148,7 +147,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
 
         public void Update()
         {
-            if(partyMode)
+            if (partyMode)
             {
                 int stage = partyTimer / 25;
                 float c = .6f;
@@ -156,10 +155,10 @@ namespace CrossPlatformDesktopProject.LightingStuff
                 if (stage == 0)
                 {
                     lightingColor = new Color(c, 0, 0, a);
-                } 
+                }
                 else if (stage == 1)
                 {
-                    lightingColor = new Color(c, .5f*c, 0, a);
+                    lightingColor = new Color(c, .5f * c, 0, a);
                 }
                 else if (stage == 2)
                 {
@@ -170,7 +169,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
                     lightingColor = new Color(0, 0, c, a);
                 }
                 partyTimer++;
-                if(partyTimer >= 100)
+                if (partyTimer >= 100)
                 {
                     partyTimer = 0;
                 }
@@ -252,7 +251,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
             if (lineSegmentDirection.X == 0)
             {
                 intersection = new Vector2(lineSegment.A.X, raySlope * (lineSegment.A.X - ray.Point.X) + ray.Point.Y);
-            } 
+            }
             else
             {
                 intersection = new Vector2((lineSegment.A.Y - ray.Point.Y) / raySlope + ray.Point.X, lineSegment.A.Y);
@@ -262,7 +261,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
             Vector2 intersectionDirection = intersection - ray.Point;
             xMult = intersectionDirection.X / ray.Direction.X;
             yMult = intersectionDirection.Y / ray.Direction.Y;
-            if (intersection.X >= Math.Min(lineSegment.A.X,lineSegment.B.X) && intersection.X <= Math.Max(lineSegment.A.X, lineSegment.B.X)
+            if (intersection.X >= Math.Min(lineSegment.A.X, lineSegment.B.X) && intersection.X <= Math.Max(lineSegment.A.X, lineSegment.B.X)
                 && intersection.Y >= Math.Min(lineSegment.A.Y, lineSegment.B.Y) && intersection.Y <= Math.Max(lineSegment.A.Y, lineSegment.B.Y)
                 && xMult - yMult < .1f && xMult > 0 && yMult > 0)
             {
@@ -277,8 +276,8 @@ namespace CrossPlatformDesktopProject.LightingStuff
         private List<LineSegment> GetWallLineSegments()
         {
             List<LineSegment> lineSegments = GetWallLineSegmentsFromRoom(game.currentRoom);
-            
-            if(game.currentRoom.nextRoom != null)
+
+            if (game.currentRoom.nextRoom != null)
             {
                 //lineSegments.AddRange(GetWallLineSegmentsFromRoom(game.currentRoom.nextRoom));
             }
@@ -329,7 +328,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
         {
             List<Vector2> corners = GetWallCornersFromRoom(game.currentRoom);
 
-            if(game.currentRoom.nextRoom != null)
+            if (game.currentRoom.nextRoom != null)
             {
                 //corners.AddRange(GetWallCornersFromRoom(game.currentRoom.nextRoom));
             }
@@ -359,7 +358,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
                 bottomLeft = new Vector2(block.Position.X + room.Position.X - blockSize.X / 2f, block.Position.Y + room.Position.Y + blockSize.Y / 2f);
                 topRight = new Vector2(block.Position.X + room.Position.X + blockSize.X / 2f, block.Position.Y + room.Position.Y - blockSize.Y / 2f);
                 bottomRight = new Vector2(block.Position.X + room.Position.X + blockSize.X / 2f, block.Position.Y + room.Position.Y + blockSize.Y / 2f);
-                if(corners.Contains(topLeft)) corners.Remove(topLeft);
+                if (corners.Contains(topLeft)) corners.Remove(topLeft);
                 else corners.Add(topLeft);
                 if (corners.Contains(topRight)) corners.Remove(topRight);
                 else corners.Add(topRight);
@@ -374,9 +373,9 @@ namespace CrossPlatformDesktopProject.LightingStuff
 
         private bool Contains(List<LineSegment> list, LineSegment ls)
         {
-            foreach(LineSegment l in list)
+            foreach (LineSegment l in list)
             {
-                if(ls.Equals(l))
+                if (ls.Equals(l))
                 {
                     return true;
                 }
@@ -400,7 +399,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
                 }
             }
 
-            if(game.currentRoom.nextRoom != null)
+            if (game.currentRoom.nextRoom != null)
             {
                 startX = (int)(game.currentRoom.nextRoom.Position.X - game.currentRoom.nextRoom.Size.X / 2f);
                 startY = (int)(game.currentRoom.nextRoom.Position.Y - game.currentRoom.nextRoom.Size.Y / 2f);
@@ -454,7 +453,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
                             spriteBatch.Draw(game.rect, destinationRectangle, lightingColor);
                         }
                     }
-                    else if(litByPlayer && !litBySwordBeam)
+                    else if (litByPlayer && !litBySwordBeam)
                     {
                         if (Vector2.Distance(sourcePos, pixelPos) > visionRadius - shadowSmoothLength)
                         {
@@ -471,7 +470,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
                             spriteBatch.Draw(game.rect, destinationRectangle, lightingColor);
                         }
                     }
-                    else if(litByPlayer && litBySwordBeam)
+                    else if (litByPlayer && litBySwordBeam)
                     {
                         float playerLight = Vector2.Distance(sourcePos, pixelPos) - visionRadius + shadowSmoothLength;
                         float swordBeamLight = Vector2.Distance(swordBeamPos, pixelPos) - swordBeamLightRadius + swordBeamSmoothLength;
@@ -496,7 +495,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
             }
 
             // Show all rays and theyre closest collisions:
-            if(displayRays)
+            if (displayRays)
             {
                 foreach (RaycastPoint rcp in region)
                 {
@@ -509,7 +508,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
             }
 
             // Show outline of visible region:
-            if(displayOutline)
+            if (displayOutline)
             {
                 List<LineSegment> regionSegments = RegionLineSegments(visibleRegion);
                 foreach (LineSegment lineSegment in regionSegments)
@@ -597,7 +596,7 @@ namespace CrossPlatformDesktopProject.LightingStuff
 
         public static float StandardAngle(float angle)
         {
-            while(angle >= 2 * Math.PI)
+            while (angle >= 2 * Math.PI)
             {
                 angle -= 2 * (float)Math.PI;
             }

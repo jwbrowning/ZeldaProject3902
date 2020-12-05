@@ -6,8 +6,6 @@ using Sprint0;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.ReverseTimeStuff
 {
@@ -16,7 +14,7 @@ namespace CrossPlatformDesktopProject.ReverseTimeStuff
         private Game1 game;
         private List<TimeState> timeStates;
         const int maxStackSize = 1000;
-        
+
         public TimeManager(Game1 game)
         {
             this.game = game;
@@ -26,7 +24,7 @@ namespace CrossPlatformDesktopProject.ReverseTimeStuff
         public void Update()
         {
             timeStates.Add(new TimeState(game));
-            if(timeStates.Count > maxStackSize)
+            if (timeStates.Count > maxStackSize)
             {
                 timeStates.RemoveAt(0);
             }
@@ -41,7 +39,7 @@ namespace CrossPlatformDesktopProject.ReverseTimeStuff
             Dictionary<Type, int> typeCounts = new Dictionary<Type, int>();
             foreach (KeyValuePair<Type, Vector2> kvp in state.Positions)
             {
-                if(typeof(IPlayer).IsAssignableFrom(kvp.Key))
+                if (typeof(IPlayer).IsAssignableFrom(kvp.Key))
                 {
                     game.player.Position = kvp.Value;
                     game.player.State = (IPlayerState)Activator.CreateInstance(state.playerState, new object[] { game.player });

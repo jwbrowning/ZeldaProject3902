@@ -1,5 +1,4 @@
-﻿using CrossPlatformDesktopProject.LightingStuff;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 using System.Collections.Generic;
 

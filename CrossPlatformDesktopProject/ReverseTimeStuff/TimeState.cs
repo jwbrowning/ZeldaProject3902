@@ -1,14 +1,9 @@
 ﻿using CrossPlatformDesktopProject.EnemySpriteClasses;
-using CrossPlatformDesktopProject.Environment;
-using CrossPlatformDesktopProject.PlayerStuff;
 using CrossPlatformDesktopProject.UsableItems;
 using Microsoft.Xna.Framework;
 using Sprint0;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.ReverseTimeStuff
 {
@@ -26,7 +21,7 @@ namespace CrossPlatformDesktopProject.ReverseTimeStuff
             Positions.Add(new KeyValuePair<Type, Vector2>(game.player.GetType(), game.player.Position));
 
             // Save Enemies:
-            foreach(IEnemy enemy in game.currentRoom.Enemies)
+            foreach (IEnemy enemy in game.currentRoom.Enemies)
             {
                 Positions.Add(new KeyValuePair<Type, Vector2>(enemy.GetType(), enemy.Position));
             }

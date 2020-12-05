@@ -31,10 +31,10 @@ namespace CrossPlatformDesktopProject.GameStateStuff.GameStateClasses
             {
                 currentController.Update();
             }
-            if(game.reversingTime)
+            if (game.reversingTime)
             {
                 timeManager.ReverseTime();
-            } 
+            }
             else
             {
                 game.player.Update();

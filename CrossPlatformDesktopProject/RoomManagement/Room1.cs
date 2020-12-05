@@ -16,20 +16,20 @@ namespace CrossPlatformDesktopProject.RoomManagement
         private Game1 mygame;
         public List<IEnemy> Enemies { get; set; }
         public List<IBlock> Blocks { get; set; }
-		public List<IItem> Items { get; set; }
-		public List<INPC> NPCs { get; set; }
-		public List<IDoor> Doors {get; set; }
-		public List<IItem> HiddenItems { get; set; }
-		public List<IWall> Walls { get; set; }
-		public Vector2 Position { get; set; }
-		private Texture2D floorBaseWithWalls;
-		public Vector2 Size { get; set; }
-		public Vector2 Destination { get; set; }
-		public string CurrentRoom;
-		public iRoom nextRoom { get; set; }
-		public Texture2D Background { get; set; }
-		private float roomTransitionSpeed = 16f;
-		public string Dialogue { get; set; }
+        public List<IItem> Items { get; set; }
+        public List<INPC> NPCs { get; set; }
+        public List<IDoor> Doors { get; set; }
+        public List<IItem> HiddenItems { get; set; }
+        public List<IWall> Walls { get; set; }
+        public Vector2 Position { get; set; }
+        private Texture2D floorBaseWithWalls;
+        public Vector2 Size { get; set; }
+        public Vector2 Destination { get; set; }
+        public string CurrentRoom;
+        public iRoom nextRoom { get; set; }
+        public Texture2D Background { get; set; }
+        private float roomTransitionSpeed = 16f;
+        public string Dialogue { get; set; }
 
         /*XSCALE and YSCALE convert the object coordinates from tiles to pixels. 
 		In the original game each tile is 16 pixels wide, but upscaled by 4 for 
@@ -40,73 +40,73 @@ namespace CrossPlatformDesktopProject.RoomManagement
 		to account for the border walls and HUD. Even though the border wall
 		is only 64 pixels wide, 32 pixels are added to account for the sprite's
 		Draw methods using the center of the sprite, not the top left corner*/
-		int XOFFSET = 96;
-		int YOFFSET = 96;
-		public Room1(Game1 game, Vector2 position, Texture2D floorBaseWithWalls)
-		{
-			mygame = game;
-			Enemies = new List<IEnemy>();
-			Blocks = new List<IBlock>();
-			Items = new List<IItem>();
-			NPCs = new List<INPC>();
-			Doors = new List<IDoor>();
-			Walls = new List<IWall>();
-			HiddenItems = new List<IItem>();
-			Position = position;
-			this.floorBaseWithWalls = floorBaseWithWalls;
-			Size = new Vector2(1024, 704);
-			XOFFSET = 96 + (int)( - Size.X / 2f);
-			YOFFSET = 96 + (int)( - Size.Y / 2f);
-			Destination = position;
-			Background = floorBaseWithWalls;
-		}
-		
-		public void ChangeRoom(string nextRoomName, string direction)
-		{
-			Vector2 position = Vector2.Zero;
-			Vector2 comingUpLocation = new Vector2(6.5f * XSCALE + XOFFSET, 7 * YSCALE + YOFFSET);
-			Vector2 comingDownLocation = new Vector2(6.5f * XSCALE + XOFFSET, 1 * YSCALE + YOFFSET);
-			Vector2 comingRightLocation = new Vector2(1 * XSCALE + XOFFSET, 4f * YSCALE + YOFFSET);
-			Vector2 comingLeftLocation = new Vector2(12 * XSCALE + XOFFSET, 4f * YSCALE + YOFFSET);
-			Vector2 inToBasementLocation = new Vector2(2 * XSCALE + XOFFSET, 2 * YSCALE + YOFFSET);
-			Vector2 outOfBasementLocation = new Vector2(6 * XSCALE + XOFFSET, 4f * YSCALE + YOFFSET);
+        int XOFFSET = 96;
+        int YOFFSET = 96;
+        public Room1(Game1 game, Vector2 position, Texture2D floorBaseWithWalls)
+        {
+            mygame = game;
+            Enemies = new List<IEnemy>();
+            Blocks = new List<IBlock>();
+            Items = new List<IItem>();
+            NPCs = new List<INPC>();
+            Doors = new List<IDoor>();
+            Walls = new List<IWall>();
+            HiddenItems = new List<IItem>();
+            Position = position;
+            this.floorBaseWithWalls = floorBaseWithWalls;
+            Size = new Vector2(1024, 704);
+            XOFFSET = 96 + (int)(-Size.X / 2f);
+            YOFFSET = 96 + (int)(-Size.Y / 2f);
+            Destination = position;
+            Background = floorBaseWithWalls;
+        }
 
-			if (nextRoomName=="RoomBOW")
-			{
-				Destination = Position + new Vector2(0, -Size.Y);
-				position = Position + new Vector2(0, Size.Y);
-				mygame.player.Position = inToBasementLocation;
-			}
-			else if(CurrentRoom == "RoomBOW")
-			{
-				Destination = Position + new Vector2(0, Size.Y);
-				position = Position + new Vector2(0, -Size.Y);
-				mygame.player.Position = outOfBasementLocation;
-			}
-			else if (direction == "Up")
-			{
-				Destination = Position + new Vector2(0, Size.Y);
-				position = Position + new Vector2(0, -Size.Y);
-				mygame.player.Position = comingUpLocation;
-			}
-			else if(direction == "Down")
-			{
-				Destination = Position + new Vector2(0, -Size.Y);
-				position = Position + new Vector2(0, Size.Y);
-				mygame.player.Position = comingDownLocation;
-			}
-			else if (direction == "Right")
-			{
-				Destination = Position + new Vector2(-Size.X, 0);
-				position = Position + new Vector2(Size.X, 0);
-				mygame.player.Position = comingRightLocation;
-			}
-			else if (direction == "Left")
-			{
-				Destination = Position + new Vector2(Size.X, 0);
-				position = Position + new Vector2(-Size.X, 0);
-				mygame.player.Position = comingLeftLocation;
-			}
+        public void ChangeRoom(string nextRoomName, string direction)
+        {
+            Vector2 position = Vector2.Zero;
+            Vector2 comingUpLocation = new Vector2(6.5f * XSCALE + XOFFSET, 7 * YSCALE + YOFFSET);
+            Vector2 comingDownLocation = new Vector2(6.5f * XSCALE + XOFFSET, 1 * YSCALE + YOFFSET);
+            Vector2 comingRightLocation = new Vector2(1 * XSCALE + XOFFSET, 4f * YSCALE + YOFFSET);
+            Vector2 comingLeftLocation = new Vector2(12 * XSCALE + XOFFSET, 4f * YSCALE + YOFFSET);
+            Vector2 inToBasementLocation = new Vector2(2 * XSCALE + XOFFSET, 2 * YSCALE + YOFFSET);
+            Vector2 outOfBasementLocation = new Vector2(6 * XSCALE + XOFFSET, 4f * YSCALE + YOFFSET);
+
+            if (nextRoomName == "RoomBOW")
+            {
+                Destination = Position + new Vector2(0, -Size.Y);
+                position = Position + new Vector2(0, Size.Y);
+                mygame.player.Position = inToBasementLocation;
+            }
+            else if (CurrentRoom == "RoomBOW")
+            {
+                Destination = Position + new Vector2(0, Size.Y);
+                position = Position + new Vector2(0, -Size.Y);
+                mygame.player.Position = outOfBasementLocation;
+            }
+            else if (direction == "Up")
+            {
+                Destination = Position + new Vector2(0, Size.Y);
+                position = Position + new Vector2(0, -Size.Y);
+                mygame.player.Position = comingUpLocation;
+            }
+            else if (direction == "Down")
+            {
+                Destination = Position + new Vector2(0, -Size.Y);
+                position = Position + new Vector2(0, Size.Y);
+                mygame.player.Position = comingDownLocation;
+            }
+            else if (direction == "Right")
+            {
+                Destination = Position + new Vector2(-Size.X, 0);
+                position = Position + new Vector2(Size.X, 0);
+                mygame.player.Position = comingRightLocation;
+            }
+            else if (direction == "Left")
+            {
+                Destination = Position + new Vector2(Size.X, 0);
+                position = Position + new Vector2(-Size.X, 0);
+                mygame.player.Position = comingLeftLocation;
+            }
             nextRoom = new Room1(mygame, position, floorBaseWithWalls)
             {
                 Destination = Position
@@ -562,12 +562,12 @@ namespace CrossPlatformDesktopProject.RoomManagement
             }
         }
 
-		public void DrawBackground(SpriteBatch spriteBatch)
-		{
-			spriteBatch.Begin();
-			spriteBatch.Draw(Background, new Rectangle((int)(Position.X - Size.X / 2f), (int)(Position.Y - Size.Y / 2f), (int)Size.X, (int)Size.Y), Color.White);
-			spriteBatch.End();
-		}
+        public void DrawBackground(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Begin();
+            spriteBatch.Draw(Background, new Rectangle((int)(Position.X - Size.X / 2f), (int)(Position.Y - Size.Y / 2f), (int)Size.X, (int)Size.Y), Color.White);
+            spriteBatch.End();
+        }
 
         public void DrawBlocks(SpriteBatch spriteBatch)
         {
@@ -577,38 +577,38 @@ namespace CrossPlatformDesktopProject.RoomManagement
             }
         }
 
-		public void DrawNPCS(SpriteBatch spriteBatch)
-		{
-			foreach (INPC npc in NPCs)
-			{
-				if (mygame.lightingManager.InsideVisibleRegion(npc.Position + Position))
-				{
-					npc.Draw(spriteBatch, Position);
-				}
-			}
-		}
+        public void DrawNPCS(SpriteBatch spriteBatch)
+        {
+            foreach (INPC npc in NPCs)
+            {
+                if (mygame.lightingManager.InsideVisibleRegion(npc.Position + Position))
+                {
+                    npc.Draw(spriteBatch, Position);
+                }
+            }
+        }
 
-		public void DrawEnemies(SpriteBatch spriteBatch)
-		{
-			foreach (IEnemy enemy in Enemies)
-			{
-				if(mygame.lightingManager.InsideVisibleRegion(enemy.Position + Position))
-				{
-					enemy.Draw(spriteBatch, Position);
-				}
-			}
-		}
+        public void DrawEnemies(SpriteBatch spriteBatch)
+        {
+            foreach (IEnemy enemy in Enemies)
+            {
+                if (mygame.lightingManager.InsideVisibleRegion(enemy.Position + Position))
+                {
+                    enemy.Draw(spriteBatch, Position);
+                }
+            }
+        }
 
-		public void DrawItems(SpriteBatch spriteBatch)
-		{
-			foreach (IItem item in Items)
-			{
-				if (mygame.lightingManager.InsideVisibleRegion(item.Position + Position))
-				{
-					item.Draw(spriteBatch, Position);
-				}
-			}
-		}
+        public void DrawItems(SpriteBatch spriteBatch)
+        {
+            foreach (IItem item in Items)
+            {
+                if (mygame.lightingManager.InsideVisibleRegion(item.Position + Position))
+                {
+                    item.Draw(spriteBatch, Position);
+                }
+            }
+        }
 
         public void DrawDoors(SpriteBatch spriteBatch)
         {
@@ -628,10 +628,10 @@ namespace CrossPlatformDesktopProject.RoomManagement
 
         public void DrawDialogue(SpriteBatch spriteBatch)
         {
-			spriteBatch.Begin();
-			spriteBatch.DrawString(mygame.font, Dialogue, new Vector2(Size.X/3,Size.Y/2), Color.White);
-			spriteBatch.End();
-		}
+            spriteBatch.Begin();
+            spriteBatch.DrawString(mygame.font, Dialogue, new Vector2(Size.X / 3, Size.Y / 2), Color.White);
+            spriteBatch.End();
+        }
 
     }
 }

@@ -77,7 +77,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
 
         public void HandleUsableItemCollision(ICollider collider)
         {
-            if(enemy is Dodongo)
+            if (enemy is Dodongo)
             {
                 if (collider.GameObject is UsableItems.UsableBomb)
                 {
@@ -95,7 +95,7 @@ namespace CrossPlatformDesktopProject.CollisionStuff.CollisionHandlerStuff
         public void HandleSwordCollision(ICollider collider)
         {
             if (enemy is Dodongo) { }
-            else if(game.currentRoom.Enemies.Contains(enemy)) enemy.TakeDamage();
+            else if (game.currentRoom.Enemies.Contains(enemy)) enemy.TakeDamage();
         }
 
         public void HandleDoorCollision(ICollider collider)

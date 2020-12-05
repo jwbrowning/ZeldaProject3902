@@ -121,11 +121,11 @@ namespace Sprint0
                 directionCode = rand.Next(4);
             }
 
-            if(health < previousHealth)
+            if (health < previousHealth)
             {
                 ateBomb = true;
                 ateBombFrames++;
-                if(ateBombFrames > 60)
+                if (ateBombFrames > 60)
                 {
                     ateBombFrames = 1;
                     ateBomb = false;
@@ -147,50 +147,50 @@ namespace Sprint0
                 tileFrame = 1;
 
 
-           /* if (patrolPhase == 1) //default phase of enemies, is changed after the enemy "sees" link 
-            {
-                if (patrolFrame <= 100)
-                {
-                    directionCode = 0;
-                }
-                else if (patrolFrame > 100)
-                {
-                    directionCode = 1;
-                }
+            /* if (patrolPhase == 1) //default phase of enemies, is changed after the enemy "sees" link 
+             {
+                 if (patrolFrame <= 100)
+                 {
+                     directionCode = 0;
+                 }
+                 else if (patrolFrame > 100)
+                 {
+                     directionCode = 1;
+                 }
 
-                if (((spritePositionX - 10) <= playerPositionX && playerPositionX <= (spritePositionX + 10)) || ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 10)))
-                {
-                    patrolPhase = 0;
-                }
+                 if (((spritePositionX - 10) <= playerPositionX && playerPositionX <= (spritePositionX + 10)) || ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 10)))
+                 {
+                     patrolPhase = 0;
+                 }
 
-            }
+             }
 
-            if (patrolPhase == 0)
-            {
-                if ((spritePositionX - 10) <= playerPositionX && playerPositionX <= (spritePositionX + 10))
-                {
-                    if (playerPositionY < spritePositionY)
-                    {
-                        directionCode = 0;
-                    }
-                    else if (playerPositionY > spritePositionY)
-                    {
-                        directionCode = 1;
-                    }
-                }
+             if (patrolPhase == 0)
+             {
+                 if ((spritePositionX - 10) <= playerPositionX && playerPositionX <= (spritePositionX + 10))
+                 {
+                     if (playerPositionY < spritePositionY)
+                     {
+                         directionCode = 0;
+                     }
+                     else if (playerPositionY > spritePositionY)
+                     {
+                         directionCode = 1;
+                     }
+                 }
 
-                if ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 10))
-                {
-                    if (playerPositionX < spritePositionX)
-                    {
-                        directionCode = 2;
-                    }
-                    else if (playerPositionX > spritePositionX)
-                    {
-                        directionCode = 3;
-                    }
-                }
-            }*/
+                 if ((spritePositionY - 10) <= playerPositionY && playerPositionY <= (spritePositionY + 10))
+                 {
+                     if (playerPositionX < spritePositionX)
+                     {
+                         directionCode = 2;
+                     }
+                     else if (playerPositionX > spritePositionX)
+                     {
+                         directionCode = 3;
+                     }
+                 }
+             }*/
 
             if (directionCode == 0 && ateBomb == false)
             {
@@ -299,23 +299,23 @@ namespace Sprint0
             }
             else if (directionCode == 3 && ateBomb == true)
             {
-                    sourceRectangle = new Rectangle(135, 58, 32, 16);
-                    destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 120, 60);
+                sourceRectangle = new Rectangle(135, 58, 32, 16);
+                destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 120, 60);
             }
             else if (directionCode == 0 && ateBomb == true)
             {
-                    sourceRectangle = new Rectangle(52, 58, 16, 16);
-                    destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 60, 60);
+                sourceRectangle = new Rectangle(52, 58, 16, 16);
+                destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 60, 60);
             }
             else if (directionCode == 2 && ateBomb == true)
             {
-                    sourceRectangle = new Rectangle(231, 270, 32, 16);
-                    destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 120, 60);
+                sourceRectangle = new Rectangle(231, 270, 32, 16);
+                destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 120, 60);
             }
             else if (directionCode == 1 && ateBomb == true)
             {
-                    sourceRectangle = new Rectangle(18, 58, 16, 16);
-                    destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 60, 60);
+                sourceRectangle = new Rectangle(18, 58, 16, 16);
+                destinationRectangle = new Rectangle(spritePositionX, spritePositionY, 60, 60);
             }
             else
             {
