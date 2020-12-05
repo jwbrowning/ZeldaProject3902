@@ -1,1 +1,14 @@
+Review Author: Abhi Malisetty
+Date: 12/04/2020
+Sprint 5
+Code Under Review: SaveGame and LoadGame methods in the Game1.cs file
+Code of File: Matthew Landwehr
+Time taken for review: 15 minutes
 
+Comments: 
+
+No issues in the code. Having separation for LoadGame and SaveGame is a good idea. This helps in terms of having a foundation for expanding upon the save system since it is somewhat barebones at the moment.
+
+Hypothetical Change: 
+
+Transforming the save system into a more complex and robust savestate system. Where multiple instances and saves of the game can be stored and loaded even after the game is closed and reopened. I think this code has provided the foundation that can be built upon to create a nice savestate system. The lowest levels of such a system has already been created (each save), it would just be the higher level stuff like managing multiple saves that would need to be handled now.
