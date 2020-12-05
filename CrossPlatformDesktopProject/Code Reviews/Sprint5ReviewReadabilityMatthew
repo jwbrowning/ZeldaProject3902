@@ -1,1 +1,10 @@
+Review Author: Abhi Malisetty
+Date: 12/04/2020
+Sprint 5
+Code Under Review: SaveGame and LoadGame methods in the Game1.cs file
+Author of Code: Matthew Landwehr
+Time taken for review: 15 minutes
 
+Comments: 
+
+These are pretty compact methods. Code is concise but it does take a couple moments to digest. Perhaps some commenting would help to understand what's going on in the code easier but it is understandable nonetheless.
