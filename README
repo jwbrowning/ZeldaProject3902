@@ -4,7 +4,7 @@ Authors Aidan Haskett, Hemil Amin, Abhi Malisetty, Matthew Landwehr, and Johnath
 README
 
 Code Description
-This program is the completed first level of the legend of zelda game.
+This program is the completed first level of the Legend of Zelda game.
 
 Keyboard Controls
 Up Arrow / W - Moves the link character up
@@ -50,6 +50,8 @@ Known Issues and Roadmap
 We decided not to implement moveable blocks
 Bugs: Sometimes the game over audio will play to completion, even after you reset the game.
 If you change rooms with the mouse and end up inside a block, Link vanishes and you'll need to reset the game with R.
+Sometimes loading a game after you die causes Link to spawn in an empty room; resetting with R fixes this.
+Saving or loading while taking damage can crash the game.
 
 Code Analysis
 
