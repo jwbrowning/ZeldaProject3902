@@ -22,6 +22,9 @@ Enter - Selects an item in the inventory
 R - Resets the game
 Q - Quits the game
 M - Mutes the background music
+Left Shift - Start reversing time
+K - Dims the light to a small circle around Link
+L - Returns the light to its normal visibility
 
 F5 - Saves your game
 F9 - Load your saved game
@@ -31,14 +34,13 @@ CHEAT CODES
 Up-Down-Up-Down-Z-X-C = Kill all enemies on the current level
 Up-Down-Up-Left-Z = Lots of Health, almost unlimited
 Up-Down-Up-Z-Z = Lots of rupee and bombs, almost unlimited
+P - turns on secret party disco mode (O to turn it off)
 
 CONTROLS FOR TESTING
 E - Damages Link
 C - Shows the coliders in the game
 V - Hides the coliders that are previously shown
 G - Spawns a clock for testing
-K - Dims the light to a small circle around Link
-L - Returns the light to its normal visibility
 P - Enables party lighting
 O - Disables party lighting
 
@@ -53,16 +55,25 @@ Code Analysis
 
 Sprint Reflection
 We did a better job at getting work done this sprint but with break and finals approaching people have limited availability making it harder to meet up and coordinate then other sprints. Overall we were able to achieve most of what we wanted and are proud of how the game has progressed and turned out.
-Lights: 3 hours -> 4 hours
-Reverse Time: 2 hours -> 3 hours
-Cheat Codes: 2 hours -> 4 hours
+Here are the features we implemented for this sprint:
+Lighting: 8 hours -> 10 hours
+-Dynamic 2D lighting that updates based on Link's position. Lights can also be turned on/off with L/K, and flashing colorful lights can be turned on with P/O. Made by Johnathan
+Reverse Time: 2 hours -> 2 hours
+-Hold shift to move Link and enemies back in time up to 10 seconds or so. Made by Johnathan
+Cheat Codes: 2 hours -> 3 hours
+-Input a precise sequence of keys to make cool stuff happen.
 Updated AI: 3 hours -> 4 hours
+-Updated and improved enemy AI.
 Dodongo Implementation: 2 hours -> 3 hours
+-Another Boss implementation
+Save States: 3 hours - 3 hours
+-Save and load the game as you're playing.
 Bug Fixes: 1 hours –> 2 hours
 In conclusion I feel like we did a good job with this sprint a lot of work was done in advance before the due date and not that much was saved for the last minute. 
 Most things took about as long as we expected although we may have undersold it a bit. 
+The lighting was difficult to implement with a lot of math and trig involved. At first it was very buggy and it seemed like it might not be realistic, but in the end it turned out great.
+Time reversal only works by updating positioning, and things aren't animated, but it's still a neat effect.
 Overall, it was a successful sprint and we were able to achieve most of what we wanted.
-better job overall organizing and getting work done this sprint.
 
 
 
